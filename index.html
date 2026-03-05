@@ -5,25 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ema. | Boundary Spanner</title>
   
-  <!-- Tailwind CSS (デザインを適用するためのツール) -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- React & ReactDOM (動きをつけるためのツール) -->
+  <!-- React & ReactDOM -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   
-  <!-- Babel (ブラウザ上で新しいJavaScriptの書き方を翻訳するツール) -->
+  <!-- Babel -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
-  <!-- ここにサイトが描画されます -->
   <div id="root"></div>
 
-  <!-- type="text/babel" を指定してサイトの中身を記述します -->
   <script type="text/babel">
     const { useState, useEffect } = React;
 
-    // --- アイコンのコンポーネント (SVGで直接描画) ---
+    // --- アイコンのコンポーネント ---
     const Instagram = ({ size = 24, strokeWidth = 2, className = "" }) => (
       <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" className={className}>
         <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
@@ -54,10 +52,24 @@
       </svg>
     );
 
+    const Camera = ({ size = 24, strokeWidth = 2, className = "" }) => (
+      <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+        <circle cx="12" cy="13" r="3"></circle>
+      </svg>
+    );
+
+    const ChevronDown = ({ size = 24, strokeWidth = 2, className = "" }) => (
+      <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="m6 9 6 6 6-6"></path>
+      </svg>
+    );
+
     // --- メインのサイト構成 ---
     function App() {
       const [isScrolled, setIsScrolled] = useState(false);
       const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+      const [openFaqIndex, setOpenFaqIndex] = useState(null);
 
       useEffect(() => {
         const handleScroll = () => {
@@ -75,6 +87,82 @@
         }
       };
 
+      const toggleFaq = (index) => {
+        setOpenFaqIndex(openFaqIndex === index ? null : index);
+      };
+
+      const menuItems = ['Concept', 'Works', 'Profile', 'Service', 'Price', 'FAQ'];
+
+      // --- 撮影実績（9枚）のデータ ---
+      // ※画像を変更する場合は、ここの "img" のURLを書き換えてください。
+      const works = [
+        {
+          title: "構造と熱", desc: "Consulting Firm / 2023", 
+          img: "https://images.unsplash.com/photo-1513346940221-6f673d962e97?q=80&w=1200&auto=format&fit=crop&sat=-30", 
+          col: "md:col-span-8", aspect: "aspect-[4/3] md:aspect-[16/9]"
+        },
+        {
+          title: "静寂の解", desc: "Architect Studio", 
+          img: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop&sat=-30", 
+          col: "md:col-span-4 md:mt-32", aspect: "aspect-[3/4]"
+        },
+        {
+          title: "技術の息吹", desc: "Tech Startup", 
+          img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop&sat=-30", 
+          col: "md:col-span-5 md:-mt-16", aspect: "aspect-[4/5]"
+        },
+        {
+          title: "原点への回帰", desc: "Craft Brand", 
+          img: "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&w=1200&auto=format&fit=crop&sat=-30", 
+          col: "md:col-span-7 md:mt-24", aspect: "aspect-[3/2]"
+        },
+        {
+          title: "光の軌跡", desc: "Apparel Brand", 
+          img: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=800&auto=format&fit=crop&sat=-30", 
+          col: "md:col-span-4 md:-mt-8", aspect: "aspect-[3/4]"
+        },
+        {
+          title: "呼吸する空間", desc: "Interior Design", 
+          img: "https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?q=80&w=1200&auto=format&fit=crop&sat=-30", 
+          col: "md:col-span-8 md:mt-16", aspect: "aspect-[16/9]"
+        },
+        {
+          title: "手触りの記憶", desc: "Pottery Studio", 
+          img: "https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?q=80&w=1200&auto=format&fit=crop&sat=-30", 
+          col: "md:col-span-6 md:mt-0", aspect: "aspect-[4/3]"
+        },
+        {
+          title: "都市の鼓動", desc: "Urban Development", 
+          img: "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=1200&auto=format&fit=crop&sat=-30", 
+          col: "md:col-span-6 md:mt-32", aspect: "aspect-[4/3]"
+        },
+        {
+          title: "境界の融解", desc: "Art Exhibition", 
+          img: "https://images.unsplash.com/photo-1499714608240-22fc6ad53cb2?q=80&w=2000&auto=format&fit=crop&sat=-30", 
+          col: "md:col-span-12 md:-mt-8", aspect: "aspect-[21/9] md:aspect-[3/1]"
+        }
+      ];
+
+      // FAQのデータ
+      const faqs = [
+        {
+          q: "納期はどれくらいですか？",
+          a: "基本的に撮影日から2週間頂いております。"
+        },
+        {
+          q: "納品形式はどうなりますか？",
+          a: "オンラインでのご納品とさせて頂いております。ギガファイル便orGoogle Driveを使用しています。"
+        },
+        {
+          q: "支払い方法は？",
+          a: "現在は、キャッシュと口座振込にてご対応させて頂いております。"
+        },
+        {
+          q: "内容だけ聞いてみたい",
+          a: "ぜひDMにて「気になる」とメッセージください。"
+        }
+      ];
+
       return (
         <div className="min-h-screen bg-[#faf9f6] text-[#1a202c] font-sans selection:bg-[#c85a17]/20 selection:text-[#1a202c]">
           <style>{`
@@ -85,7 +173,6 @@
 
             html { scroll-behavior: smooth; }
             
-            /* 非常にうっすらとしたノイズ */
             .bg-noise {
               position: fixed;
               inset: 0;
@@ -108,8 +195,8 @@
                 <span className={`font-serif text-[22px] tracking-[0.2em] transition-colors duration-500 ${isScrolled ? 'text-[#1a202c]' : 'text-[#ffffff] md:text-[#1a202c]'}`}>Ema.</span>
               </div>
 
-              <div className="hidden md:flex items-center gap-10">
-                {['Concept', 'Works', 'Profile', 'Service'].map((item) => (
+              <div className="hidden md:flex items-center gap-8 lg:gap-10">
+                {menuItems.map((item) => (
                   <button 
                     key={item}
                     onClick={() => scrollToSection(item.toLowerCase())}
@@ -120,7 +207,7 @@
                 ))}
                 <a 
                   href="#contact" 
-                  className={`font-sans text-[10px] tracking-[0.2em] px-6 py-2.5 uppercase transition-all duration-300 ${isScrolled ? 'bg-[#1a202c] text-[#ffffff] hover:bg-[#c85a17]' : 'bg-[#1a202c] text-[#ffffff] hover:bg-[#c85a17]'}`}
+                  className={`font-sans text-[10px] tracking-[0.2em] px-6 py-2.5 uppercase transition-all duration-300 ml-2 ${isScrolled ? 'bg-[#1a202c] text-[#ffffff] hover:bg-[#c85a17]' : 'bg-[#1a202c] text-[#ffffff] hover:bg-[#c85a17]'}`}
                 >
                   Contact
                 </a>
@@ -136,8 +223,8 @@
           </nav>
 
           {/* Mobile Menu */}
-          <div className={`fixed inset-0 bg-[#1a202c] text-white z-40 transition-opacity duration-500 ease-in-out flex flex-col items-center justify-center gap-10 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-            {['Concept', 'Works', 'Profile', 'Service'].map((item) => (
+          <div className={`fixed inset-0 bg-[#1a202c] text-white z-40 transition-opacity duration-500 ease-in-out flex flex-col items-center justify-center gap-8 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+            {menuItems.map((item) => (
               <button 
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
@@ -148,7 +235,7 @@
             ))}
             <button 
               onClick={() => scrollToSection('contact')}
-              className="mt-8 border border-white/30 px-10 py-4 font-sans text-[11px] tracking-[0.2em] uppercase hover:bg-white hover:text-[#1a202c] transition-colors"
+              className="mt-6 border border-white/30 px-10 py-4 font-sans text-[11px] tracking-[0.2em] uppercase hover:bg-white hover:text-[#1a202c] transition-colors"
             >
               Contact
             </button>
@@ -177,7 +264,7 @@
                 <p className="font-sans text-[12px] md:text-[13px] font-light leading-[2.4] text-[#4a5568] tracking-[0.15em] border-l border-[#c85a17] pl-4 md:pl-6">
                   カオスから本質を抽出し、<br />
                   社会実装のトリガーとなる<br />
-                  ビジュアル言語を現像します。
+                  ビジュアル言語を設計します。
                 </p>
               </div>
             </div>
@@ -198,80 +285,50 @@
                 
                 <p className="font-serif text-[15px] md:text-[17px] font-light leading-[2.4] text-[#4a5568] tracking-widest">
                   Ema.は単なるカメラマンではありません。<br className="hidden md:block"/>
-                  内面世界の「原風景」と、外側の「社会実装」を繋ぐ翻訳者です。
+                  内面世界の「複雑なカオス」と、外側の「社会実装」を繋ぐ翻訳者です。
                 </p>
                 <p className="font-serif text-[15px] md:text-[17px] font-light leading-[2.4] text-[#4a5568] tracking-widest">
-                  深傾聴によりあなたの想いを抽出し、言語化以前の熱量を一枚の画に結晶化させる。<br className="hidden md:block"/>
+                  深傾聴によりあなたの哲学を抽出し、言語化以前の熱量を一枚の画に結晶化させる。<br className="hidden md:block"/>
                   それは未来の仲間を引き寄せる、強力な「旗」となります。
                 </p>
               </div>
             </div>
           </section>
 
-          {/* Works Section */}
+          {/* Works Section (9枚に変更) */}
           <section id="works" className="py-32 md:py-48 bg-[#ffffff]">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
               <div className="flex justify-between items-end mb-24">
                 <div>
                   <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-4 block">Selected Works</p>
                   <h2 className="font-serif text-[32px] md:text-[40px] text-[#1a202c] tracking-[0.1em] leading-none">
-                    
+                    撮影実績
                   </h2>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-12 gap-y-16 md:gap-x-8 md:gap-y-24">
-                <div className="md:col-span-8 group cursor-pointer">
-                  <div className="overflow-hidden relative bg-[#f0f2f5] mb-6 aspect-[4/3] md:aspect-[16/9]">
-                    <img src="https://images.unsplash.com/photo-1513346940221-6f673d962e97?q=80&w=1200&auto=format&fit=crop&sat=-30" alt="Work 1" className="w-full h-full object-cover transform group-hover:scale-[1.03] transition-transform duration-1000 ease-out grayscale-[10%]" />
-                  </div>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="font-serif text-[20px] text-[#1a202c] tracking-[0.1em] mb-2 group-hover:text-[#c85a17] transition-colors">構造と熱</h3>
-                      <p className="font-sans text-[11px] text-[#718096] tracking-[0.1em] uppercase">Consulting Firm / 2023</p>
+                {works.map((work, index) => (
+                  <div key={index} className={`${work.col} group cursor-pointer`}>
+                    <div className={`overflow-hidden relative bg-[#f0f2f5] mb-6 ${work.aspect}`}>
+                      <img 
+                        src={work.img} 
+                        alt={work.title} 
+                        className="w-full h-full object-cover transform group-hover:scale-[1.03] transition-transform duration-1000 ease-out grayscale-[10%]" 
+                      />
                     </div>
-                    <ArrowRight size={20} className="text-[#c85a17] opacity-0 group-hover:opacity-100 transform -translate-x-4 group-hover:translate-x-0 transition-all duration-300" strokeWidth={1.5} />
-                  </div>
-                </div>
-
-                <div className="md:col-span-4 md:mt-32 group cursor-pointer">
-                  <div className="overflow-hidden relative bg-[#f0f2f5] mb-6 aspect-[3/4]">
-                    <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop&sat=-30" alt="Work 2" className="w-full h-full object-cover transform group-hover:scale-[1.03] transition-transform duration-1000 ease-out grayscale-[10%]" />
-                  </div>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="font-serif text-[20px] text-[#1a202c] tracking-[0.1em] mb-2 group-hover:text-[#c85a17] transition-colors">静寂の解</h3>
-                      <p className="font-sans text-[11px] text-[#718096] tracking-[0.1em] uppercase">Architect Studio</p>
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h3 className="font-serif text-[20px] text-[#1a202c] tracking-[0.1em] mb-2 group-hover:text-[#c85a17] transition-colors">{work.title}</h3>
+                        <p className="font-sans text-[11px] text-[#718096] tracking-[0.1em] uppercase">{work.desc}</p>
+                      </div>
+                      <ArrowRight size={20} className="text-[#c85a17] opacity-0 group-hover:opacity-100 transform -translate-x-4 group-hover:translate-x-0 transition-all duration-300" strokeWidth={1.5} />
                     </div>
                   </div>
-                </div>
-
-                <div className="md:col-span-5 md:-mt-16 group cursor-pointer">
-                  <div className="overflow-hidden relative bg-[#f0f2f5] mb-6 aspect-[4/5]">
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop&sat=-30" alt="Work 3" className="w-full h-full object-cover transform group-hover:scale-[1.03] transition-transform duration-1000 ease-out grayscale-[20%]" />
-                  </div>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="font-serif text-[20px] text-[#1a202c] tracking-[0.1em] mb-2 group-hover:text-[#c85a17] transition-colors">技術の息吹</h3>
-                      <p className="font-sans text-[11px] text-[#718096] tracking-[0.1em] uppercase">Tech Startup</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="md:col-span-7 md:mt-24 group cursor-pointer">
-                  <div className="overflow-hidden relative bg-[#f0f2f5] mb-6 aspect-[3/2]">
-                    <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&w=1200&auto=format&fit=crop&sat=-30" alt="Work 4" className="w-full h-full object-cover transform group-hover:scale-[1.03] transition-transform duration-1000 ease-out grayscale-[10%]" />
-                  </div>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="font-serif text-[20px] text-[#1a202c] tracking-[0.1em] mb-2 group-hover:text-[#c85a17] transition-colors">原点への回帰</h3>
-                      <p className="font-sans text-[11px] text-[#718096] tracking-[0.1em] uppercase">Craft Brand</p>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
               
-              <div className="mt-24 text-center">
+              <div className="mt-32 text-center">
                 <button className="border-b border-[#1a202c] pb-1 font-sans text-[12px] tracking-[0.15em] text-[#1a202c] hover:text-[#c85a17] hover:border-[#c85a17] transition-colors uppercase">
                   View All Works
                 </button>
@@ -284,7 +341,7 @@
             <div className="max-w-6xl mx-auto px-6 md:px-12 flex flex-col md:flex-row gap-16 md:gap-24">
               <div className="w-full md:w-5/12 relative">
                 <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#c85a17]/10 rounded-tl-3xl"></div>
-                <img src="=IMG_6093.JPG80&w=800&auto=format&fit=crop&sat=-20" alt="Ema." className="relative z-10 w-full aspect-[3/4] object-cover grayscale-[20%]" />
+                <img src="DSCF8958.jpg" alt="Ema." className="relative z-10 w-full aspect-[3/4] object-cover grayscale-[20%]" />
               </div>
               
               <div className="w-full md:w-7/12 flex flex-col justify-center">
@@ -321,7 +378,7 @@
                       <h3 className="font-serif text-[20px] text-[#1a202c] tracking-[0.1em] mb-3 group-hover:text-[#c85a17] transition-colors">哲学の現像セッション</h3>
                       <p className="font-sans text-[11px] text-[#c85a17] tracking-[0.15em] uppercase mb-6">Philosophy Visualization</p>
                       <p className="font-serif text-[14px] text-[#4a5568] leading-[2.2] tracking-wider mb-6">
-                        対話を通してあなたの根底にある熱量を抽出し、1枚のメインビジュアルとして結晶化させます。キービジュアルや、事業の旗印として機能する一枚を創り出します。
+                        対話を通してあなたの根底にある熱量を抽出し、1枚のメインビジュアルとして結晶化させます。Webサイトのキービジュアルや、事業の旗印として機能する一枚を創り出します。
                       </p>
                     </div>
                     
@@ -329,7 +386,7 @@
                       <h3 className="font-serif text-[20px] text-[#1a202c] tracking-[0.1em] mb-3 group-hover:text-[#c85a17] transition-colors">境界連結プロジェクト</h3>
                       <p className="font-sans text-[11px] text-[#c85a17] tracking-[0.15em] uppercase mb-6">Boundary Spanning</p>
                       <p className="font-serif text-[14px] text-[#4a5568] leading-[2.2] tracking-wider mb-6">
-                        ビジュアル制作にとどまらず、写真を用いた「社会実装」のプロセスまで伴走。ブランド構築、発信戦略など、哲学を社会と繋ぐための継続的なサポートを行います。
+                        ビジュアル制作にとどまらず、写真を用いた「社会実装」のプロセスまで伴走。ブランド構築、採用活動、発信戦略など、哲学を社会と繋ぐための継続的なサポートを行います。
                       </p>
                     </div>
                   </div>
@@ -344,7 +401,7 @@
                       { step: "01", title: "Dialogue", desc: "深傾聴と哲学の抽出" },
                       { step: "02", title: "Scouting", desc: "空間・光・構図など視覚言語の設計" },
                       { step: "03", title: "Shooting", desc: "カメラを出力装置とした現像としての撮影" },
-                      { step: "04", title: "Encounter", desc: "社会実装に向けた旗印の完成" }
+                      { step: "04", title: "Encounter", desc: "社会実装に向けた旗印の完成と邂逅" }
                     ].map((item, i) => (
                       <div key={i} className="flex gap-6 items-start group">
                         <span className="font-serif text-[18px] text-[#a0aec0] mt-1 group-hover:text-[#c85a17] transition-colors">{item.step}</span>
@@ -361,13 +418,98 @@
             </div>
           </section>
 
+          {/* Price Section */}
+          <section id="price" className="py-32 md:py-48 bg-[#faf9f6]">
+            <div className="max-w-7xl mx-auto px-6 md:px-12">
+              <div className="text-center mb-20">
+                <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-4 block">Price</p>
+                <h2 className="font-serif text-[28px] md:text-[36px] text-[#1a202c] tracking-[0.1em] mb-8">撮影プラン価格</h2>
+                <div className="w-8 h-[1px] bg-[#1a202c] mx-auto"></div>
+              </div>
+
+              <div className="flex justify-center">
+                <div className="w-full max-w-sm">
+                  <div className="relative aspect-[5/8] rounded-[24px] overflow-hidden mb-10 group bg-[#f0f2f5] shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
+                    <img 
+                      src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format&fit=crop" 
+                      alt="Portrait Plan Background" 
+                      className="w-full h-full object-cover grayscale-[30%] opacity-90 group-hover:scale-105 transition-transform duration-1000 ease-out" 
+                    />
+                    <div className="absolute inset-0 bg-white/50 flex flex-col items-center justify-center backdrop-blur-[1px]">
+                      <div className="text-center mt-[-20px]">
+                        <h3 className="font-sans text-[44px] font-bold text-[#c85a17] tracking-[0.1em] mb-1">
+                          ma<span className="ml-1">:</span>
+                        </h3>
+                        <p className="font-sans text-[11px] font-bold text-[#c85a17] tracking-[0.35em] uppercase">Portrait Plan</p>
+                      </div>
+                      <div className="absolute bottom-12 border border-[#1a202c] p-3 rounded-full bg-white/30 backdrop-blur-sm">
+                        <Camera size={22} className="text-[#1a202c]" strokeWidth={1.5} />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="px-2 md:px-0">
+                    <h3 className="font-serif text-[18px] text-[#1a202c] tracking-[0.1em] mb-5">ma: PLAN</h3>
+                    <p className="font-sans text-[12px] text-[#718096] leading-[2.0] tracking-wider mb-6">
+                      完全オーダーメイド撮影<br className="hidden md:block" />
+                      [自然光撮影,プロセスポートレート,ブランディング(BTS)]
+                    </p>
+                    <p className="font-serif text-[18px] text-[#1a202c] tracking-wider flex items-baseline gap-2">
+                      ¥25,000 <span className="font-sans text-[13px]">(税込)</span> <span className="font-sans text-[12px] text-[#718096]">[交通費別途]</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* FAQ Section */}
+          <section id="faq" className="py-32 md:py-48 bg-[#f5f6f8]">
+            <div className="max-w-3xl mx-auto px-6 md:px-12">
+              <div className="text-center mb-20">
+                <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-4 block">FAQ</p>
+                <h2 className="font-serif text-[28px] md:text-[36px] text-[#1a202c] tracking-[0.1em] mb-8">よくある質問</h2>
+                <div className="w-8 h-[1px] bg-[#1a202c] mx-auto"></div>
+              </div>
+
+              <div className="border-t border-[#e2e8f0]">
+                {faqs.map((faq, index) => {
+                  const isOpen = openFaqIndex === index;
+                  return (
+                    <div key={index} className="border-b border-[#e2e8f0]">
+                      <button 
+                        className="w-full flex justify-between items-center py-8 text-left group"
+                        onClick={() => toggleFaq(index)}
+                      >
+                        <h3 className="font-serif text-[16px] md:text-[18px] text-[#1a202c] tracking-widest group-hover:text-[#c85a17] transition-colors">
+                          <span className="font-serif mr-3">Q.</span>{faq.q}
+                        </h3>
+                        <div className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+                          <ChevronDown size={20} className="text-[#4a5568]" strokeWidth={1.5} />
+                        </div>
+                      </button>
+                      
+                      <div 
+                        className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-40 opacity-100 mb-8' : 'max-h-0 opacity-0'}`}
+                      >
+                        <p className="font-sans text-[13px] md:text-[14px] text-[#4a5568] leading-[2.0] tracking-wider pl-8">
+                          {faq.a}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+
           {/* Contact Section */}
           <section id="contact" className="py-40 md:py-56 bg-[#1a202c] text-[#ffffff] text-center px-6 relative overflow-hidden">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#c85a17]/10 rounded-full blur-[100px] pointer-events-none"></div>
 
             <div className="relative z-10">
               <h2 className="font-serif text-[32px] md:text-[48px] tracking-[0.15em] mb-8 leading-[1.6]">
-                あなたの原風景を、<br/>
+                あなたのカオスを、<br/>
                 聴かせてください。
               </h2>
               
@@ -379,7 +521,7 @@
                 href="https://instagram.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 border border-[#c85a17] text-[#c85a17] px-12 py-5 hover:bg-[#c85a17] hover:text-[#ffffff] transition-all duration-300 group"
+                className="inline-flex items-center justify-center gap-3 border border-[#c85a17] text-[#c85a17] px-12 py-5 hover:bg-[#c85a17] hover:text-[#ffffff] transition-all duration-300 group rounded-sm"
               >
                 <Instagram size={16} strokeWidth={1.5} />
                 <span className="font-sans text-[12px] tracking-[0.2em] uppercase font-medium">Instagram DM</span>
@@ -400,11 +542,8 @@
       );
     }
 
-    // Reactを画面に表示させる処理
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(<App />);
   </script>
 </body>
-
 </html>
-
