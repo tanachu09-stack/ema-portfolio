@@ -443,30 +443,71 @@
             </div>
           </section>
 
-          {/* Price Section */}
+         {/* Price Section - 旗（Flag）コンセプト（詳細版） */}
           <section id="price" className="py-32 md:py-48 bg-[#faf9f6]">
-            <div className="max-w-4xl mx-auto px-6 md:px-12">
-              <div className="text-center mb-20">
-                <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-4 block">Price</p>
-                <h2 className="font-serif text-[28px] md:text-[36px] text-[#1a202c] tracking-[0.1em] mb-8">撮影プラン価格</h2>
-                <div className="w-8 h-[1px] bg-[#1a202c] mx-auto"></div>
+            <div className="max-w-7xl mx-auto px-6 md:px-12">
+              {/* リード文エリア */}
+              <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-16 mb-24">
+                <div className="w-full md:w-1/3">
+                  <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-4 block">Price</p>
+                  <h2 className="font-serif text-[28px] md:text-[36px] text-[#1a202c] tracking-[0.1em] mb-8">撮影プラン価格</h2>
+                </div>
+                
+                <div className="w-full md:w-2/3">
+                  <h3 className="font-serif text-[16px] md:text-[20px] font-light tracking-[0.15em] text-[#1a202c] mb-8 leading-[1.8]">
+                    消費されるデータから、未来の仲間を引き寄せる<br className="hidden md:block"/>「物理的な旗」へ。
+                  </h3>
+                  <div className="space-y-6 font-sans text-[13px] md:text-[14px] text-[#4a5568] font-light leading-[2.4] tracking-[0.15em]">
+                    <p>
+                      Ema.の現像セッションは、スマホの中で消費されるデジタルデータを納品することを目的としていません。深傾聴によって抽出したあなたの「原風景」と「熱量」を、スローシンクロを用いた光の軌跡としてキャンバスに定着させます。
+                    </p>
+                    <p>
+                      それを最高品質の額装アートとしてご自宅やオフィスの壁（生活動線）に飾っていただくこと。迷いが生じた時に本来の自分（Center）に立ち返り、そして未来の仲間を引き寄せるための「あなたの旗印」として機能させることが、このプロジェクトの最終目的です。
+                    </p>
+                  </div>
+                </div>
               </div>
 
+              {/* プラン一覧 */}
               <div className="border-t border-[#1a202c]">
                 {plans.map((plan, index) => (
-                  <div key={index} className="py-8 md:py-10 border-b border-[#e2e8f0] flex flex-col md:flex-row justify-between items-start md:items-center gap-4 group hover:bg-white transition-colors duration-300 px-4 -mx-4 rounded-lg cursor-default">
-                    <div>
-                      <div className="flex items-center gap-3 mb-1">
-                        <h3 className="font-serif text-[18px] md:text-[20px] tracking-[0.15em] text-[#1a202c]">{plan.enTitle}</h3>
+                  <div key={index} className="py-16 border-b border-[#e2e8f0] flex flex-col lg:flex-row justify-between items-start gap-10">
+                    <div className="w-full lg:w-3/4 pr-0 lg:pr-12">
+                      <div className="flex flex-wrap items-center gap-3 mb-2">
+                        <span className="font-serif text-[13px] text-[#718096] font-light tracking-widest">{plan.grade}</span>
+                        <h3 className="font-serif text-[20px] md:text-[24px] tracking-[0.15em] text-[#1a202c]">{plan.enTitle}</h3>
                         {plan.recommended && (
-                          <span className="font-sans text-[10px] bg-[#1a202c] text-white px-2 py-2 tracking-[0.2em] uppercase">推奨</span>
+                          <span className="font-sans text-[10px] bg-[#1a202c] text-white px-3 py-1 tracking-[0.2em] uppercase ml-2">Ema.推奨</span>
                         )}
                       </div>
-                      <p className="font-sans text-[11px] text-[#718096] tracking-[0.15em]">{plan.jpTitle}</p>
+                      <p className="font-sans text-[11px] text-[#718096] tracking-[0.15em] mb-6">{plan.jpTitle}</p>
+                      
+                      <p className="font-serif text-[13px] md:text-[14px] text-[#1a202c] leading-[2.4] tracking-[0.15em] font-medium mb-8">
+                        {plan.subtitle}
+                      </p>
+                      
+                      <div className="space-y-6">
+                        <div>
+                          <span className="font-sans text-[10px] text-[#c85a17] tracking-[0.2em] uppercase block mb-2 font-bold">Concept</span>
+                          <p className="font-sans text-[13px] text-[#4a5568] leading-[2.4] tracking-[0.15em] font-light">
+                            {plan.concept}
+                          </p>
+                        </div>
+                        {plan.deliverables && (
+                          <div>
+                            <span className="font-sans text-[10px] text-[#c85a17] tracking-[0.2em] uppercase block mb-2 font-bold">Deliverables</span>
+                            <p className="font-sans text-[13px] text-[#4a5568] leading-[2.4] tracking-[0.15em] font-light">
+                              {plan.deliverables}
+                            </p>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                    <div className="mt-2 md:mt-0">
+                    
+                    <div className="w-full lg:w-1/4 text-left lg:text-right mt-4 lg:mt-0">
                       <p className="font-serif text-[20px] md:text-[24px] tracking-wider text-[#1a202c]">
-                        {plan.price}
+                        <span className="whitespace-nowrap">{plan.price}</span>
+                        <span className="font-sans text-[12px] text-[#718096] block lg:inline lg:ml-2 mt-2 lg:mt-0">{plan.priceNote}</span>
                       </p>
                     </div>
                   </div>
@@ -474,6 +515,7 @@
               </div>
             </div>
           </section>
+
 
           {/* FAQ Section */}
           <section id="faq" className="py-32 md:py-48 bg-[#f5f6f8]">
