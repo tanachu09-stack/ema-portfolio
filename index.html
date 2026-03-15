@@ -137,7 +137,33 @@
           col: "md:col-span-6 md:mt-28", aspect: "aspect-[4/3]"
         }
       ];
-
+// --- PRICE（シンプルリスト化）のデータ ---
+      const plans = [
+        {
+          enTitle: "Fragment Flag Plan",
+          jpTitle: "フラグメント・プラン",
+          price: "¥55,000",
+          recommended: false
+        },
+        {
+          enTitle: "Personal Flag Plan",
+          jpTitle: "パーソナル・フラッグプラン",
+          price: "¥98,000",
+          recommended: false
+        },
+        {
+          enTitle: "Philosophy Visualization Plan",
+          jpTitle: "哲学現像プラン",
+          price: "¥150,000",
+          recommended: true
+        },
+        {
+          enTitle: "Boundary Spanning Plan",
+          jpTitle: "境界連結プラン",
+          price: "¥300,000〜",
+          recommended: false
+        }
+      ];
       // FAQのデータ
       const faqs = [
         {
@@ -418,47 +444,18 @@
             </div>
           </section>
 
-          {/* Price Section */}
+        {/* Price Section (シンプルリスト版) */}
           <section id="price" className="py-32 md:py-48 bg-[#faf9f6]">
-            <div className="max-w-7xl mx-auto px-6 md:px-12">
-              <div className="text-center mb-20">
-                <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-4 block">Price</p>
-                <h2 className="font-serif text-[28px] md:text-[36px] text-[#1a202c] tracking-[0.1em] mb-8">撮影プラン価格</h2>
-                <div className="w-8 h-[1px] bg-[#1a202c] mx-auto"></div>
-              </div>
-
-              <div className="flex justify-center">
-                <div className="w-full max-w-sm">
-                  <div className="relative aspect-[5/8] rounded-[24px] overflow-hidden mb-10 group bg-[#f0f2f5] shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
-                    <img 
-                      src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format&fit=crop" 
-                      alt="Portrait Plan Background" 
-                      className="w-full h-full object-cover grayscale-[30%] opacity-90 group-hover:scale-105 transition-transform duration-1000 ease-out" 
-                    />
-                    <div className="absolute inset-0 bg-white/50 flex flex-col items-center justify-center backdrop-blur-[1px]">
-                      <div className="text-center mt-[-20px]">
-                        <h3 className="font-sans text-[44px] font-bold text-[#c85a17] tracking-[0.1em] mb-1">
-                          ma<span className="ml-1">:</span>
-                        </h3>
-                        <p className="font-sans text-[11px] font-bold text-[#c85a17] tracking-[0.35em] uppercase">Portrait Plan</p>
-                      </div>
-                      <div className="absolute bottom-12 border border-[#1a202c] p-3 rounded-full bg-white/30 backdrop-blur-sm">
-                        <Camera size={22} className="text-[#1a202c]" strokeWidth={1.5} />
-                      </div>
-                    </div>
+            <div className="max-w-4xl mx-auto px-6 md:px-12">
+               {/* --- 中略 --- */}
+               
+               {/* ↓ ここで各プランをリスト表示しています */}
+               <div className="border-t border-[#1a202c]">
+                {plans.map((plan, index) => (
+                  <div key={index} className="py-8 md:py-10 border-b border-[#e2e8f0] ...">
+                    {/* ... */}
                   </div>
-
-                  <div className="px-2 md:px-0">
-                    <h3 className="font-serif text-[18px] text-[#1a202c] tracking-[0.1em] mb-5">ma: PLAN</h3>
-                    <p className="font-sans text-[12px] text-[#718096] leading-[2.0] tracking-wider mb-6">
-                      完全オーダーメイド撮影<br className="hidden md:block" />
-                      ご納品枚数上限30枚<br />[自然光撮影,プロセスポートレート,ブランディング(BTS)]
-                    </p>
-                    <p className="font-serif text-[18px] text-[#1a202c] tracking-wider flex items-baseline gap-2">
-                      ¥25,000 <span className="font-sans text-[13px]">(税込)</span> <span className="font-sans text-[12px] text-[#718096]">[交通費別途]</span>
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </section>
