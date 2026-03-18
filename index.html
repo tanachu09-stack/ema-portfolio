@@ -65,7 +65,7 @@
       </svg>
     );
 
-    // --- メインのサイト構成 ---
+// --- メインのサイト構成 ---
     function App() {
       const [isScrolled, setIsScrolled] = useState(false);
       const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -91,8 +91,15 @@
         setOpenFaqIndex(openFaqIndex === index ? null : index);
       };
 
-      const menuItems = ['Concept', 'Works', 'Profile', 'Service', 'Price', 'FAQ'];
+      // メニューの項目をストーリーラインに合わせて更新
+      const menuItems = ['Target', 'Concept', 'Works', 'Process', 'Price', 'FAQ'];
 
+      // --- WHO IS THIS FOR（ターゲット層）のデータ ---
+      const targets = [
+        "自らの哲学やビジョンを社会に実装したいと考えている経営者・ファウンダーの方",
+        "言語化できない美学や熱量を抱え、それを独自のビジュアルとして世に問いたいクリエイター・職人の方",
+        "消費されるだけの写真ではなく、未来の仲間を引き寄せる「旗印」となる一枚を求めている方"
+      ];
       // --- 撮影実績（8枚）のデータ ---
       const works = [
         {
