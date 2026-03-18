@@ -65,7 +65,7 @@
       </svg>
     );
 
-// --- メインのサイト構成 ---
+    // --- メインのサイト構成 ---
     function App() {
       const [isScrolled, setIsScrolled] = useState(false);
       const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -91,8 +91,8 @@
         setOpenFaqIndex(openFaqIndex === index ? null : index);
       };
 
-      // メニューの項目をストーリーラインに合わせて更新
-      const menuItems = ['Target', 'Concept', 'Works', 'Process', 'Price', 'FAQ'];
+      // メニューの項目（Targetを追加）
+      const menuItems = ['Target', 'Concept', 'Works', 'Profile', 'Service', 'Price', 'FAQ'];
 
       // --- WHO IS THIS FOR（ターゲット層）のデータ ---
       const targets = [
@@ -100,6 +100,7 @@
         "言語化できない美学や熱量を抱え、それを独自のビジュアルとして世に問いたいクリエイター・職人の方",
         "消費されるだけの写真ではなく、未来の仲間を引き寄せる「旗印」となる一枚を求めている方"
       ];
+
       // --- 撮影実績（8枚）のデータ ---
       const works = [
         {
@@ -157,26 +158,15 @@
           deliverables: "深傾聴セッション(30min) ＋ 撮影(2h) ＋ A4サイズのアートプリント 1枚"
         },
         {
-          enTitle: "Personal Flag ",
+          enTitle: "Personal Flag",
           jpTitle: "　パーソナル・フラッグ",
           subtitle: "〜自身の原風景を抽出し、日常に掲げる〜",
           price: "¥75,000",
           priceNote: "(税込)",
           recommended: false,
           concept: "対話を通じてあなた自身の「原風景」を抽出し、光の軌跡として写真という結晶に定着させます。日常の空間に飾ることで日々のノイズを鎮め、あなた自身のブレない軸となる「個人的な旗」を作り上げるベーシックプランです。",
-          deliverables: "深傾聴セッション(1h) ＋ 撮影 "
-        },
-        {
-          enTitle: "Visualization Session",
-          jpTitle: "　現像セッション",
-          subtitle: "〜空間をデザインし、あなたを導く人生のマスターピース〜",
-          price: "¥110,000",
-          priceNote: "(税込)",
-          recommended: false,
-          concept: "Ema.が提供する本命の現像セッションです。あなたの内なる熱量とカオスを抽出し、まるで油絵のような圧倒的な物質感を持つ大判アートとして昇華させます。未来の仲間を引き寄せる強力な「旗印」となります。",
-          deliverables: "深傾聴セッション(2h) ＋ 撮影 ＋ A3〜A2サイズ相当の大判キャンバスプリント ＆ 額装（1点） ＋ 空間インストール"
-        },
-
+          deliverables: "深傾聴セッション(1h) ＋ 撮影"
+        }
       ];
 
       // FAQのデータ
@@ -305,10 +295,32 @@
                   でも、<br />
                   それがまだ誰にも伝わっていない気がする。<br />
                   そんなあなたの熱量を写真に定着させます。
-
                 </p>
               </div>
               
+            </div>
+          </section>
+
+          {/* WHO IS THIS FOR → 「あなたのため」を明示する */}
+          <section id="target" className="py-32 md:py-48 bg-[#ffffff]">
+            <div className="max-w-4xl mx-auto px-6 md:px-12">
+              <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-10 block text-center">
+                Who is this for
+              </p>
+              <h2 className="font-serif text-[24px] md:text-[36px] text-[#1a202c] tracking-[0.1em] mb-20 text-center leading-[1.6]">
+                こんな想いを抱えていませんか？
+              </h2>
+              
+              <div className="space-y-6 md:space-y-8">
+                {targets.map((text, i) => (
+                  <div key={i} className="flex gap-6 items-start bg-[#faf9f6] p-8 md:p-10 border border-[#e2e8f0]/50 hover:border-[#c85a17]/30 transition-colors duration-500">
+                    <span className="font-serif text-[32px] md:text-[40px] text-[#c85a17] leading-none opacity-50">“</span>
+                    <p className="font-serif text-[15px] md:text-[16px] text-[#4a5568] leading-[2.2] tracking-widest pt-2">
+                      {text}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 
@@ -319,19 +331,21 @@
                 Concept
               </p>
               <h2 className="font-serif text-[22px] md:text-[36px] text-[#1a202c] tracking-[0.15em] leading-[1.8] mb-16">
-                「境界連結者」としての役割
+                あなたの想いを、目に見える形に。
               </h2>
               
               <div className="space-y-8 relative">
                 <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-[1px] h-8 bg-[#c85a17]/50"></div>
                 
                 <p className="font-serif text-[15px] md:text-[17px] font-light leading-[2.4] text-[#4a5568] tracking-widest">
-                  私は単なるカメラマンではありません。<br className="hidden md:block"/><br />
-                  内側の「あなたの原風景」と、<br />外側の「社会実装」を繋ぐ翻訳者です。
+                  私がお届けしたいのは、単なる綺麗な写真ではありません。<br className="hidden md:block"/>
+                  あなたの中に眠る「言葉にならない熱量」や「大切にしている想い」にじっくりと耳を傾け、<br className="hidden md:block"/>
+                  それを社会と繋ぐための「架け橋」を作ることです。
                 </p>
                 <p className="font-serif text-[15px] md:text-[17px] font-light leading-[2.4] text-[#4a5568] tracking-widest">
-                  深傾聴によりあなたの哲学を抽出し、言語化以前の熱量を一枚の写真に結晶化させる。<br className="hidden md:block"/>
-                  それは未来の仲間を引き寄せる、強力な「旗」となります。
+                  対話を通じて見つけた、あなただけの「原風景」。<br className="hidden md:block"/>
+                  それを一枚の写真として定着させたとき、<br className="hidden md:block"/>
+                  これから出会うべき未来の仲間を引き寄せる、あたたかく力強い「旗印」となってくれるはずです。
                 </p>
               </div>
             </div>
@@ -416,14 +430,6 @@
                   
                   <div className="space-y-16">
                     <div className="border-t border-[#e2e8f0] pt-8 group hover:border-[#c85a17]/50 transition-colors">
-                      <h3 className="font-serif text-[20px] text-[#1a202c] tracking-[0.1em] mb-3 group-hover:text-[#c85a17] transition-colors">現像セッション</h3>
-                      <p className="font-sans text-[11px] text-[#c85a17] tracking-[0.15em] uppercase mb-6">Philosophy Visualization</p>
-                      <p className="font-serif text-[14px] text-[#4a5568] leading-[2.2] tracking-wider mb-6">
-                        対話を通してクライアントの根底にある熱量を抽出し、メインビジュアルとして結晶化させます。キービジュアルやその奥にあるナラティブポートレート、事業の旗印として機能する一枚を創り出します。
-                      </p>
-                    </div>
-                    
-                    <div className="border-t border-[#e2e8f0] pt-8 group hover:border-[#c85a17]/50 transition-colors">
                       <h3 className="font-serif text-[20px] text-[#1a202c] tracking-[0.1em] mb-3 group-hover:text-[#c85a17] transition-colors">境界連結プロジェクト</h3>
                       <p className="font-sans text-[11px] text-[#c85a17] tracking-[0.15em] uppercase mb-6">Boundary Spanning</p>
                       <p className="font-serif text-[14px] text-[#4a5568] leading-[2.2] tracking-wider mb-6">
@@ -441,7 +447,7 @@
                     {[
                       { step: "01", title: "Dialogue", desc: "深傾聴と哲学の抽出" },
                       { step: "02", title: "Scouting", desc: "空間・光・構図など視覚言語の設計" },
-                      { step: "03", title: "Shooting", desc: "カメラを出力装置とした現像としての撮影" },
+                      { step: "03", title: "Shooting", desc: "カメラを出力装置とした撮影" },
                       { step: "04", title: "Encounter", desc: "社会実装に向けた旗印の完成" }
                     ].map((item, i) => (
                       <div key={i} className="flex gap-6 items-start group">
@@ -475,7 +481,7 @@
                   </h3>
                   <div className="space-y-6 font-sans text-[13px] md:text-[14px] text-[#4a5568] font-light leading-[2.4] tracking-[0.15em]">
                     <p>
-                      Ema.の現像セッションは、スマホの中で消費されるデジタルデータを納品することを目的としていません。深傾聴によって抽出したあなたの「原風景」と「熱量」を、光の軌跡として写真という結晶に定着させます。
+                      Ema.の撮影プロジェクトは、スマホの中で消費されるデジタルデータを納品することを目的としていません。深傾聴によって抽出したあなたの「原風景」と「熱量」を、光の軌跡として写真という結晶に定着させます。
                     </p>
                     <p>
                       それを額装アートとしてご自宅やオフィスの壁（生活動線）に飾っていただくこと。迷いが生じた時に本来の自分（Center）に立ち返り、そして未来の仲間を引き寄せるための「あなたの旗印」として機能させることが、このプロジェクトの最終目的です。
