@@ -91,8 +91,8 @@
         setOpenFaqIndex(openFaqIndex === index ? null : index);
       };
 
-      // メニューの項目（Targetを追加）
-      const menuItems = ['Target', 'Concept', 'Works', 'Profile', 'Service', 'Price', 'FAQ'];
+      // メニューの項目
+      const menuItems = ['Voice', 'Target', 'Concept', 'Works', 'Profile', 'Service', 'Price', 'FAQ'];
 
       // --- WHO IS THIS FOR（ターゲット層）のデータ ---
       const targets = [
@@ -149,13 +149,13 @@
       const plans = [
         {
           enTitle: "Accompany Portrait",
-          jpTitle: "　同行型ポートレート",
-          subtitle: "〜活動に寄り添い、あなたという佇まいを撮る〜",
-          price: "¥30,000",
-          priceNote: "(税込)",
+          jpTitle: "　トランスフォーメーション・ツーリズム",
+          subtitle: "〜日常や活動に寄り添い、自然な姿を切り取る〜",
+          price: "Ask",
+          priceNote: "(要相談)",
           recommended: false,
-          concept: "事前ヒアリングであなたの想いや背景をお伺いし、実際の活動や日常の風景に同行しながら自然な表情や空気感を撮影します。熱量が冷めないうちに、撮影したデータはその日のうちにご納品いたします。",
-          deliverables: "事前ヒアリング＋ 同行撮影 ＋ 当日データ納品"
+          concept: "事前ヒアリングであなたの想いや背景をお伺いし、実際の活動や日常の風景に同行しながら自然な表情や空気感を撮影します。あなたの世界観を記録したデータと、その日の熱量を定着させたアートプリントをご納品いたします。",
+          deliverables: "事前リスニング ＋ 同行撮影 ＋ データ ＋ アートプリント"
         },
         {
           enTitle: "Ma",
@@ -175,7 +175,17 @@
           priceNote: "(税込)",
           recommended: false,
           concept: "対話を通じてあなた自身の「原風景」を抽出し、光の軌跡として写真という結晶に定着させます。日常の空間に飾ることで日々のノイズを鎮め、あなた自身のブレない軸となる「個人的な旗」を作り上げるベーシックプランです。",
-          deliverables: "深傾聴セッション(1h) ＋ 撮影(ご相談)"
+          deliverables: "深傾聴セッション(1h) ＋ 撮影"
+        },
+        {
+          enTitle: "Visualization Session",
+          jpTitle: "　現像セッション",
+          subtitle: "〜空間をデザインし、あなたを導く人生のマスターピース〜",
+          price: "¥110,000",
+          priceNote: "(税込)",
+          recommended: false,
+          concept: "Ema.が提供する本命の現像セッションです。あなたの内なる熱量とカオスを抽出し、まるで油絵のような圧倒的な物質感を持つ大判アートとして昇華させます。未来の仲間を引き寄せる強力な「旗印」となります。",
+          deliverables: "深傾聴セッション(2h) ＋ 撮影 ＋ A3〜A2サイズ相当の大判キャンバスプリント ＆ 額装（1点） ＋ 空間インストール"
         }
       ];
 
@@ -231,7 +241,8 @@
                 <span className={`font-serif text-[22px] tracking-[0.2em] transition-colors duration-500 ${isScrolled ? 'text-[#1a202c]' : 'text-[#ffffff] md:text-[#1a202c]'}`}>Ema.</span>
               </div>
 
-              <div className="hidden md:flex items-center gap-8 lg:gap-10">
+              {/* ↓ ここの gap-8 lg:gap-10 を gap-5 lg:gap-6 に変更して間隔を詰めました */}
+              <div className="hidden md:flex items-center gap-7 lg:gap-6">
                 {menuItems.map((item) => (
                   <button 
                     key={item}
@@ -300,14 +311,33 @@
               </div>
               
               <div className="md:max-w-sm pb-8 md:pb-0">
-                <p className="font-sans text-[10px] md:text-[13px] font-light leading-[2.4] text-[#333631] tracking-[0.15em] border-l border-[#c85a17] pl-4 md:pl-6">
-                  自分の世界観は確かにある。<br />
-                  でも、<br />
-                  それがまだ誰にも伝わっていない気がする。<br />
-                  そんなあなたの熱量を写真に定着させます。
+                <p className="font-sans text-[12px] md:text-[14px] font-light leading-[2.4] text-[#e2e8f0] tracking-[0.15em] border-l border-[#c85a17] pl-4 md:pl-6 drop-shadow-md">
+                  撮影は、記録ではない。<br />
+                  あなたが、変わっていく体験だ。
                 </p>
               </div>
               
+            </div>
+          </section>
+
+          {/* Voice Section → 「論より証拠（Hero直後）」 */}
+          <section id="voice" className="py-24 md:py-32 bg-[#faf9f6] border-b border-[#e2e8f0]/50 relative overflow-hidden">
+            <div className="max-w-4xl mx-auto px-6 md:px-12 text-center relative z-10">
+              <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-8 block">Voice</p>
+              
+              <div className="relative inline-block text-left">
+                <span className="font-serif text-[60px] md:text-[80px] text-[#c85a17] leading-none opacity-10 absolute -top-6 -left-4 md:-left-12 select-none">“</span>
+                <p className="font-serif text-[18px] md:text-[24px] text-[#1a202c] font-light leading-[2.2] md:leading-[2.0] tracking-widest relative z-10">
+                  これからの撮影は、<br className="md:hidden" />その場を整えることがすべてだと感じました。<br />
+                  内外を整える、繊細で丁寧なカメラマンが、<br className="md:hidden" />これからの時代には欠かせないだろう。
+                </p>
+              </div>
+
+              <div className="mt-12 flex flex-col items-center justify-center">
+                <div className="w-12 h-[1px] bg-[#c85a17] mb-6"></div>
+                <p className="font-serif text-[16px] md:text-[18px] text-[#1a202c] tracking-widest mb-1">SO</p>
+                <p className="font-sans text-[11px] text-[#718096] tracking-[0.15em]">アーティスト</p>
+              </div>
             </div>
           </section>
 
@@ -318,7 +348,7 @@
                 Who is this for
               </p>
               <h2 className="font-serif text-[24px] md:text-[36px] text-[#1a202c] tracking-[0.1em] mb-20 text-center leading-[1.6]">
-                こんな想いを<br />抱えていませんか？
+                こんな想いを抱えていませんか？
               </h2>
               
               <div className="space-y-6 md:space-y-8">
@@ -340,22 +370,22 @@
               <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-10 block">
                 Concept
               </p>
-              <h2 className="font-serif text-[20px] md:text-[36px] text-[#1a202c] tracking-[0.15em] leading-[1.8] mb-16">
-                あなたの想いを目に見える形に。
+              <h2 className="font-serif text-[22px] md:text-[36px] text-[#1a202c] tracking-[0.15em] leading-[1.8] mb-16">
+                あなたの想いを、目に見える形に。
               </h2>
               
               <div className="space-y-8 relative">
                 <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-[1px] h-8 bg-[#c85a17]/50"></div>
                 
-                <p className="font-serif text-[12px] md:text-[17px] font-light leading-[2.4] text-[#4a5568] tracking-widest">
+                <p className="font-serif text-[15px] md:text-[17px] font-light leading-[2.4] text-[#4a5568] tracking-widest">
                   私がお届けしたいのは、単なる綺麗な写真ではありません。<br className="hidden md:block"/>
-                  あなたの中に眠る「言葉にならない熱量」や<br />「大切にしている想い」にじっくりと耳を傾け、<br className="hidden md:block"/>
+                  あなたの中に眠る「言葉にならない熱量」や「大切にしている想い」にじっくりと耳を傾け、<br className="hidden md:block"/>
                   それを社会と繋ぐための「架け橋」を作ることです。
                 </p>
-                <p className="font-serif text-[12px] md:text-[17px] font-light leading-[2.4] text-[#4a5568] tracking-widest">
-                  対話を通じて見つけた、あなただけの「原風景」。<br /><br className="hidden md:block"/>
-                  それを一枚の写真として定着させたとき、<br /><br className="hidden md:block"/>
-                  これから出会うべき未来の仲間を引き寄せる、<br />あたたかく力強い「旗印」となってくれるはずです。
+                <p className="font-serif text-[15px] md:text-[17px] font-light leading-[2.4] text-[#4a5568] tracking-widest">
+                  対話を通じて見つけた、あなただけの「原風景」。<br className="hidden md:block"/>
+                  それを一枚の写真として定着させたとき、<br className="hidden md:block"/>
+                  これから出会うべき未来の仲間を引き寄せる、あたたかく力強い「旗印」となってくれるはずです。
                 </p>
               </div>
             </div>
@@ -446,7 +476,7 @@
                         対話を通してクライアントの根底にある熱量を抽出し、メインビジュアルとして結晶化させます。キービジュアルやその奥にあるナラティブポートレート、事業の旗印として機能する一枚を創り出します。
                       </p>
                     </div>
-
+                    
                     <div className="border-t border-[#e2e8f0] pt-8 group hover:border-[#c85a17]/50 transition-colors">
                       <h3 className="font-serif text-[20px] text-[#1a202c] tracking-[0.1em] mb-3 group-hover:text-[#c85a17] transition-colors">境界連結プロジェクト</h3>
                       <p className="font-sans text-[11px] text-[#c85a17] tracking-[0.15em] uppercase mb-6">Boundary Spanning</p>
@@ -502,7 +532,7 @@
                       Ema.の撮影プロジェクトは、スマホの中で消費されるデジタルデータを納品することを目的としていません。深傾聴によって抽出したあなたの「原風景」と「熱量」を、光の軌跡として写真という結晶に定着させます。
                     </p>
                     <p>
-                      それを額装アートとしてご自宅やオフィスの壁（生活動線）に飾っていただくこと。未来の仲間を引き寄せるための「あなたの旗印」として機能させることが、プロジェクトの最終目的です。
+                      それを額装アートとしてご自宅やオフィスの壁（生活動線）に飾っていただくこと。迷いが生じた時に本来の自分（Center）に立ち返り、そして未来の仲間を引き寄せるための「あなたの旗印」として機能させることが、このプロジェクトの最終目的です。
                     </p>
                   </div>
                 </div>
