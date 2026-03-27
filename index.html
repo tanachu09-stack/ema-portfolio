@@ -75,7 +75,8 @@
         const handleScroll = () => {
           setIsScrolled(window.scrollY > 50);
         };
-        window.addEventListener('scroll', handleScroll);
+        // passive: true でスクロールパフォーマンスを向上
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
       }, []);
 
@@ -96,9 +97,9 @@
 
       // --- WHO IS THIS FOR（ターゲット層）のデータ ---
       const targets = [
-        "自らの哲学やビジョンを社会に実装したいと考えている経営者",
-        "言語化前の美学や熱量を持ち、その姿やパフォーマンスを世に問いたいクリエイター",
-        "未来の仲間を引き寄せるポートレートを求めている方"
+        "自分の中にある大切な想いや美しさを、どう表現すればいいか迷い、立ち止まっている方",
+        "これからの新しいステージへ進むために、しなやかで揺るぎない「自分の軸」を見つけたい方",
+        "ただ消費される綺麗な写真ではなく、心から共鳴できる未来の仲間やお客様と出会うための「道しるべ」を探している方"
       ];
 
       // --- 撮影実績（8枚）のデータ ---
@@ -145,7 +146,7 @@
         }
       ];
 
-      // --- PRICE（詳細版）のデータ ---
+        // --- PRICE（詳細版）のデータ ---
       const plans = [
         {
           enTitle: "Process Portrait",
@@ -183,31 +184,38 @@
       const faqs = [
         {
           q: "納期はどれくらいですか？",
-          a: "基本的に撮影日から2週間頂いております。データ転送により即納も可能です"
+          a: "丁寧に仕上げるため、基本的に撮影日から2週間頂いております。データ転送による即納のご相談も承ります。"
         },
         {
           q: "納品形式はどうなりますか？",
-          a: "オンラインでのご納品とさせて頂いております。ギガファイル便 or Google Driveを使用しています。"
+          a: "オンラインでのご納品とさせて頂いております。ギガファイル便 または Google Drive を使用して大切にお届けします。"
         },
         {
           q: "支払い方法は？",
-          a: "現在は、キャッシュと口座振込にてご対応させて頂いております。"
+          a: "現在は、現金と口座振込にてご対応させて頂いております。"
         },
         {
-          q: "内容だけ聞いてみたい",
-          a: "ぜひDMにて「気になる」とメッセージください。"
+          q: "内容だけ聞いてみたいのですが…",
+          a: "もちろん大歓迎です。ぜひInstagramのDMにて「少し気になっている」と気軽にお声がけください。"
         }
       ];
 
       return (
-        <div className="min-h-screen bg-[#faf9f6] text-[#1a202c] font-sans selection:bg-[#c85a17]/20 selection:text-[#1a202c]">
+        <div className="min-h-screen bg-[#faf9f6] text-[#1a202c] font-sans selection:bg-[#c85a17]/20 selection:text-[#1a202c] antialiased">
           <style>{`
             @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho+B1:wght@400;500;600;700&display=swap');
             
             .font-serif { font-family: 'Shippori Mincho B1', serif; }
             .font-sans { font-family: 'Noto Sans JP', sans-serif; }
 
-            html { scroll-behavior: smooth; }
+            html { 
+              scroll-behavior: smooth; 
+              -webkit-overflow-scrolling: touch; 
+            }
+            
+            * {
+              -webkit-tap-highlight-color: transparent;
+            }
             
             .bg-noise {
               position: fixed;
@@ -216,23 +224,25 @@
               pointer-events: none;
               background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
               opacity: 0.02;
+              transform: translateZ(0); 
+              will-change: transform;
             }
           `}</style>
 
-          <div className="bg-noise"></div>
+          {/* スマホ画面ではノイズを非表示にしてスクロールを軽くする */}
+          <div className="bg-noise hidden md:block"></div>
 
           {/* Navigation */}
-          <nav className={`fixed w-full z-40 transition-all duration-700 ${isScrolled ? 'bg-[#faf9f6]/95 backdrop-blur-sm py-4 border-b border-[#e2e8f0]' : 'bg-transparent py-8'}`}>
+          <nav className={`fixed w-full z-40 transition-all duration-700 ${isScrolled ? 'bg-[#faf9f6]/95 backdrop-blur-sm py-4 border-b border-[#e2e8f0] shadow-sm' : 'bg-transparent py-8'}`}>
             <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
               <div 
-                className="cursor-pointer group flex flex-col"
+                className="cursor-pointer group flex flex-col p-2 -ml-2"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
                 <span className={`font-serif text-[22px] tracking-[0.2em] transition-colors duration-500 ${isScrolled ? 'text-[#1a202c]' : 'text-[#ffffff] md:text-[#1a202c]'}`}>Ema.</span>
               </div>
 
-              {/* ↓ ここの gap-8 lg:gap-10 を gap-5 lg:gap-6 に変更して間隔を詰めました */}
-              <div className="hidden md:flex items-center gap-7 lg:gap-6">
+              <div className="hidden md:flex items-center gap-5 lg:gap-6">
                 {menuItems.map((item) => (
                   <button 
                     key={item}
@@ -251,8 +261,9 @@
               </div>
 
               <button 
-                className="md:hidden z-50 mix-blend-difference text-white"
+                className="md:hidden z-50 mix-blend-difference text-white p-2 -mr-2"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="メニューを開く"
               >
                 {mobileMenuOpen ? <X size={28} strokeWidth={1} /> : <Menu size={28} strokeWidth={1} />}
               </button>
@@ -278,7 +289,7 @@
             </button>
           </div>
 
-          {/* Hero Section */}
+        {/* Hero Section */}
           <section className="relative w-full h-screen px-6 md:px-12 pb-16 md:pb-24 pt-24 flex flex-col md:justify-end">
             <div className="absolute inset-0 z-0">
               <img 
@@ -310,15 +321,14 @@
             </div>
           </section>
 
-          {/* Voice Section → 「論より証拠（Hero直後）」 */}
-          <section id="voice" className="py-24 md:py-32 bg-[#faf9f6] border-b border-[#e2e8f0]/50 relative overflow-hidden">
+          {/* Voice Section */}
+          <section id="voice" className="py-20 md:py-32 lg:py-40 bg-[#faf9f6] border-b border-[#e2e8f0]/50 relative overflow-hidden">
             <div className="max-w-4xl mx-auto px-6 md:px-12 text-center relative z-10">
-              <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-8 block">Voice</p>
+              <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-6 md:mb-8 block">Voice</p>
               
               <div className="relative inline-block text-left mx-auto max-w-[280px] sm:max-w-md md:max-w-none">
-                <span className="font-serif text-[60px] md:text-[80px] text-[#c85a17] leading-none opacity-10 absolute -top-5 -left-3 md:-top-6 md:-left-12 select-none">“</span>
+                <span className="font-serif text-[60px] md:text-[80px] text-[#c85a17] leading-none opacity-10 absolute -top-8 -left-5 md:-top-6 md:-left-12 select-none">“</span>
                 <p className="font-serif text-[15px] sm:text-[16px] md:text-[24px] text-[#1a202c] font-light leading-[2.4] md:leading-[2.0] tracking-widest relative z-10">
-                  {/* スマホ用の改行 */}
                   <span className="block md:hidden">
                     これからの撮影は、<br />
                     その場を整えることが<br />
@@ -329,7 +339,6 @@
                     これからの時代には<br />
                     欠かせないだろう。
                   </span>
-                  {/* PC用の改行 */}
                   <span className="hidden md:block">
                     これからの撮影は、その場を整えることがすべてだと感じました。<br />
                     内外を整える、繊細で丁寧なカメラマンが、これからの時代には欠かせないだろう。
@@ -337,29 +346,29 @@
                 </p>
               </div>
 
-              <div className="mt-12 flex flex-col items-center justify-center">
-                <div className="w-12 h-[1px] bg-[#c85a17] mb-6"></div>
+              <div className="mt-10 md:mt-12 flex flex-col items-center justify-center">
+                <div className="w-12 h-[1px] bg-[#c85a17] mb-5 md:mb-6"></div>
                 <p className="font-serif text-[16px] md:text-[18px] text-[#1a202c] tracking-widest mb-1">SO</p>
                 <p className="font-sans text-[11px] text-[#718096] tracking-[0.15em]">アーティスト</p>
               </div>
             </div>
           </section>
 
-          {/* WHO IS THIS FOR → 「あなたのため」を明示する */}
-          <section id="target" className="py-32 md:py-48 bg-[#ffffff]">
+          {/* Target Section */}
+          <section id="target" className="py-20 md:py-32 lg:py-48 bg-[#ffffff]">
             <div className="max-w-4xl mx-auto px-6 md:px-12">
-              <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-10 block text-center">
+              <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-8 md:mb-10 block text-center">
                 Who is this for
               </p>
-              <h2 className="font-serif text-[24px] md:text-[36px] text-[#1a202c] tracking-[0.1em] mb-20 text-center leading-[1.6]">
-                サービスに向いている方
+              <h2 className="font-serif text-[22px] md:text-[36px] text-[#1a202c] tracking-[0.1em] mb-12 md:mb-20 text-center leading-[1.6]">
+                こんな想いを、<br className="md:hidden"/>そっと抱えていませんか？
               </h2>
               
-              <div className="space-y-6 md:space-y-8">
+              <div className="space-y-5 md:space-y-8">
                 {targets.map((text, i) => (
-                  <div key={i} className="flex gap-6 items-start bg-[#faf9f6] p-8 md:p-10 border border-[#e2e8f0]/50 hover:border-[#c85a17]/30 transition-colors duration-500">
-                    <span className="font-serif text-[32px] md:text-[40px] text-[#c85a17] leading-none opacity-50">“</span>
-                    <p className="font-serif text-[15px] md:text-[16px] text-[#4a5568] leading-[2.2] tracking-widest pt-2">
+                  <div key={i} className="flex gap-4 md:gap-6 items-start bg-[#faf9f6] p-6 md:p-10 border border-[#e2e8f0]/50 hover:border-[#c85a17]/30 transition-colors duration-500">
+                    <span className="font-serif text-[28px] md:text-[40px] text-[#c85a17] leading-none opacity-50 mt-[-4px] md:mt-0">“</span>
+                    <p className="font-serif text-[14px] md:text-[16px] text-[#4a5568] leading-[2.2] tracking-widest pt-1 md:pt-2">
                       {text}
                     </p>
                   </div>
@@ -369,36 +378,39 @@
           </section>
 
           {/* Concept Section */}
-          <section id="concept" className="py-32 md:py-48 bg-[#faf9f6]">
+          <section id="concept" className="py-20 md:py-32 lg:py-48 bg-[#faf9f6]">
             <div className="max-w-4xl mx-auto px-6 md:px-12 text-center">
-              <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-10 block">
+              <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-8 md:mb-10 block">
                 Concept
               </p>
-              <h2 className="font-serif text-[22px] md:text-[36px] text-[#1a202c] tracking-[0.15em] leading-[1.8] mb-16">
-                あなたの想いを、<br/>目に見える形に。
+              <h2 className="font-serif text-[22px] md:text-[36px] text-[#1a202c] tracking-[0.15em] leading-[1.8] mb-12 md:mb-16">
+                想いを迎え入れ、<br className="md:hidden"/><br />未来へと繋ぐ「扉」として。
               </h2>
               
-              <div className="space-y-8 relative">
-                <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-[1px] h-8 bg-[#c85a17]/50"></div>
+              <div className="space-y-8 md:space-y-10 relative">
+                <div className="absolute -top-8 md:-top-12 left-1/2 -translate-x-1/2 w-[1px] h-6 md:h-8 bg-[#c85a17]/50"></div>
                 
-                <p className="font-serif text-[15px] md:text-[17px] font-light leading-[2.4] text-[#4a5568] tracking-widest">
+                <p className="font-serif text-[14px] md:text-[17px] font-light leading-[2.4] text-[#4a5568] tracking-widest text-left md:text-center">
                   私がお届けしたいのは、単なる綺麗な写真ではありません。<br className="hidden md:block"/>
-                  あなたの中に眠る「言葉にならない熱量」や「大切にしている想い」にじっくりと耳を傾け、<br className="hidden md:block"/>
-                  それを社会と繋ぐための「架け橋」を作ることです。
+                  Ema.は、あなたの内側にある言葉にならない熱量や、<br className="hidden md:block"/>
+                  ありのままの魅力、多様な価値観をまるごと受け入れる「場」です。
                 </p>
-                <p className="font-serif text-[15px] md:text-[17px] font-light leading-[2.4] text-[#4a5568] tracking-widest">
-                  対話を通じて見つけた、あなただけの「原風景」。<br className="hidden md:block"/>
-                  それを一枚の写真として定着させたとき、<br className="hidden md:block"/>
-                  出会うべき未来の仲間を引き寄せる、あたたかく力強い「旗印」となってくれるはずです。
+                <p className="font-serif text-[14px] md:text-[17px] font-light leading-[2.4] text-[#4a5568] tracking-widest text-left md:text-center">
+                  深い対話を通じて、あなたの奥底にある「原風景」にそっと耳を傾け、<br className="hidden md:block"/>
+                  それを社会や未来の仲間と繋ぐための「架け橋」を作ること。
+                </p>
+                <p className="font-serif text-[14px] md:text-[17px] font-light leading-[2.4] text-[#4a5568] tracking-widest text-left md:text-center">
+                  一枚の写真が、あなたの新しい世界を開く最初の「扉」になる。<br className="hidden md:block"/>
+                  そんなあたたかく、力強い体験をここから始めませんか。
                 </p>
               </div>
             </div>
           </section>
 
           {/* Works Section */}
-          <section id="works" className="py-32 md:py-48 bg-[#ffffff]">
+          <section id="works" className="py-20 md:py-32 lg:py-48 bg-[#ffffff]">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
-              <div className="flex justify-between items-end mb-24">
+              <div className="flex justify-between items-end mb-16 md:mb-24">
                 <div>
                   <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-4 block">Selected Works</p>
                   <h2 className="font-serif text-[32px] md:text-[40px] text-[#1a202c] tracking-[0.1em] leading-none">
@@ -414,6 +426,8 @@
                       <img 
                         src={work.img} 
                         alt={work.title} 
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover transform group-hover:scale-[1.03] transition-transform duration-1000 ease-out grayscale-[10%]" 
                       />
                     </div>
@@ -427,7 +441,7 @@
                 ))}
               </div>
               
-              <div className="mt-32 text-center">
+              <div className="mt-20 md:mt-32 text-center">
                 <button className="border-b border-[#1a202c] pb-1 font-sans text-[12px] tracking-[0.15em] text-[#1a202c] hover:text-[#c85a17] hover:border-[#c85a17] transition-colors uppercase">
                   2023-2025 Works
                 </button>
@@ -436,11 +450,17 @@
           </section>
 
           {/* Profile Section */}
-          <section id="profile" className="py-32 md:py-48 bg-[#faf9f6]">
+          <section id="profile" className="py-20 md:py-32 lg:py-48 bg-[#faf9f6]">
             <div className="max-w-6xl mx-auto px-6 md:px-12 flex flex-col md:flex-row gap-16 md:gap-24">
               <div className="w-full md:w-5/12 relative">
                 <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#c85a17]/10 rounded-tl-3xl"></div>
-                <img src="DSCF8958.jpg" alt="YUTA" className="relative z-10 w-full aspect-[3/4] object-cover grayscale-[20%]" />
+                <img 
+                  src="DSCF8958.jpg" 
+                  alt="YUTA" 
+                  loading="lazy"
+                  decoding="async"
+                  className="relative z-10 w-full aspect-[3/4] object-cover grayscale-[20%]" 
+                />
               </div>
               
               <div className="w-full md:w-7/12 flex flex-col justify-center">
@@ -450,13 +470,13 @@
                 
                 <div className="space-y-6 max-w-lg">
                   <p className="font-serif text-[14px] md:text-[15px] font-light leading-[2.2] text-[#4a5568] tracking-widest">
-                    幼少期に得た祖父の事務所「エナヂー」での原体験を基に、人の内側にある熱量を可視化する活動「Ema.」を2023年から開始。
+                    祖父の事務所「エナヂー」でのあたたかな原体験を基に、人の内側に秘められた熱量や美しさを可視化する活動「Ema.」をスタートしました。
                   </p>
                   <p className="font-serif text-[14px] md:text-[15px] font-light leading-[2.2] text-[#4a5568] tracking-widest">
-                    複雑な想いや哲学を深く傾聴し、「間」という余白を通じて、社会と繋がるための美しい構造へと翻訳する。
+                    複雑な想いや言葉にならない感情に深く、優しく傾聴し、「間」という余白を通じて、社会と繋がるための美しい形へと翻訳していきます。
                   </p>
                   <p className="font-serif text-[14px] md:text-[15px] font-light leading-[2.2] text-[#4a5568] tracking-widest">
-                    カメラを出力装置として用い、単なる記録ではない「社会実装のトリガー」となるビジュアルを創出している。
+                    カメラを通して、単なる記録ではない「新しいあなたに出会う第一歩」となるビジュアルを創り出しています。
                   </p>
                 </div>
               </div>
@@ -464,20 +484,20 @@
           </section>
 
           {/* Service & Process Section */}
-          <section id="service" className="py-32 md:py-48 bg-[#ffffff] border-t border-[#e2e8f0]/50">
+          <section id="service" className="py-20 md:py-32 lg:py-48 bg-[#ffffff] border-t border-[#e2e8f0]/50">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
                 
                 <div>
                   <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-8 block">Service</p>
-                  <h2 className="font-serif text-[28px] md:text-[32px] text-[#1a202c] tracking-[0.1em] mb-16">ご提供する価値</h2>
+                  <h2 className="font-serif text-[28px] md:text-[32px] text-[#1a202c] tracking-[0.1em] mb-12 md:mb-16">ご提供する価値</h2>
                   
-                  <div className="space-y-16">
+                  <div className="space-y-12 md:space-y-16">
                     <div className="border-t border-[#e2e8f0] pt-8 group hover:border-[#c85a17]/50 transition-colors">
                       <h3 className="font-serif text-[20px] text-[#1a202c] tracking-[0.1em] mb-3 group-hover:text-[#c85a17] transition-colors">現像セッション</h3>
                       <p className="font-sans text-[11px] text-[#c85a17] tracking-[0.15em] uppercase mb-6">Philosophy Visualization</p>
                       <p className="font-serif text-[14px] text-[#4a5568] leading-[2.2] tracking-wider mb-6">
-                        対話を通してクライアントの根底にある熱量を抽出し、メインビジュアルとして結晶化させます。キービジュアルやその奥にあるナラティブポートレート、旗印として機能する一枚を創り出します。
+                        対話を通して、あなたの根底にある熱量や魅力を引き出し、メインビジュアルとして形にします。あなたの奥にあるストーリーを写し出し、未来へと進むための道しるべとなる一枚を創り出します。
                       </p>
                     </div>
                     
@@ -485,7 +505,7 @@
                       <h3 className="font-serif text-[20px] text-[#1a202c] tracking-[0.1em] mb-3 group-hover:text-[#c85a17] transition-colors">境界連結プロジェクト</h3>
                       <p className="font-sans text-[11px] text-[#c85a17] tracking-[0.15em] uppercase mb-6">Boundary Spanning</p>
                       <p className="font-serif text-[14px] text-[#4a5568] leading-[2.2] tracking-wider mb-6">
-                        ビジュアル制作にとどまらず、写真を用いた「社会実装」のプロセスまで伴走。ブランド構築、発信戦略など、哲学を社会と繋ぐための継続的なサポートを行います。
+                        ビジュアル制作にとどまらず、その写真を用いた社会へのアプローチまで伴走します。新しいパートナー探しや発信戦略など、あなたの想いを社会へとしなやかに繋げるサポートを行います。
                       </p>
                     </div>
                   </div>
@@ -493,14 +513,14 @@
 
                 <div>
                   <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-8 block">Process</p>
-                  <h2 className="font-serif text-[28px] md:text-[32px] text-[#1a202c] tracking-[0.1em] mb-16">共に歩むプロセス</h2>
+                  <h2 className="font-serif text-[28px] md:text-[32px] text-[#1a202c] tracking-[0.1em] mb-12 md:mb-16">共に歩むプロセス</h2>
                   
-                  <div className="space-y-10">
+                  <div className="space-y-8 md:space-y-10">
                     {[
-                      { step: "01", title: "Dialogue", desc: "深傾聴と哲学の抽出" },
-                      { step: "02", title: "Scouting", desc: "空間・光・構図など視覚言語の設計" },
-                      { step: "03", title: "Shooting", desc: "カメラを出力装置とした撮影" },
-                      { step: "04", title: "Encounter", desc: "社会実装に向けた旗印の完成" }
+                      { step: "01", title: "Dialogue", desc: "深く寄り添う傾聴と、想いの紐解き" },
+                      { step: "02", title: "Scouting", desc: "光や空間など、あなたに寄り添う視覚表現の設計" },
+                      { step: "03", title: "Shooting", desc: "カメラを通じた、熱量と本来の美しさの現像" },
+                      { step: "04", title: "Encounter", desc: "社会へと繋がる、あなただけの「旗印」との出会い" }
                     ].map((item, i) => (
                       <div key={i} className="flex gap-6 items-start group">
                         <span className="font-serif text-[18px] text-[#a0aec0] mt-1 group-hover:text-[#c85a17] transition-colors">{item.step}</span>
@@ -517,38 +537,35 @@
             </div>
           </section>
 
-          {/* Price Section - 旗（Flag）コンセプト（詳細版） */}
-          <section id="price" className="py-32 md:py-48 bg-[#faf9f6]">
+          {/* Price Section */}
+          <section id="price" className="py-20 md:py-32 lg:py-48 bg-[#faf9f6]">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
-              {/* リード文エリア */}
-              <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-16 mb-24">
+              <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-16 mb-16 md:mb-24">
                 <div className="w-full md:w-1/3">
                   <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-4 block">Price</p>
-                  <h2 className="font-serif text-[28px] md:text-[36px] text-[#1a202c] tracking-[0.1em] mb-8">撮影プラン価格</h2>
+                  <h2 className="font-serif text-[28px] md:text-[36px] text-[#1a202c] tracking-[0.1em]">撮影プラン価格</h2>
                 </div>
                 
                 <div className="w-full md:w-2/3">
-                  <h3 className="font-serif text-[16px] md:text-[20px] font-light tracking-[0.15em] text-[#1a202c] mb-8 leading-[1.8]">
-                    消費されるデータから、未来の仲間を引き寄せる<br className="hidden md:block"/>「旗」へ。
+                  <h3 className="font-serif text-[16px] md:text-[20px] font-light tracking-[0.15em] text-[#1a202c] mb-6 md:mb-8 leading-[1.8]">
+                    消費されるデータではなく、<br className="hidden md:block"/>未来の仲間を引き寄せる「道しるべ」へ。
                   </h3>
                   <div className="space-y-6 font-sans text-[13px] md:text-[14px] text-[#4a5568] font-light leading-[2.4] tracking-[0.15em]">
                     <p>
-                      Ema.の撮影プロジェクトは、スマホの中で消費されるデジタルデータを納品することを目的としていません。深傾聴によって抽出したあなたの「原風景」と「熱量」を、光の軌跡として写真という結晶に定着させます。
+                      Ema.の撮影プロジェクトは、スマートフォンの中でただ消費されていくデジタルデータを納品することを目的としていません。深い対話によって見つけたあなたの「原風景」と「熱量」を、光の軌跡として写真という結晶に定着させます。
                     </p>
                     <p>
-                      それを額装アートとしてご自宅やオフィスの壁（生活動線）に飾っていただくこと。迷いが生じた時に本来の自分（Center）に立ち返り、そして未来の仲間を引き寄せるための「あなたの旗印」として機能させることが、プロジェクトの最終目的です。
+                      それを額装アートとして、ご自宅やオフィスの壁など、日常の風景に飾っていただくこと。迷いが生じた時に本来の自分に立ち還り、そして未来の仲間を引き寄せるための「あなたのお守り」として機能させることが、このプロジェクトの願いです。
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* プラン一覧 */}
               <div className="border-t border-[#1a202c]">
                 {plans.map((plan, index) => (
-                  <div key={index} className="py-16 border-b border-[#e2e8f0] flex flex-col lg:flex-row justify-between items-start gap-10">
+                  <div key={index} className="py-12 md:py-16 border-b border-[#e2e8f0] flex flex-col lg:flex-row justify-between items-start gap-8 md:gap-10">
                     <div className="w-full lg:w-3/4 pr-0 lg:pr-12">
                       <div className="flex flex-wrap items-center gap-3 mb-2">
-                        <span className="font-serif text-[13px] text-[#718096] font-light tracking-widest">{plan.grade}</span>
                         <h3 className="font-serif text-[20px] md:text-[24px] tracking-[0.15em] text-[#1a202c]">{plan.enTitle}</h3>
                         {plan.recommended && (
                           <span className="font-sans text-[10px] bg-[#1a202c] text-white px-3 py-1 tracking-[0.2em] uppercase ml-2">Ema.推奨</span>
@@ -556,7 +573,7 @@
                       </div>
                       <p className="font-sans text-[11px] text-[#718096] tracking-[0.15em] mb-6">{plan.jpTitle}</p>
                       
-                      <p className="font-serif text-[13px] md:text-[14px] text-[#1a202c] leading-[2.4] tracking-[0.15em] font-medium mb-8">
+                      <p className="font-serif text-[13px] md:text-[14px] text-[#1a202c] leading-[2.4] tracking-[0.15em] font-medium mb-6 md:mb-8">
                         {plan.subtitle}
                       </p>
                       
@@ -578,10 +595,10 @@
                       </div>
                     </div>
                     
-                    <div className="w-full lg:w-1/4 text-left lg:text-right mt-4 lg:mt-0">
+                    <div className="w-full lg:w-1/4 text-left lg:text-right mt-2 md:mt-0">
                       <p className="font-serif text-[20px] md:text-[24px] tracking-wider text-[#1a202c]">
                         <span className="whitespace-nowrap">{plan.price}</span>
-                        <span className="font-sans text-[12px] text-[#718096] block lg:inline lg:ml-2 mt-2 lg:mt-0">{plan.priceNote}</span>
+                        <span className="font-sans text-[12px] text-[#718096] block lg:inline lg:ml-2 mt-1 md:mt-0">{plan.priceNote}</span>
                       </p>
                     </div>
                   </div>
@@ -591,9 +608,9 @@
           </section>
 
           {/* FAQ Section */}
-          <section id="faq" className="py-32 md:py-48 bg-[#f5f6f8]">
+          <section id="faq" className="py-20 md:py-32 lg:py-48 bg-[#f5f6f8]">
             <div className="max-w-3xl mx-auto px-6 md:px-12">
-              <div className="text-center mb-20">
+              <div className="text-center mb-12 md:mb-20">
                 <p className="font-sans text-[10px] tracking-[0.3em] text-[#c85a17] uppercase font-bold mb-4 block">FAQ</p>
                 <h2 className="font-serif text-[28px] md:text-[36px] text-[#1a202c] tracking-[0.1em] mb-8">よくある質問</h2>
                 <div className="w-8 h-[1px] bg-[#1a202c] mx-auto"></div>
@@ -605,19 +622,19 @@
                   return (
                     <div key={index} className="border-b border-[#e2e8f0]">
                       <button 
-                        className="w-full flex justify-between items-center py-8 text-left group"
+                        className="w-full flex justify-between items-center py-6 md:py-8 text-left group"
                         onClick={() => toggleFaq(index)}
                       >
-                        <h3 className="font-serif text-[16px] md:text-[18px] text-[#1a202c] tracking-widest group-hover:text-[#c85a17] transition-colors">
+                        <h3 className="font-serif text-[15px] md:text-[18px] text-[#1a202c] tracking-widest group-hover:text-[#c85a17] transition-colors pr-4">
                           <span className="font-serif mr-3">Q.</span>{faq.q}
                         </h3>
-                        <div className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+                        <div className={`transform transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`}>
                           <ChevronDown size={20} className="text-[#4a5568]" strokeWidth={1.5} />
                         </div>
                       </button>
                       
                       <div 
-                        className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-40 opacity-100 mb-8' : 'max-h-0 opacity-0'}`}
+                        className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-40 opacity-100 mb-6 md:mb-8' : 'max-h-0 opacity-0'}`}
                       >
                         <p className="font-sans text-[13px] md:text-[14px] text-[#4a5568] leading-[2.0] tracking-wider pl-8">
                           {faq.a}
@@ -631,24 +648,24 @@
           </section>
 
           {/* Contact Section */}
-          <section id="contact" className="py-40 md:py-56 bg-[#1a202c] text-[#ffffff] text-center px-6 relative overflow-hidden">
+          <section id="contact" className="py-32 md:py-56 bg-[#1a202c] text-[#ffffff] text-center px-6 relative overflow-hidden">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#c85a17]/10 rounded-full blur-[100px] pointer-events-none"></div>
 
             <div className="relative z-10">
-              <h2 className="font-serif text-[32px] md:text-[48px] tracking-[0.15em] mb-8 leading-[1.6]">
-                あなたの原風景を、<br/>
-                聴かせてください。
+              <h2 className="font-serif text-[28px] md:text-[48px] tracking-[0.15em] mb-8 leading-[1.6]">
+                あなたの内に秘めた想いを、<br/>
+                そっと聞かせてください。
               </h2>
               
-              <p className="font-sans text-[13px] md:text-[14px] font-light leading-[2.4] text-[#a0aec0] tracking-widest mb-16">
-                ↓DMはこちらから↓
+              <p className="font-sans text-[13px] md:text-[14px] font-light leading-[2.4] text-[#a0aec0] tracking-widest mb-12 md:mb-16">
+                ↓ DMはこちらから ↓
               </p>
               
               <a 
                 href="https://instagram.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 border border-[#c85a17] text-[#c85a17] px-12 py-5 hover:bg-[#c85a17] hover:text-[#ffffff] transition-all duration-300 group rounded-sm"
+                className="inline-flex items-center justify-center gap-3 border border-[#c85a17] text-[#c85a17] px-10 py-4 md:px-12 md:py-5 hover:bg-[#c85a17] hover:text-[#ffffff] transition-all duration-300 group rounded-sm"
               >
                 <Instagram size={16} strokeWidth={1.5} />
                 <span className="font-sans text-[12px] tracking-[0.2em] uppercase font-medium">Instagram DM</span>
@@ -657,9 +674,9 @@
           </section>
 
           {/* Footer */}
-          <footer className="bg-[#1a202c] border-t border-white/10 py-12">
+          <footer className="bg-[#1a202c] border-t border-white/10 py-10 md:py-12">
             <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
-              <span className="font-serif text-[24px] tracking-[0.3em] text-[#ffffff] leading-none">Ema.</span>
+              <span className="font-serif text-[20px] md:text-[24px] tracking-[0.3em] text-[#ffffff] leading-none">Ema.</span>
               <span className="text-[#718096] font-sans text-[10px] tracking-[0.2em] uppercase">
                 © {new Date().getFullYear()} Ema. All rights reserved.
               </span>
