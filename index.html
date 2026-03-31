@@ -70,6 +70,7 @@
       const [isScrolled, setIsScrolled] = useState(false);
       const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
       const [openFaqIndex, setOpenFaqIndex] = useState(null);
+      const [activeSection, setActiveSection] = useState(''); // 現在のセクションを管理
 
       useEffect(() => {
         let ticking = false;
@@ -77,13 +78,31 @@
           if (!ticking) {
             window.requestAnimationFrame(() => {
               setIsScrolled(window.scrollY > 50);
+
+              // スクロール位置から現在のセクションを判定
+              const sections = ['voice', 'target', 'concept', 'works', 'profile', 'service', 'price', 'faq'];
+              let current = '';
+              for (const section of sections) {
+                const element = document.getElementById(section);
+                if (element) {
+                  const rect = element.getBoundingClientRect();
+                  // 画面の上から3分の1〜半分ほどの位置にあるセクションを「現在地」とする
+                  if (rect.top <= window.innerHeight / 3 && rect.bottom >= window.innerHeight / 3) {
+                    current = section;
+                    break;
+                  }
+                }
+              }
+              setActiveSection(current);
+
               ticking = false;
             });
             ticking = true;
           }
         };
-        // passive: true と requestAnimationFrame でスクロールパフォーマンスを最大化
+        // passive: true でスクロールパフォーマンスを向上
         window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll(); // 初回実行
         return () => window.removeEventListener('scroll', handleScroll);
       }, []);
 
@@ -250,15 +269,19 @@
               </div>
 
               <div className="hidden md:flex items-center gap-5 lg:gap-6">
-                {menuItems.map((item) => (
-                  <button 
-                    key={item}
-                    onClick={() => scrollToSection(item.toLowerCase())}
-                    className={`font-sans text-[11px] tracking-[0.15em] uppercase transition-colors hover:text-[#c85a17] ${isScrolled ? 'text-[#718096]' : 'text-[#4a5568]'}`}
-                  >
-                    {item}
-                  </button>
-                ))}
+                {menuItems.map((item) => {
+                  const isActive = activeSection === item.toLowerCase();
+                  return (
+                    <button 
+                      key={item}
+                      onClick={() => scrollToSection(item.toLowerCase())}
+                      className={`relative font-sans text-[11px] tracking-[0.15em] uppercase transition-colors hover:text-[#c85a17] pb-1 ${isActive ? 'text-[#c85a17]' : (isScrolled ? 'text-[#718096]' : 'text-[#4a5568]')}`}
+                    >
+                      {item}
+                      <span className={`absolute bottom-0 left-0 w-full h-[1px] bg-[#c85a17] origin-left transform transition-transform duration-300 ${isActive ? 'scale-x-100' : 'scale-x-0'}`}></span>
+                    </button>
+                  );
+                })}
                 <a 
                   href="#contact" 
                   className={`font-sans text-[10px] tracking-[0.2em] px-6 py-2.5 uppercase transition-all duration-300 ml-2 ${isScrolled ? 'bg-[#1a202c] text-[#ffffff] hover:bg-[#c85a17]' : 'bg-[#1a202c] text-[#ffffff] hover:bg-[#c85a17]'}`}
@@ -279,15 +302,18 @@
 
           {/* Mobile Menu */}
           <div className={`fixed inset-0 bg-[#1a202c] text-white z-40 transition-opacity duration-500 ease-in-out flex flex-col items-center justify-center gap-8 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-            {menuItems.map((item) => (
-              <button 
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
-                className="font-serif text-[24px] tracking-[0.2em] font-light hover:text-[#c85a17] transition-colors"
-              >
-                {item}
-              </button>
-            ))}
+            {menuItems.map((item) => {
+              const isActive = activeSection === item.toLowerCase();
+              return (
+                <button 
+                  key={item}
+                  onClick={() => scrollToSection(item.toLowerCase())}
+                  className={`font-serif text-[24px] tracking-[0.2em] font-light transition-colors ${isActive ? 'text-[#c85a17]' : 'hover:text-[#c85a17]'}`}
+                >
+                  {item}
+                </button>
+              );
+            })}
             <button 
               onClick={() => scrollToSection('contact')}
               className="mt-6 border border-white/30 px-10 py-4 font-sans text-[11px] tracking-[0.2em] uppercase hover:bg-white hover:text-[#1a202c] transition-colors"
