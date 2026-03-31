@@ -72,10 +72,17 @@
       const [openFaqIndex, setOpenFaqIndex] = useState(null);
 
       useEffect(() => {
+        let ticking = false;
         const handleScroll = () => {
-          setIsScrolled(window.scrollY > 50);
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              setIsScrolled(window.scrollY > 50);
+              ticking = false;
+            });
+            ticking = true;
+          }
         };
-        // passive: true でスクロールパフォーマンスを向上
+        // passive: true と requestAnimationFrame でスクロールパフォーマンスを最大化
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
       }, []);
