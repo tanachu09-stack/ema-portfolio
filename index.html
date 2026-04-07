@@ -1445,7 +1445,7 @@ footer {
 <!-- FOOTER -->
 <footer>
   <span class="footer-logo">Ema.</span>
-  <span class="footer-copy">© 2025 Ema. All rights reserved.</span>
+  <span class="footer-copy">© <span id="yr"></span> Ema. All rights reserved.</span>
 </footer>
 
 <script>
@@ -1455,33 +1455,51 @@ document.addEventListener('mousemove', e => {
   cursor.style.left = e.clientX + 'px';
   cursor.style.top = e.clientY + 'px';
 });
+
+// Cursor Hover effect for interactive elements
 document.querySelectorAll('a, button').forEach(el => {
   el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
 });
 
-// Nav scroll
+// Nav scroll effect
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
-// Reveal on scroll
+// Reveal on scroll (Intersection Observer)
 const revealEls = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  entries.forEach(e => { 
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    } 
+  });
 }, { threshold: 0.12 });
+
 revealEls.forEach(el => observer.observe(el));
 
-// FAQ
+// FAQ Accordion logic
 document.querySelectorAll('.faq-q').forEach(btn => {
   btn.addEventListener('click', () => {
     const item = btn.parentElement;
     const wasOpen = item.classList.contains('open');
+    
+    // Close other items
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    
+    // Open clicked item if it wasn't already open
     if (!wasOpen) item.classList.add('open');
   });
 });
+
+// Footer Year update
+const yearSpan = document.getElementById('yr');
+if (yearSpan) {
+  yearSpan.textContent = new Date().getFullYear();
+}
 </script>
+
 </body>
 </html>
