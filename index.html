@@ -3,29 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ema. は、あなたの内側にある熱量やありのままの魅力を深い対話から引き出し、写真という形に視覚化するサービスです。">
+    <meta name="description" content="Ema. は「撮る」ことだけでなく、あなたと共にいる時間そのものを愛でるプロセスフォトサービスです。深い対話を通じて、あなたの内なる変化や体験そのものを視覚化します。">
   <!-- OGP Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Ema. | あなたの体験を、視覚化する。">
-  <meta property="og:description" content="Ema. は、あなたの内側にある熱量やありのままの魅力を深い対話から引き出し、写真という形に視覚化するサービスです。">
+  <meta property="og:title" content="Ema. | 時間そのものを愛でるプロセスフォト">
+  <meta property="og:description" content="Ema. は「撮る」ことだけでなく、あなたと共にいる時間そのものを愛でるプロセスフォトサービスです。深い対話を通じて、あなたの内なる変化や体験そのものを視覚化します。">
   <meta property="og:url" content="https://ema-visualizer.com/">
   <meta property="og:site_name" content="Ema.">
   <meta name="twitter:card" content="summary_large_image">
 
-  <title>Ema. | あなたの体験を、視覚化する。</title>
-  
+  <title>Ema. | 時間そのものを愛でるプロセスフォト</title>
+
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --ink: #1a1814;
-  --paper: #f7f4ef;
-  --paper2: #f0ede6;
-  --ember: #b84a1a;
-  --ember-light: #e8c4b0;
-  --muted: #7a7268;
-  --border: rgba(26,24,20,0.12);
+  --ink: #2b2722; /* より温かみのあるウォームグレー寄りの黒に変更 */
+  --paper: #f9f7f3; /* わずかに明るく柔らかい紙の色に */
+  --paper2: #f2efe9;
+  --ember: #b85022; /* 少しだけ柔らかい赤茶に */
+  --ember-light: #ebd0bf;
+  --muted: #857c71;
+  --border: rgba(43,39,34,0.12);
   --serif: 'Shippori Mincho B1', serif;
   --garamond: 'EB Garamond', serif;
   --sans: 'Noto Sans JP', sans-serif;
@@ -314,8 +314,8 @@ nav.scrolled {
 }
 
 /* --- Section base --- */
-section { padding: 120px 48px; }
-@media (max-width: 768px) { section { padding: 80px 24px; } }
+section { padding: 160px 48px; } /* 余白（間）を拡大 */
+@media (max-width: 768px) { section { padding: 100px 24px; } }
 
 .section-label {
   display: block;
@@ -1028,7 +1028,7 @@ footer {
 .reveal {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.7s, transform 0.7s;
+  transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* よりゆっくりと優しく現れるように調整 */
 }
 .reveal.visible {
   opacity: 1;
@@ -1065,13 +1065,13 @@ footer {
 <section class="hero" style="padding:0">
   <div class="hero-left">
     <span class="hero-eyebrow">Boundary Spanner / Visualizer</span>
-    <h1 class="hero-h1">
-      あなたの体験を、<br>
-      <em>視覚化する。</em>
+    <h1 class="hero-h1" style="font-size: clamp(24px, 2.5vw, 42px);">
+      あなたと共にいる<em>時間そのものを愛でます。</em>
     </h1>
     <p class="hero-sub">
-      撮影は、記録ではなく。<br>
-      あなたが、変わっていくコト。
+      Ema.は、ただ記録するための撮影ではありません。<br>
+      深い対話と、共に過ごす「間」を通じて、<br>
+      あなたの内なる変化や体験そのものを、視覚化します。
     </p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">
@@ -1141,27 +1141,27 @@ footer {
   <div class="process-inner reveal">
     <span class="section-label">Process</span>
     <div class="section-divider"></div>
-    <h2 class="process-h2">共に歩む、4つのプロセス</h2>
+    <h2 class="process-h2">あなたと共に過ごす時間</h2>
     <div class="process-steps">
       <div class="process-step">
         <span class="step-num">01</span>
         <div class="step-title">Dialogue</div>
-        <p class="step-desc">深く寄り添う傾聴と、想いの紐解き。あなたの根底にある熱量を、対話で引き出します。</p>
+        <p class="step-desc">あなた自身の物語に静かに耳を傾ける時間。言葉にならない感情や熱量を、ゆっくりと分かち合います。</p>
       </div>
       <div class="process-step">
         <span class="step-num">02</span>
         <div class="step-title">Scouting</div>
-        <p class="step-desc">光や空間など、あなたに寄り添う視覚表現の設計。撮影前から、世界観を整えます。</p>
+        <p class="step-desc">あなたが最も自然体でいられる場所や光を探す時間。撮影前から、あなたに寄り添う空間を整えます。</p>
       </div>
       <div class="process-step">
         <span class="step-num">03</span>
         <div class="step-title">Shooting</div>
-        <p class="step-desc">カメラを通じた、熱量と本来の美しさの現像。その瞬間の空気ごと定着させます。</p>
+        <p class="step-desc">レンズを通して、あなたと一緒にいる「今」を愛でる時間。流れる空気や表情の移ろいを、そのまま定着させます。</p>
       </div>
       <div class="process-step">
         <span class="step-num">04</span>
         <div class="step-title">Encounter</div>
-        <p class="step-desc">あなただけの「旗印」との出会い。撮影後も伴走します。</p>
+        <p class="step-desc">新しく見つけたあなた自身の姿と出会う時間。写真を通して、これからもあなたの歩みを見守り続けます。</p>
       </div>
     </div>
   </div>
@@ -1261,7 +1261,7 @@ footer {
     <!-- JIRO: col 5-12 / 縦 / mt-16 -->
     <div class="wk wk-8 wk-mt-sm">
       <div class="work-card" style="aspect-ratio:2/3;">
-        <img src="DSCF9782.JPG" alt="アーティスト ポートレート" loading="lazy">
+        <img src="DSCF1806.jpg" alt="アーティスト ポートレート" loading="lazy">
         <div class="work-card-info">
           <span class="work-type"></span>
           <div class="work-name">JIRO</div>
@@ -1313,7 +1313,7 @@ footer {
     <p class="works-voice-quote">34歳　公務員　同行型ポートレート「撮ってもらった写真で「今」の自分を観れた。かっこよくてびっくり！次回もお願いしたい」</p>
   </div>
 </section>
-  
+
 <!-- PRICE -->
 <section class="price-section" id="price">
   <div class="price-inner reveal">
@@ -1459,10 +1459,10 @@ window.addEventListener('scroll', () => {
 // Reveal on scroll (Intersection Observer)
 const revealEls = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { 
+  entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.classList.add('visible');
-    } 
+    }
   });
 }, { threshold: 0.12 });
 
@@ -1473,10 +1473,10 @@ document.querySelectorAll('.faq-q').forEach(btn => {
   btn.addEventListener('click', () => {
     const item = btn.parentElement;
     const wasOpen = item.classList.contains('open');
-    
+
     // Close other items
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    
+
     // Open clicked item if it wasn't already open
     if (!wasOpen) item.classList.add('open');
   });
