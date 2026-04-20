@@ -111,7 +111,8 @@
       max-width: 1600px;
       margin: 0 auto;
     }
-    .section { padding-top: var(--space-section); padding-bottom: var(--space-section); }
+    /* Increased spacing to emphasize whitespace */
+    .section { padding-top: calc(var(--space-section) * 1.5); padding-bottom: calc(var(--space-section) * 1.5); }
 
     /* Navigation */
     .nav {
@@ -194,56 +195,39 @@
     .process-title { font-size: 1rem; margin-bottom: 16px; letter-spacing: 0.1em; }
     .process-desc { font-size: 0.85rem; line-height: 2; color: var(--color-text-muted); }
 
-    /* Works Grid (Simple Card Style) */
+    /* Works Grid (Asymmetrical Masonry style) */
     .works-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-      padding: 40px 0;
-      perspective: 1000px;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 2vw;
+      row-gap: 120px;
+      align-items: center;
     }
-
-    .work-item {
-      position: relative;
-      background-color: #fff;
-      border-radius: 12px;
-      padding: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      border: 1px solid var(--color-border);
-      /* Initial state for card animation */
-      opacity: 0;
-      transform: translateY(100px) rotateX(-20deg) scale(0.9);
-      transform-origin: center bottom;
-      will-change: transform, opacity;
-      transition: box-shadow 0.4s ease, transform 0.4s ease;
-    }
-
-    .work-item:hover {
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-      transform: translateY(-10px) !important; /* Override GSAP final state on hover */
-    }
+    .work-item { position: relative; }
+    /* Manual column spans to create asymmetry */
+    .work-item:nth-child(1) { grid-column: 2 / 7; }
+    .work-item:nth-child(2) { grid-column: 8 / 12; margin-top: 10vw; }
+    .work-item:nth-child(3) { grid-column: 1 / 6; margin-top: -5vw; }
+    .work-item:nth-child(4) { grid-column: 7 / 13; }
+    .work-item:nth-child(5) { grid-column: 2 / 8; }
+    .work-item:nth-child(6) { grid-column: 9 / 12; margin-top: 15vw; }
 
     .work-img-wrap {
       overflow: hidden;
-      border-radius: 8px;
-      aspect-ratio: 4/5 !important; /* Uniform aspect ratio for cards */
-      background-color: var(--color-bg-alt);
+      border-radius: 4px;
     }
     .work-img {
-      width: 100%;
-      height: 100%; /* Reset from parallax */
+      width: 100%; height: 120%; /* For parallax */
       object-fit: cover;
-      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+      transform: translateY(-10%);
+      filter: sepia(5%);
+      transition: filter 0.8s ease;
     }
-    .work-item:hover .work-img {
-      transform: scale(1.05);
-    }
+    .work-item:hover .work-img { filter: sepia(0%); }
     .work-info {
-      margin-top: 20px;
-      padding: 0 8px 8px;
-      text-align: center;
+      margin-top: 24px;
     }
-    .work-title { font-size: 1.1rem; letter-spacing: 0.1em; margin-bottom: 8px; color: var(--color-text); }
+    .work-title { font-size: 1.1rem; letter-spacing: 0.1em; margin-bottom: 8px; }
     .work-category { font-size: 0.7rem; color: var(--color-text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
 
     /* Profile */
@@ -315,13 +299,11 @@
     .gsap-fade { opacity: 0; }
 
     @media (max-width: 768px) {
+      .section { padding-top: var(--space-section); padding-bottom: var(--space-section); } /* revert multiplier on mobile */
       .hero { flex-direction: column-reverse; justify-content: flex-end; padding-top: 120px; }
       .hero-content, .hero-img-wrap { width: 100%; }
       .hero-img-wrap { position: relative; left: 0; height: 50vh; margin-bottom: 40px; border-radius: 24px; }
-      .concept-inner { grid-template-columns: 1fr; gap: 40px; }
-      .process-grid { grid-template-columns: 1fr; }
-      .works-grid { gap: 24px; padding: 24px 0; grid-template-columns: 1fr; } /* Adjust grid for mobile */
-      .profile-inner { grid-template-columns: 1fr; }
+      .works-grid { display: flex; flex-direction: column; gap: 80px; }
       .price-row { grid-template-columns: 1fr; gap: 24px; padding: 40px 0; }
       .price-amount { text-align: left; }
     }
@@ -334,9 +316,8 @@
   <nav class="nav t-serif">
     <div class="nav-logo">Ema.</div>
     <div class="nav-links t-sans">
-      <a href="#concept">Concept</a>
       <a href="#works">Works</a>
-      <a href="#profile">Profile</a>
+      <a href="#plan">Plan</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -344,7 +325,7 @@
   <main id="smooth-wrapper">
     <div id="smooth-content">
 
-      <!-- Hero Section -->
+      <!-- Hero Section (Simplified) -->
       <section class="hero container">
         <div class="hero-content">
           <span class="label gsap-fade" style="color:var(--color-accent-light)">Boundary Spanner / Visualizer</span>
@@ -353,62 +334,11 @@
             <em>プロセスフォト</em>
           </h1>
           <p class="hero-desc t-serif gsap-reveal">
-            Ema.は、ただ記録するための撮影ではありません。<br>
-            深い対話と、共に過ごす「間」を通じて、<br>
-            あなたの内なる変化や体験そのものを、視覚化します。
+            深い対話と、共に過ごす「間」を通じて、あなたの内なる変化や体験そのものを視覚化します。
           </p>
         </div>
         <div class="hero-img-wrap">
           <img src="DSCF6169.JPG" alt="Portrait" class="hero-img" data-speed="auto">
-        </div>
-      </section>
-
-      <!-- Concept Section -->
-      <section id="concept" class="section container">
-        <div class="concept-inner">
-          <div class="concept-left">
-            <span class="label gsap-reveal">Concept</span>
-            <h2 class="text-title t-serif gsap-reveal">感じて撮る、<br>あなたのものがたり。</h2>
-          </div>
-          <div class="concept-right">
-            <p class="text-body t-serif gsap-reveal" style="margin-bottom: 32px;">
-              私がお届けしたいのは、単に整った一瞬を切り取る写真ではありません。「プロセスフォト」とは、あなたが何を感じ、どう変化していくのか、その体験の過程そのものを写し出す撮影です。
-            </p>
-            <p class="text-body t-serif gsap-reveal">
-              対話を通じてあなたの内なる熱量や原風景に触れ、共に過ごす時間の中で生まれるありのままの表情や空気を定着させます。完成された結果だけでなく、そこに至るまでの「ものがたり」こそが、あなただけの確かな旗印となります。
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Process Section -->
-      <section class="process section">
-        <div class="container">
-          <span class="label gsap-reveal">Process</span>
-          <h2 class="text-title t-serif gsap-reveal" style="margin-bottom: 80px;">あなたと共に過ごす時間</h2>
-
-          <div class="process-grid">
-            <div class="process-item gsap-reveal">
-              <span class="process-num t-en">01</span>
-              <h3 class="process-title t-sans">Dialogue</h3>
-              <p class="process-desc t-serif">あなた自身の物語に静かに耳を傾ける時間。言葉にならない感情や熱量を、ゆっくりと分かち合います。</p>
-            </div>
-            <div class="process-item gsap-reveal">
-              <span class="process-num t-en">02</span>
-              <h3 class="process-title t-sans">Scouting</h3>
-              <p class="process-desc t-serif">あなたが最も自然体でいられる場所や光を探す時間。撮影前から、あなたに寄り添う空間を整えます。</p>
-            </div>
-            <div class="process-item gsap-reveal">
-              <span class="process-num t-en">03</span>
-              <h3 class="process-title t-sans">Shooting</h3>
-              <p class="process-desc t-serif">レンズを通して、あなたと一緒にいる「今」を愛でる時間。流れる空気や表情の移ろいを、そのまま定着させます。</p>
-            </div>
-            <div class="process-item gsap-reveal">
-              <span class="process-num t-en">04</span>
-              <h3 class="process-title t-sans">Encounter</h3>
-              <p class="process-desc t-serif">新しく見つけたあなた自身の姿と出会う時間。写真を通して、これからもあなたの歩みを見守り続けます。</p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -418,9 +348,9 @@
 
         <div class="works-grid">
           <!-- Item 1 -->
-          <div class="work-item work-card">
-            <div class="work-img-wrap">
-              <img src="DSCF7657.jpg" alt="Mountain Climbing" class="work-img">
+          <div class="work-item gsap-reveal">
+            <div class="work-img-wrap" style="aspect-ratio: 2/3;">
+              <img src="DSCF7657.jpg" alt="Mountain Climbing" class="work-img parallax-img">
             </div>
             <div class="work-info">
               <h3 class="work-title t-serif">Mountain Climbing</h3>
@@ -428,9 +358,9 @@
             </div>
           </div>
           <!-- Item 2 -->
-          <div class="work-item work-card">
-            <div class="work-img-wrap">
-              <img src="DSCF2900.jpg" alt="K&H" class="work-img">
+          <div class="work-item gsap-reveal">
+            <div class="work-img-wrap" style="aspect-ratio: 3/4;">
+              <img src="DSCF2900.jpg" alt="K&H" class="work-img parallax-img">
             </div>
             <div class="work-info">
               <h3 class="work-title t-serif">K＆H</h3>
@@ -438,9 +368,9 @@
             </div>
           </div>
           <!-- Item 3 -->
-          <div class="work-item work-card">
-            <div class="work-img-wrap">
-              <img src="DSCF6786.jpg" alt="Atsushi" class="work-img">
+          <div class="work-item gsap-reveal">
+            <div class="work-img-wrap" style="aspect-ratio: 4/5;">
+              <img src="DSCF6786.jpg" alt="Atsushi" class="work-img parallax-img">
             </div>
             <div class="work-info">
               <h3 class="work-title t-serif">Atsushi -trio de guess-</h3>
@@ -448,9 +378,9 @@
             </div>
           </div>
           <!-- Item 4 -->
-          <div class="work-item work-card">
-            <div class="work-img-wrap">
-              <img src="DSCF5055_Original 3.JPG" alt="SO" class="work-img">
+          <div class="work-item gsap-reveal">
+            <div class="work-img-wrap" style="aspect-ratio: 2/3;">
+              <img src="DSCF5055_Original 3.JPG" alt="SO" class="work-img parallax-img">
             </div>
             <div class="work-info">
               <h3 class="work-title t-serif">SO</h3>
@@ -458,9 +388,9 @@
             </div>
           </div>
           <!-- Item 5 -->
-          <div class="work-item work-card">
-            <div class="work-img-wrap">
-              <img src="DSCF8790.jpg" alt="WORLZ" class="work-img">
+          <div class="work-item gsap-reveal">
+            <div class="work-img-wrap" style="aspect-ratio: 4/3;">
+              <img src="DSCF8790.jpg" alt="WORLZ" class="work-img parallax-img">
             </div>
             <div class="work-info">
               <h3 class="work-title t-serif">WORLZ -Dancing in the Dark-</h3>
@@ -468,9 +398,9 @@
             </div>
           </div>
           <!-- Item 6 -->
-          <div class="work-item work-card">
-            <div class="work-img-wrap">
-              <img src="DSCF1806.jpg" alt="JIRO" class="work-img">
+          <div class="work-item gsap-reveal">
+            <div class="work-img-wrap" style="aspect-ratio: 3/4;">
+              <img src="DSCF1806.jpg" alt="JIRO" class="work-img parallax-img">
             </div>
             <div class="work-info">
               <h3 class="work-title t-serif">JIRO</h3>
@@ -480,36 +410,10 @@
         </div>
       </section>
 
-      <!-- Profile Section -->
-      <section id="profile" class="section container">
-        <div class="profile-inner">
-          <div class="profile-img-wrap gsap-reveal">
-            <img src="DSCF8958.jpg" alt="YUTA Profile" class="profile-img parallax-img">
-          </div>
-          <div class="profile-content">
-            <span class="label gsap-reveal">Profile</span>
-            <h2 class="t-serif gsap-reveal">YUTA</h2>
-            <p class="role t-sans gsap-reveal">Boundary Spanner / Visualizer</p>
-            <p class="text-body t-serif gsap-reveal" style="margin-bottom: 24px;">
-              祖父の事務所「エナヂー」でのあたたかな原体験を基に、人の内側に秘められた熱量や美しさを可視化する活動「Ema.」をスタートしました。
-            </p>
-            <p class="text-body t-serif gsap-reveal" style="margin-bottom: 24px;">
-              Ema.とは、<br>
-              「E」= Energy, Evolution, Encounter（エネルギー・進化・出会い）<br>
-              「ma」= 「間」＝ 余白・空間・つながり<br>
-              3つのEが「ma」を経て、わくわくを創造する。
-            </p>
-            <p class="text-body t-serif gsap-reveal">
-              複雑な想いや言葉にならない感情に深く、優しく傾聴し、「間」という余白を通じて、社会と繋がるための美しい形へと翻訳していきます。
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Price Section -->
-      <section class="price section">
+      <!-- Price / Plan Section -->
+      <section id="plan" class="price section">
         <div class="container" style="max-width: 1000px;">
-          <span class="label gsap-reveal">Price</span>
+          <span class="label gsap-reveal">Plan</span>
           <h2 class="text-title t-serif gsap-reveal" style="margin-bottom: 16px;">撮影プラン</h2>
           <p class="text-body t-sans gsap-reveal" style="margin-bottom: 80px; font-size: 0.8rem;">すべてのプランに、事前の深傾聴セッションが含まれます。</p>
 
@@ -547,9 +451,9 @@
         <div class="footer-watermark">Ema.</div>
         <div class="footer-cta gsap-reveal">
           <span class="label" style="color:var(--color-accent-light)">Contact</span>
-          <h2 class="t-serif">あなたの想いを、<br>聞かせてください。</h2>
+          <h2 class="t-serif" style="margin-bottom: 32px;">あなたの想いを、聞かせてください。</h2>
           <p class="text-body t-sans" style="color: rgba(247,251,247,0.6); margin-bottom: 48px;">
-            「まだ迷っている」でも大丈夫。<br>まずは雰囲気を見てみることから始められます。
+            「まだ迷っている」でも大丈夫。まずは雰囲気を見てみることから始められます。
           </p>
           <a href="https://instagram.com" target="_blank" class="btn t-sans">Instagram でお問い合わせ</a>
         </div>
@@ -636,22 +540,6 @@
           start: "top 90%",
         }
       });
-    });
-
-    // Card Deal Animation for Works
-    const workCards = document.querySelectorAll('.work-card');
-    gsap.to(workCards, {
-      y: 0,
-      opacity: 1,
-      rotationX: 0,
-      scale: 1,
-      duration: 1.2,
-      stagger: 0.15,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ".works-grid",
-        start: "top 85%",
-      }
     });
 
     // Image Parallax (Slowly move images inside their containers)
