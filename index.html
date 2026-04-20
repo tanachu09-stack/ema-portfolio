@@ -111,8 +111,7 @@
       max-width: 1600px;
       margin: 0 auto;
     }
-    /* Increased spacing to emphasize whitespace */
-    .section { padding-top: calc(var(--space-section) * 1.5); padding-bottom: calc(var(--space-section) * 1.5); }
+    .section { padding-top: var(--space-section); padding-bottom: var(--space-section); }
 
     /* Navigation */
     .nav {
@@ -299,11 +298,13 @@
     .gsap-fade { opacity: 0; }
 
     @media (max-width: 768px) {
-      .section { padding-top: var(--space-section); padding-bottom: var(--space-section); } /* revert multiplier on mobile */
       .hero { flex-direction: column-reverse; justify-content: flex-end; padding-top: 120px; }
       .hero-content, .hero-img-wrap { width: 100%; }
       .hero-img-wrap { position: relative; left: 0; height: 50vh; margin-bottom: 40px; border-radius: 24px; }
+      .concept-inner { grid-template-columns: 1fr; gap: 40px; }
+      .process-grid { grid-template-columns: 1fr; }
       .works-grid { display: flex; flex-direction: column; gap: 80px; }
+      .profile-inner { grid-template-columns: 1fr; }
       .price-row { grid-template-columns: 1fr; gap: 24px; padding: 40px 0; }
       .price-amount { text-align: left; }
     }
@@ -325,13 +326,12 @@
   <main id="smooth-wrapper">
     <div id="smooth-content">
 
-      <!-- Hero Section (Simplified) -->
+      <!-- Hero Section -->
       <section class="hero container">
         <div class="hero-content">
           <span class="label gsap-fade" style="color:var(--color-accent-light)">Boundary Spanner / Visualizer</span>
           <h1 class="hero-h1 t-serif gsap-reveal">
-            あなたに寄り添う<br>
-            <em>プロセスフォト</em>
+            あなたに寄り添う <em>Process Photo</em>
           </h1>
           <p class="hero-desc t-serif gsap-reveal">
             深い対話と、共に過ごす「間」を通じて、あなたの内なる変化や体験そのものを視覚化します。
