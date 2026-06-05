@@ -8,6 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <style>
     :root {
       --ink: #243028; /* 深緑墨 */
@@ -25,6 +26,26 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { scroll-behavior: smooth; font-size: 16px; }
+
+    html.lenis, html.lenis body {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    .lenis.lenis-scrolling iframe {
+      pointer-events: none;
+    }
 
     body {
       font-family: var(--sans);
@@ -253,8 +274,9 @@
     /* --- Reveal --- */
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transform: translateY(40px);
+      transition: opacity 1.4s cubic-bezier(0.23, 1, 0.32, 1), transform 1.4s cubic-bezier(0.23, 1, 0.32, 1);
+      will-change: opacity, transform;
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -289,9 +311,9 @@
     <a href="https://instagram.com" class="works-link" target="_blank">Instagram で全作品を見る →</a>
   </div>
 
-  <div class="works-masonry reveal">
+  <div class="works-masonry">
     <!-- 同行型: col 1-8 / 縦 -->
-    <div class="wk wk-8">
+    <div class="wk wk-8 reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
         <img src="DSCF7657.jpg" alt="同行型ポートレート" loading="lazy">
       </div>
@@ -302,7 +324,7 @@
     </div>
 
     <!-- K&H: col 9-12 / 縦 / mt-128 -->
-    <div class="wk wk-4 wk-mt-lg">
+    <div class="wk wk-4 wk-mt-lg reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
         <img src="DSCF2900.jpg" alt="ライフイベント ポートレート" loading="lazy">
       </div>
@@ -313,7 +335,7 @@
     </div>
 
     <!-- Atsushi: col 1-5 / 縦 -->
-    <div class="wk wk-5">
+    <div class="wk wk-5 reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
         <img src="DSCF6786.jpg" alt="LIVE ポートレート" loading="lazy">
       </div>
@@ -324,7 +346,7 @@
     </div>
 
     <!-- SO: col 6-12 / 縦 / mt-96 -->
-    <div class="wk wk-7 wk-mt-md">
+    <div class="wk wk-7 wk-mt-md reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
         <img src="DSCF5055_Original 3.JPG" onerror="this.src='DSCF5055_Original_3.jpg'" alt="ブランディング キービジュアル" loading="lazy">
       </div>
@@ -335,7 +357,7 @@
     </div>
 
     <!-- BirthDay: col 1-4 / 縦 / -mt-32 -->
-    <div class="wk wk-4 wk-mt-sm-neg">
+    <div class="wk wk-4 wk-mt-sm-neg reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
         <img src="DSCF6406.jpg" alt="ライフイベント ポートレート" loading="lazy">
       </div>
@@ -346,7 +368,7 @@
     </div>
 
     <!-- JIRO: col 5-12 / 縦 / mt-64 -->
-    <div class="wk wk-8 wk-mt-sm">
+    <div class="wk wk-8 wk-mt-sm reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
         <img src="DSCF9782.JPG" alt="アーティスト ポートレート" loading="lazy">
       </div>
@@ -357,7 +379,7 @@
     </div>
 
     <!-- WORLZ: col 1-6 / 横 -->
-    <div class="wk wk-6">
+    <div class="wk wk-6 reveal">
       <div class="work-card" style="aspect-ratio:4/3;">
         <img src="DSCF8790.jpg" alt="Band MV Behind the Scenes" loading="lazy">
       </div>
@@ -368,7 +390,7 @@
     </div>
 
     <!-- 術: col 7-12 / 横 / mt-112 -->
-    <div class="wk wk-6 wk-mt-xl">
+    <div class="wk wk-6 wk-mt-xl reveal">
       <div class="work-card" style="aspect-ratio:4/3;">
         <img src="DSCF7810.jpg" alt="イベント Behind the Scenes" loading="lazy">
       </div>
@@ -455,6 +477,14 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Lenis Initialize
+const lenis = new Lenis();
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
 
 document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
