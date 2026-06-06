@@ -8,6 +8,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <style>
     :root {
       --ink: #243028; /* 深緑墨 */
@@ -26,6 +29,26 @@
 
     html { scroll-behavior: smooth; font-size: 16px; }
 
+    html.lenis, html.lenis body {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    .lenis.lenis-scrolling iframe {
+      pointer-events: none;
+    }
+
     body {
       font-family: var(--sans);
       background: var(--paper);
@@ -33,6 +56,29 @@
       overflow-x: hidden;
       cursor: none;
       -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- Splash Screen --- */
+    #splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--paper);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      overflow: hidden;
+    }
+    #splash-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transform: scale(1.02);
+      filter: blur(5px);
     }
 
     /* --- Custom cursor --- */
@@ -234,14 +280,46 @@
 
     /* --- Outro --- */
     .outro-section { background: var(--ink); padding: 160px 48px; text-align: center; }
+    .contact-link {
+      font-family: var(--garamond);
+      color: var(--paper);
+      font-size: clamp(18px, 2.5vw, 28px);
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 32px;
+      border-bottom: 1px solid rgba(246, 250, 247, 0.2);
+      padding-bottom: 4px;
+      transition: all 0.3s;
+    }
+    .contact-link:hover {
+      color: var(--ember-light);
+      border-color: var(--ember-light);
+    }
 
     /* --- Reveal --- */
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: opacity, transform;
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Parallax container */
+    .work-card {
+      position: relative;
+      overflow: hidden;
+      background: #1c2620;
+    }
+    .work-card img {
+      width: 100%;
+      height: 120%; /* Extra height for parallax */
+      object-fit: cover;
+      display: block;
+      transition: filter 0.5s;
+      filter: grayscale(15%);
+      will-change: transform;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
 
     footer { background: var(--ink); padding: 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(246,250,247,0.05); }
     .footer-logo { font-family: var(--serif); font-size: 20px; letter-spacing: 0.3em; color: var(--paper); }
@@ -252,6 +330,10 @@
   </style>
 </head>
 <body>
+
+<div id="splash-screen">
+  <img src="intro_image.png" alt="Ema Intro" id="splash-img">
+</div>
 
 <div class="cursor" id="cursor"></div>
 
@@ -274,9 +356,9 @@
     <a href="https://instagram.com" class="works-link" target="_blank">Instagram で全作品を見る →</a>
   </div>
 
-  <div class="works-masonry reveal">
+  <div class="works-masonry">
     <!-- 同行型: col 1-8 / 縦 -->
-    <div class="wk wk-8">
+    <div class="wk wk-8 reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
         <img src="DSCF7657.jpg" alt="同行型ポートレート" loading="lazy">
       </div>
@@ -287,7 +369,7 @@
     </div>
 
     <!-- K&H: col 9-12 / 縦 / mt-128 -->
-    <div class="wk wk-4 wk-mt-lg">
+    <div class="wk wk-4 wk-mt-lg reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
         <img src="DSCF2900.jpg" alt="ライフイベント ポートレート" loading="lazy">
       </div>
@@ -298,7 +380,7 @@
     </div>
 
     <!-- Atsushi: col 1-5 / 縦 -->
-    <div class="wk wk-5">
+    <div class="wk wk-5 reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
         <img src="DSCF6786.jpg" alt="LIVE ポートレート" loading="lazy">
       </div>
@@ -309,7 +391,7 @@
     </div>
 
     <!-- SO: col 6-12 / 縦 / mt-96 -->
-    <div class="wk wk-7 wk-mt-md">
+    <div class="wk wk-7 wk-mt-md reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
         <img src="DSCF5055_Original 3.JPG" onerror="this.src='DSCF5055_Original_3.jpg'" alt="ブランディング キービジュアル" loading="lazy">
       </div>
@@ -320,7 +402,7 @@
     </div>
 
     <!-- BirthDay: col 1-4 / 縦 / -mt-32 -->
-    <div class="wk wk-4 wk-mt-sm-neg">
+    <div class="wk wk-4 wk-mt-sm-neg reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
         <img src="DSCF6406.jpg" alt="ライフイベント ポートレート" loading="lazy">
       </div>
@@ -331,7 +413,7 @@
     </div>
 
     <!-- JIRO: col 5-12 / 縦 / mt-64 -->
-    <div class="wk wk-8 wk-mt-sm">
+    <div class="wk wk-8 wk-mt-sm reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
         <img src="DSCF9782.JPG" alt="アーティスト ポートレート" loading="lazy">
       </div>
@@ -342,7 +424,7 @@
     </div>
 
     <!-- WORLZ: col 1-6 / 横 -->
-    <div class="wk wk-6">
+    <div class="wk wk-6 reveal">
       <div class="work-card" style="aspect-ratio:4/3;">
         <img src="DSCF8790.jpg" alt="Band MV Behind the Scenes" loading="lazy">
       </div>
@@ -353,7 +435,7 @@
     </div>
 
     <!-- 術: col 7-12 / 横 / mt-112 -->
-    <div class="wk wk-6 wk-mt-xl">
+    <div class="wk wk-6 wk-mt-xl reveal">
       <div class="work-card" style="aspect-ratio:4/3;">
         <img src="DSCF7810.jpg" alt="イベント Behind the Scenes" loading="lazy">
       </div>
@@ -383,7 +465,7 @@
           <p style="font-family:var(--sans); font-size:9px; letter-spacing:0.15em; color:var(--ember); text-transform:uppercase; margin-bottom:16px;">同行型ポートレート</p>
           <div class="price-deliverables">深傾聴(30min) ＋ 撮影(2h) ＋ データ</div>
         </div>
-        <div class="price-concept-text">あなたの内側にある熱量を抽出するセッション。同行型ポートレートはこちらのプランになります。</div>
+        <div class="price-concept-text">あなたの内側にある熱量を抽出する撮影体験。<br>同行型ポートレートはこちらのプランになります。</div>
         <div class="price-amount">¥25,000<span class="price-tax">税込</span></div>
       </div>
 
@@ -396,9 +478,9 @@
           </div>
           <div class="price-name">Personal Flag</div>
           <p style="font-family:var(--sans); font-size:9px; letter-spacing:0.15em; color:var(--ember-light); text-transform:uppercase; margin-bottom:16px;">ブレない軸となる旗</p>
-          <div class="price-deliverables">深傾聴(1h) ＋ 撮影 ＋ データ</div>
+          <div class="price-deliverables">深傾聴(1h) ＋ 撮影(カスタム) ＋ データ</div>
         </div>
-        <div class="price-concept-text">対話を通じてあなたの「原風景」を抽出し、光の軌跡として結晶化。あなたのブレない軸となる「個人的な旗」を創り上げます。</div>
+        <div class="price-concept-text">対話を通じてあなたの「原風景」を抽出し、<br>光の軌跡(写真,映像SNS仕様)として結晶化。<br>あなたのブレない軸となる「個人的な旗」を創り上げます。</div>
         <div class="price-amount">¥35,000<span class="price-tax">税込</span></div>
       </div>
     </div>
@@ -406,10 +488,11 @@
 </section>
 
 <!-- OUTRO MESSAGE -->
-<section class="outro-section reveal">
-  <p style="font-family:var(--serif); color:var(--paper); font-size:clamp(15px, 2vw, 24px); letter-spacing:0.3em; opacity: 0.9; line-height: 2.5;">
+<section class="outro-section">
+  <p class="reveal" style="font-family:var(--serif); color:var(--paper); font-size:clamp(15px, 2vw, 24px); letter-spacing:0.3em; opacity: 0.9; line-height: 2.5;">
     ここまで見に来ていただいて<br>ありがとうございます<br>撮影のご連絡お待ちしてます。
   </p>
+  <a href="mailto:tanachu09@gmail.com" class="contact-link reveal" style="transition-delay: 0.3s;">tanachu09@gmail.com</a>
 </section>
 
 <footer>
@@ -434,11 +517,83 @@ window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
-// Reveal
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+// GSAP Register
+gsap.registerPlugin(ScrollTrigger);
+
+// Splash Animation
+const tl = gsap.timeline({
+  onComplete: () => {
+    document.getElementById('splash-screen').style.display = 'none';
+    lenis.start();
+  }
+});
+
+tl.to("#splash-img", {
+  opacity: 1,
+  filter: "blur(0px)",
+  scale: 1,
+  duration: 1.5,
+  ease: "power2.out"
+})
+.to("#splash-screen", {
+  opacity: 0,
+  duration: 1,
+  ease: "power2.inOut",
+  delay: 0.5
+});
+
+// Lenis Initialize
+const lenis = new Lenis({
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  orientation: 'vertical',
+  gestureOrientation: 'vertical',
+  smoothWheel: true,
+  wheelMultiplier: 1,
+  smoothTouch: false,
+  touchMultiplier: 2,
+  infinite: false,
+});
+
+// Integrate Lenis with GSAP ScrollTrigger
+lenis.stop(); // Stop scrolling during splash
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000);
+});
+gsap.ticker.lagSmoothing(0);
+
+// Reveal Animation
+document.querySelectorAll('.reveal').forEach((el) => {
+  gsap.fromTo(el,
+    { opacity: 0, y: 60 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1.6,
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+        toggleActions: "play none none none"
+      }
+    }
+  );
+});
+
+// Parallax Effect for Works
+document.querySelectorAll('.work-card img').forEach((img) => {
+  gsap.to(img, {
+    y: "-15%",
+    ease: "none",
+    scrollTrigger: {
+      trigger: img.parentElement,
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true
+    }
+  });
+});
 
 document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
