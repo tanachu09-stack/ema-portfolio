@@ -58,6 +58,29 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* --- Splash Screen --- */
+    #splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--paper);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      overflow: hidden;
+    }
+    #splash-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transform: scale(1.02);
+      filter: blur(5px);
+    }
+
     /* --- Custom cursor --- */
     .cursor {
       width: 8px; height: 8px;
@@ -308,6 +331,10 @@
 </head>
 <body>
 
+<div id="splash-screen">
+  <img src="intro_image.png" alt="Ema Intro" id="splash-img">
+</div>
+
 <div class="cursor" id="cursor"></div>
 
 <nav id="nav">
@@ -493,6 +520,28 @@ window.addEventListener('scroll', () => {
 // GSAP Register
 gsap.registerPlugin(ScrollTrigger);
 
+// Splash Animation
+const tl = gsap.timeline({
+  onComplete: () => {
+    document.getElementById('splash-screen').style.display = 'none';
+    lenis.start();
+  }
+});
+
+tl.to("#splash-img", {
+  opacity: 1,
+  filter: "blur(0px)",
+  scale: 1,
+  duration: 1.5,
+  ease: "power2.out"
+})
+.to("#splash-screen", {
+  opacity: 0,
+  duration: 1,
+  ease: "power2.inOut",
+  delay: 0.5
+});
+
 // Lenis Initialize
 const lenis = new Lenis({
   duration: 1.2,
@@ -507,6 +556,7 @@ const lenis = new Lenis({
 });
 
 // Integrate Lenis with GSAP ScrollTrigger
+lenis.stop(); // Stop scrolling during splash
 lenis.on('scroll', ScrollTrigger.update);
 gsap.ticker.add((time) => {
   lenis.raf(time * 1000);
