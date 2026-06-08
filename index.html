@@ -65,19 +65,12 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: #1d2326;
+      background: var(--ink);
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 10000;
       overflow: hidden;
-    }
-    #splash-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      will-change: transform, opacity, filter;
     }
     .splash-logo-wrap {
       position: absolute;
@@ -347,7 +340,6 @@
 <body>
 
 <div id="splash-screen">
-  <img src="Ema.Open.png" alt="Ema Intro" id="splash-img">
   <div class="splash-logo-wrap">
     <h1 id="splash-logo-text">Ema.</h1>
   </div>
@@ -546,20 +538,15 @@ const tl = gsap.timeline({
   }
 });
 
-tl.fromTo("#splash-img",
-  { opacity: 0, scale: 1.1, filter: "blur(10px)" },
-  { opacity: 1, scale: 1, filter: "blur(0px)", duration: 2.2, ease: "power2.out" }
-)
-.fromTo("#splash-logo-text",
-  { opacity: 0, y: 20 },
-  { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" },
-  "-=1.5"
+tl.fromTo("#splash-logo-text",
+  { opacity: 0, y: 30, letterSpacing: "1em" },
+  { opacity: 1, y: 0, letterSpacing: "0.4em", duration: 2.5, ease: "power4.out" }
 )
 .to("#splash-screen", {
   opacity: 0,
   duration: 1.2,
   ease: "expo.inOut",
-  delay: 0.8
+  delay: 0.5
 });
 
 // Lenis Initialize
