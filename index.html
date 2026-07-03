@@ -367,7 +367,35 @@
       color: var(--ember);
       font-weight: 500;
     }
+
+    /* --- Message Section --- */
+    .message-section {
+      background: var(--paper2);
+      padding: 160px 48px;
+    }
+    .message-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .message-h2 {
+      font-family: var(--serif);
+      font-size: clamp(20px, 3vw, 32px);
+      line-height: 1.8;
+      color: var(--ink);
+      margin-bottom: 48px;
+    }
+    .message-text {
+      font-family: var(--serif);
+      font-size: 15px;
+      line-height: 2.2;
+      color: var(--muted);
+      max-width: 640px;
+    }
+    .message-text p {
+      margin-bottom: 24px;
+    }
     @media (max-width: 768px) {
+      .message-section { padding: 100px 24px; }
       .concept-section { padding: 100px 24px; }
       .concept-lead, .concept-story { grid-column: 1 / span 12; }
       .concept-lead { margin-bottom: 40px; }
@@ -423,19 +451,48 @@
   <div class="concept-inner">
     <div class="concept-lead">
       <span class="concept-accent">Energy, Evolution, Encounter.</span><br>
-      3つのEが「ma」を経て、<br>
-      わくわくを創造する。
+      その「プロセス（線）」にこそ、<br>
+      あなただけの真実が宿る。
     </div>
     <div class="concept-story">
-      祖父が事務所を構えていた<br>
-      「エナヂー」という名から<br>
-      インスピレーションを受けています。<br><br>
-      「E」が象徴する情熱と進化、そして出会い。<br>
-      それらが「間（ma）」という余白や空間、<br>
-      あるいは人とのつながりを通ることで、<br>
-      新しい価値や高揚感が生まれていく。<br><br>
-      Ema.は、そんなプロセスを大切にしながら、<br>
-      あなたの物語を形にします。
+      祖父が事務所を構えていた「エナヂー」という名。<br>
+      そこには、絶え間ない情熱と進化、<br>
+      そして新しい出会いへの渇望がありました。<br><br>
+      Ema.は、写真という一瞬の「点」ではなく、<br>
+      そこに至るまでの「プロセス（線）」を大切にします。<br><br>
+      「間（ma）」という余白や対話を通じて、<br>
+      あなたの内側にある熱量を丁寧に抽出し、<br>
+      新しい価値や高揚感を共に創造していく。<br><br>
+      そんな濃密な時間を経て、<br>
+      あなたの唯一無二の物語を形にします。
+    </div>
+  </div>
+</section>
+
+<!-- MESSAGE/PROBLEM -->
+<section id="message" class="message-section reveal">
+  <div class="message-inner">
+    <div class="message-content">
+      <span class="section-label">Our Message</span>
+      <h2 class="message-h2">
+        効率やテクニックの先に、<br>
+        あなたの「なぜ」はありますか。
+      </h2>
+      <div class="message-text">
+        <p>AIを使えば、誰でも簡単にそれなりの言葉や画像が生成できる時代。<br>
+        しかし、便利さと引き換えに、発信がどこか浅く、<br>
+        誰かの借り物のようになってはいませんか。</p>
+
+        <p>最短最速、効率重視、表面的な「映え」。<br>
+        それらを追い求めるほどに、自分自身の根源的な熱量や、<br>
+        大切にしていたはずの原風景が見えなくなっていく。</p>
+
+        <p>Ema.が提案するのは、効率とは真逆の「プロセス」への没入です。<br>
+        対話を通じて、あなたの内側に眠る「ブレない軸」を共に探し出し、<br>
+        迷ったときにいつでも立ち返ることができる「個人的な旗」を立てる。<br><br>
+        本質的な共感は、テクニックではなく、<br>
+        あなたの深いプロセスからのみ生まれると信じています。</p>
+      </div>
     </div>
   </div>
 </section>
@@ -560,7 +617,7 @@
           <p style="font-family:var(--sans); font-size:9px; letter-spacing:0.15em; color:var(--ember); text-transform:uppercase; margin-bottom:16px;">同行型ポートレート</p>
           <div class="price-deliverables">深傾聴(30min) ＋ 撮影(2h) ＋ データ</div>
         </div>
-        <div class="price-concept-text">あなたの内側にある熱量を抽出する撮影体験。<br>同行型ポートレートはこちらのプランになります。</div>
+        <div class="price-concept-text">あなたの内側にある熱量を抽出し、可視化する撮影体験。<br>表面的な「映え」ではなく、プロセスそのものを記録します。<br>同行型ポートレートはこちらのプランになります。</div>
         <div class="price-amount">¥25,000<span class="price-tax">税込</span></div>
       </div>
 
@@ -575,7 +632,7 @@
           <p style="font-family:var(--sans); font-size:9px; letter-spacing:0.15em; color:var(--ember-light); text-transform:uppercase; margin-bottom:16px;">ブレない軸となる旗</p>
           <div class="price-deliverables">深傾聴(1h) ＋ 撮影(カスタム) ＋ データ</div>
         </div>
-        <div class="price-concept-text">対話を通じてあなたの「原風景」を抽出し、<br>光の軌跡(写真,映像SNS仕様)として結晶化。<br>あなたのブレない軸となる「個人的な旗」を創り上げます。</div>
+        <div class="price-concept-text">深傾聴を通じて、あなたの「原風景」を抽出し、<br>光の軌跡（写真・映像）として結晶化させます。<br>迷ったときにいつでも立ち返れる、<br>あなたの「個人的な旗」を共に創り上げます。</div>
         <div class="price-amount">¥35,000<span class="price-tax">税込</span></div>
       </div>
     </div>
