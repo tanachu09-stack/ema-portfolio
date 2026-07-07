@@ -516,94 +516,8 @@
       margin-top: 8px;
     }
 
-    /* --- Accordion --- */
-    .philosophy-summary { margin-bottom: 24px; }
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .accordion-content.open {
-      max-height: 2000px;
-    }
-    .philosophy-btn {
-      font-family: var(--sans);
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ember);
-      background: none;
-      border: none;
-      border-bottom: 1px solid var(--ember-light);
-      padding: 4px 0;
-      margin-top: 24px;
-      cursor: none;
-      transition: all 0.3s;
-    }
-    .philosophy-btn:hover { color: var(--ink); border-color: var(--ink); }
 
-    /* --- Proof Section --- */
-    .proof-section { background: var(--paper); padding: 100px 48px; }
-    .proof-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .proof-card { position: relative; overflow: hidden; background: #1c2620; }
-    .proof-card img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(10%); transition: transform 0.8s; }
-    .proof-card:hover img { transform: scale(1.05); filter: grayscale(0%); }
 
-    /* --- Service Branch Section --- */
-    .branch-section { background: var(--paper2); padding: 160px 48px; }
-    .branch-inner { max-width: 1000px; margin: 0 auto; }
-    .branch-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-top: 64px;
-    }
-    .branch-card {
-      background: var(--paper);
-      padding: 56px 40px;
-      border: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-    }
-    .branch-title { font-family: var(--serif); font-size: 20px; color: var(--ink); margin-bottom: 24px; letter-spacing: 0.1em; }
-    .branch-meta { font-family: var(--serif); font-size: 14px; color: var(--muted); line-height: 2; margin-bottom: 32px; flex-grow: 1; }
-    .branch-meta b { color: var(--ember); font-weight: 600; }
-    .branch-label { font-family: var(--sans); font-size: 10px; color: var(--ember); letter-spacing: 0.2em; margin-bottom: 8px; }
-
-    /* --- Testimonial Section --- */
-    .testimonial-section { background: var(--paper); padding: 160px 48px; text-align: center; }
-    .testimonial-quote {
-      font-family: var(--serif);
-      font-size: clamp(18px, 2.5vw, 26px);
-      line-height: 2.2;
-      color: var(--ink);
-      max-width: 800px;
-      margin: 0 auto 40px;
-    }
-    .testimonial-author { font-family: var(--sans); font-size: 12px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; }
-
-    /* --- Deep Philosophy Section --- */
-    .deep-section { background: var(--paper2); padding: 160px 48px; }
-    .deep-inner { max-width: 800px; margin: 0 auto; }
-    .deep-h2 { font-family: var(--serif); font-size: 28px; color: var(--ink); margin-bottom: 64px; text-align: center; letter-spacing: 0.2em; }
-    .deep-content { font-family: var(--serif); font-size: 15px; line-height: 2.4; color: var(--muted); }
-    .deep-content h3 { font-size: 20px; color: var(--ink); margin: 64px 0 24px; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
-
-    @media (max-width: 768px) {
-      .proof-grid, .branch-grid { grid-template-columns: 1fr; }
-      .branch-card { padding: 40px 24px; }
-    }
-
-    /* Adjusting Process Grid for photos */
-    .process-item-content { display: flex; flex-direction: column; }
-    .process-item-img { margin-top: 32px; width: 100%; aspect-ratio: 3/2; overflow: hidden; }
-    .process-item-img img { width: 100%; height: 100%; object-fit: cover; }
   </style>
 </head>
 <body>
@@ -640,69 +554,65 @@
       その「プロセス（線）」にこそ、<br>
       あなただけの真実が宿る。
     </div>
-
-    <!-- 1. Hero Image -->
-    <div class="hero-image reveal" style="margin-top: 80px; width: 100%; aspect-ratio: 16/9; overflow: hidden;">
-      <img src="DSCF5055_Original 3.JPG" onerror="this.src='DSCF5055_Original_3.jpg'" alt="Ema. Hero" style="width: 100%; height: 100%; object-fit: cover;">
-    </div>
   </div>
 </section>
 
 <!-- 2. PROOF SECTION -->
-<section id="proof" class="proof-section reveal">
-  <div class="branch-inner">
-    <span class="section-label">Proof</span>
-    <h2 class="works-h2" style="color: var(--ink); margin-bottom: 48px;">言葉より先に、届くもの。</h2>
-    <div class="proof-grid">
-      <div class="proof-card reveal">
-        <img src="DSCF2900.jpg" alt="Proof 1">
+<section id="proof" class="works-section reveal" style="background: var(--paper); padding-top: 100px;">
+  <div class="works-header">
+    <div>
+      <span class="section-label">Proof</span>
+      <h2 class="works-h2" style="color: var(--ink);">言葉より先に、届くもの。</h2>
+    </div>
+  </div>
+
+  <div class="works-masonry">
+    <!-- K&H -->
+    <div class="wk wk-4 wk-mt-lg reveal">
+      <div class="work-card" style="aspect-ratio:2/3;">
+        <img src="DSCF2900.jpg" alt="ライフイベント ポートレート" loading="lazy">
       </div>
-      <div class="proof-card reveal" style="margin-top: 40px;">
-        <img src="DSCF6786.jpg" alt="Proof 2">
+      <div class="wk-label">
+        <div class="work-name-below" style="color: var(--ink);">ライフイベント ポートレート</div>
+        <div class="work-sub-below" style="color: var(--muted);">K＆H</div>
       </div>
-      <div class="proof-card reveal">
-        <img src="DSCF8790.jpg" alt="Proof 3">
+    </div>
+
+    <!-- Atsushi -->
+    <div class="wk wk-5 reveal">
+      <div class="work-card" style="aspect-ratio:2/3;">
+        <img src="DSCF6786.jpg" alt="LIVE ポートレート" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below" style="color: var(--ink);">LIVE ポートレート</div>
+        <div class="work-sub-below" style="color: var(--muted);">Atsushi -trio de guess-</div>
+      </div>
+    </div>
+
+    <!-- SO -->
+    <div class="wk wk-7 wk-mt-md reveal">
+      <div class="work-card" style="aspect-ratio:2/3;">
+        <img src="DSCF5055_Original_3.jpg" alt="ブランディング キービジュアル" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below" style="color: var(--ink);">ブランディング キービジュアル</div>
+        <div class="work-sub-below" style="color: var(--muted);">SO</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 3. PHILOSOPHY SUMMARIES -->
+<!-- 3. CONCEPT SUMMARY -->
 <section id="philosophy" class="message-section reveal">
   <div class="message-inner">
     <div class="philosophy-summary">
       <span class="section-label">Concept</span>
       <h2 class="message-h2">「間（ma）」を経て、わくわくを創造する。</h2>
       <p class="message-text">
-        Ema.は、写真という一瞬の「点」ではなく、そこに至るまでの「プロセス（線）」を大切にします。<br>
-        「間（ma）」という余白や対話を通じて、あなたの内側にある熱量を丁寧に抽出し、<br>
-        新しい価値や高揚感を共に創造していく。
+        Energy, Evolution, Encounter. <br>
+        3つのEが「間（ma）」という対話や余白を経て、あなただけの真実へと進化する。<br>
+        点（結果）ではなく線（プロセス）を大切に、内なる熱量を結晶化させていきます。
       </p>
-      <div id="acc-concept" class="accordion-content">
-        <div class="concept-story" style="margin-top: 32px; border-top: 1px solid var(--border); padding-top: 32px;">
-          祖父が事務所を構えていた「エナヂー」という名。<br>
-          そこには、絶え間ない情熱と進化、そして新しい出会いへの渇望がありました。<br><br>
-          それは単なる記録ではなく、あなたの唯一無二の物語を形にする濃密な時間です。
-        </div>
-      </div>
-      <button class="philosophy-btn" onclick="toggleAccordion('acc-concept', this)">思想を読む ＋</button>
-    </div>
-
-    <div class="philosophy-summary" style="margin-top: 120px;">
-      <span class="section-label">Our Message</span>
-      <h2 class="message-h2">効率やテクニックの先に、あなたの「なぜ」を。</h2>
-      <p class="message-text">
-        最短最速、効率重視、表面的な「映え」。<br>
-        それらを追い求めるほどに、自分自身の根源的な熱量が見えなくなっていく。<br>
-        対話を通じて、あなたの内側に眠る「ブレない軸」を共に探し出し、個人的な旗を立てる。
-      </p>
-      <div id="acc-message" class="accordion-content">
-        <div class="message-text" style="margin-top: 32px; border-top: 1px solid var(--border); padding-top: 32px;">
-          AIで誰でも表現できる時代だからこそ、本質的な共感はあなたの深いプロセスからのみ生まれます。<br>
-          迷ったときにいつでも立ち返ることができる場所を、共に創り上げます。
-        </div>
-      </div>
-      <button class="philosophy-btn" onclick="toggleAccordion('acc-message', this)">思想を読む ＋</button>
     </div>
   </div>
 </section>
@@ -720,51 +630,31 @@
 
     <div class="process-grid">
       <div class="process-item reveal">
-        <div class="process-item-content">
-          <div class="process-item-num">01</div>
-          <div class="process-item-label">ENCOUNTER — 境界の表情</div>
-          <h3 class="process-item-h3">出会い</h3>
-          <p class="process-item-text">日常のモードがまだ体に残っている状態。緊張、警戒、あるいは解放感の予兆。<strong>まだ「間」を経ていない</strong>この瞬間が、後に訪れる変化を映す基準点になります。</p>
-        </div>
-        <div class="process-item-img">
-          <img src="DSCF7657.jpg" alt="Encounter" loading="lazy">
-        </div>
+        <div class="process-item-num">01</div>
+        <div class="process-item-label">ENCOUNTER — 境界の表情</div>
+        <h3 class="process-item-h3">出会い</h3>
+        <p class="process-item-text">日常のモードがまだ体に残っている状態。緊張、警戒、あるいは解放感の予兆。<strong>まだ「間」を経ていない</strong>この瞬間が、後に訪れる変化を映す基準点になります。</p>
       </div>
 
       <div class="process-item reveal">
-        <div class="process-item-content">
-          <div class="process-item-num">02</div>
-          <div class="process-item-label">IMMERSION — 没入の瞬間</div>
-          <h3 class="process-item-h3">没入している瞬間</h3>
-          <p class="process-item-text">観察する、耳を澄ます、手を動かす。所作の説明ではなく、<strong>その人固有の「間」の使い方</strong>そのものを撮る局面。身体を通じて熱量が滲み出てきます。</p>
-        </div>
-        <div class="process-item-img">
-          <img src="DSCF6406.jpg" alt="Immersion" loading="lazy">
-        </div>
+        <div class="process-item-num">02</div>
+        <div class="process-item-label">IMMERSION — 没入の瞬間</div>
+        <h3 class="process-item-h3">没入している瞬間</h3>
+        <p class="process-item-text">観察する、耳を澄ます、手を動かす。所作の説明ではなく、<strong>その人固有の「間」の使い方</strong>そのものを撮る局面。深傾聴によって「内なる熱量」が立ち上がる瞬間です。</p>
       </div>
 
       <div class="process-item reveal">
-        <div class="process-item-content">
-          <div class="process-item-num">03</div>
-          <div class="process-item-label">MA — 対話の瞬間</div>
-          <h3 class="process-item-h3">間</h3>
-          <p class="process-item-text">一泊を挟むなら夜〜翌朝。日帰りなら活動の合間や帰り支度の前後。<strong>区切りを経たからこそ</strong>出てくる言葉がある局面。聴きながら撮る時間です。</p>
-        </div>
-        <div class="process-item-img">
-          <img src="DSCF9296.JPG" alt="Ma" loading="lazy">
-        </div>
+        <div class="process-item-num">03</div>
+        <div class="process-item-label">MA — 対話の瞬間</div>
+        <h3 class="process-item-h3">間</h3>
+        <p class="process-item-text">一泊を挟むなら夜〜翌朝。日帰りなら活動の合間や帰り支度の前後。<strong>区切りを経たからこそ</strong>出てくる言葉がある局面。聴きながら撮る時間です。</p>
       </div>
 
       <div class="process-item reveal">
-        <div class="process-item-content">
-          <div class="process-item-num">04</div>
-          <div class="process-item-label">RETURN — 結晶化</div>
-          <h3 class="process-item-h3">帰路</h3>
-          <p class="process-item-text">体験が言葉より先に、体に入っている状態。出会いの瞬間と並べたとき、初めて<strong>変化そのものが可視化</strong>されます。光の軌跡としての結晶化です。</p>
-        </div>
-        <div class="process-item-img">
-          <img src="DSCF5374.jpg" alt="Return" loading="lazy">
-        </div>
+        <div class="process-item-num">04</div>
+        <div class="process-item-label">RETURN — 結晶化</div>
+        <h3 class="process-item-h3">帰路</h3>
+        <p class="process-item-text">体験が言葉より先に、体に入っている状態。出会いの瞬間と並べたとき、初めて<strong>変化そのものが可視化</strong>されます。光の軌跡としての結晶化です。</p>
       </div>
     </div>
 
@@ -780,38 +670,6 @@
   </div>
 </section>
 
-<!-- 5. BRANCHING SERVICE SECTION -->
-<section id="services" class="branch-section reveal">
-  <div class="branch-inner">
-    <span class="section-label">Service Types</span>
-    <h2 class="works-h2" style="color: var(--ink);">形態の分岐</h2>
-    <p class="process-intro" style="margin-top: 24px;">目的に合わせ、2つの関わり方を用意しています。</p>
-
-    <div class="branch-grid">
-      <div class="branch-card reveal">
-        <span class="branch-label">Type 01</span>
-        <h3 class="branch-title">同行型ポートレート</h3>
-        <div class="branch-meta">
-          <b>対象：</b> 活動のプロセスを記録したい表現者・経営者<br>
-          <b>期間：</b> 2時間〜（半日）<br>
-          <b>提供：</b> 撮影プロセスを通じて抽出された「今のあなた」を映す写真データ一式
-        </div>
-        <p class="process-item-text">イベントや制作の現場に同行し、あなたの熱量が最も高まる瞬間を「4局面」の視点で切り取ります。</p>
-      </div>
-
-      <div class="branch-card reveal">
-        <span class="branch-label">Type 02</span>
-        <h3 class="branch-title">リトリート型セッション</h3>
-        <div class="branch-meta">
-          <b>対象：</b> 自身の原風景を見つめ直し、軸を再定義したい方<br>
-          <b>期間：</b> 1泊2日〜（カスタム）<br>
-          <b>提供：</b> 深傾聴セッション ＋ 撮影 ＋ パーソナル・フラッグ（写真・映像）
-        </div>
-        <p class="process-item-text">日常から離れた場所で、対話と沈黙を繰り返しながら、あなたの根源的な「なぜ」を結晶化させます。</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- WORKS -->
 <section class="works-section" id="works">
@@ -827,7 +685,7 @@
     <!-- 同行型: col 1-8 / 縦 -->
     <div class="wk wk-8 reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
-        <img src="DSCF7657.jpg" alt="同行型ポートレート" loading="lazy">
+        <img src="DSCF7657.jpg" alt="同行型ポートレート" loading="lazy" onerror="this.src='https://placehold.co/600x900?text=Work+1'">
       </div>
       <div class="wk-label">
         <div class="work-name-below">同行型ポートレート</div>
@@ -838,7 +696,7 @@
     <!-- K&H: col 9-12 / 縦 / mt-128 -->
     <div class="wk wk-4 wk-mt-lg reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
-        <img src="DSCF2900.jpg" alt="ライフイベント ポートレート" loading="lazy">
+        <img src="DSCF2900.jpg" alt="ライフイベント ポートレート" loading="lazy" onerror="this.src='https://placehold.co/600x900?text=Work+2'">
       </div>
       <div class="wk-label">
         <div class="work-name-below">ライフイベント ポートレート</div>
@@ -849,7 +707,7 @@
     <!-- Atsushi: col 1-5 / 縦 -->
     <div class="wk wk-5 reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
-        <img src="DSCF6786.jpg" alt="LIVE ポートレート" loading="lazy">
+        <img src="DSCF6786.jpg" alt="LIVE ポートレート" loading="lazy" onerror="this.src='https://placehold.co/600x900?text=Work+3'">
       </div>
       <div class="wk-label">
         <div class="work-name-below">LIVE ポートレート</div>
@@ -857,10 +715,10 @@
       </div>
     </div>
 
-    <!-- SO: col 6-12 / 縦 / mt-96 -->
+    <!-- SO -->
     <div class="wk wk-7 wk-mt-md reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
-        <img src="DSCF5055_Original 3.JPG" onerror="this.src='DSCF5055_Original_3.jpg'" alt="ブランディング キービジュアル" loading="lazy">
+        <img src="DSCF5055_Original_3.jpg" alt="ブランディング キービジュアル" loading="lazy" onerror="this.src='https://placehold.co/600x900?text=Work+4'">
       </div>
       <div class="wk-label">
         <div class="work-name-below">ブランディング キービジュアル</div>
@@ -871,7 +729,7 @@
     <!-- BirthDay: col 1-4 / 縦 / -mt-32 -->
     <div class="wk wk-4 wk-mt-sm-neg reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
-        <img src="DSCF6406.jpg" alt="ライフイベント ポートレート" loading="lazy">
+        <img src="DSCF6406.jpg" alt="ライフイベント ポートレート" loading="lazy" onerror="this.src='https://placehold.co/600x900?text=Work+5'">
       </div>
       <div class="wk-label">
         <div class="work-name-below">ライフイベント ポートレート</div>
@@ -882,7 +740,7 @@
     <!-- JIRO: col 5-12 / 縦 / mt-64 -->
     <div class="wk wk-8 wk-mt-sm reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
-        <img src="DSCF9782.JPG" alt="アーティスト ポートレート" loading="lazy">
+        <img src="DSCF9782.JPG" alt="アーティスト ポートレート" loading="lazy" onerror="this.src='https://placehold.co/600x900?text=Work+6'">
       </div>
       <div class="wk-label">
         <div class="work-name-below">アーティスト ポートレート</div>
@@ -893,7 +751,7 @@
     <!-- WORLZ: col 1-6 / 横 -->
     <div class="wk wk-6 reveal">
       <div class="work-card" style="aspect-ratio:4/3;">
-        <img src="DSCF8790.jpg" alt="Band MV Behind the Scenes" loading="lazy">
+        <img src="DSCF8790.jpg" alt="Band MV Behind the Scenes" loading="lazy" onerror="this.src='https://placehold.co/800x600?text=Work+7'">
       </div>
       <div class="wk-label">
         <div class="work-name-below">Band MV Behind the Scenes</div>
@@ -904,7 +762,7 @@
     <!-- 術: col 7-12 / 横 / mt-112 -->
     <div class="wk wk-6 wk-mt-xl reveal">
       <div class="work-card" style="aspect-ratio:4/3;">
-        <img src="DSCF7810.jpg" alt="イベント Behind the Scenes" loading="lazy">
+        <img src="DSCF7810.jpg" alt="イベント Behind the Scenes" loading="lazy" onerror="this.src='https://placehold.co/800x600?text=Work+8'">
       </div>
       <div class="wk-label">
         <div class="work-name-below">イベント Behind the Scenes</div>
@@ -915,19 +773,6 @@
   </div>
 </section>
 
-<!-- 6. TESTIMONIAL SECTION -->
-<section id="testimonial" class="testimonial-section reveal">
-  <div class="branch-inner">
-    <span class="section-label">Testimonial</span>
-    <div class="testimonial-quote reveal">
-      「自分の内側にある言語化できない熱量が、<br>
-      Ema.との対話と撮影を通じて、<br>
-      確かな『旗』として形になった。迷ったとき、<br>
-      この写真に立ち返れば大丈夫だと思える。」
-    </div>
-    <div class="testimonial-author reveal">— SO / Branding Key Visual</div>
-  </div>
-</section>
 
 <!-- PRICE -->
 <section class="price-section" id="price">
@@ -977,33 +822,6 @@
   </div>
 </section>
 
-<!-- 9. EMA PHILOSOPHY (FULL) -->
-<section id="deep-philosophy" class="deep-section reveal">
-  <div class="deep-inner">
-    <span class="section-label" style="text-align: center; display: block;">Our Philosophy</span>
-    <h2 class="deep-h2">Ema.の思想</h2>
-
-    <div class="deep-content">
-      <div class="reveal">
-        <h3>Concept — プロセス（線）の真実</h3>
-        <p>
-          祖父が事務所を構えていた「エナヂー」という名。そこには、絶え間ない情熱と進化、そして新しい出会いへの渇望がありました。<br><br>
-          Ema.は、写真という一瞬の「点」ではなく、そこに至るまでの「プロセス（線）」を大切にします。<br><br>
-          「間（ma）」という余白や対話を通じて、あなたの内側にある熱量を丁寧に抽出し、新しい価値や高揚感を共に創造していく。そんな濃密な時間を経て、あなたの唯一無二の物語を形にします。
-        </p>
-      </div>
-
-      <div class="reveal">
-        <h3>Our Message — 「なぜ」に立ち返る</h3>
-        <p>
-          AIを使えば、誰でも簡単にそれなりの言葉や画像が生成できる時代。しかし、便利さと引き換えに、発信がどこか浅く、誰かの借り物のようになってはいませんか。<br><br>
-          最短最速、効率重視、表面的な「映え」。それらを追い求めるほどに、自分自身の根源的な熱量や、大切にしていたはずの原風景が見えなくなっていく。<br><br>
-          Ema.が提案するのは、効率とは真逆の「プロセス」への没入です。対話を通じて、あなたの内側に眠る「ブレない軸」を共に探し出し、迷ったときにいつでも立ち返ることができる「個人的な旗」を立てる。本質的な共感は、テクニックではなく、あなたの深いプロセスからのみ生まれると信じています。
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- OUTRO MESSAGE -->
 <section class="outro-section">
@@ -1115,16 +933,6 @@ document.querySelectorAll('.work-card img').forEach((img) => {
   });
 });
 
-function toggleAccordion(id, btn) {
-  const content = document.getElementById(id);
-  content.classList.toggle('open');
-  if (content.classList.contains('open')) {
-    btn.textContent = '思想を閉じる −';
-  } else {
-    btn.textContent = '思想を読む ＋';
-  }
-  setTimeout(() => ScrollTrigger.refresh(), 800);
-}
 
 document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
