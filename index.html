@@ -227,13 +227,17 @@
     .wk-label { margin-top: 16px; margin-bottom: 64px; }
     .work-card { position: relative; overflow: hidden; background: #1c2620; }
     .work-card img {
-      width: 100%; height: 100%;
+      width: 100%; height: 120%;
       object-fit: cover;
       display: block;
-      transition: transform 0.8s, filter 0.5s;
+      transition: filter 0.5s;
       filter: grayscale(15%);
+      will-change: transform;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
-    .work-card:hover img { transform: scale(1.04); filter: grayscale(0%); }
+    .work-card:hover img { filter: grayscale(0%); }
     .work-name-below { font-family: var(--serif); font-size: 15px; letter-spacing: 0.12em; color: var(--paper); margin-bottom: 4px; }
     .work-sub-below { font-family: var(--sans); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(246, 250, 247, 0.4); }
 
@@ -308,25 +312,6 @@
     .reveal {
       opacity: 0;
       will-change: opacity, transform;
-    }
-
-    /* Parallax container */
-    .work-card {
-      position: relative;
-      overflow: hidden;
-      background: #1c2620;
-    }
-    .work-card img {
-      width: 100%;
-      height: 120%; /* Extra height for parallax */
-      object-fit: cover;
-      display: block;
-      transition: filter 0.5s;
-      filter: grayscale(15%);
-      will-change: transform;
-      position: absolute;
-      top: 0;
-      left: 0;
     }
 
     footer { background: var(--ink); padding: 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(246,250,247,0.05); }
@@ -515,6 +500,63 @@
       color: var(--paper);
       margin-top: 8px;
     }
+
+    /* --- Philosophy Summaries --- */
+    .phi-summary-section {
+      background: var(--paper);
+      padding: 120px 48px;
+    }
+    .phi-summary-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .phi-summary-item {
+      margin-bottom: 80px;
+    }
+    .phi-summary-text {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2.5vw, 24px);
+      line-height: 2;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .phi-details {
+      margin-top: 16px;
+    }
+    .phi-details summary {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--ember);
+      cursor: pointer;
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.3s;
+    }
+    .phi-details summary:hover {
+      opacity: 0.7;
+    }
+    .phi-details summary::-webkit-details-marker {
+      display: none;
+    }
+    .phi-details summary::after {
+      content: ' →';
+      font-family: var(--sans);
+    }
+    .phi-details[open] summary::after {
+      content: ' ↓';
+    }
+    .phi-full-text {
+      margin-top: 24px;
+      font-family: var(--serif);
+      font-size: 15px;
+      line-height: 2.2;
+      color: var(--muted);
+      border-left: 1px solid var(--border);
+      padding-left: 24px;
+    }
   </style>
 </head>
 <body>
@@ -535,129 +577,36 @@
 <nav id="nav">
   <a href="#" class="nav-logo">Ema.</a>
   <div class="nav-links">
-    <a href="#concept">Concept</a>
+    <a href="#philosophy">Philosophy</a>
     <a href="#process">Process</a>
-    <a href="#works">Works</a>
+    <a href="#proof">Works</a>
     <a href="#price">Price</a>
     <a href="https://instagram.com" target="_blank">Instagram</a>
   </div>
 </nav>
 
-<!-- CONCEPT -->
-<section id="concept" class="concept-section reveal">
+<!-- HERO -->
+<section id="hero" class="concept-section reveal" style="padding-bottom: 80px;">
   <div class="concept-inner">
     <div class="concept-lead">
       <span class="concept-accent">Energy, Evolution, Encounter.</span><br>
       その「プロセス（線）」にこそ、<br>
       あなただけの真実が宿る。
     </div>
-    <div class="concept-story">
-      祖父が事務所を構えていた「エナヂー」という名。<br>
-      そこには、絶え間ない情熱と進化、<br>
-      そして新しい出会いへの渇望がありました。<br><br>
-      Ema.は、写真という一瞬の「点」ではなく、<br>
-      そこに至るまでの「プロセス（線）」を大切にします。<br><br>
-      「間（ma）」という余白や対話を通じて、<br>
-      あなたの内側にある熱量を丁寧に抽出し、<br>
-      新しい価値や高揚感を共に創造していく。<br><br>
-      そんな濃密な時間を経て、<br>
-      あなたの唯一無二の物語を形にします。
-    </div>
   </div>
 </section>
 
-<!-- MESSAGE/PROBLEM -->
-<section id="message" class="message-section reveal">
-  <div class="message-inner">
-    <div class="message-content">
-      <span class="section-label">Our Message</span>
-      <h2 class="message-h2">
-        効率やテクニックの先に、<br>
-        あなたの「なぜ」はありますか。
-      </h2>
-      <div class="message-text">
-        <p>AIを使えば、誰でも簡単にそれなりの言葉や画像が生成できる時代。<br>
-        しかし、便利さと引き換えに、発信がどこか浅く、<br>
-        誰かの借り物のようになってはいませんか。</p>
-
-        <p>最短最速、効率重視、表面的な「映え」。<br>
-        それらを追い求めるほどに、自分自身の根源的な熱量や、<br>
-        大切にしていたはずの原風景が見えなくなっていく。</p>
-
-        <p>Ema.が提案するのは、効率とは真逆の「プロセス」への没入です。<br>
-        対話を通じて、あなたの内側に眠る「ブレない軸」を共に探し出し、<br>
-        迷ったときにいつでも立ち返ることができる「個人的な旗」を立てる。<br><br>
-        本質的な共感は、テクニックではなく、<br>
-        あなたの深いプロセスからのみ生まれると信じています。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section id="process" class="process-section">
-  <div class="process-inner">
-    <div class="process-header reveal">
-      <span class="section-label">Our Process</span>
-      <h2 class="process-h2">記録の設計 —— 何を撮るか</h2>
-      <p class="process-intro">
-        Ema.の撮影は、被写体の状態を一点で切り取るものではありません。深傾聴によって内側の熱量や原風景が立ち上がるように、撮影もまた「間」を経て変化していく時間そのものを設計しています。以下の4つの局面は、その時間軸を可視化するための共通言語です。
-      </p>
-    </div>
-
-    <div class="process-grid">
-      <div class="process-item reveal">
-        <div class="process-item-num">01</div>
-        <div class="process-item-label">ENCOUNTER — 境界の表情</div>
-        <h3 class="process-item-h3">出会い</h3>
-        <p class="process-item-text">日常のモードがまだ体に残っている状態。緊張、警戒、あるいは解放感の予兆。<strong>まだ「間」を経ていない</strong>この瞬間が、後に訪れる変化を映す基準点になります。</p>
-      </div>
-
-      <div class="process-item reveal">
-        <div class="process-item-num">02</div>
-        <div class="process-item-label">IMMERSION — 没入の瞬間</div>
-        <h3 class="process-item-h3">没入している瞬間</h3>
-        <p class="process-item-text">観察する、耳を澄ます、手を動かす。所作の説明ではなく、<strong>その人固有の「間」の使い方</strong>そのものを撮る局面。深傾聴が言葉で原風景を引き出すように、ここでは身体を通じてそれが滲み出てきます。</p>
-      </div>
-
-      <div class="process-item reveal">
-        <div class="process-item-num">03</div>
-        <div class="process-item-label">MA — 対話の瞬間</div>
-        <h3 class="process-item-h3">間</h3>
-        <p class="process-item-text">一泊を挟むなら夜〜翌朝。日帰りなら活動の合間や帰り支度の前後。<strong>区切りを経たからこそ</strong>出てくる言葉がある局面。撮るというより、聴きながら撮る時間です。</p>
-      </div>
-
-      <div class="process-item reveal">
-        <div class="process-item-num">04</div>
-        <div class="process-item-label">RETURN — 結晶化</div>
-        <h3 class="process-item-h3">帰路</h3>
-        <p class="process-item-text">体験が言葉より先に、体に入っている状態。出会いの瞬間の表情と並べたとき、初めて<strong>変化そのものが可視化</strong>されます。記録ではなく、光の軌跡としての結晶化です。</p>
-      </div>
-    </div>
-
-    <div class="process-footer reveal">
-      <div class="process-footer-line"></div>
-      <div class="process-footer-content">
-        <div class="process-footer-label">WHY THIS STRUCTURE — なぜこの4点セットなのか</div>
-        <p class="process-footer-text">
-          Ema.という名前は、Energy・Evolution・Encounterという3つのEが「間（ま）」を経て、初めてわくわくという価値になる、という考えに基づいています。この4局面は、その構造を<strong>撮影の時間軸に展開したもの</strong>にほかなりません。一泊のプランでも日帰りのプランでも、街中の短いセッションでも骨格は変わらず、変わるのは各局面にかける時間配分と密度だけです。
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WORKS -->
-<section class="works-section" id="works">
+<!-- PROOF -->
+<section id="proof" class="works-section" style="padding-top: 80px; padding-bottom: 80px;">
   <div class="works-header reveal">
     <div>
-      <span class="section-label">Selected Works</span>
-      <h2 class="works-h2">撮影実績</h2>
+      <span class="section-label">Proof</span>
+      <h2 class="works-h2">実績と空気感</h2>
     </div>
-    <a href="https://instagram.com" class="works-link" target="_blank">Instagram で全作品を見る →</a>
   </div>
 
   <div class="works-masonry">
+
     <!-- 同行型: col 1-8 / 縦 -->
     <div class="wk wk-8 reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
@@ -745,9 +694,93 @@
         <div class="work-sub-below">術 -jutsu-</div>
       </div>
     </div>
-
   </div>
 </section>
+
+<!-- PHILOSOPHY SUMMARIES -->
+<section id="philosophy" class="phi-summary-section">
+  <div class="phi-summary-inner">
+    <div class="phi-summary-item reveal">
+      <span class="section-label">Concept</span>
+      <div class="phi-summary-text">
+        「間（ma）」という余白や対話を通じて、<br>
+        あなたの内側にある熱量を丁寧に抽出し、<br>
+        唯一無二の物語を形にする。
+      </div>
+      <details class="phi-details">
+        <summary>思想を読む</summary>
+        <div class="phi-full-text">
+          祖父が事務所を構えていた「エナヂー」という名。<br>
+      そこには、絶え間ない情熱と進化、<br>
+      そして新しい出会いへの渇望がありました。<br><br>
+      Ema.は、写真という一瞬の「点」ではなく、<br>
+      そこに至るまでの「プロセス（線）」を大切にします。<br><br>
+      「間（ma）」という余白や対話を通じて、<br>
+      あなたの内側にある熱量を丁寧に抽出し、<br>
+      新しい価値や高揚感を共に創造していく。<br><br>
+      そんな濃密な時間を経て、<br>
+      あなたの唯一無二の物語を形にします。
+        </div>
+      </details>
+    </div>
+
+    </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="process-section">
+  <div class="process-inner">
+    <div class="process-header reveal">
+      <span class="section-label">Our Process</span>
+      <h2 class="process-h2">記録の設計 —— 何を撮るか</h2>
+      <p class="process-intro">
+        Ema.の撮影は、被写体の状態を一点で切り取るものではありません。深傾聴によって内側の熱量や原風景が立ち上がるように、撮影もまた「間」を経て変化していく時間そのものを設計しています。以下の4つの局面は、その時間軸を可視化するための共通言語です。
+      </p>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-item reveal">
+        <div class="process-item-num">01</div>
+        <div class="process-item-label">ENCOUNTER — 境界の表情</div>
+        <h3 class="process-item-h3">出会い</h3>
+        <p class="process-item-text">日常のモードがまだ体に残っている状態。緊張、警戒、あるいは解放感の予兆。<strong>まだ「間」を経ていない</strong>この瞬間が、後に訪れる変化を映す基準点になります。</p>
+      </div>
+
+      <div class="process-item reveal">
+        <div class="process-item-num">02</div>
+        <div class="process-item-label">IMMERSION — 没入の瞬間</div>
+        <h3 class="process-item-h3">没入している瞬間</h3>
+        <p class="process-item-text">観察する、耳を澄ます、手を動かす。所作の説明ではなく、<strong>その人固有の「間」の使い方</strong>そのものを撮る局面。深傾聴が言葉で原風景を引き出すように、ここでは身体を通じてそれが滲み出てきます。</p>
+      </div>
+
+      <div class="process-item reveal">
+        <div class="process-item-num">03</div>
+        <div class="process-item-label">MA — 対話の瞬間</div>
+        <h3 class="process-item-h3">間</h3>
+        <p class="process-item-text">一泊を挟むなら夜〜翌朝。日帰りなら活動の合間や帰り支度の前後。<strong>区切りを経たからこそ</strong>出てくる言葉がある局面。撮るというより、聴きながら撮る時間です。</p>
+      </div>
+
+      <div class="process-item reveal">
+        <div class="process-item-num">04</div>
+        <div class="process-item-label">RETURN — 結晶化</div>
+        <h3 class="process-item-h3">帰路</h3>
+        <p class="process-item-text">体験が言葉より先に、体に入っている状態。出会いの瞬間の表情と並べたとき、初めて<strong>変化そのものが可視化</strong>されます。記録ではなく、光の軌跡としての結晶化です。</p>
+      </div>
+    </div>
+
+    <div class="process-footer reveal">
+      <div class="process-footer-line"></div>
+      <div class="process-footer-content">
+        <div class="process-footer-label">WHY THIS STRUCTURE — なぜこの4点セットなのか</div>
+        <p class="process-footer-text">
+          Ema.という名前は、Energy・Evolution・Encounterという3つのEが「間（ま）」を経て、初めてわくわくという価値になる、という考えに基づいています。この4局面は、その構造を<strong>撮影の時間軸に展開したもの</strong>にほかなりません。一泊のプランでも日帰りのプランでも、街中の短いセッションでも骨格は変わらず、変わるのは各局面にかける時間配分と密度だけです。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
 <!-- PRICE -->
 <section class="price-section" id="price">
@@ -782,7 +815,7 @@
           <p style="font-family:var(--sans); font-size:9px; letter-spacing:0.15em; color:var(--ember-light); text-transform:uppercase; margin-bottom:16px;">ブレない軸となる旗</p>
           <div class="price-deliverables">深傾聴(1h) ＋ 撮影(カスタム) ＋ データ</div>
         </div>
-        <div class="price-concept-text">深傾聴を通じて、あなたの「原風景」を抽出し、<br>光の軌跡（写真・映像）として結晶化させます。<br>迷ったときにいつでも立ち返れる、<br>あなたの「個人的な旗」を共に創り上げます。</div>
+        <div class="price-concept-text">深傾聴を通じて、あなたの「原風景」を抽出し、<br>光の軌跡（写真・映像）として結晶化させます。<br>迷ったときにいつでも立ち返れる、<br>あなたの「自分だけの旗」を共に創り上げます。</div>
         <div class="price-amount">¥35,000<span class="price-tax">税込</span></div>
       </div>
     </div>
@@ -796,6 +829,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- OUTRO MESSAGE -->
 <section class="outro-section">
@@ -904,6 +938,13 @@ document.querySelectorAll('.work-card img').forEach((img) => {
       end: "bottom top",
       scrub: true
     }
+  });
+});
+
+// Accordion ScrollTrigger Refresh
+document.querySelectorAll('.phi-details').forEach(details => {
+  details.addEventListener('toggle', () => {
+    ScrollTrigger.refresh();
   });
 });
 
