@@ -284,10 +284,127 @@
     .price-concept-text { font-family: var(--serif); font-size: 14px; line-height: 2.1; color: var(--muted); }
     .price-amount { font-family: var(--garamond); font-size: 24px; color: var(--ink); text-align: right; white-space: nowrap; }
     .price-tax { font-size: 11px; font-family: var(--sans); color: var(--muted); display: block; margin-top: 4px; }
-    @media (max-width: 640px) { 
-      .price-row { grid-template-columns: 1fr; gap: 24px; } 
-      .price-amount { text-align: left; } 
+    @media (max-width: 640px) {
+      .price-row { grid-template-columns: 1fr; gap: 24px; }
+      .price-amount { text-align: left; }
       .price-row.featured { margin: 0 -8px; padding: 32px 20px; }
+    }
+
+    /* --- Testimonial --- */
+    .testimonial-wrap {
+      max-width: 720px;
+      margin: 120px auto 0;
+      padding-top: 80px;
+      border-top: 1px solid rgba(246, 250, 247, 0.1);
+    }
+    .testimonial-mark {
+      font-family: var(--garamond);
+      font-size: 48px;
+      color: var(--ember-light);
+      opacity: 0.5;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .testimonial-text {
+      font-family: var(--serif);
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 2.3;
+      color: var(--paper);
+      letter-spacing: 0.05em;
+      margin-bottom: 32px;
+    }
+    .testimonial-attr {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: rgba(246, 250, 247, 0.5);
+      text-transform: uppercase;
+    }
+    .testimonial-attr strong {
+      color: var(--ember-light);
+      font-family: var(--serif);
+      text-transform: none;
+      letter-spacing: 0.1em;
+      font-size: 13px;
+    }
+    @media (max-width: 768px) {
+      .testimonial-wrap { margin-top: 80px; padding-top: 56px; }
+    }
+
+    /* --- FAQ --- */
+    .faq-section { background: var(--paper2); padding: 160px 48px; }
+    .faq-inner { max-width: 800px; margin: 0 auto; }
+    .faq-header { margin-bottom: 64px; }
+    .faq-h2 {
+      font-family: var(--serif);
+      font-size: clamp(24px, 3.5vw, 36px);
+      letter-spacing: 0.1em;
+      color: var(--ink);
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+    }
+    .faq-item summary {
+      font-family: var(--serif);
+      font-size: 16px;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-q-mark {
+      font-family: var(--garamond);
+      color: var(--ember);
+      font-size: 15px;
+      margin-right: 12px;
+    }
+    .faq-item summary::after {
+      content: '+';
+      font-family: var(--garamond);
+      font-size: 22px;
+      color: var(--ember);
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-answer {
+      margin-top: 20px;
+      padding-left: 27px;
+      font-family: var(--serif);
+      font-size: 14px;
+      line-height: 2.2;
+      color: var(--muted);
+      max-width: 640px;
+    }
+    @media (max-width: 768px) {
+      .faq-section { padding: 100px 24px; }
+    }
+
+    /* --- CTA Button --- */
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: var(--ember-light);
+      text-decoration: none;
+      padding: 18px 36px;
+      margin-top: 40px;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .cta-button:hover {
+      background: #fff;
+      transform: translateY(-2px);
     }
 
     /* --- Outro --- */
@@ -580,8 +697,9 @@
     <a href="#philosophy">Philosophy</a>
     <a href="#process">Process</a>
     <a href="#proof">Works</a>
+    <a href="#faq">FAQ</a>
     <a href="#price">Price</a>
-    <a href="https://instagram.com" target="_blank">Instagram</a>
+    <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener">Instagram</a>
   </div>
 </nav>
 
@@ -695,6 +813,18 @@
       </div>
     </div>
   </div>
+
+  <div class="testimonial-wrap reveal">
+    <div class="testimonial-mark">"</div>
+    <p class="testimonial-text">
+      まさに深傾聴で、ありのままの自分の想いを引き出してもらえ、<br>
+      普段自分だけでは気がつくことができなかった本音を知ることができて<br>
+      とてもありがたかったです。<br><br>
+      自分の核をゆうたさんのフィルターを通して多角的に見ることができて<br>
+      新たな発見がありました。ありがとうございました。
+    </p>
+    <div class="testimonial-attr"><strong>Ai様</strong> — 旅するギャラリー / AIDEA ・ Personal Flag</div>
+  </div>
 </section>
 
 <!-- PHILOSOPHY SUMMARIES -->
@@ -773,7 +903,7 @@
       <div class="process-footer-content">
         <div class="process-footer-label">WHY THIS STRUCTURE — なぜこの4点セットなのか</div>
         <p class="process-footer-text">
-          Ema.という名前は、Energy・Evolution・Encounterという3つのEが「間（ま）」を経て、初めてわくわくという価値になる、という考えに基づいています。この4局面は、その構造を<strong>撮影の時間軸に展開したもの</strong>にほかなりません。一泊のプランでも日帰りのプランでも、街中の短いセッションでも骨格は変わらず、変わるのは各局面にかける時間配分と密度だけです。
+          Ema.という名前は、Energy・Evolution・Encounterという3つのEが「間（ま）」を経て、初めてわくわくという価値になる、という考えに基づいています。この4局面は、その構造を<strong>撮影の時間軸に展開したもの</strong>にほかなりません。一泊のプランでも日帰りとしてのセッションでも、街中の短いセッションでも骨格は変わらず、変わるのは各局面にかける時間配分と密度だけです。
         </p>
       </div>
     </div>
@@ -781,6 +911,41 @@
 </section>
 
 
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="faq-inner">
+    <div class="faq-header reveal">
+      <span class="section-label">FAQ</span>
+      <h2 class="faq-h2">よくあるご質問</h2>
+    </div>
+
+    <details class="faq-item reveal">
+      <summary><span><span class="faq-q-mark">Q.</span>深傾聴って具体的に何をするんですか？</span></summary>
+      <div class="faq-answer">撮影前に30分〜1時間ほど、対話の時間を設けています。上手く話そうと構える必要はなく、問いかけに応じて感じたことをそのまま話していただだけで大丈夫です。ここで出てきた言葉やキーワードが、そのまま撮影の方向性になります。</div>
+    </details>
+
+    <details class="faq-item reveal">
+      <summary><span><span class="faq-q-mark">Q.</span>人見知りなのですが、大丈夫でしょうか？</span></summary>
+      <div class="faq-answer">むしろ人見知りの方の方が、深傾聴の時間で本音が出やすい傾向があります。場を盛り上げる対話ではなく「聴く」ための対話なので、話すことが得意である必要はありません。</div>
+    </details>
+
+    <details class="faq-item reveal">
+      <summary><span><span class="faq-q-mark">Q.</span>一人でも申し込めますか？</span></summary>
+      <div class="faq-answer">はい、お一人での参加が中心です。誰かに見せるためではなく、ご自身と向き合う時間として設計していますので、お一人でのご参加を歓迎しています。</div>
+    </details>
+
+    <details class="faq-item reveal">
+      <summary><span><span class="faq-q-mark">Q.</span>服装やロケーションは指定されますか？</span></summary>
+      <div class="faq-answer">深傾聴の中で出てきたキーワードをもとに、一緒に方向性を決めていきます。事前に「必ずこうしてください」という指定はありませんので、直感的に浮かんだ希望があれば教えてください。</div>
+    </details>
+
+    <details class="faq-item reveal">
+      <summary><span><span class="faq-q-mark">Q.</span>撮影データはどのように届きますか？</span></summary>
+      <div class="faq-answer">撮影後、編集を経てオンラインでデータをお渡ししています。Personal Flagプランでは、写真に加えて短編映像もあわせてお届けします。</div>
+    </details>
+  </div>
+</section>
 
 <!-- PRICE -->
 <section class="price-section" id="price">
@@ -790,7 +955,7 @@
     <p style="font-family:var(--serif); font-size:12px; color:var(--muted); letter-spacing:0.1em; margin-top: 16px; border-left: 1px solid var(--ember); padding-left: 16px; line-height: 2.2;">
       すべてのプランに、<br>事前の深傾聴セッションが含まれます。<br>現在は２つのプランを展開中です。
     </p>
-    
+
     <div class="price-table">
       <!-- Plan 1 -->
       <div class="price-row">
@@ -836,7 +1001,9 @@
   <p class="reveal" style="font-family:var(--serif); color:var(--paper); font-size:clamp(15px, 2vw, 24px); letter-spacing:0.3em; opacity: 0.9; line-height: 2.5;">
     ここまで見に来ていただいて<br>ありがとうございます<br>撮影のご連絡お待ちしてます。
   </p>
-  <a href="mailto:tanachu09@gmail.com" class="contact-link reveal" style="transition-delay: 0.3s;">tanachu09@gmail.com</a>
+  <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="cta-button reveal" style="transition-delay: 0.3s;">Instagram DMでお問い合わせ</a>
+  <br>
+  <a href="mailto:tanachu09@gmail.com" class="contact-link reveal" style="transition-delay: 0.5s;">tanachu09@gmail.com</a>
 </section>
 
 <footer>
