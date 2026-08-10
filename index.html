@@ -577,6 +577,109 @@
       border-color: var(--ember);
       color: var(--paper);
     }
+
+    /* --- Popup Modal --- */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(36, 48, 40, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .popup-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .popup-container {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      padding: 56px 40px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .popup-overlay.active .popup-container {
+      transform: translateY(0);
+    }
+    .popup-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-family: var(--serif);
+      font-size: 20px;
+      color: var(--ink);
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+    }
+    .popup-close-btn:hover {
+      opacity: 1;
+    }
+    .popup-title {
+      font-family: var(--serif);
+      font-size: 13px;
+      color: var(--ember);
+      letter-spacing: 0.2em;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+    .popup-message {
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 2.0;
+      color: var(--ink);
+      margin-bottom: 40px;
+      letter-spacing: 0.05em;
+    }
+    .popup-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .popup-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      font-family: var(--serif);
+      font-size: 13px;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+    .popup-btn-primary {
+      background: var(--ink);
+      color: var(--paper);
+      border: 1px solid var(--ink);
+    }
+    .popup-btn-primary:hover {
+      background: var(--ember);
+      border-color: var(--ember);
+    }
+    .popup-btn-secondary {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+    .popup-btn-secondary:hover {
+      border-color: var(--ink);
+    }
   </style>
 </head>
 <body>
@@ -588,6 +691,22 @@
       <div class="phi-line">「E」= Energy, Evolution, Encounter</div>
       <div class="phi-line">「ma」= 「間」＝ 余白・空間・つながり</div>
       <div class="phi-line main">3つのEが「ma」を経て、<br>わくわくを創造する。</div>
+    </div>
+  </div>
+</div>
+
+<!-- Greeting & Guide Popup Modal -->
+<div class="popup-overlay" id="guide-popup" aria-modal="true" role="dialog">
+  <div class="popup-container">
+    <button class="popup-close-btn" id="popup-close" aria-label="閉じる">×</button>
+    <div class="popup-title">Guide</div>
+    <div class="popup-message">
+      あなたに寄り添うプロセスフォト。<br>
+      撮影実績と価格のご案内。
+    </div>
+    <div class="popup-actions">
+      <a href="#journal" class="popup-btn popup-btn-primary" id="popup-to-journal">実績を見る (Journal)</a>
+      <a href="#price" class="popup-btn popup-btn-secondary" id="popup-to-price">価格を見る (Price)</a>
     </div>
   </div>
 </div>
@@ -894,8 +1013,7 @@
       <div class="wk-label">
         <div class="work-name-below">その八｜Behind the Scenes</div>
         <div class="work-desc-below">
-          言葉を必要としない身体表現。<br>
-          暗闇のなかに浮かび上がる、剥き出しの存在証明。
+          表裏一体。リアルな場を写す。
         </div>
       </div>
     </div>
@@ -928,7 +1046,7 @@ document.addEventListener('mousemove', e => {
   cursor.style.left = e.clientX + 'px';
   cursor.style.top = e.clientY + 'px';
 });
-document.querySelectorAll('a, button, .work-card').forEach(el => {
+document.querySelectorAll('a, button, .work-card, .popup-close-btn, .popup-btn').forEach(el => {
   el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
 });
@@ -945,7 +1063,63 @@ gsap.registerPlugin(ScrollTrigger);
 const tl = gsap.timeline({
   onComplete: () => {
     document.getElementById('splash-screen').style.display = 'none';
-    lenis.start();
+
+    // Smoothly show the guide popup after splash animation ends
+    const popup = document.getElementById('guide-popup');
+    if (popup) {
+      popup.classList.add('active');
+    }
+  }
+});
+
+// Setup Popup Interaction Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+  const popup = document.getElementById('guide-popup');
+  const closeBtn = document.getElementById('popup-close');
+  const toJournalBtn = document.getElementById('popup-to-journal');
+  const toPriceBtn = document.getElementById('popup-to-price');
+
+  const closePopup = () => {
+    if (popup) {
+      popup.classList.remove('active');
+      // Start lenis smooth scrolling once popup is closed
+      lenis.start();
+    }
+  };
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closePopup);
+  }
+
+  // Also close popup when clicking the overlay area outside the container
+  if (popup) {
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) {
+        closePopup();
+      }
+    });
+  }
+
+  if (toJournalBtn) {
+    toJournalBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closePopup();
+      // Scroll to #journal after a slight delay for smooth transition
+      setTimeout(() => {
+        lenis.scrollTo('#journal', { offset: 0, duration: 1.2 });
+      }, 100);
+    });
+  }
+
+  if (toPriceBtn) {
+    toPriceBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closePopup();
+      // Scroll to #price after a slight delay for smooth transition
+      setTimeout(() => {
+        lenis.scrollTo('#price', { offset: 0, duration: 1.2 });
+      }, 100);
+    });
   }
 });
 
