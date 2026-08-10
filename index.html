@@ -649,11 +649,16 @@
     }
     .popup-message {
       font-family: var(--serif);
-      font-size: 18px;
+      font-size: clamp(15px, 4.2vw, 17px);
       line-height: 2.0;
       color: var(--ink);
       margin-bottom: 40px;
       letter-spacing: 0.05em;
+    }
+    @media (max-width: 480px) {
+      .popup-container {
+        padding: 40px 24px;
+      }
     }
     .popup-actions {
       display: flex;
@@ -734,7 +739,7 @@
 <!-- HERO -->
 <section id="hero" class="concept-section reveal" style="padding-bottom: 80px; text-align: center;">
   <div class="concept-inner" style="display: block;">
-    <div class="concept-lead" style="font-family: var(--serif); font-size: clamp(18px, 2.5vw, 24px); line-height: 2.5; color: var(--ink); max-width: 800px; margin: 0 auto; letter-spacing: 0.12em;">
+    <div class="concept-lead" style="font-family: var(--serif); font-size: clamp(15px, 2.2vw, 20px); line-height: 2.5; color: var(--ink); max-width: 800px; margin: 0 auto; letter-spacing: 0.12em;">
       あなたの在り方は、言葉にするより先に、<br class="pc-br">たたずまいや、ふとした表情ににじみ出ています。<br>
       <br>
       まずはゆっくりお話を聞くことから、<br class="pc-br">撮影は始まります。<br>
