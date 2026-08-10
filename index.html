@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Ema. | あなたに寄り添うプロセスフォト。撮影実績と価格のご案内。">
-  <title>Ema. | Works & Price</title>
+  <title>Ema. | Journal & Price</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -240,6 +240,7 @@
     .work-card:hover img { filter: grayscale(0%); }
     .work-name-below { font-family: var(--serif); font-size: 15px; letter-spacing: 0.12em; color: var(--paper); margin-bottom: 4px; }
     .work-sub-below { font-family: var(--sans); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(246, 250, 247, 0.4); }
+    .work-desc-below { font-family: var(--serif); font-size: 13px; line-height: 1.8; color: rgba(246, 250, 247, 0.75); margin-top: 8px; letter-spacing: 0.05em; }
 
     @media (max-width: 768px) {
       .works-masonry { grid-template-columns: 1fr 1fr; column-gap: 12px; }
@@ -557,6 +558,25 @@
       border-left: 1px solid var(--border);
       padding-left: 24px;
     }
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 40px;
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--paper);
+      border: 1px solid var(--ember-light);
+      background: transparent;
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cta-button:hover {
+      background: var(--ember);
+      border-color: var(--ember);
+      color: var(--paper);
+    }
   </style>
 </head>
 <body>
@@ -579,152 +599,75 @@
   <div class="nav-links">
     <a href="#philosophy">Philosophy</a>
     <a href="#process">Process</a>
-    <a href="#proof">Works</a>
+    <a href="#journal">Journal</a>
     <a href="#price">Price</a>
-    <a href="https://instagram.com" target="_blank">Instagram</a>
+    <a href="https://www.instagram.com/tayu__t/" target="_blank">Instagram</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section id="hero" class="concept-section reveal" style="padding-bottom: 80px;">
-  <div class="concept-inner">
-    <div class="concept-lead">
-      <span class="concept-accent">Energy, Evolution, Encounter.</span><br>
-      その「プロセス（線）」にこそ、<br>
-      あなただけの真実が宿る。
+<section id="hero" class="concept-section reveal" style="padding-bottom: 80px; text-align: center;">
+  <div class="concept-inner" style="display: block;">
+    <div class="concept-lead" style="font-family: var(--serif); font-size: clamp(18px, 2.5vw, 24px); line-height: 2.5; color: var(--ink); max-width: 800px; margin: 0 auto; letter-spacing: 0.12em;">
+      在り方は、言葉より先に、<br>
+      その人の輪郭ににじみ出ている。<br>
+      <br>
+      饒舌に語られる前の、<br>
+      まだ整えられていない表情。<br>
+      <br>
+      深く聴くことから、<br>
+      写真は始まる。<br>
+      <br>
+      対話を交わし、間（ま）を経て、<br>
+      その人固有の熱量が、<br>
+      静かに像を結んでいく。<br>
+      <br>
+      Ema. は、<br>
+      その結晶化の過程に立ち会う<br>
+      プロセスポートレートの実践です。
     </div>
   </div>
 </section>
 
-<!-- PROOF -->
-<section id="proof" class="works-section" style="padding-top: 80px; padding-bottom: 80px;">
-  <div class="works-header reveal">
-    <div>
-      <span class="section-label">Proof</span>
-      <h2 class="works-h2">実績と空気感</h2>
-    </div>
-  </div>
-
-  <div class="works-masonry">
-
-    <!-- 同行型: col 1-8 / 縦 -->
-    <div class="wk wk-8 reveal">
-      <div class="work-card" style="aspect-ratio:2/3;">
-        <img src="DSCF7657.jpg" alt="同行型ポートレート" loading="lazy">
-      </div>
-      <div class="wk-label">
-        <div class="work-name-below">同行型ポートレート</div>
-        <div class="work-sub-below">Mountain Climbing</div>
-      </div>
-    </div>
-
-    <!-- K&H: col 9-12 / 縦 / mt-128 -->
-    <div class="wk wk-4 wk-mt-lg reveal">
-      <div class="work-card" style="aspect-ratio:2/3;">
-        <img src="DSCF2900.jpg" alt="ライフイベント ポートレート" loading="lazy">
-      </div>
-      <div class="wk-label">
-        <div class="work-name-below">ライフイベント ポートレート</div>
-        <div class="work-sub-below">K＆H</div>
-      </div>
-    </div>
-
-    <!-- Atsushi: col 1-5 / 縦 -->
-    <div class="wk wk-5 reveal">
-      <div class="work-card" style="aspect-ratio:2/3;">
-        <img src="DSCF6786.jpg" alt="LIVE ポートレート" loading="lazy">
-      </div>
-      <div class="wk-label">
-        <div class="work-name-below">LIVE ポートレート</div>
-        <div class="work-sub-below">Atsushi -trio de guess-</div>
-      </div>
-    </div>
-
-    <!-- SO: col 6-12 / 縦 / mt-96 -->
-    <div class="wk wk-7 wk-mt-md reveal">
-      <div class="work-card" style="aspect-ratio:2/3;">
-        <img src="DSCF5055_Original 3.JPG" onerror="this.src='DSCF5055_Original_3.jpg'" alt="ブランディング キービジュアル" loading="lazy">
-      </div>
-      <div class="wk-label">
-        <div class="work-name-below">ブランディング キービジュアル</div>
-        <div class="work-sub-below">SO</div>
-      </div>
-    </div>
-
-    <!-- BirthDay: col 1-4 / 縦 / -mt-32 -->
-    <div class="wk wk-4 wk-mt-sm-neg reveal">
-      <div class="work-card" style="aspect-ratio:2/3;">
-        <img src="DSCF6406.jpg" alt="ライフイベント ポートレート" loading="lazy">
-      </div>
-      <div class="wk-label">
-        <div class="work-name-below">ライフイベント ポートレート</div>
-        <div class="work-sub-below">BirthDay</div>
-      </div>
-    </div>
-
-    <!-- JIRO: col 5-12 / 縦 / mt-64 -->
-    <div class="wk wk-8 wk-mt-sm reveal">
-      <div class="work-card" style="aspect-ratio:2/3;">
-        <img src="DSCF9782.JPG" alt="アーティスト ポートレート" loading="lazy">
-      </div>
-      <div class="wk-label">
-        <div class="work-name-below">アーティスト ポートレート</div>
-        <div class="work-sub-below">JIRO</div>
-      </div>
-    </div>
-
-    <!-- WORLZ: col 1-6 / 横 -->
-    <div class="wk wk-6 reveal">
-      <div class="work-card" style="aspect-ratio:4/3;">
-        <img src="DSCF8790.jpg" alt="Band MV Behind the Scenes" loading="lazy">
-      </div>
-      <div class="wk-label">
-        <div class="work-name-below">Band MV Behind the Scenes</div>
-        <div class="work-sub-below">WORLZ -Dancing in the Dark-</div>
-      </div>
-    </div>
-
-    <!-- 術: col 7-12 / 横 / mt-112 -->
-    <div class="wk wk-6 wk-mt-xl reveal">
-      <div class="work-card" style="aspect-ratio:4/3;">
-        <img src="DSCF7810.jpg" alt="イベント Behind the Scenes" loading="lazy">
-      </div>
-      <div class="wk-label">
-        <div class="work-name-below">イベント Behind the Scenes</div>
-        <div class="work-sub-below">術 -jutsu-</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PHILOSOPHY SUMMARIES -->
-<section id="philosophy" class="phi-summary-section">
+<!-- ORIGIN STORY (PHILOSOPHY) -->
+<section id="philosophy" class="phi-summary-section" style="background: var(--paper2); border-top: 1px solid var(--border); padding-top: 160px; padding-bottom: 160px;">
   <div class="phi-summary-inner">
-    <div class="phi-summary-item reveal">
-      <span class="section-label">Concept</span>
-      <div class="phi-summary-text">
-        「間（ma）」という余白や対話を通じて、<br>
-        あなたの内側にある熱量を丁寧に抽出し、<br>
-        唯一無二の物語を形にする。
-      </div>
-      <details class="phi-details">
-        <summary>思想を読む</summary>
-        <div class="phi-full-text">
-          祖父が事務所を構えていた「エナヂー」という名。<br>
-      そこには、絶え間ない情熱と進化、<br>
-      そして新しい出会いへの渇望がありました。<br><br>
-      Ema.は、写真という一瞬の「点」ではなく、<br>
-      そこに至るまでの「プロセス（線）」を大切にします。<br><br>
-      「間（ma）」という余白や対話を通じて、<br>
-      あなたの内側にある熱量を丁寧に抽出し、<br>
-      新しい価値や高揚感を共に創造していく。<br><br>
-      そんな濃密な時間を経て、<br>
-      あなたの唯一無二の物語を形にします。
-        </div>
-      </details>
-    </div>
+    <div class="phi-summary-item reveal" style="margin-bottom: 0;">
+      <span class="section-label">Origin Story</span>
+      <h2 style="font-family: var(--serif); font-size: clamp(22px, 3vw, 32px); letter-spacing: 0.1em; color: var(--ink); margin-bottom: 48px; line-height: 1.6;">
+        原風景の抽出と、光の処方。
+      </h2>
 
+      <div style="font-family: var(--serif); font-size: 15px; line-height: 2.4; color: var(--muted); max-width: 800px; margin: 0 auto;">
+        <p style="margin-bottom: 32px;">
+          Ema.のすべての撮影は、カメラを持たずに深く聴く「深傾聴」から始まります。<br>
+          かつて、ある表現者との長い対話の中で気づいたことがありました。<br>
+          ただカメラを向け、ポーズを指示するだけでは、その人の「本当に見せたい姿」という名の、美しくも冷たい鎧しか写らない。<br>
+          しかし、生い立ちや葛藤、その人の熱量がどこから来ているのかをじっくりと聴き、沈黙さえも分かち合ったとき、<br>
+          ふと張り詰めた糸がほどけ、誰も見たことのないその人の本質（原風景）がにじみ出てきたのです。
+        </p>
+
+        <p style="margin-bottom: 32px;">
+          「写真は、シャッターを切る前に、もう八割が決まっている。」<br>
+          この確信こそが、Ema.の対話プロセスの原点です。<br>
+          深傾聴は、単なる事前の打ち合わせではなく、心の奥底を紐解く「診断」のプロセス。<br>
+          そして撮影は、その診断に基づいて、どのような光でその人の輪郭を描くべきかを示す「処方箋」にほかなりません。
+        </p>
+
+        <p style="margin-bottom: 32px;">
+          だからこそ、私たちは「ブレ」や「光の軌跡」（ICM・後幕シンクロ）という表現技法にたどり着きました。<br>
+          完全に静止した「点」のポートレートよりも、流れるような光の軌跡や、かすかなブレの中にこそ、<br>
+          その人が生きてきたエネルギー（Energy）や、変わり続ける進化（Evolution）という「線」のプロセスが最も美しく宿るから。
+        </p>
+
+        <p style="margin-bottom: 0;">
+          祖父がかつて営んでいた事務所「エナヂー」。<br>
+          その魂を受け継ぎながら、私たちは写真という名の処方箋を通じて、<br>
+          あなた自身もまだ気づいていない「自分だけの旗」を共に結晶化させていきます。
+        </p>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- PROCESS -->
@@ -795,8 +738,17 @@
       <!-- Plan 1 -->
       <div class="price-row">
         <div>
-          <span style="font-family:var(--garamond); font-size:32px; color:rgba(88,140,100,0.4); line-height:1; display:block; margin-bottom:8px;">01</span>
-          <div class="price-name">Process Portrait</div>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+            <span style="font-family:var(--garamond); font-size:32px; color:rgba(88,140,100,0.4); line-height:1; display:block;">01</span>
+            <span class="price-badge">はじめての方はこちら</span>
+          </div>
+          <div class="price-name" style="display: flex; align-items: center; gap: 12px;">
+            Process Portrait
+            <!-- Subtle fine amber line SVG -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.85;">
+              <path d="M4 12C8 12 10 9 12 12C14 15 16 12 20 12" stroke="#588c64" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </div>
           <p style="font-family:var(--sans); font-size:9px; letter-spacing:0.15em; color:var(--ember); text-transform:uppercase; margin-bottom:16px;">同行型ポートレート</p>
           <div class="price-deliverables">深傾聴(30min) ＋ 撮影(2h) ＋ データ</div>
         </div>
@@ -809,9 +761,14 @@
         <div>
           <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
             <span style="font-family:var(--garamond); font-size:32px; color:rgba(88,140,100,0.6); line-height:1; display:block;">02</span>
-            <span class="price-badge">推奨</span>
           </div>
-          <div class="price-name">Personal Flag</div>
+          <div class="price-name" style="display: flex; align-items: center; gap: 12px;">
+            Personal Flag
+            <!-- Subtle fine amber line SVG -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.85;">
+              <path d="M12 4C12 8 8 10 12 12C16 14 12 16 12 20" stroke="#588c64" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </div>
           <p style="font-family:var(--sans); font-size:9px; letter-spacing:0.15em; color:var(--ember-light); text-transform:uppercase; margin-bottom:16px;">ブレない軸となる旗</p>
           <div class="price-deliverables">深傾聴(1h) ＋ 撮影(カスタム) ＋ データ</div>
         </div>
@@ -830,13 +787,153 @@
   </div>
 </section>
 
+<!-- JOURNAL -->
+<section id="journal" class="works-section" style="padding-top: 160px; padding-bottom: 120px;">
+  <div class="works-header reveal">
+    <div>
+      <span class="section-label">Journal</span>
+      <h2 class="works-h2">軌跡 —— 深傾聴と撮影の記録</h2>
+    </div>
+  </div>
+
+  <div class="works-masonry">
+
+    <!-- その一｜同行型: col 1-8 / 縦 -->
+    <div class="wk wk-8 reveal">
+      <div class="work-card" style="aspect-ratio:2/3;">
+        <img src="DSCF7657.jpg" alt="同行型ポートレート" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below">その一｜同行型ポートレート</div>
+        <div class="work-sub-below">2026.04.12</div>
+        <div class="work-desc-below">
+          朝、まだ体に日常の緊張が残っている状態から撮影は始まります。<br>
+          深傾聴を経て、帰り道の表情は最初と全く違うものになっていました。<br>
+          ——同行型ポートレートの記録より。
+        </div>
+      </div>
+    </div>
+
+    <!-- その二｜K&H: col 9-12 / 縦 / mt-128 -->
+    <div class="wk wk-4 wk-mt-lg reveal">
+      <div class="work-card" style="aspect-ratio:2/3;">
+        <img src="DSCF2900.jpg" alt="ライフイベント ポートレート" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below">その二｜ライフイベント</div>
+        <div class="work-sub-below">2026.05.20</div>
+        <div class="work-desc-below">
+          言葉になる手前の、二人のあいだに流れる静かな時間。<br>
+          ただ綺麗に写るだけでなく、二人の「生活の体温」をそのままフィルムに残す。
+        </div>
+      </div>
+    </div>
+
+    <!-- その三｜Atsushi: col 1-5 / 縦 -->
+    <div class="wk wk-5 reveal">
+      <div class="work-card" style="aspect-ratio:2/3;">
+        <img src="DSCF6786.jpg" alt="LIVE ポートレート" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below">その三｜LIVE ポートレート</div>
+        <div class="work-sub-below">2026.06.15</div>
+        <div class="work-desc-below">
+          熱狂が去ったあとの、張り詰めた静寂。<br>
+          音が消えた瞬間にだけ立ち上がる、アーティストの本当の表情。
+        </div>
+      </div>
+    </div>
+
+    <!-- その四｜SO: col 6-12 / 縦 / mt-96 -->
+    <div class="wk wk-7 wk-mt-md reveal">
+      <div class="work-card" style="aspect-ratio:2/3;">
+        <img src="DSCF5055_Original 3.JPG" onerror="this.src='DSCF5055_Original_3.jpg'" alt="ブランディング キービジュアル" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below">その四｜Personal Flag</div>
+        <div class="work-sub-below">2026.07.08</div>
+        <div class="work-desc-below">
+          自分の軸を見失い、暗闇を彷徨っていた。<br>
+          深傾聴の対話から紡ぎ出された、内なる熱量を結晶化した一枚。<br>
+          それは迷ったときに立ち返る、あなただけの「自分だけの旗」になる。
+        </div>
+      </div>
+    </div>
+
+    <!-- その五｜BirthDay: col 1-4 / 縦 / -mt-32 -->
+    <div class="wk wk-4 wk-mt-sm-neg reveal">
+      <div class="work-card" style="aspect-ratio:2/3;">
+        <img src="DSCF6406.jpg" alt="ライフイベント ポートレート" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below">その五｜ライフイベント</div>
+        <div class="work-sub-below">2026.08.19</div>
+        <div class="work-desc-below">
+          記念日という記号ではなく、一人の人が歳を重ねる瞬間の、<br>
+          かすかな戸惑いと、静かな決意。
+        </div>
+      </div>
+    </div>
+
+    <!-- その六｜JIRO: col 5-12 / 縦 / mt-64 -->
+    <div class="wk wk-8 wk-mt-sm reveal">
+      <div class="work-card" style="aspect-ratio:2/3;">
+        <img src="DSCF9782.JPG" alt="アーティスト ポートレート" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below">その六｜アーティストポートレート</div>
+        <div class="work-sub-below">2026.09.05</div>
+        <div class="work-desc-below">
+          飾られたプロフィール写真ではなく、<br>
+          創作の渦中にいる表現者の、狂気と純粋さの狭間。
+        </div>
+      </div>
+    </div>
+
+    <!-- その七｜WORLZ: col 1-6 / 横 -->
+    <div class="wk wk-6 reveal">
+      <div class="work-card" style="aspect-ratio:4/3;">
+        <img src="DSCF8790.jpg" alt="Band MV Behind the Scenes" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below">その七｜Behind the Scenes</div>
+        <div class="work-sub-below">2026.10.14</div>
+        <div class="work-desc-below">
+          完成された作品ではなく、その裏側にある泥臭い試行錯誤のプロセス。<br>
+          その境界線にこそ、最も人間らしい熱量が宿っている。
+        </div>
+      </div>
+    </div>
+
+    <!-- その八｜術: col 7-12 / 横 / mt-112 -->
+    <div class="wk wk-6 wk-mt-xl reveal">
+      <div class="work-card" style="aspect-ratio:4/3;">
+        <img src="DSCF7810.jpg" alt="イベント Behind the Scenes" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below">その八｜Behind the Scenes</div>
+        <div class="work-sub-below">2026.10.28</div>
+        <div class="work-desc-below">
+          言葉を必要としない身体表現。<br>
+          暗闇のなかに浮かび上がる、剥き出しの存在証明。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- OUTRO MESSAGE -->
 <section class="outro-section">
-  <p class="reveal" style="font-family:var(--serif); color:var(--paper); font-size:clamp(15px, 2vw, 24px); letter-spacing:0.3em; opacity: 0.9; line-height: 2.5;">
+  <p class="reveal" style="font-family:var(--serif); color:var(--paper); font-size:clamp(15px, 2vw, 24px); letter-spacing:0.3em; opacity: 0.9; line-height: 2.5; margin-bottom: 48px;">
     ここまで見に来ていただいて<br>ありがとうございます<br>撮影のご連絡お待ちしてます。
   </p>
-  <a href="mailto:tanachu09@gmail.com" class="contact-link reveal" style="transition-delay: 0.3s;">tanachu09@gmail.com</a>
+  <div class="reveal" style="margin-bottom: 40px;">
+    <a href="https://www.instagram.com/tayu__t/" target="_blank" class="cta-button">
+      Instagram DMでお問い合わせ
+    </a>
+  </div>
+  <a href="mailto:tanachu09@gmail.com" class="contact-link reveal" style="transition-delay: 0.3s; margin-top: 16px;">tanachu09@gmail.com</a>
 </section>
 
 <footer>
