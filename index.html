@@ -11,6 +11,7 @@
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
   <style>
     :root {
       --ink: #243028; /* 深緑墨 */
@@ -29,25 +30,11 @@
 
     html { scroll-behavior: smooth; font-size: 16px; }
 
-    html.lenis, html.lenis body {
-      height: auto;
-    }
-
-    .lenis.lenis-smooth {
-      scroll-behavior: auto !important;
-    }
-
-    .lenis.lenis-smooth [data-lenis-prevent] {
-      overscroll-behavior: contain;
-    }
-
-    .lenis.lenis-stopped {
-      overflow: hidden;
-    }
-
-    .lenis.lenis-scrolling iframe {
-      pointer-events: none;
-    }
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    .lenis.lenis-scrolling iframe { pointer-events: none; }
 
     body {
       font-family: var(--sans);
@@ -60,61 +47,40 @@
 
     /* --- Splash Screen --- */
     #splash-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background: var(--ink);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
-      overflow: hidden;
+      display: flex; justify-content: center; align-items: center;
+      z-index: 10000; overflow: hidden;
     }
-    .splash-logo-wrap {
-      position: absolute;
-      z-index: 10001;
-      text-align: center;
-      pointer-events: none;
-    }
+    .splash-logo-wrap { position: absolute; z-index: 10001; text-align: center; pointer-events: none; }
     .splash-logo-wrap h1 {
-      font-family: var(--serif);
-      font-size: clamp(32px, 8vw, 64px);
-      color: var(--paper);
-      letter-spacing: 0.4em;
-      margin-left: 0.4em;
-      opacity: 0;
-      font-weight: 500;
-      text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      font-family: var(--serif); font-size: clamp(32px, 8vw, 64px);
+      color: var(--paper); letter-spacing: 0.4em; margin-left: 0.4em;
+      opacity: 0; font-weight: 500; text-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
+    .splash-phi { margin-top: 40px; display: flex; flex-direction: column; gap: 16px; }
+    .phi-line {
+      font-family: var(--serif); font-size: 14px; letter-spacing: 0.2em;
+      color: rgba(246, 250, 247, 0.7); opacity: 0;
+    }
+    .phi-line.main { font-size: 16px; color: var(--paper); margin-top: 8px; }
 
     /* --- Custom cursor --- */
     .cursor {
-      width: 8px; height: 8px;
-      background: var(--ember);
-      border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+      width: 8px; height: 8px; background: var(--ember); border-radius: 50%;
+      position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%); transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
       mix-blend-mode: multiply;
     }
     .cursor.hover { width: 32px; height: 32px; background: var(--ember); opacity: 0.3; }
 
     @media (hover: none), (pointer: coarse) {
-      body, a, button, .nav-logo, .nav-links a, .works-link, .work-card {
-        cursor: auto !important;
-      }
+      body, a, button, .nav-logo, .nav-links a, .works-link, .work-card { cursor: auto !important; }
       .cursor { display: none !important; }
     }
 
-    /* Line break utility for mobile readability */
     .pc-br { display: inline; }
     .sp-br { display: none; }
-
     @media (max-width: 768px) {
       .pc-br { display: none !important; }
       .sp-br { display: inline !important; }
@@ -122,43 +88,22 @@
 
     /* --- Nav --- */
     nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 28px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 28px 48px; display: flex; justify-content: space-between; align-items: center;
       transition: background 0.5s, padding 0.5s;
     }
     nav.scrolled {
-      background: rgba(246, 250, 247, 0.95);
-      backdrop-filter: blur(8px);
-      padding: 18px 48px;
-      border-bottom: 1px solid var(--border);
+      background: rgba(246, 250, 247, 0.95); backdrop-filter: blur(8px);
+      padding: 18px 48px; border-bottom: 1px solid var(--border);
     }
     .nav-logo {
-      font-family: var(--serif);
-      font-size: 22px;
-      letter-spacing: 0.25em;
-      color: var(--paper); /* 初期は背景がインクなので白系 */
-      text-decoration: none;
-      transition: color 0.5s;
-    }
-    nav.scrolled .nav-logo {
-      color: var(--ink);
+      font-family: var(--serif); font-size: 22px; letter-spacing: 0.25em;
+      color: var(--ink); text-decoration: none; transition: color 0.5s;
     }
     .nav-links { display: flex; gap: 32px; align-items: center; }
     .nav-links a {
-      font-family: var(--sans);
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(246, 250, 247, 0.7);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    nav.scrolled .nav-links a {
-      color: var(--muted);
+      font-family: var(--sans); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color 0.3s;
     }
     .nav-links a:hover { color: var(--ember); }
 
@@ -167,58 +112,22 @@
       .nav-links { display: none; }
     }
 
-    /* --- Section base --- */
     section { padding: 160px 48px; }
     @media (max-width: 768px) { section { padding: 100px 24px; } }
 
     .section-label {
-      display: block;
-      font-family: var(--sans);
-      font-size: 10px;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--ember);
-      font-weight: 500;
-      margin-bottom: 16px;
+      display: block; font-family: var(--sans); font-size: 10px; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--ember); font-weight: 500; margin-bottom: 16px;
     }
 
     /* --- Works --- */
-    .works-section { background: var(--ink); padding-bottom: 120px; padding-top: 200px; }
-    .works-header {
-      max-width: 1000px; margin: 0 auto 64px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-    .works-h2 {
-      font-family: var(--serif);
-      font-size: clamp(22px, 2.4vw, 32px);
-      letter-spacing: 0.14em;
-      color: var(--paper);
-    }
-    .works-link {
-      font-family: var(--sans);
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--ember-light);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(168, 201, 178, 0.3);
-      padding-bottom: 2px;
-      cursor: none;
-      transition: border-color 0.3s;
-    }
-    .works-link:hover { border-color: var(--ember-light); }
+    .works-section { background: var(--paper); padding-bottom: 120px; padding-top: 200px; }
+    .works-header { max-width: 1000px; margin: 0 auto 64px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .works-h2 { font-family: var(--serif); font-size: clamp(22px, 2.4vw, 32px); letter-spacing: 0.14em; color: var(--ink); }
 
-    /* Works Masonry */
     .works-masonry {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: 24px;
-      row-gap: 0;
-      align-items: start;
+      max-width: 1000px; margin: 0 auto; display: grid;
+      grid-template-columns: repeat(12, 1fr); column-gap: 24px; row-gap: 0; align-items: start;
     }
     .wk { min-width: 0; }
     .wk-4  { grid-column: span 4; }
@@ -236,20 +145,13 @@
     .wk-label { margin-top: 16px; margin-bottom: 64px; }
     .work-card { position: relative; overflow: hidden; background: #1c2620; }
     .work-card img {
-      width: 100%; height: 120%;
-      object-fit: cover;
-      display: block;
-      transition: filter 0.5s;
-      filter: grayscale(15%);
-      will-change: transform;
-      position: absolute;
-      top: 0;
-      left: 0;
+      width: 100%; height: 120%; /* パララックス用に高さを出す */
+      object-fit: cover; display: block; transition: filter 0.5s;
+      filter: grayscale(15%); will-change: transform; position: absolute; top: 0; left: 0;
     }
     .work-card:hover img { filter: grayscale(0%); }
-    .work-name-below { font-family: var(--serif); font-size: 15px; letter-spacing: 0.12em; color: var(--paper); margin-bottom: 4px; }
-    .work-sub-below { font-family: var(--sans); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(246, 250, 247, 0.4); }
-    .work-desc-below { font-family: var(--serif); font-size: 13px; line-height: 1.8; color: rgba(246, 250, 247, 0.75); margin-top: 8px; letter-spacing: 0.05em; }
+    .work-name-below { font-family: var(--serif); font-size: 15px; letter-spacing: 0.12em; color: var(--ink); margin-bottom: 4px; }
+    .work-desc-below { font-family: var(--serif); font-size: 13px; line-height: 1.8; color: var(--muted); margin-top: 8px; letter-spacing: 0.05em; }
 
     @media (max-width: 768px) {
       .works-masonry { grid-template-columns: 1fr 1fr; column-gap: 12px; }
@@ -261,39 +163,24 @@
     @media (max-width: 480px) { .works-masonry { grid-template-columns: 1fr; } }
 
     /* --- Price --- */
-    .price-section { background: var(--paper); }
+    .price-section { background: var(--paper); border-top: 1px solid var(--border); }
     .price-inner { max-width: 860px; margin: 0 auto; }
-    .price-table { border-top: 1px solid var(--ink); margin-top: 48px; }
+    .price-table { border-top: 1px solid var(--border); margin-top: 48px; }
     .price-row {
-      display: grid;
-      grid-template-columns: 2fr 3fr 1fr;
-      gap: 32px;
-      padding: 48px 0;
-      border-bottom: 1px solid var(--border);
-      align-items: start;
+      display: grid; grid-template-columns: 2fr 3fr 1fr; gap: 32px;
+      padding: 48px 0; border-bottom: 1px solid var(--border); align-items: start;
     }
-    .price-row.featured {
-      background: var(--paper2);
-      padding: 48px 28px;
-      margin: 0 -28px;
-      border-top: 2px solid var(--ember);
-    }
+    .price-row.featured { background: var(--paper2); padding: 48px 28px; margin: 0 -28px; border-top: 2px solid var(--ember); }
     .price-badge {
-      display: inline-block;
-      background: var(--ember);
-      color: #fff;
-      font-family: var(--sans);
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      margin-bottom: 8px;
+      display: inline-block; background: var(--ember); color: #fff;
+      font-family: var(--sans); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; padding: 3px 10px; margin-bottom: 8px;
     }
     .price-name { font-family: var(--serif); font-size: 20px; letter-spacing: 0.12em; color: var(--ink); margin-bottom: 8px; }
     .price-deliverables { font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; color: var(--muted); line-height: 1.8; }
     .price-concept-text { font-family: var(--serif); font-size: 14px; line-height: 2.1; color: var(--muted); }
     .price-amount { font-family: var(--garamond); font-size: 24px; color: var(--ink); text-align: right; white-space: nowrap; }
     .price-tax { font-size: 11px; font-family: var(--sans); color: var(--muted); display: block; margin-top: 4px; }
+
     @media (max-width: 640px) { 
       .price-row { grid-template-columns: 1fr; gap: 24px; } 
       .price-amount { text-align: left; } 
@@ -303,401 +190,29 @@
     /* --- Outro --- */
     .outro-section { background: var(--ink); padding: 160px 48px; text-align: center; }
     .contact-link {
-      font-family: var(--garamond);
-      color: var(--paper);
-      font-size: clamp(18px, 2.5vw, 28px);
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 32px;
-      border-bottom: 1px solid rgba(246, 250, 247, 0.2);
-      padding-bottom: 4px;
-      transition: all 0.3s;
+      font-family: var(--garamond); color: var(--paper); font-size: clamp(18px, 2.5vw, 28px);
+      text-decoration: none; display: inline-block; margin-top: 32px;
+      border-bottom: 1px solid rgba(246, 250, 247, 0.2); padding-bottom: 4px; transition: all 0.3s;
     }
-    .contact-link:hover {
-      color: var(--ember-light);
-      border-color: var(--ember-light);
+    .contact-link:hover { color: var(--ember-light); border-color: var(--ember-light); }
+    .cta-button {
+      display: inline-flex; align-items: center; justify-content: center; padding: 16px 40px;
+      font-family: var(--serif); font-size: 14px; color: var(--paper); border: 1px solid var(--ember-light);
+      background: transparent; text-decoration: none; letter-spacing: 0.15em; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
+    .cta-button:hover { background: var(--ember); border-color: var(--ember); color: var(--paper); }
 
-    /* --- Reveal --- */
-    .reveal {
-      opacity: 0;
-      will-change: opacity, transform;
-    }
+    .reveal { opacity: 0; will-change: opacity, transform; }
 
     footer { background: var(--ink); padding: 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(246,250,247,0.05); }
     .footer-logo { font-family: var(--serif); font-size: 20px; letter-spacing: 0.3em; color: var(--paper); }
     .footer-copy { font-family: var(--sans); font-size: 10px; color: rgba(246,250,247,0.3); text-transform: uppercase; letter-spacing: 0.18em;}
-    @media (max-width: 480px) {
-      footer { padding: 32px 24px; flex-direction: column; gap: 16px; }
-    }
-
-    /* --- Concept Section --- */
-    .concept-section {
-      background: var(--paper);
-      padding: 160px 48px;
-    }
-    .concept-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 24px;
-    }
-    .concept-lead {
-      grid-column: 1 / span 8;
-      font-family: var(--serif);
-      font-size: clamp(20px, 3vw, 32px);
-      line-height: 2;
-      color: var(--ink);
-      margin-bottom: 64px;
-    }
-    .concept-story {
-      grid-column: 5 / span 8;
-      font-family: var(--serif);
-      font-size: 15px;
-      line-height: 2.4;
-      color: var(--muted);
-    }
-    .concept-accent {
-      color: var(--ember);
-      font-weight: 500;
-    }
-
-    /* --- Message Section --- */
-    .message-section {
-      background: var(--paper2);
-      padding: 160px 48px;
-    }
-    .message-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .message-h2 {
-      font-family: var(--serif);
-      font-size: clamp(20px, 3vw, 32px);
-      line-height: 1.8;
-      color: var(--ink);
-      margin-bottom: 48px;
-    }
-    .message-text {
-      font-family: var(--serif);
-      font-size: 15px;
-      line-height: 2.2;
-      color: var(--muted);
-      max-width: 640px;
-    }
-    .message-text p {
-      margin-bottom: 24px;
-    }
-    @media (max-width: 768px) {
-      .message-section { padding: 100px 24px; }
-      .concept-section { padding: 100px 24px; }
-      .concept-lead, .concept-story { grid-column: 1 / span 12; }
-      .concept-lead { margin-bottom: 40px; }
-    }
-
-    /* --- Process Section --- */
-    .process-section {
-      background: var(--paper);
-      padding: 160px 48px;
-    }
-    .process-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .process-header {
-      margin-bottom: 80px;
-    }
-    .process-h2 {
-      font-family: var(--serif);
-      font-size: clamp(24px, 3.5vw, 36px);
-      letter-spacing: 0.1em;
-      color: var(--ink);
-      margin-bottom: 32px;
-    }
-    .process-intro {
-      font-family: var(--serif);
-      font-size: 15px;
-      line-height: 2.2;
-      color: var(--muted);
-      max-width: 800px;
-    }
-    .process-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px 60px;
-      margin-bottom: 100px;
-    }
-    .process-item-num {
-      font-family: var(--garamond);
-      font-size: 64px;
-      color: #e5e9e6; /* 薄いグレー、画像に近いニュアンス */
-      line-height: 1;
-      margin-bottom: -20px;
-    }
-    .process-item-label {
-      font-family: var(--sans);
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ember);
-      margin-bottom: 12px;
-      position: relative;
-      z-index: 1;
-    }
-    .process-item-h3 {
-      font-family: var(--serif);
-      font-size: 22px;
-      letter-spacing: 0.1em;
-      color: var(--ink);
-      margin-bottom: 24px;
-    }
-    .process-item-text {
-      font-family: var(--serif);
-      font-size: 14px;
-      line-height: 2.2;
-      color: var(--muted);
-    }
-    .process-footer {
-      margin-top: 100px;
-    }
-    .process-footer-line {
-      width: 100%;
-      height: 1px;
-      background: var(--border);
-      margin-bottom: 48px;
-    }
-    .process-footer-label {
-      font-family: var(--sans);
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ember);
-      margin-bottom: 24px;
-      font-weight: 500;
-    }
-    .process-footer-text {
-      font-family: var(--serif);
-      font-size: 14px;
-      line-height: 2.4;
-      color: var(--muted);
-      max-width: 800px;
-    }
-
-    @media (max-width: 768px) {
-      .process-section { padding: 100px 24px; }
-      .process-grid { grid-template-columns: 1fr; gap: 64px; }
-      .process-header { margin-bottom: 64px; }
-      .process-footer { margin-top: 80px; }
-    }
-
-    /* --- Splash Philosophy --- */
-    .splash-phi {
-      margin-top: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .phi-line {
-      font-family: var(--serif);
-      font-size: 14px;
-      letter-spacing: 0.2em;
-      color: rgba(246, 250, 247, 0.7);
-      opacity: 0;
-    }
-    .phi-line.main {
-      font-size: 16px;
-      color: var(--paper);
-      margin-top: 8px;
-    }
-
-    /* --- Philosophy Summaries --- */
-    .phi-summary-section {
-      background: var(--paper);
-      padding: 120px 48px;
-    }
-    .phi-summary-inner {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .phi-summary-item {
-      margin-bottom: 80px;
-    }
-    .phi-summary-text {
-      font-family: var(--serif);
-      font-size: clamp(18px, 2.5vw, 24px);
-      line-height: 2;
-      color: var(--ink);
-      margin-bottom: 24px;
-    }
-    .phi-details {
-      margin-top: 16px;
-    }
-    .phi-details summary {
-      font-family: var(--sans);
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      color: var(--ember);
-      cursor: pointer;
-      list-style: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: opacity 0.3s;
-    }
-    .phi-details summary:hover {
-      opacity: 0.7;
-    }
-    .phi-details summary::-webkit-details-marker {
-      display: none;
-    }
-    .phi-details summary::after {
-      content: ' →';
-      font-family: var(--sans);
-    }
-    .phi-details[open] summary::after {
-      content: ' ↓';
-    }
-    .phi-full-text {
-      margin-top: 24px;
-      font-family: var(--serif);
-      font-size: 15px;
-      line-height: 2.2;
-      color: var(--muted);
-      border-left: 1px solid var(--border);
-      padding-left: 24px;
-    }
-    .cta-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px 40px;
-      font-family: var(--serif);
-      font-size: 14px;
-      color: var(--paper);
-      border: 1px solid var(--ember-light);
-      background: transparent;
-      text-decoration: none;
-      letter-spacing: 0.15em;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .cta-button:hover {
-      background: var(--ember);
-      border-color: var(--ember);
-      color: var(--paper);
-    }
-
-    /* --- Popup Modal --- */
-    .popup-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(36, 48, 40, 0.4);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      z-index: 9999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .popup-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .popup-container {
-      background: var(--paper);
-      border: 1px solid var(--border);
-      padding: 56px 40px;
-      max-width: 500px;
-      width: 90%;
-      text-align: center;
-      position: relative;
-      transform: translateY(20px);
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .popup-overlay.active .popup-container {
-      transform: translateY(0);
-    }
-    .popup-close-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: none;
-      border: none;
-      font-family: var(--serif);
-      font-size: 20px;
-      color: var(--ink);
-      cursor: pointer;
-      opacity: 0.6;
-      transition: opacity 0.3s ease;
-    }
-    .popup-close-btn:hover {
-      opacity: 1;
-    }
-    .popup-title {
-      font-family: var(--serif);
-      font-size: 13px;
-      color: var(--ember);
-      letter-spacing: 0.2em;
-      margin-bottom: 24px;
-      font-weight: 500;
-    }
-    .popup-message {
-      font-family: var(--serif);
-      font-size: clamp(15px, 4.2vw, 17px);
-      line-height: 2.0;
-      color: var(--ink);
-      margin-bottom: 40px;
-      letter-spacing: 0.05em;
-    }
-    @media (max-width: 480px) {
-      .popup-container {
-        padding: 40px 24px;
-      }
-    }
-    .popup-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .popup-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 28px;
-      font-family: var(--serif);
-      font-size: 13px;
-      text-decoration: none;
-      letter-spacing: 0.1em;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
-    }
-    .popup-btn-primary {
-      background: var(--ink);
-      color: var(--paper);
-      border: 1px solid var(--ink);
-    }
-    .popup-btn-primary:hover {
-      background: var(--ember);
-      border-color: var(--ember);
-    }
-    .popup-btn-secondary {
-      background: transparent;
-      color: var(--ink);
-      border: 1px solid var(--border);
-    }
-    .popup-btn-secondary:hover {
-      border-color: var(--ink);
-    }
+    @media (max-width: 480px) { footer { padding: 32px 24px; flex-direction: column; gap: 16px; } }
   </style>
 </head>
 <body>
 
+<!-- スプラッシュスクリーン -->
 <div id="splash-screen">
   <div class="splash-logo-wrap">
     <h1 id="splash-logo-text">Ema.</h1>
@@ -707,204 +222,19 @@
   </div>
 </div>
 
-<!-- Greeting & Guide Popup Modal -->
-<div class="popup-overlay" id="guide-popup" aria-modal="true" role="dialog">
-  <div class="popup-container">
-    <button class="popup-close-btn" id="popup-close" aria-label="閉じる">×</button>
-    <div class="popup-title">Guide</div>
-    <div class="popup-message">
-      あなたに寄り添うプロセスフォト。<br>
-      撮影実績と価格のご案内。
-    </div>
-    <div class="popup-actions">
-      <a href="#journal" class="popup-btn popup-btn-primary" id="popup-to-journal">実績を見る (Journal)</a>
-      <a href="#price" class="popup-btn popup-btn-secondary" id="popup-to-price">価格を見る (Price)</a>
-    </div>
-  </div>
-</div>
-
 <div class="cursor" id="cursor"></div>
 
 <nav id="nav">
   <a href="#" class="nav-logo">Ema.</a>
   <div class="nav-links">
-    <a href="#philosophy">Philosophy</a>
-    <a href="#process">Process</a>
     <a href="#journal">Journal</a>
     <a href="#price">Price</a>
     <a href="https://www.instagram.com/tayu__t/" target="_blank">Instagram</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero" class="concept-section reveal" style="padding-bottom: 80px; text-align: center;">
-  <div class="concept-inner" style="display: block;">
-    <div class="concept-lead" style="font-family: var(--serif); font-size: clamp(15px, 2.2vw, 20px); line-height: 2.5; color: var(--ink); max-width: 800px; margin: 0 auto; letter-spacing: 0.12em;">
-      あなたの在り方は、言葉にするより先に、<br class="pc-br">たたずまいや、ふとした表情ににじみ出ています。<br>
-      <br>
-      まずはゆっくりお話を聞くことから、<br class="pc-br">撮影は始まります。<br>
-      <br>
-      たくさん話して、ときには沈黙も交わしながら、<br class="pc-br">
-      あなたのなかに眠る大切な想いを、<br class="pc-br">
-      いっしょに見つけて、かたちにしていきたい。<br>
-      <br>
-      Ema. は、ただ結果を残すだけでなく、<br class="pc-br">
-      そんなあたたかな対話のプロセスを<br class="pc-br">
-      いっしょにつくっていくポートレートです。
-    </div>
-  </div>
-</section>
-
-<!-- ORIGIN STORY (PHILOSOPHY) -->
-<section id="philosophy" class="phi-summary-section" style="background: var(--paper2); border-top: 1px solid var(--border); padding-top: 160px; padding-bottom: 160px;">
-  <div class="phi-summary-inner">
-    <div class="phi-summary-item reveal" style="margin-bottom: 0;">
-      <span class="section-label">Origin Story</span>
-      <h2 style="font-family: var(--serif); font-size: clamp(22px, 3vw, 32px); letter-spacing: 0.1em; color: var(--ink); margin-bottom: 48px; line-height: 1.6;">
-        じっくり話して、いっしょにつくる。
-      </h2>
-
-      <div style="font-family: var(--serif); font-size: 15px; line-height: 2.4; color: var(--muted); max-width: 800px; margin: 0 auto;">
-        <p style="margin-bottom: 32px;">
-          Ema.の撮影は、カメラを構える前に、じっくりとお話を聞く「深傾聴」からスタートします。<br class="pc-br">
-          以前、ある表現者の方と何時間も語り合ったことがありました。<br class="pc-br">
-          ただカメラの前に立ってもらって「はい、笑って」とポーズをお願いするだけでは、<br class="pc-br">
-          きれいに整えられた「見せたい自分」という名の、少し硬いお面しか写らないことに気づいたんです。<br class="pc-br">
-          でも、その人がこれまでどんな道を歩んできて、今なににワクワクしているのかをゆっくり聞いていくうちに、<br class="pc-br">
-          ふっと肩の力が抜けて、これまで誰も見たことがないような、その人本来のとても素敵な表情がにじみ出てきました。
-        </p>
-
-        <p style="margin-bottom: 0;">
-          「写真は、シャッターを切る前に、もう8割が決まっている。」<br class="pc-br">
-          このときの確信が、Ema.のすべてのベースになっています。<br class="pc-br">
-          事前の対話は、単なる打ち合わせやインタビューではありません。<br class="pc-br">
-          お互いの心をほぐし、どんな想いやテーマを写真に込めていくかを、ふたりで探り合っていく大切な時間です。<br class="pc-br">
-          そうして生まれた信頼関係があるからこそ、その人にぴったりのあたたかい光や構図が見えてきます。
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section id="process" class="process-section">
-  <div class="process-inner">
-    <div class="process-header reveal">
-      <span class="section-label">Our Process</span>
-      <h2 class="process-h2">記録の設計 —— 何を撮るか</h2>
-      <p class="process-intro">
-        Ema.の撮影は、被写体の状態を一点で切り取るものではありません。深傾聴によって内側の熱量や原風景が立ち上がるように、撮影もまた「間」を経て変化していく時間そのものを設計しています。以下の4つの局面は、その時間軸を可視化するための共通言語です。
-      </p>
-    </div>
-
-    <div class="process-grid">
-      <div class="process-item reveal">
-        <div class="process-item-num">01</div>
-        <div class="process-item-label">ENCOUNTER — 境界の表情</div>
-        <h3 class="process-item-h3">出会い</h3>
-        <p class="process-item-text">日常のモードがまだ体に残っている状態。緊張、警戒、あるいは解放感の予兆。<strong>まだ「間」を経ていない</strong>この瞬間が、後に訪れる変化を映す基準点になります。</p>
-      </div>
-
-      <div class="process-item reveal">
-        <div class="process-item-num">02</div>
-        <div class="process-item-label">IMMERSION — 没入の瞬間</div>
-        <h3 class="process-item-h3">没入している瞬間</h3>
-        <p class="process-item-text">観察する、耳を澄ます、手を動かす。所作の説明ではなく、<strong>その人固有の「間」の使い方</strong>そのものを撮る局面。深傾聴が言葉で原風景を引き出すように、ここでは身体を通じてそれが滲み出てきます。</p>
-      </div>
-
-      <div class="process-item reveal">
-        <div class="process-item-num">03</div>
-        <div class="process-item-label">MA — 対話の瞬間</div>
-        <h3 class="process-item-h3">間</h3>
-        <p class="process-item-text">一泊を挟むなら夜〜翌朝。日帰りなら活動の合間や帰り支度の前後。<strong>区切りを経たからこそ</strong>出てくる言葉がある局面。撮るというより、聴きながら撮る時間です。</p>
-      </div>
-
-      <div class="process-item reveal">
-        <div class="process-item-num">04</div>
-        <div class="process-item-label">RETURN — 結晶化</div>
-        <h3 class="process-item-h3">帰路</h3>
-        <p class="process-item-text">体験が言葉より先に、体に入っている状態。出会いの瞬間の表情と並べたとき、初めて<strong>変化そのものが可視化</strong>されます。記録ではなく、光の軌跡としての結晶化です。</p>
-      </div>
-    </div>
-
-    <div class="process-footer reveal">
-      <div class="process-footer-line"></div>
-      <div class="process-footer-content">
-        <div class="process-footer-label">WHY THIS STRUCTURE — なぜこの4点セットなのか</div>
-        <p class="process-footer-text">
-          Ema.という名前は、Energy・Evolution・Encounterという3つのEが「間（ま）」を経て、初めてわくわくという価値になる、という考えに基づいています。この4局面は、その構造を<strong>撮影の時間軸に展開したもの</strong>にほかなりません。一泊のプランでも日帰りのプランでも、街中の短いセッションでも骨格は変わらず、変わるのは各局面にかける時間配分と密度だけです。
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- PRICE -->
-<section class="price-section" id="price">
-  <div class="price-inner reveal">
-    <span class="section-label">Shooting Plans</span>
-    <h2 class="works-h2" style="font-size:32px; color:var(--ink);">PRICE.</h2>
-    <p style="font-family:var(--serif); font-size:12px; color:var(--muted); letter-spacing:0.1em; margin-top: 16px; border-left: 1px solid var(--ember); padding-left: 16px; line-height: 2.2;">
-      すべてのプランに、<br class="pc-br">事前の深傾聴セッションが含まれます。<br class="pc-br"><span class="sp-br"> </span>現在は２つのプランを展開中です。
-    </p>
-    
-    <div class="price-table">
-      <!-- Plan 1 -->
-      <div class="price-row">
-        <div>
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-            <span style="font-family:var(--garamond); font-size:32px; color:rgba(88,140,100,0.4); line-height:1; display:block;">01</span>
-            <span class="price-badge">はじめての方はこちら</span>
-          </div>
-          <div class="price-name" style="display: flex; align-items: center; gap: 12px;">
-            Process Portrait
-            <!-- Subtle fine amber line SVG -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.85;">
-              <path d="M4 12C8 12 10 9 12 12C14 15 16 12 20 12" stroke="#588c64" stroke-width="1" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <p style="font-family:var(--sans); font-size:9px; letter-spacing:0.15em; color:var(--ember); text-transform:uppercase; margin-bottom:16px;">同行型ポートレート</p>
-          <div class="price-deliverables">深傾聴(30min) ＋ 撮影(2h) ＋ データ</div>
-        </div>
-        <div class="price-concept-text">あなたの内側にある熱量を抽出し、可視化する撮影体験。<br class="pc-br">表面的な「映え」ではなく、プロセスそのものを記録します。<br class="pc-br">同行型ポートレートはこちらのプランになります。</div>
-        <div class="price-amount">¥25,000<span class="price-tax">税込</span></div>
-      </div>
-
-      <!-- Plan 2 -->
-      <div class="price-row featured">
-        <div>
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-            <span style="font-family:var(--garamond); font-size:32px; color:rgba(88,140,100,0.6); line-height:1; display:block;">02</span>
-          </div>
-          <div class="price-name" style="display: flex; align-items: center; gap: 12px;">
-            Personal Flag
-            <!-- Subtle fine amber line SVG -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.85;">
-              <path d="M12 4C12 8 8 10 12 12C16 14 12 16 12 20" stroke="#588c64" stroke-width="1" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <p style="font-family:var(--sans); font-size:9px; letter-spacing:0.15em; color:var(--ember-light); text-transform:uppercase; margin-bottom:16px;">ブレない軸となる旗</p>
-          <div class="price-deliverables">深傾聴(1h) ＋ 撮影(カスタム) ＋ データ</div>
-        </div>
-        <div class="price-concept-text">深傾聴を通じて、あなたの「原風景」を抽出し、<br class="pc-br">光の軌跡（写真・映像）として結晶化させます。<br class="pc-br">迷ったときにいつでも立ち返れる、<br class="pc-br">あなたの「自分だけの旗」を共に創り上げます。</div>
-        <div class="price-amount">¥35,000<span class="price-tax">税込</span></div>
-      </div>
-    </div>
-
-    <div class="reveal" style="margin-top: 64px; border-top: 1px solid var(--border); padding-top: 32px; max-width: 500px;">
-      <h3 style="font-family:var(--serif); font-size:14px; color:var(--ink); letter-spacing:0.1em; margin-bottom:12px;">お支払いについて</h3>
-      <p style="font-family:var(--serif); font-size:12px; color:var(--muted); line-height:2; letter-spacing:0.05em;">
-        口座振込または当日現金でのお支払いにてご対応しております。<br class="pc-br">
-        恐れ入りますが、口座振込は原則、撮影前日までのお支払いをお願いしております。
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- JOURNAL -->
-<section id="journal" class="works-section" style="padding-top: 160px; padding-bottom: 120px;">
+<!-- JOURNAL (WORKS) -->
+<section id="journal" class="works-section">
   <div class="works-header reveal">
     <div>
       <span class="section-label">Journal</span>
@@ -913,8 +243,7 @@
   </div>
 
   <div class="works-masonry">
-
-    <!-- その一｜同行型: col 1-8 / 縦 -->
+    <!-- その一｜同行型 -->
     <div class="wk wk-8 reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
         <img src="DSCF7657.jpg" alt="同行型ポートレート" loading="lazy">
@@ -929,7 +258,7 @@
       </div>
     </div>
 
-    <!-- その二｜K&H: col 9-12 / 縦 / mt-128 -->
+    <!-- その二｜K&H -->
     <div class="wk wk-4 wk-mt-lg reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
         <img src="DSCF2900.jpg" alt="ライフイベント ポートレート" loading="lazy">
@@ -943,7 +272,7 @@
       </div>
     </div>
 
-    <!-- その三｜Atsushi: col 1-5 / 縦 -->
+    <!-- その三｜Atsushi -->
     <div class="wk wk-5 reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
         <img src="DSCF6786.jpg" alt="LIVE ポートレート" loading="lazy">
@@ -956,7 +285,7 @@
       </div>
     </div>
 
-    <!-- その四｜SO: col 6-12 / 縦 / mt-96 -->
+    <!-- その四｜SO -->
     <div class="wk wk-7 wk-mt-md reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
         <img src="DSCF5055_Original 3.JPG" onerror="this.src='DSCF5055_Original_3.jpg'" alt="ブランディング キービジュアル" loading="lazy">
@@ -970,7 +299,7 @@
       </div>
     </div>
 
-    <!-- その五｜BirthDay: col 1-4 / 縦 / -mt-32 -->
+    <!-- その五｜BirthDay -->
     <div class="wk wk-4 wk-mt-sm-neg reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
         <img src="DSCF6406.jpg" alt="ライフイベント ポートレート" loading="lazy">
@@ -984,10 +313,10 @@
       </div>
     </div>
 
-    <!-- その六｜JIRO: col 5-12 / 縦 / mt-64 -->
+    <!-- その六｜JIRO -->
     <div class="wk wk-8 wk-mt-sm reveal">
       <div class="work-card" style="aspect-ratio:2/3;">
-        <img src="DSCF9782.JPG" alt="アーティスト ポートレート" loading="lazy">
+        <img src="DSCF9782.JPG" onerror="this.src='DSCF1806.jpg'" alt="アーティスト ポートレート" loading="lazy">
       </div>
       <div class="wk-label">
         <div class="work-name-below">アーティストポートレート</div>
@@ -998,7 +327,7 @@
       </div>
     </div>
 
-    <!-- その七｜WORLZ: col 1-6 / 横 -->
+    <!-- その七｜WORLZ -->
     <div class="wk wk-6 reveal">
       <div class="work-card" style="aspect-ratio:4/3;">
         <img src="DSCF8790.jpg" alt="Band MV Behind the Scenes" loading="lazy">
@@ -1012,7 +341,7 @@
       </div>
     </div>
 
-    <!-- その八｜術: col 7-12 / 横 / mt-112 -->
+    <!-- その八｜術 -->
     <div class="wk wk-6 wk-mt-xl reveal">
       <div class="work-card" style="aspect-ratio:4/3;">
         <img src="DSCF7810.jpg" alt="イベント Behind the Scenes" loading="lazy">
@@ -1027,6 +356,81 @@
   </div>
 </section>
 
+<!-- PRICE -->
+<section class="price-section" id="price">
+  <div class="price-inner reveal">
+    <span class="section-label">Shooting Plans</span>
+    <h2 class="works-h2" style="font-size:32px; color:var(--ink);">PRICE.</h2>
+
+    <p style="font-family:var(--garamond); font-style:italic; font-size:clamp(18px,2.4vw,24px); color:var(--ink); letter-spacing:0.06em; margin-top:32px; line-height:1.8;">
+      揺らぎを、軌跡に。
+    </p>
+    <p style="font-family:var(--serif); font-size:12px; color:var(--muted); letter-spacing:0.08em; margin-top:16px; line-height:2.2; max-width:640px;">
+      まだ言葉になっていない揺らぎを、プロセスポートレートで軌跡に変えていく。<br class="pc-br">
+      それは、その人の誠実さを「見える形」にすること。<br class="pc-br">
+      それは、その人と社会をつなぐ、新しい出会いの入り口になること。<br class="pc-br">
+      そしてそれは、その人がいなくなった後も、在り方が残り続ける記録になること。
+    </p>
+
+    <p style="font-family:var(--serif); font-size:12px; color:var(--muted); letter-spacing:0.1em; margin-top: 32px; border-left: 1px solid var(--ember); padding-left: 16px; line-height: 2.2;">
+      すべてのプランに、<br class="pc-br">事前の深傾聴セッションが含まれます。<br class="pc-br"><span class="sp-br"> </span>現在は２つのプランを展開中です。
+    </p>
+
+    <div class="price-table">
+      <!-- Plan 1 -->
+      <div class="price-row">
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; flex-wrap:wrap; gap:8px;">
+            <span style="font-family:var(--garamond); font-size:32px; color:rgba(88,140,100,0.4); line-height:1; display:block;">01</span>
+            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:6px;">
+              <span class="price-badge">はじめての方はこちら</span>
+              <span class="price-badge" style="background:transparent; border:1px solid var(--border); color:var(--muted);">スタンダードプラン</span>
+            </div>
+          </div>
+          <div class="price-name" style="display: flex; align-items: center; gap: 12px;">
+            Process Portrait
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.85;">
+              <path d="M4 12C8 12 10 9 12 12C14 15 16 12 20 12" stroke="#588c64" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p style="font-family:var(--sans); font-size:9px; letter-spacing:0.15em; color:var(--ember); text-transform:uppercase; margin-bottom:16px;">同行型ポートレート</p>
+          <div class="price-deliverables">深傾聴(30min) ＋ 撮影(2h) ＋ データ</div>
+        </div>
+        <div class="price-concept-text">あなたの内側にある熱量を抽出し、可視化する撮影体験。<br class="pc-br">表面的な「映え」ではなく、プロセスそのものを記録します。<br class="pc-br">気軽に試せる入口でありながら、多くの方にとってはこれで十分な、Ema.のスタンダードです。</div>
+        <div class="price-amount">¥25,000<span class="price-tax">税込</span></div>
+      </div>
+
+      <!-- Plan 2 -->
+      <div class="price-row featured">
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+            <span style="font-family:var(--garamond); font-size:32px; color:rgba(88,140,100,0.6); line-height:1; display:block;">02</span>
+            <span class="price-badge">推奨</span>
+          </div>
+          <div class="price-name" style="display: flex; align-items: center; gap: 12px;">
+            Personal Flag
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.85;">
+              <path d="M12 4C12 8 8 10 12 12C16 14 12 16 12 20" stroke="#588c64" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p style="font-family:var(--sans); font-size:9px; letter-spacing:0.15em; color:var(--ember-light); text-transform:uppercase; margin-bottom:16px;">ブレない軸となる旗</p>
+          <div class="price-deliverables">深傾聴(1h) ＋ 撮影(カスタム) ＋ データ</div>
+        </div>
+        <div class="price-concept-text">深傾聴を通じて、あなたの「原風景」を抽出し、<br class="pc-br">光の軌跡（写真・映像）として結晶化させます。<br class="pc-br">迷ったときにいつでも立ち返れる、<br class="pc-br">あなたの「自分だけの旗」を共に創り上げます。</div>
+        <div class="price-amount">¥35,000<span class="price-tax">税込</span></div>
+      </div>
+    </div>
+
+    <!-- お支払いについて -->
+    <div class="reveal" style="margin-top: 64px; border-top: 1px solid var(--border); padding-top: 32px; max-width: 500px;">
+      <h3 style="font-family:var(--serif); font-size:14px; color:var(--ink); letter-spacing:0.1em; margin-bottom:12px;">お支払いについて</h3>
+      <p style="font-family:var(--serif); font-size:12px; color:var(--muted); line-height:2; letter-spacing:0.05em;">
+        口座振込または当日現金でのお支払いにてご対応しております。<br class="pc-br">
+        恐れ入りますが、口座振込は原則、撮影前日までのお支払いをお願いしております。
+      </p>
+    </div>
+  </div>
+</section>
 
 <!-- OUTRO MESSAGE -->
 <section class="outro-section">
@@ -1047,86 +451,30 @@
 </footer>
 
 <script>
-// Cursor
+// Cursor Follow
 const cursor = document.getElementById('cursor');
 document.addEventListener('mousemove', e => {
   cursor.style.left = e.clientX + 'px';
   cursor.style.top = e.clientY + 'px';
 });
-document.querySelectorAll('a, button, .work-card, .popup-close-btn, .popup-btn').forEach(el => {
+document.querySelectorAll('a, button, .work-card, .cta-button').forEach(el => {
   el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
 });
 
-// Nav
+// Nav Scroll Effect
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
-// GSAP Register
+// GSAP Setup
 gsap.registerPlugin(ScrollTrigger);
 
 // Splash Animation
 const tl = gsap.timeline({
   onComplete: () => {
     document.getElementById('splash-screen').style.display = 'none';
-
-    // Smoothly show the guide popup after splash animation ends
-    const popup = document.getElementById('guide-popup');
-    if (popup) {
-      popup.classList.add('active');
-    }
-  }
-});
-
-// Setup Popup Interaction Event Listeners
-document.addEventListener('DOMContentLoaded', () => {
-  const popup = document.getElementById('guide-popup');
-  const closeBtn = document.getElementById('popup-close');
-  const toJournalBtn = document.getElementById('popup-to-journal');
-  const toPriceBtn = document.getElementById('popup-to-price');
-
-  const closePopup = () => {
-    if (popup) {
-      popup.classList.remove('active');
-      // Start lenis smooth scrolling once popup is closed
-      lenis.start();
-    }
-  };
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closePopup);
-  }
-
-  // Also close popup when clicking the overlay area outside the container
-  if (popup) {
-    popup.addEventListener('click', (e) => {
-      if (e.target === popup) {
-        closePopup();
-      }
-    });
-  }
-
-  if (toJournalBtn) {
-    toJournalBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      closePopup();
-      // Scroll to #journal after a slight delay for smooth transition
-      setTimeout(() => {
-        lenis.scrollTo('#journal', { offset: 0, duration: 1.2 });
-      }, 100);
-    });
-  }
-
-  if (toPriceBtn) {
-    toPriceBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      closePopup();
-      // Scroll to #price after a slight delay for smooth transition
-      setTimeout(() => {
-        lenis.scrollTo('#price', { offset: 0, duration: 1.2 });
-      }, 100);
-    });
+    lenis.start(); // Start smooth scrolling
   }
 });
 
@@ -1146,28 +494,21 @@ tl.fromTo("#splash-logo-text",
   delay: 1.5
 });
 
-// Lenis Initialize
+// Lenis Smooth Scroll Init
 const lenis = new Lenis({
   duration: 1.2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   orientation: 'vertical',
-  gestureOrientation: 'vertical',
   smoothWheel: true,
-  wheelMultiplier: 1,
-  smoothTouch: false,
   touchMultiplier: 2,
-  infinite: false,
 });
 
-// Integrate Lenis with GSAP ScrollTrigger
-lenis.stop(); // Stop scrolling during splash
+lenis.stop(); // Wait for splash screen
 lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add((time) => {
-  lenis.raf(time * 1000);
-});
+gsap.ticker.add((time) => { lenis.raf(time * 1000); });
 gsap.ticker.lagSmoothing(0);
 
-// Reveal Animation
+// GSAP Reveal Animation
 document.querySelectorAll('.reveal').forEach((el) => {
   gsap.fromTo(el,
     { opacity: 0, y: 60 },
@@ -1176,16 +517,12 @@ document.querySelectorAll('.reveal').forEach((el) => {
       y: 0,
       duration: 1.6,
       ease: "power4.out",
-      scrollTrigger: {
-        trigger: el,
-        start: "top 85%",
-        toggleActions: "play none none none"
-      }
+      scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none none" }
     }
   );
 });
 
-// Parallax Effect for Works
+// GSAP Image Parallax
 document.querySelectorAll('.work-card img').forEach((img) => {
   gsap.to(img, {
     y: "-15%",
@@ -1196,13 +533,6 @@ document.querySelectorAll('.work-card img').forEach((img) => {
       end: "bottom top",
       scrub: true
     }
-  });
-});
-
-// Accordion ScrollTrigger Refresh
-document.querySelectorAll('.phi-details').forEach(details => {
-  details.addEventListener('toggle', () => {
-    ScrollTrigger.refresh();
   });
 });
 
