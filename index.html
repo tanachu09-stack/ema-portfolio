@@ -70,7 +70,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.6vh;
+    gap: 2.2vh;
     max-width: 560px;
   }
 
@@ -105,6 +105,31 @@
     opacity: 0;
     animation: rise 1s ease forwards;
     animation-delay: 1.5s;
+  }
+
+  .modal-trigger-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: clamp(12px, 1.3vh, 14px);
+    color: var(--ember);
+    cursor: pointer;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: rgba(88, 140, 100, 0.08);
+    transition: background 0.3s ease, color 0.3s ease;
+    opacity: 0;
+    animation: rise 1s ease forwards;
+    animation-delay: 1.65s;
+  }
+
+  .modal-trigger-btn:hover, .modal-trigger-btn:focus-visible{
+    background: rgba(88, 140, 100, 0.18);
+    color: var(--ink);
+    outline: none;
   }
 
   .process-line{
@@ -147,11 +172,6 @@
     font-style: italic;
     color: var(--ember);
     margin-left: 6px;
-  }
-
-  .price-note{
-    font-size: clamp(11px, 1.3vh, 13px);
-    color: var(--muted);
   }
 
   .cta{
@@ -217,15 +237,144 @@
     animation-delay: 2.6s;
   }
 
+  /* Popup Modal Styles */
+  .modal-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(36, 48, 40, 0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+
+  .modal-overlay.is-visible{
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-card{
+    background: var(--paper);
+    border: 1px solid rgba(168, 201, 178, 0.5);
+    box-shadow: 0 20px 40px rgba(36, 48, 40, 0.15);
+    border-radius: 16px;
+    width: min(90vw, 440px);
+    padding: clamp(24px, 5vw, 36px);
+    position: relative;
+    text-align: left;
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .modal-overlay.is-visible .modal-card{
+    transform: translateY(0) scale(1);
+  }
+
+  .modal-close-btn{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    line-height: 1;
+    color: var(--muted);
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .modal-close-btn:hover, .modal-close-btn:focus-visible{
+    background: rgba(88, 140, 100, 0.12);
+    color: var(--ink);
+    outline: none;
+  }
+
+  .modal-title{
+    font-family: 'Shippori Mincho B1', serif;
+    font-weight: 500;
+    font-size: clamp(17px, 3vw, 20px);
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--ember-light);
+  }
+
+  .modal-list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .modal-list li{
+    position: relative;
+    padding-left: 20px;
+    font-size: clamp(13px, 2.2vw, 14.5px);
+    line-height: 1.7;
+    color: var(--ink);
+    word-break: auto-phrase;
+    line-break: strict;
+  }
+
+  .modal-list li::before{
+    content: "―";
+    position: absolute;
+    left: 0;
+    color: var(--ember);
+    font-weight: bold;
+  }
+
+  .modal-action-btn{
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    background: var(--ink);
+    color: var(--paper);
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+
+  .modal-action-btn:hover, .modal-action-btn:focus-visible{
+    background: var(--ember);
+    border-color: var(--ember);
+    outline: none;
+  }
+
   @keyframes rise{
     from{ opacity: 0; transform: translateY(10px); }
     to{ opacity: 1; transform: translateY(0); }
   }
 
   @media (prefers-reduced-motion: reduce){
-    .label, h1, .statement, .process-line, .price, .cta, .mail-link, .mark{
+    .label, h1, .statement, .modal-trigger-btn, .process-line, .price, .cta, .mail-link, .mark{
       animation: none !important;
       opacity: 1 !important;
+    }
+    .modal-overlay, .modal-card{
+      transition: none !important;
     }
   }
 
@@ -246,6 +395,10 @@
       <h1>プロセスポートレートで<br>あなたの在り方を<br>記録しましょう。</h1>
       <p class="statement">あなたの在り方であれば、ジャンルはなんでも。<br>得られるもの：同行中のあなたの写真・動画<br>個人の記録や発信、事業利用にお使いください。<br>※カメラやマイクは、独自の感覚で選んだものを使用。</p>
 
+      <button type="button" class="modal-trigger-btn" id="openModalBtn" aria-haspopup="dialog">
+        こんな瞬間を残したい人へ ✦
+      </button>
+
       <div class="process-line">
         <span>話す</span>
         <span class="sep"></span>
@@ -263,6 +416,21 @@
     </div>
 
     <p class="mark">Ema.</p>
+  </div>
+
+  <!-- Popup Modal -->
+  <div class="modal-overlay" id="targetModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn" id="closeModalBtn" aria-label="閉じる">&times;</button>
+      <h2 class="modal-title" id="modalTitle">こんな瞬間を残したい人へ。</h2>
+      <ul class="modal-list">
+        <li>自分の仕事をしている姿を残したい</li>
+        <li>何かを始めた今を残したい</li>
+        <li>自分では気づいていない姿を知りたい</li>
+        <li>SNS用の写真だけではなく、自分自身の記録が欲しい</li>
+      </ul>
+      <button type="button" class="modal-action-btn" id="modalConfirmBtn">閉じる</button>
+    </div>
   </div>
 
 <script>
@@ -284,6 +452,45 @@
       });
     }
   }
+
+  /* Modal Logic */
+  var modal = document.getElementById('targetModal');
+  var openBtn = document.getElementById('openModalBtn');
+  var closeBtn = document.getElementById('closeModalBtn');
+  var confirmBtn = document.getElementById('modalConfirmBtn');
+
+  function openModal() {
+    modal.classList.add('is-visible');
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-visible');
+    if (document.activeElement && modal.contains(document.activeElement)) {
+      openBtn.focus();
+    }
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  confirmBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-visible')) {
+      closeModal();
+    }
+  });
+
+  // Automatically show popup on first visit/load so it's immediately visible
+  window.addEventListener('load', function() {
+    setTimeout(openModal, 400);
+  });
 </script>
 
 </body>
