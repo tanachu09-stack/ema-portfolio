@@ -3,497 +3,1057 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DOUKOU | Ema.</title>
+<title>Ema. | 在り方を写す、写実家。</title>
+<meta name="description" content="写真を撮る。そのためだけの時間ではなく。あなたが、あなたである時間を。写実家 Ema.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600;800&family=Noto+Sans+JP:wght@300;400;500&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Shippori+Mincho+B1:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink: #E0E1DD;
+  :root {
     --paper: #0D1B2A;
     --card-bg: #1B263B;
-    --ember: #778DA9;
     --ember-light: #415A77;
+    --ember: #778DA9;
+    --ink: #E0E1DD;
     --muted: #778DA9;
+    --font-serif: 'Shippori Mincho B1', serif;
+    --font-sans: 'Noto Sans JP', sans-serif;
+    --font-latin: 'EB Garamond', serif;
   }
 
-  *{ box-sizing: border-box; margin:0; padding:0; }
-
-  html, body{
-    height: 100%;
-    overflow: hidden;
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
-  body{
-    background: var(--paper);
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--paper);
     color: var(--ink);
-    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
     font-weight: 300;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  a{ color: inherit; }
-
-  .page{
-    height: 100dvh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    padding: 4vh 24px;
-    text-align: center;
-  }
-
-  .hero-trace{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -58%);
-    width: min(70vw, 560px);
-    height: auto;
-    pointer-events: none;
-    opacity: 0.6;
-    z-index: 0;
-  }
-
-  .hero-trace path{
-    fill: none;
-    stroke: var(--ember-light);
-    stroke-width: 1.2;
-    stroke-linecap: round;
-  }
-
-  .stack{
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2.2vh;
-    max-width: 560px;
-  }
-
-  .label{
-    font-family: 'EB Garamond', serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: clamp(44px, 9vh, 96px);
-    letter-spacing: 0.08em;
+    line-height: 1.8;
+    background-color: var(--paper);
     color: var(--ink);
-    opacity: 0;
-    animation: rise 1s ease forwards;
-    animation-delay: 0.9s;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
-  h1{
-    font-family: 'Shippori Mincho B1', serif;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Utility Break Classes for Mobile & Desktop text flow */
+  .pc-br { display: none; }
+  .sp-br { display: inline; }
+  @media (min-width: 768px) {
+    .pc-br { display: inline; }
+    .sp-br { display: none; }
+  }
+
+  /* Typography Utilities */
+  .serif { font-family: var(--font-serif); }
+  .latin { font-family: var(--font-latin); }
+
+  .section-tag {
+    font-family: var(--font-latin);
+    font-size: 14px;
+    letter-spacing: 0.25em;
+    color: var(--ember);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: var(--font-serif);
     font-weight: 500;
-    letter-spacing: 0.03em;
-    font-size: clamp(22px, 3.6vh, 36px);
-    line-height: 1.65;
-    opacity: 0;
-    animation: rise 1.1s ease forwards;
-    animation-delay: 1.1s;
+    font-size: clamp(24px, 4.5vw, 38px);
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin-bottom: 24px;
+    word-break: auto-phrase;
+    line-break: strict;
   }
 
-  .statement{
-    font-size: clamp(13px, 1.6vh, 15px);
-    color: var(--muted);
-    line-height: 1.9;
-    max-width: 420px;
-    opacity: 0;
-    animation: rise 1s ease forwards;
-    animation-delay: 1.5s;
+  .container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px;
   }
 
-  .modal-trigger-btn{
+  .container-narrow {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Buttons */
+  .btn-primary {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    background: rgba(119, 141, 169, 0.12);
-    border: 1px solid var(--ember-light);
-    font-family: 'Shippori Mincho B1', serif;
-    font-size: clamp(12px, 1.3vh, 14px);
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 36px;
+    background-color: transparent;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
     color: var(--ink);
-    cursor: pointer;
-    padding: 6px 16px;
-    border-radius: 20px;
-    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-    opacity: 0;
-    animation: rise 1s ease forwards;
-    animation-delay: 1.65s;
+    font-family: var(--font-serif);
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
   }
 
-  .modal-trigger-btn:hover, .modal-trigger-btn:focus-visible{
-    background: rgba(119, 141, 169, 0.25);
-    border-color: var(--ember);
-    color: var(--ink);
+  .btn-primary:hover, .btn-primary:focus-visible {
+    background-color: var(--ink);
+    color: var(--paper);
+    transform: translateY(-2px);
     outline: none;
   }
 
-  .process-line{
-    display: flex;
-    align-items: center;
-    gap: clamp(10px, 1.6vw, 18px);
-    font-family: 'Shippori Mincho B1', serif;
-    font-size: clamp(13px, 1.6vh, 16px);
-    color: var(--ink);
-    opacity: 0;
-    animation: rise 1s ease forwards;
-    animation-delay: 1.8s;
+  .btn-primary .sub {
+    font-size: 12px;
+    opacity: 0.8;
   }
 
-  .process-line .sep{
-    width: 20px;
-    height: 1px;
-    background: var(--ember-light);
-  }
-
-  .price{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.8vh;
-    opacity: 0;
-    animation: rise 1s ease forwards;
-    animation-delay: 2.1s;
-  }
-
-  .price-figure{
-    font-family: 'EB Garamond', serif;
-    font-style: italic;
-    font-size: clamp(28px, 4.4vh, 42px);
-    color: var(--ink);
-  }
-
-  .price-figure span{
-    font-size: 0.75em;
-    font-style: italic;
-    color: var(--ember);
-    margin-left: 6px;
-  }
-
-  .cta{
-    display: inline-block;
-    margin-top: 0.6vh;
-    padding: clamp(11px, 1.6vh, 15px) clamp(28px, 4vw, 38px);
-    border: 1px solid var(--ink);
-    border-radius: 999px;
-    text-decoration: none;
-    font-size: clamp(13px, 1.5vh, 15px);
-    letter-spacing: 0.06em;
-    color: var(--ink);
-    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    opacity: 0;
-    animation: rise 1s ease forwards;
-    animation-delay: 2.4s;
-  }
-
-  .cta:hover, .cta:focus-visible{
-    background: var(--ink);
-    color: var(--paper);
-  }
-
-  .cta:focus-visible{
-    outline: 2px solid var(--ember);
-    outline-offset: 3px;
-  }
-
-  .cta-sub{
-    margin-left: 0.5em;
-    font-size: 0.8em;
-    opacity: 0.75;
-  }
-
-  .mail-link{
-    display: inline-block;
-    margin-top: 1.2vh;
-    font-size: clamp(11px, 1.2vh, 13px);
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.02em;
-    opacity: 0;
-    animation: rise 1s ease forwards;
-    animation-delay: 2.5s;
-  }
-
-  .mail-link:hover, .mail-link:focus-visible{
-    color: var(--ink);
-  }
-
-  .mark{
-    position: absolute;
-    bottom: 3vh;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-family: 'Shippori Mincho B1', serif;
-    font-size: clamp(10px, 1.2vh, 12px);
-    letter-spacing: 0.2em;
-    color: var(--muted);
-    opacity: 0;
-    animation: rise 1s ease forwards;
-    animation-delay: 2.6s;
-  }
-
-  /* Popup Modal Styles */
-  .modal-overlay{
+  /* Header / Nav */
+  header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(13, 27, 42, 0.75);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    width: 100%;
     z-index: 100;
+    padding: 24px 32px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
+    background: linear-gradient(to bottom, rgba(13, 27, 42, 0.85), rgba(13, 27, 42, 0));
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
 
-  .modal-overlay.is-visible{
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .modal-card{
-    background: var(--card-bg);
-    border: 1px solid var(--ember-light);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    border-radius: 16px;
-    width: min(90vw, 440px);
-    padding: clamp(24px, 5vw, 36px);
-    position: relative;
-    text-align: left;
-    transform: translateY(20px) scale(0.97);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .modal-overlay.is-visible .modal-card{
-    transform: translateY(0) scale(1);
-  }
-
-  .modal-close-btn{
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    background: none;
-    border: none;
+  .brand-logo {
+    font-family: var(--font-serif);
     font-size: 22px;
-    line-height: 1;
-    color: var(--muted);
-    cursor: pointer;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .nav-cta {
+    font-family: var(--font-serif);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    padding: 8px 18px;
+    border: 1px solid rgba(224, 225, 221, 0.4);
+    border-radius: 999px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-cta:hover {
+    background-color: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  /* 1. HERO SECTION */
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s ease, color 0.2s ease;
+    padding: 120px 24px 80px;
+    text-align: center;
+    overflow: hidden;
   }
 
-  .modal-close-btn:hover, .modal-close-btn:focus-visible{
-    background: rgba(119, 141, 169, 0.2);
-    color: var(--ink);
-    outline: none;
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
   }
 
-  .modal-title{
-    font-family: 'Shippori Mincho B1', serif;
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.28;
+    filter: brightness(0.8) contrast(1.05);
+  }
+
+  .hero-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(13, 27, 42, 0.4) 0%, rgba(13, 27, 42, 0.95) 100%),
+                linear-gradient(to bottom, rgba(13, 27, 42, 0.3) 0%, var(--paper) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .hero-tag {
+    font-family: var(--font-serif);
+    font-size: clamp(14px, 2.2vw, 18px);
+    letter-spacing: 0.2em;
+    color: var(--ember);
+  }
+
+  .hero-main-title {
+    font-family: var(--font-serif);
     font-weight: 500;
-    font-size: clamp(17px, 3vw, 20px);
-    letter-spacing: 0.04em;
+    font-size: clamp(28px, 5.5vw, 48px);
+    line-height: 1.5;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-poem {
+    font-family: var(--font-serif);
+    font-size: clamp(15px, 2.4vw, 18px);
+    line-height: 2.2;
     color: var(--ink);
-    margin-bottom: 20px;
-    padding-bottom: 12px;
+    border-top: 1px solid var(--ember-light);
+    border-bottom: 1px solid var(--ember-light);
+    padding: 24px 0;
+    width: 100%;
+    max-width: 480px;
+    margin: 8px 0;
+  }
+
+  /* 2. ABOUT EMA. */
+  .about-section {
+    padding: 120px 0;
+    background-color: var(--paper);
+    position: relative;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+  }
+
+  .about-image {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    border: 1px solid var(--ember-light);
+  }
+
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+
+  .about-image:hover img {
+    transform: scale(1.03);
+  }
+
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .about-text p {
+    font-size: 15px;
+    line-height: 2.0;
+    color: var(--ink);
+    opacity: 0.9;
+    word-break: auto-phrase;
+    line-break: strict;
+  }
+
+  .about-highlight {
+    font-family: var(--font-serif);
+    font-size: clamp(18px, 3vw, 22px);
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  /* 3. ABOUT PHOTOGRAPHY (撮影について) */
+  .photo-about-section {
+    padding: 120px 0;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--ember-light);
     border-bottom: 1px solid var(--ember-light);
   }
 
-  .modal-list{
-    list-style: none;
+  .concept-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  @media (min-width: 768px) {
+    .concept-cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .concept-card {
+    background: rgba(13, 27, 42, 0.6);
+    border: 1px solid var(--ember-light);
+    border-radius: 12px;
+    padding: 36px 28px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .concept-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--ember);
+  }
+
+  .concept-num {
+    font-family: var(--font-latin);
+    font-size: 20px;
+    color: var(--ember);
+    font-style: italic;
+  }
+
+  .concept-title {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .concept-desc {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  /* 4. PLANS & PRICING (3つの時間) */
+  .plans-section {
+    padding: 120px 0;
+    background-color: var(--paper);
+  }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 48px;
+  }
+
+  @media (min-width: 900px) {
+    .plans-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .plan-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--ember-light);
+    border-radius: 16px;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .plan-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--ember);
+  }
+
+  .plan-card.featured {
+    border-color: var(--ember);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .plan-badge {
+    position: absolute;
+    top: -12px;
+    right: 28px;
+    background: var(--ember);
+    color: var(--paper);
+    font-family: var(--font-serif);
+    font-size: 11px;
+    padding: 3px 12px;
+    border-radius: 999px;
+    letter-spacing: 0.1em;
+  }
+
+  .plan-header {
+    border-bottom: 1px solid var(--ember-light);
+    padding-bottom: 24px;
     margin-bottom: 24px;
   }
 
-  .modal-list li{
+  .plan-name {
+    font-family: var(--font-latin);
+    font-size: 20px;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .plan-subname {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    color: var(--ember);
+    margin-bottom: 16px;
+  }
+
+  .plan-price {
+    font-family: var(--font-latin);
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .plan-price span {
+    font-size: 18px;
+    font-style: italic;
+    color: var(--ember);
+    margin-left: 2px;
+  }
+
+  .plan-catch {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 24px;
+    min-height: 48px;
+  }
+
+  .plan-details {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .plan-details li {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink);
+    padding-left: 18px;
     position: relative;
-    padding-left: 20px;
-    font-size: clamp(13px, 2.2vw, 14.5px);
+  }
+
+  .plan-details li::before {
+    content: "・";
+    position: absolute;
+    left: 0;
+    color: var(--ember);
+  }
+
+  .plan-notes {
+    margin-top: 40px;
+    background: rgba(27, 38, 59, 0.5);
+    border: 1px solid var(--ember-light);
+    border-radius: 12px;
+    padding: 24px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  .plan-notes p {
+    margin-bottom: 6px;
+  }
+
+  .plan-notes p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* 5. PHILOSOPHY (写実家としてのEma.) */
+  .philosophy-section {
+    padding: 140px 0;
+    background-color: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .philosophy-bg-box {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 80px 32px;
+    text-align: center;
+    border: 1px solid var(--ember-light);
+    background: linear-gradient(135deg, rgba(27, 38, 59, 0.9), rgba(13, 27, 42, 0.95));
+  }
+
+  .philosophy-quote {
+    font-family: var(--font-serif);
+    font-size: clamp(22px, 4vw, 34px);
+    line-height: 1.6;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    margin-bottom: 32px;
+    word-break: auto-phrase;
+    line-break: strict;
+  }
+
+  .philosophy-body {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 15px;
+    line-height: 2.1;
+    color: var(--ink);
+    opacity: 0.9;
+    word-break: auto-phrase;
+    line-break: strict;
+  }
+
+  /* 6. FLOW / PROCESS */
+  .flow-section {
+    padding: 120px 0;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--ember-light);
+    border-bottom: 1px solid var(--ember-light);
+  }
+
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 48px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    background: rgba(13, 27, 42, 0.5);
+    border: 1px solid var(--ember-light);
+    border-radius: 12px;
+    padding: 24px 28px;
+  }
+
+  .step-num {
+    font-family: var(--font-latin);
+    font-size: 22px;
+    color: var(--ember);
+    min-width: 36px;
+    padding-top: 2px;
+  }
+
+  .step-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .step-title {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    color: var(--ink);
+  }
+
+  .step-desc {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  /* 7. PROFILE */
+  .profile-section {
+    padding: 120px 0;
+    background-color: var(--paper);
+  }
+
+  .profile-box {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--ember-light);
+    border-radius: 16px;
+    padding: clamp(32px, 5vw, 56px);
+  }
+
+  @media (min-width: 768px) {
+    .profile-box {
+      grid-template-columns: 280px 1fr;
+      gap: 56px;
+    }
+  }
+
+  .profile-avatar {
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    border: 1px solid var(--ember-light);
+  }
+
+  .profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .profile-name-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .profile-name {
+    font-family: var(--font-latin);
+    font-size: 26px;
+    letter-spacing: 0.05em;
+  }
+
+  .profile-role {
+    font-family: var(--font-serif);
+    font-size: 13px;
+    color: var(--ember);
+    letter-spacing: 0.1em;
+  }
+
+  .profile-copy {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-top: 4px;
+  }
+
+  .profile-bio {
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--ink);
+    opacity: 0.85;
+    word-break: auto-phrase;
+    line-break: strict;
+  }
+
+  .profile-keywords {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .keyword-tag {
+    font-family: var(--font-serif);
+    font-size: 12px;
+    color: var(--ember);
+    background: rgba(119, 141, 169, 0.12);
+    padding: 4px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(119, 141, 169, 0.3);
+  }
+
+  /* 8. CONTACT SECTION */
+  .contact-section {
+    padding: 140px 0;
+    background-color: var(--paper);
+    text-align: center;
+    border-top: 1px solid var(--ember-light);
+  }
+
+  .contact-box {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .contact-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(20px, 3.8vw, 28px);
     line-height: 1.7;
     color: var(--ink);
     word-break: auto-phrase;
     line-break: strict;
   }
 
-  .modal-list li::before{
-    content: "―";
-    position: absolute;
-    left: 0;
-    color: var(--ember);
-    font-weight: bold;
-  }
-
-  .modal-action-btn{
-    display: block;
-    width: 100%;
-    padding: 12px 20px;
-    background: var(--ink);
-    color: var(--paper);
-    border: 1px solid var(--ink);
-    border-radius: 999px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 14px;
+  .contact-mail {
+    font-family: var(--font-latin);
+    font-size: 15px;
+    color: var(--muted);
     letter-spacing: 0.05em;
-    cursor: pointer;
-    transition: background 0.3s ease, border-color 0.3s ease;
+    transition: color 0.3s ease;
   }
 
-  .modal-action-btn:hover, .modal-action-btn:focus-visible{
-    background: var(--ember);
-    border-color: var(--ember);
-    color: var(--paper);
-    outline: none;
+  .contact-mail:hover {
+    color: var(--ink);
   }
 
-  @keyframes rise{
-    from{ opacity: 0; transform: translateY(10px); }
-    to{ opacity: 1; transform: translateY(0); }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    .label, h1, .statement, .modal-trigger-btn, .process-line, .price, .cta, .mail-link, .mark{
-      animation: none !important;
-      opacity: 1 !important;
-    }
-    .modal-overlay, .modal-card{
-      transition: none !important;
-    }
-  }
-
-  @media (max-height: 560px){
-    .stack{ gap: 1.6vh; }
+  /* FOOTER */
+  footer {
+    padding: 40px 24px;
+    text-align: center;
+    background-color: var(--paper);
+    border-top: 1px solid rgba(119, 141, 169, 0.15);
+    font-family: var(--font-serif);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
   }
 </style>
 </head>
 <body>
 
-  <div class="page">
-    <svg class="hero-trace" viewBox="0 0 600 300" aria-hidden="true">
-      <path id="heroPath" d="M 20 220 C 140 260, 200 60, 320 110 S 480 240, 580 90" />
-    </svg>
+  <!-- HEADER NAV -->
+  <header>
+    <a href="#" class="brand-logo">Ema.</a>
+    <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="nav-cta">撮影を相談する</a>
+  </header>
 
-    <div class="stack">
-      <p class="label">DOUKOU</p>
-      <h1>プロセスポートレートで<br>あなたの在り方を<br>記録しましょう。</h1>
-      <p class="statement">あなたの在り方であれば、ジャンルはなんでも。<br>得られるもの：同行中のあなたの写真・動画<br>個人の記録や発信、事業利用にお使いください。<br>※カメラやマイクは、独自の感覚で選んだものを使用。</p>
-
-      <button type="button" class="modal-trigger-btn" id="openModalBtn" aria-haspopup="dialog">
-        こんな瞬間を残したい人へ ✦
-      </button>
-
-      <div class="process-line">
-        <span>話す</span>
-        <span class="sep"></span>
-        <span>掘る</span>
-        <span class="sep"></span>
-        <span>撮る</span>
+  <main>
+    <!-- 1. HERO SECTION -->
+    <section class="hero-section">
+      <div class="hero-bg">
+        <img src="hero.jpg" alt="Ema. Photography Background">
+        <div class="hero-bg-overlay"></div>
       </div>
+      <div class="hero-content">
+        <span class="hero-tag">写実家 Ema.</span>
+        <h1 class="hero-main-title">在り方を写す、写実家。</h1>
 
-      <div class="price">
-        <div class="price-figure">¥35,000<span>〜</span></div>
+        <div class="hero-poem">
+          写真を撮る。<br>
+          そのためだけの時間ではなく。<br><br>
+          あなたが、あなたである時間を。<br><br>
+          <span class="latin" style="font-size: 1.1em; letter-spacing: 0.1em;">Ema.</span>
+        </div>
+
+        <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary">
+          撮影について相談する <span class="sub">[DMへ]</span>
+        </a>
       </div>
+    </section>
 
-      <a class="cta" href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener">撮影を依頼する<span class="cta-sub">[DMへ]</span></a>
-      <a class="mail-link" href="mailto:tanachu09@gmail.com">tanachu09@gmail.com</a>
-    </div>
+    <!-- 2. EMA.とは -->
+    <section class="about-section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image">
+            <img src="about.jpg" alt="Ema. Photography Session Visual">
+          </div>
+          <div class="about-text">
+            <span class="section-tag">About Ema.</span>
+            <h2 class="section-title">人の内側にあるものを、<br>静かに写し出す。</h2>
+            <p class="about-highlight">
+              ただそこにある在り方。<br>
+              撮ることより「感じること」。
+            </p>
+            <p>
+              Ema.が大切にしているのは、表面的な綺麗さや作られたポーズではありません。
+              言葉になる前の想いや、日々の静かな営み、その人の内側で灯る熱量。
+            </p>
+            <p>
+              無理に飾る必要はありません。
+              カメラに向かって微笑む必要もありません。
+              対話を通じて解きほぐされた、あなただけの「在り方」をそっと記録します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <p class="mark">Ema.</p>
-  </div>
+    <!-- 3. 撮影について -->
+    <section class="photo-about-section">
+      <div class="container">
+        <div style="text-align: center; max-width: 640px; margin: 0 auto;">
+          <span class="section-tag">Photography Experience</span>
+          <h2 class="section-title">撮影について</h2>
+          <p style="font-size: 15px; color: var(--muted); line-height: 1.9;">
+            Ema.の撮影は、シャッターを切る瞬間だけではありません。<br>
+            共に過ごす時間すべてが、撮影という体験です。
+          </p>
+        </div>
 
-  <!-- Popup Modal -->
-  <div class="modal-overlay" id="targetModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-card">
-      <button type="button" class="modal-close-btn" id="closeModalBtn" aria-label="閉じる">&times;</button>
-      <h2 class="modal-title" id="modalTitle">こんな瞬間を残したい人へ。</h2>
-      <ul class="modal-list">
-        <li>自分の仕事をしている姿を残したい</li>
-        <li>何かを始めた今を残したい</li>
-        <li>自分では気づいていない姿を知りたい</li>
-        <li>SNS用の写真だけではなく、自分自身の記録が欲しい</li>
-      </ul>
-      <button type="button" class="modal-action-btn" id="modalConfirmBtn">閉じる</button>
-    </div>
-  </div>
+        <div class="concept-cards">
+          <div class="concept-card">
+            <span class="concept-num">01</span>
+            <h3 class="concept-title">対話から始まる時間</h3>
+            <p class="concept-desc">いきなりカメラを向けることはありません。まずはじっくりと対話を重ね、あなたの内側にある想いや背景を感じ取ります。</p>
+          </div>
+          <div class="concept-card">
+            <span class="concept-num">02</span>
+            <h3 class="concept-title">作り込まない日常</h3>
+            <p class="concept-desc">決められた表情やポーズは求めません。あなたが最も自然体でいられる空気感と余白を何より大切にします。</p>
+          </div>
+          <div class="concept-card">
+            <span class="concept-num">03</span>
+            <h3 class="concept-title">あなたがあなたである時間</h3>
+            <p class="concept-desc">自分の営みや仕事、変化の渦中にある素顔。後から振り返ったときに誇らしく思える、真実の時間を残します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<script>
-  var heroPath = document.getElementById('heroPath');
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    <!-- 4. 3つの時間 (PLANS & PRICING) -->
+    <section class="plans-section">
+      <div class="container">
+        <div style="text-align: center; max-width: 640px; margin: 0 auto 16px;">
+          <span class="section-tag">Plans & Pricing</span>
+          <h2 class="section-title">Ema.｜3つの時間</h2>
+        </div>
 
-  if (heroPath){
-    if (reduceMotion){
-      heroPath.style.strokeDasharray = 'none';
-    } else {
-      var length = heroPath.getTotalLength();
-      heroPath.style.strokeDasharray = length;
-      heroPath.style.strokeDashoffset = length;
-      heroPath.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(0.65, 0, 0.35, 1)';
-      requestAnimationFrame(function(){
-        setTimeout(function(){
-          heroPath.style.strokeDashoffset = '0';
-        }, 150);
-      });
-    }
-  }
+        <div class="plans-grid">
 
-  /* Modal Logic */
-  var modal = document.getElementById('targetModal');
-  var openBtn = document.getElementById('openModalBtn');
-  var closeBtn = document.getElementById('closeModalBtn');
-  var confirmBtn = document.getElementById('modalConfirmBtn');
+          <!-- Plan 1: TRACE -->
+          <div class="plan-card">
+            <div>
+              <div class="plan-header">
+                <h3 class="plan-name">TRACE</h3>
+                <p class="plan-subname">ひととき</p>
+                <div class="plan-price">¥25,000</div>
+              </div>
+              <p class="plan-catch">今の自分に、そっと触れる時間。</p>
+              <ul class="plan-details">
+                <li>撮影：1時間程度</li>
+                <li>納品：写真データ 最大20枚</li>
+                <li>納品方法：オンライン納品</li>
+                <li>場所：要相談</li>
+              </ul>
+            </div>
+            <div>
+              <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary" style="width: 100%; font-size: 13px; padding: 12px 20px;">
+                TRACE について相談する
+              </a>
+            </div>
+          </div>
 
-  function openModal() {
-    modal.classList.add('is-visible');
-    closeBtn.focus();
-  }
+          <!-- Plan 2: DOUKOU -->
+          <div class="plan-card featured">
+            <span class="plan-badge">RECOMMENDED</span>
+            <div>
+              <div class="plan-header">
+                <h3 class="plan-name">DOUKOU</h3>
+                <p class="plan-subname">ともに過ごす時間</p>
+                <div class="plan-price">¥35,000<span>〜</span></div>
+              </div>
+              <p class="plan-catch">対話を重ねながら、その人が望むプロセスに寄り添う時間。</p>
+              <ul class="plan-details">
+                <li>撮影：上限1日</li>
+                <li>納品：写真データ 最大50枚</li>
+                <li style="color: var(--ember);">ご希望の場合、元データのお渡しも可能</li>
+                <li>納品方法：オンライン納品</li>
+                <li>場所：要相談</li>
+              </ul>
+            </div>
+            <div>
+              <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary" style="width: 100%; font-size: 13px; padding: 12px 20px; background: var(--ink); color: var(--paper);">
+                DOUKOU について相談する
+              </a>
+            </div>
+          </div>
 
-  function closeModal() {
-    modal.classList.remove('is-visible');
-    if (document.activeElement && modal.contains(document.activeElement)) {
-      openBtn.focus();
-    }
-  }
+          <!-- Plan 3: PERSONAL FLAG -->
+          <div class="plan-card">
+            <div>
+              <div class="plan-header">
+                <h3 class="plan-name">PERSONAL FLAG</h3>
+                <p class="plan-subname">積み重ねる時間</p>
+                <div class="plan-price">¥200,000<span style="font-size: 14px;">／年</span></div>
+              </div>
+              <p class="plan-catch">一年を通して、変化や営みをともに記録していく時間。</p>
+              <ul class="plan-details">
+                <li>撮影：年4回</li>
+                <li>納品：写真データ 最大50枚</li>
+                <li style="color: var(--ember);">ご希望の場合、元データのお渡しも可能</li>
+                <li>納品方法：オンライン納品</li>
+                <li>場所：要相談</li>
+              </ul>
+            </div>
+            <div>
+              <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary" style="width: 100%; font-size: 13px; padding: 12px 20px;">
+                PERSONAL FLAG について相談する
+              </a>
+            </div>
+          </div>
 
-  openBtn.addEventListener('click', openModal);
-  closeBtn.addEventListener('click', closeModal);
-  confirmBtn.addEventListener('click', closeModal);
+        </div>
 
-  modal.addEventListener('click', function(e) {
-    if (e.target === modal) {
-      closeModal();
-    }
-  });
+        <!-- 共通事項 -->
+        <div class="container-narrow">
+          <div class="plan-notes">
+            <p><strong>共通事項</strong></p>
+            <p>※ 全プラン、別途交通費を頂戴いたします。</p>
+            <p>※ 撮影場所・内容については、ご相談のうえ決定します。</p>
+          </div>
+        </div>
 
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && modal.classList.contains('is-visible')) {
-      closeModal();
-    }
-  });
+      </div>
+    </section>
 
-  // Automatically show popup on first visit/load so it's immediately visible
-  window.addEventListener('load', function() {
-    setTimeout(openModal, 400);
-  });
-</script>
+    <!-- 5. 写実家としてのEMA. -->
+    <section class="philosophy-section">
+      <div class="container-narrow">
+        <div class="philosophy-bg-box">
+          <span class="section-tag" style="margin-bottom: 20px;">Philosophy</span>
+          <p class="philosophy-quote">
+            「見えるものではなく、<br>そこにあるものを写す。」
+          </p>
+          <p class="philosophy-body">
+            目に見える形やポーズの先にある、その人ならではの匂いや佇まい、思考の痕跡。<br><br>
+            写実家としてのEma.は、ただ綺麗に撮ることを目指していません。<br>
+            そこに確かに存在する「命のありよう」を丁寧に掬い上げます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. 撮影までの流れ -->
+    <section class="flow-section">
+      <div class="container">
+        <div style="text-align: center; max-width: 640px; margin: 0 auto;">
+          <span class="section-tag">Process</span>
+          <h2 class="section-title">撮影までの流れ</h2>
+        </div>
+
+        <div class="flow-steps">
+          <div class="flow-step">
+            <span class="step-num">01</span>
+            <div class="step-content">
+              <h3 class="step-title">問い合わせ</h3>
+              <p class="step-desc">Instagram DM またはメールよりお気軽にご連絡ください。どのような時間を過ごしたいか、ざっくりとしたイメージで構いません。</p>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <span class="step-num">02</span>
+            <div class="step-content">
+              <h3 class="step-title">対話</h3>
+              <p class="step-desc">オンラインまたは対面にて、事前の対話を行います。お互いの空気感を確かめながら、撮影の場所やコンセプトを紐解いていきます。</p>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <span class="step-num">03</span>
+            <div class="step-content">
+              <h3 class="step-title">撮影</h3>
+              <p class="step-desc">対話の延長として、心地よい時間を共に過ごしながら撮影を行います。カメラを意識せず自然体でお過ごしください。</p>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <span class="step-num">04</span>
+            <div class="step-content">
+              <h3 class="step-title">セレクト・編集</h3>
+              <p class="step-desc">その日に生まれた空気感や光を大切にしながら、一枚一枚丁寧にセレクトとトーン調色を行っていきます。</p>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <span class="step-num">05</span>
+            <div class="step-content">
+              <h3 class="step-title">納品</h3>
+              <p class="step-desc">オンラインギャラリーにて写真データを納品いたします。あなたの「旗」として、大切にお手元に置いてください。</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 7. PROFILE -->
+    <section class="profile-section">
+      <div class="container">
+        <div class="profile-box">
+          <div class="profile-avatar">
+            <img src="profile.jpg" alt="YUTA / Photographer profile">
+          </div>
+          <div class="profile-info">
+            <div class="profile-name-group">
+              <span class="profile-role">PHOTOGRAPHER / 写実家</span>
+              <h2 class="profile-name">YUTA</h2>
+            </div>
+            <p class="profile-copy">「人の本質にそっと寄り添う」</p>
+            <p class="profile-bio">
+              目の前の人が持つ熱量や美しさは、作られた表現ではなく、普段の対話や些細な瞬間にこそ宿ると感じています。深傾聴を通じてその人の核に触れ、共に歩むプロセスの中で「その人がその人である時間」を写真として残します。
+            </p>
+            <div class="profile-keywords">
+              <span class="keyword-tag">共感</span>
+              <span class="keyword-tag">深傾聴</span>
+              <span class="keyword-tag">プロセス</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. CONTACT -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-box">
+          <span class="section-tag">Contact</span>
+          <h2 class="contact-heading">
+            まずは、どんな時間にしたいか<br>聞かせてください。
+          </h2>
+          <div>
+            <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary">
+              撮影について相談する <span class="sub">[DMへ]</span>
+            </a>
+          </div>
+          <a href="mailto:tanachu09@gmail.com" class="contact-mail">tanachu09@gmail.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; Ema. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
