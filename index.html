@@ -9,11 +9,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600;800&family=Noto+Sans+JP:wght@300;400;500&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink: #243028;
-    --paper: #f6faf7;
-    --ember: #588c64;
-    --ember-light: #a8c9b2;
-    --muted: #7a8c80;
+    --ink: #E0E1DD;
+    --paper: #0D1B2A;
+    --card-bg: #1B263B;
+    --ember: #778DA9;
+    --ember-light: #415A77;
+    --muted: #778DA9;
   }
 
   *{ box-sizing: border-box; margin:0; padding:0; }
@@ -53,7 +54,7 @@
     width: min(70vw, 560px);
     height: auto;
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0.6;
     z-index: 0;
   }
 
@@ -99,7 +100,7 @@
 
   .statement{
     font-size: clamp(13px, 1.6vh, 15px);
-    color: #5a6c60;
+    color: var(--muted);
     line-height: 1.9;
     max-width: 420px;
     opacity: 0;
@@ -111,23 +112,23 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: transparent;
-    border: none;
+    background: rgba(119, 141, 169, 0.12);
+    border: 1px solid var(--ember-light);
     font-family: 'Shippori Mincho B1', serif;
     font-size: clamp(12px, 1.3vh, 14px);
-    color: var(--ember);
+    color: var(--ink);
     cursor: pointer;
     padding: 6px 16px;
     border-radius: 20px;
-    background: rgba(88, 140, 100, 0.08);
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
     opacity: 0;
     animation: rise 1s ease forwards;
     animation-delay: 1.65s;
   }
 
   .modal-trigger-btn:hover, .modal-trigger-btn:focus-visible{
-    background: rgba(88, 140, 100, 0.18);
+    background: rgba(119, 141, 169, 0.25);
+    border-color: var(--ember);
     color: var(--ink);
     outline: none;
   }
@@ -184,7 +185,7 @@
     font-size: clamp(13px, 1.5vh, 15px);
     letter-spacing: 0.06em;
     color: var(--ink);
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     opacity: 0;
     animation: rise 1s ease forwards;
     animation-delay: 2.4s;
@@ -203,7 +204,7 @@
   .cta-sub{
     margin-left: 0.5em;
     font-size: 0.8em;
-    opacity: 0.7;
+    opacity: 0.75;
   }
 
   .mail-link{
@@ -244,9 +245,9 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(36, 48, 40, 0.45);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: rgba(13, 27, 42, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     z-index: 100;
     display: flex;
     align-items: center;
@@ -263,9 +264,9 @@
   }
 
   .modal-card{
-    background: var(--paper);
-    border: 1px solid rgba(168, 201, 178, 0.5);
-    box-shadow: 0 20px 40px rgba(36, 48, 40, 0.15);
+    background: var(--card-bg);
+    border: 1px solid var(--ember-light);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     border-radius: 16px;
     width: min(90vw, 440px);
     padding: clamp(24px, 5vw, 36px);
@@ -299,7 +300,7 @@
   }
 
   .modal-close-btn:hover, .modal-close-btn:focus-visible{
-    background: rgba(88, 140, 100, 0.12);
+    background: rgba(119, 141, 169, 0.2);
     color: var(--ink);
     outline: none;
   }
@@ -360,6 +361,7 @@
   .modal-action-btn:hover, .modal-action-btn:focus-visible{
     background: var(--ember);
     border-color: var(--ember);
+    color: var(--paper);
     outline: none;
   }
 
