@@ -3,1005 +3,825 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>OFFERINGS | Ema.</title>
-
+<title>Ema. | 在り方を写す、写実家。</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600;800&family=Noto+Sans+JP:wght@300;400;500&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
-
 <style>
-
-:root{
-  --ink:#E9EDEF;
-  --paper:#0B0D0F;
-  --card:#16191C;
-  --line:#3E454A;
-  --soft:#A9B4BA;
-  --muted:#868D92;
-}
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  background:var(--paper);
-  color:var(--ink);
-  font-family:'Noto Sans JP',sans-serif;
-  font-weight:300;
-  line-height:1.9;
-  text-align:center;
-  -webkit-font-smoothing:antialiased;
-}
-
-a{
-  color:inherit;
-}
-
-
-/* =========================
-   COMMON
-========================= */
-
-.container{
-  width:min(92vw,900px);
-  margin:auto;
-}
-
-.eyebrow{
-  font-family:'EB Garamond',serif;
-  font-size:13px;
-  letter-spacing:.18em;
-  color:var(--soft);
-}
-
-.serif{
-  font-family:'Shippori Mincho B1',serif;
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-  min-height:100svh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:80px 24px;
-  position:relative;
-}
-
-.hero-inner{
-  max-width:720px;
-}
-
-.logo{
-  font-family:'Shippori Mincho B1',serif;
-  font-size:14px;
-  letter-spacing:.25em;
-  margin-bottom:60px;
-  color:var(--muted);
-}
-
-.hero h1{
-  font-family:'Shippori Mincho B1',serif;
-  font-weight:500;
-  font-size:clamp(30px,6vw,56px);
-  line-height:1.5;
-  letter-spacing:.05em;
-  margin-bottom:35px;
-}
-
-.hero-lead{
-  font-size:14px;
-  line-height:2.2;
-  color:var(--muted);
-}
-
-.hero-line{
-  width:1px;
-  height:70px;
-  background:var(--line);
-  margin:70px auto 0;
-}
-
-
-/* =========================
-   INTRO
-========================= */
-
-.intro{
-  padding:140px 24px;
-  text-align:center;
-}
-
-.intro h2{
-  font-family:'Shippori Mincho B1',serif;
-  font-size:clamp(23px,4vw,34px);
-  font-weight:500;
-  line-height:1.8;
-  margin-bottom:35px;
-}
-
-.intro p{
-  max-width:620px;
-  margin:auto;
-  color:var(--muted);
-  font-size:14px;
-  line-height:2.3;
-}
-
-
-/* =========================
-   EXPERIENCE
-========================= */
-
-.experience{
-  padding:120px 24px;
-  border-top:1px solid #202428;
-  border-bottom:1px solid #202428;
-}
-
-.section-title{
-  text-align:center;
-  margin-bottom:70px;
-}
-
-.section-title h2{
-  font-family:'Shippori Mincho B1',serif;
-  font-size:clamp(25px,4vw,36px);
-  font-weight:500;
-  margin-top:12px;
-}
-
-.experience-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:30px;
-}
-
-.experience-card{
-  text-align:center;
-  padding:40px 25px;
-}
-
-.experience-number{
-  font-family:'EB Garamond',serif;
-  font-size:14px;
-  color:var(--soft);
-  letter-spacing:.15em;
-  margin-bottom:20px;
-}
-
-.experience-card h3{
-  font-family:'Shippori Mincho B1',serif;
-  font-size:22px;
-  font-weight:500;
-  margin-bottom:20px;
-}
-
-.experience-card p{
-  font-size:13px;
-  color:var(--muted);
-  line-height:2.1;
-}
-
-
-/* =========================
-   OFFERINGS
-========================= */
-
-.offerings{
-  padding:140px 24px;
-}
-
-.tabs{
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  margin-bottom:65px;
-  padding:5px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:999px;
-  width:max-content;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-.tab-btn{
-  font-family:'Shippori Mincho B1',serif;
-  font-size:13px;
-  letter-spacing:.06em;
-  color:var(--muted);
-  background:none;
-  border:none;
-  padding:10px 20px;
-  border-radius:999px;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.tab-btn:hover{
-  color:var(--ink);
-}
-
-.tab-btn.is-active{
-  background:var(--line);
-  color:var(--ink);
-}
-
-.panel{
-  display:none;
-  max-width:650px;
-  margin:auto;
-  text-align:center;
-  animation:rise .5s ease forwards;
-}
-
-.panel.is-active{
-  display:block;
-}
-
-.panel-label{
-  font-family:'EB Garamond',serif;
-  font-size:40px;
-  letter-spacing:.12em;
-  margin-bottom:25px;
-}
-
-.panel h3{
-  font-family:'Shippori Mincho B1',serif;
-  font-weight:500;
-  font-size:clamp(22px,4vw,31px);
-  line-height:1.7;
-  margin-bottom:25px;
-}
-
-.panel-description{
-  color:var(--muted);
-  font-size:14px;
-  line-height:2.2;
-  margin-bottom:45px;
-}
-
-
-/* WHAT YOU GET */
-
-.get{
-  border-top:1px solid var(--line);
-  padding-top:35px;
-  margin-bottom:40px;
-}
-
-.get-title{
-  font-family:'EB Garamond',serif;
-  font-size:13px;
-  letter-spacing:.15em;
-  color:var(--soft);
-  margin-bottom:22px;
-}
-
-.get-list{
-  list-style:none;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-.get-list li{
-  font-size:13px;
-  line-height:1.8;
-  text-align:center;
-}
-
-.get-list li::before{
-  content:"― ";
-  color:var(--soft);
-}
-
-
-/* PROCESS */
-
-.process{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:16px;
-  margin:40px 0;
-  font-family:'Shippori Mincho B1',serif;
-  font-size:14px;
-}
-
-.process .line{
-  width:25px;
-  height:1px;
-  background:var(--line);
-}
-
-
-/* PRICE */
-
-.price{
-  margin:45px 0 35px;
-}
-
-.price-number{
-  font-family:'EB Garamond',serif;
-  font-style:italic;
-  font-size:38px;
-}
-
-.price-number span{
-  font-size:16px;
-  margin-left:5px;
-  color:var(--soft);
-}
-
-.price-note{
-  font-size:11px;
-  color:var(--muted);
-  margin-top:4px;
-}
-
-
-/* CTA */
-
-.cta{
-  display:inline-block;
-  padding:13px 35px;
-  border:1px solid var(--ink);
-  border-radius:999px;
-  text-decoration:none;
-  font-size:13px;
-  letter-spacing:.05em;
-  transition:.3s;
-}
-
-.cta:hover{
-  background:var(--ink);
-  color:var(--paper);
-}
-
-
-/* =========================
-   PHILOSOPHY
-========================= */
-
-.philosophy{
-  padding:150px 24px;
-  text-align:center;
-  border-top:1px solid #202428;
-}
-
-.philosophy h2{
-  font-family:'Shippori Mincho B1',serif;
-  font-size:clamp(24px,4vw,36px);
-  font-weight:500;
-  line-height:1.8;
-  margin-bottom:40px;
-}
-
-.philosophy p{
-  max-width:620px;
-  margin:auto;
-  color:var(--muted);
-  font-size:14px;
-  line-height:2.3;
-}
-
-.philosophy-highlight{
-  margin-top:60px;
-  font-family:'Shippori Mincho B1',serif;
-  font-size:20px;
-  line-height:2;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-  padding:80px 24px 100px;
-  text-align:center;
-}
-
-.footer-logo{
-  font-family:'Shippori Mincho B1',serif;
-  font-size:16px;
-  letter-spacing:.2em;
-  margin-bottom:25px;
-}
-
-footer p{
-  font-size:11px;
-  color:var(--muted);
-}
-
-
-/* =========================
-   ANIMATION
-========================= */
-
-@keyframes rise{
-  from{
-    opacity:0;
-    transform:translateY(10px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:700px){
-
-  .container{
-    width:90vw;
+  :root{
+    --ink: #243028;
+    --paper: #f6faf7;
+    --card-bg: #ffffff;
+    --ember: #588c64;
+    --ember-light: #a8c9b2;
+    --muted: #7a8c80;
+    --line: #d2e0d6;
   }
 
-  .experience-grid{
-    grid-template-columns:1fr;
-    gap:20px;
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html, body{
+    height: 100%;
+    overflow: hidden;
   }
 
-  .experience-card{
-    padding:25px 15px;
+  body{
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
   }
 
-  .tabs{
-    width:100%;
-    max-width:360px;
+  a{ color: inherit; }
+
+  .page{
+    height: 100dvh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 3vh 20px;
+    text-align: center;
+  }
+
+  .hero-trace{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -58%);
+    width: min(70vw, 560px);
+    height: auto;
+    pointer-events: none;
+    opacity: 0.5;
+    z-index: 0;
+  }
+
+  .hero-trace path{
+    fill: none;
+    stroke: var(--ember-light);
+    stroke-width: 1.2;
+    stroke-linecap: round;
+  }
+
+  .stack{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8vh;
+    max-width: 580px;
+    width: 100%;
+  }
+
+  .logo-top{
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: clamp(12px, 1.4vh, 14px);
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    opacity: 0;
+    animation: rise 1s ease forwards;
+    animation-delay: 0.7s;
+  }
+
+  .label{
+    font-family: 'EB Garamond', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: clamp(38px, 7vh, 72px);
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    opacity: 0;
+    animation: rise 1s ease forwards;
+    animation-delay: 0.9s;
+    line-height: 1;
+  }
+
+  h1{
+    font-family: 'Shippori Mincho B1', serif;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-size: clamp(20px, 3.2vh, 32px);
+    line-height: 1.6;
+    opacity: 0;
+    animation: rise 1.1s ease forwards;
+    animation-delay: 1.1s;
+  }
+
+  .statement{
+    font-size: clamp(12px, 1.5vh, 14px);
+    color: #5a6c60;
+    line-height: 1.9;
+    max-width: 440px;
+    opacity: 0;
+    animation: rise 1s ease forwards;
+    animation-delay: 1.4s;
+    word-break: auto-phrase;
+    line-break: strict;
+  }
+
+  /* Modal Trigger Group */
+  .modal-triggers{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 0.4vh 0;
+    opacity: 0;
+    animation: rise 1s ease forwards;
+    animation-delay: 1.65s;
+  }
+
+  .modal-trigger-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(88, 140, 100, 0.08);
+    border: 1px solid var(--ember-light);
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: clamp(11px, 1.2vh, 13px);
+    color: var(--ember);
+    cursor: pointer;
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .modal-trigger-btn:hover, .modal-trigger-btn:focus-visible{
+    background: rgba(88, 140, 100, 0.18);
+    border-color: var(--ember);
+    color: var(--ink);
+    outline: none;
+  }
+
+  .process-line{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(10px, 1.6vw, 18px);
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: clamp(12px, 1.5vh, 15px);
+    color: var(--ink);
+    opacity: 0;
+    animation: rise 1s ease forwards;
+    animation-delay: 1.85s;
+  }
+
+  .process-line .sep{
+    width: 20px;
+    height: 1px;
+    background: var(--ember-light);
+  }
+
+  .price{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4vh;
+    opacity: 0;
+    animation: rise 1s ease forwards;
+    animation-delay: 2.1s;
+  }
+
+  .price-figure{
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: clamp(26px, 3.8vh, 36px);
+    color: var(--ink);
+  }
+
+  .price-figure span{
+    font-size: 0.75em;
+    font-style: italic;
+    color: var(--ember);
+    margin-left: 4px;
+  }
+
+  .cta{
+    display: inline-block;
+    padding: clamp(10px, 1.4vh, 14px) clamp(24px, 3.5vw, 36px);
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: clamp(12px, 1.4vh, 14px);
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    transition: background 0.3s ease, color 0.3s ease;
+    opacity: 0;
+    animation: rise 1s ease forwards;
+    animation-delay: 2.3s;
+  }
+
+  .cta:hover, .cta:focus-visible{
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .cta-sub{
+    margin-left: 0.5em;
+    font-size: 0.8em;
+    opacity: 0.7;
+  }
+
+  .mail-link{
+    display: inline-block;
+    font-size: clamp(11px, 1.2vh, 12.5px);
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: rise 1s ease forwards;
+    animation-delay: 2.5s;
+  }
+
+  .mail-link:hover, .mail-link:focus-visible{
+    color: var(--ink);
+  }
+
+  .mark{
+    position: absolute;
+    bottom: 2vh;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: clamp(10px, 1.1vh, 12px);
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    opacity: 0;
+    animation: rise 1s ease forwards;
+    animation-delay: 2.6s;
+  }
+
+  /* Popup Modal Styles */
+  .modal-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(36, 48, 40, 0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+
+  .modal-overlay.is-visible{
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-card{
+    background: var(--card-bg);
+    border: 1px solid rgba(168, 201, 178, 0.5);
+    box-shadow: 0 20px 40px rgba(36, 48, 40, 0.15);
+    border-radius: 16px;
+    width: min(92vw, 540px);
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: clamp(24px, 4vw, 36px);
+    position: relative;
+    text-align: center;
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .modal-overlay.is-visible .modal-card{
+    transform: translateY(0) scale(1);
+  }
+
+  .modal-close-btn{
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    line-height: 1;
+    color: var(--muted);
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .modal-close-btn:hover, .modal-close-btn:focus-visible{
+    background: rgba(88, 140, 100, 0.12);
+    color: var(--ink);
+    outline: none;
+  }
+
+  .modal-eyebrow{
+    font-family: 'EB Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--ember);
+    margin-bottom: 6px;
+  }
+
+  .modal-title{
+    font-family: 'Shippori Mincho B1', serif;
+    font-weight: 500;
+    font-size: clamp(17px, 3vw, 22px);
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--ember-light);
+  }
+
+  /* List in Target Audience Modal */
+  .target-list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .target-list li{
+    font-size: clamp(13px, 2.2vw, 14px);
+    line-height: 1.7;
+    color: var(--ink);
+    word-break: auto-phrase;
+    line-break: strict;
+  }
+
+  .target-list li::before{
+    content: "― ";
+    color: var(--ember);
+  }
+
+  /* Modal Tabs for OFFERINGS */
+  .modal-tabs{
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 24px;
+    padding: 4px;
+    background: rgba(88, 140, 100, 0.08);
+    border: 1px solid var(--ember-light);
+    border-radius: 999px;
   }
 
   .tab-btn{
-    flex:1;
-    padding:10px 6px;
-    font-size:11px;
-    letter-spacing:.02em;
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    flex: 1;
+    transition: background 0.3s, color 0.3s;
   }
 
-  .hero{
-    padding:60px 20px;
+  .tab-btn.is-active{
+    background: var(--ember);
+    color: #ffffff;
   }
 
-  .intro,
-  .experience,
-  .offerings,
-  .philosophy{
-    padding-top:80px;
-    padding-bottom:80px;
+  .panel{
+    display: none;
+    text-align: center;
+    animation: rise 0.4s ease forwards;
+  }
+
+  .panel.is-active{
+    display: block;
+  }
+
+  .panel h3{
+    font-family: 'Shippori Mincho B1', serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .panel-description{
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 2;
+    margin-bottom: 20px;
+  }
+
+  .get-title{
+    font-family: 'EB Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--ember);
+    margin-bottom: 12px;
+  }
+
+  .get-list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
   }
 
   .get-list li{
-    word-break:auto-phrase;
-    line-break:strict;
+    font-size: 12.5px;
+    line-height: 1.7;
+    text-align: center;
   }
 
-}
+  .get-list li::before{
+    content: "― ";
+    color: var(--ember);
+  }
 
+  .panel-price{
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 28px;
+    margin: 16px 0 4px;
+  }
+
+  .panel-price span{
+    font-size: 14px;
+    color: var(--muted);
+    margin-left: 4px;
+  }
+
+  .price-note{
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  /* Experience Cards inside Modal */
+  .exp-grid{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .exp-card{
+    padding: 16px;
+    background: rgba(88, 140, 100, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(168, 201, 178, 0.3);
+  }
+
+  .exp-num{
+    font-family: 'EB Garamond', serif;
+    font-size: 13px;
+    color: var(--ember);
+    letter-spacing: 0.1em;
+  }
+
+  .exp-card h4{
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 4px 0 8px;
+  }
+
+  .exp-card p{
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .philosophy-box{
+    padding-top: 16px;
+    border-top: 1px dashed var(--ember-light);
+    margin-top: 16px;
+  }
+
+  .philosophy-box p{
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 2;
+  }
+
+  .philosophy-tag{
+    margin-top: 12px;
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: 16px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .modal-action-btn{
+    display: block;
+    width: 100%;
+    padding: 11px 20px;
+    background: var(--ink);
+    color: var(--paper);
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+
+  .modal-action-btn:hover, .modal-action-btn:focus-visible{
+    background: var(--ember);
+    border-color: var(--ember);
+    outline: none;
+  }
+
+  @keyframes rise{
+    from{ opacity: 0; transform: translateY(10px); }
+    to{ opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .logo-top, .label, h1, .statement, .modal-triggers, .process-line, .price, .cta, .mail-link, .mark{
+      animation: none !important;
+      opacity: 1 !important;
+    }
+    .modal-overlay, .modal-card{
+      transition: none !important;
+    }
+  }
+
+  @media (max-height: 600px){
+    .stack{ gap: 1.2vh; }
+  }
 </style>
 </head>
-
-
 <body>
 
-
-<!-- =========================
-     HERO
-========================= -->
-
-<section class="hero">
-
-  <div class="hero-inner">
-
-    <div class="logo">Ema.</div>
-
-    <p class="eyebrow">PHOTOGRAPH / PROCESS / EXISTENCE</p>
-
-    <h1>
-      僕が透明になるほど、<br>
-      あなたが見えてくる。
-    </h1>
-
-    <p class="hero-lead">
-      人の内側にあるもの。<br>
-      言葉になる前の感情。<br>
-      ふとしたまなざしや、呼吸。<br><br>
-
-      Ema.は、その人がその人である時間を<br>
-      写真として残します。
-    </p>
-
-    <div class="hero-line"></div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     INTRO
-========================= -->
-
-<section class="intro">
-
-  <div class="container">
-
-    <p class="eyebrow">ABOUT THE EXPERIENCE</p>
-
-    <h2>
-      写真を撮ることより、<br>
-      自分自身でいる時間を。
-    </h2>
-
-    <p>
-      撮影されると、どうしても「よく見せよう」としてしまう。<br>
-      Ema.では、そんな意識を少しずつほどいていきます。<br><br>
-
-      話す。歩く。考える。黙る。笑う。<br>
-      その人が自然に過ごしている時間をともに辿り、<br>
-      ふとあらわれた、その人らしさを写真に残します。
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     EXPERIENCE
-========================= -->
-
-<section class="experience">
-
-  <div class="container">
-
-    <div class="section-title">
-      <p class="eyebrow">WHAT REMAINS</p>
-      <h2>この体験で、残るもの。</h2>
-    </div>
-
-
-    <div class="experience-grid">
-
-      <div class="experience-card">
-
-        <p class="experience-number">01</p>
-
-        <h3>残る</h3>
-
-        <p>
-          今のあなたを写した写真。<br>
-          SNSやプロフィール、<br>
-          個人の記録にも使えます。
-        </p>
-
-      </div>
-
-
-      <div class="experience-card">
-
-        <p class="experience-number">02</p>
-
-        <h3>気づく</h3>
-
-        <p>
-          自分では気づかなかった<br>
-          表情や仕草、佇まい。<br>
-          「自分って、こんなふうに見えるんだ」
-          という発見。
-        </p>
-
-      </div>
-
-
-      <div class="experience-card">
-
-        <p class="experience-number">03</p>
-
-        <h3>積み重なる</h3>
-
-        <p>
-          一度きりではなく、<br>
-          時間とともに変化していく<br>
-          あなた自身の軌跡。
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     OFFERINGS
-========================= -->
-
-<section class="offerings" id="offerings">
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <p class="eyebrow">OFFERINGS</p>
-
-      <h2>3つの時間</h2>
-
-    </div>
-
-
-    <div class="tabs" role="tablist">
-
-      <button
-        class="tab-btn"
-        data-tab="trace"
-        role="tab">
-        TRACE
-      </button>
-
-      <button
-        class="tab-btn"
-        data-tab="doukou"
-        role="tab">
-        DOUKOU
-      </button>
-
-      <button
-        class="tab-btn"
-        data-tab="flag"
-        role="tab">
-        PERSONAL FLAG
-      </button>
-
-    </div>
-
-
-
-    <!-- TRACE -->
-
-    <div class="panel" id="panel-trace" role="tabpanel">
-
-      <p class="panel-label">TRACE</p>
-
-      <h3>
-        今のあなたを、<br>
-        そっと残す。
-      </h3>
-
-      <p class="panel-description">
-        短い時間の中で、その人がその人らしくいる瞬間を
-        トレースするセッション。
+  <div class="page">
+    <svg class="hero-trace" viewBox="0 0 600 300" aria-hidden="true">
+      <path id="heroPath" d="M 20 220 C 140 260, 200 60, 320 110 S 480 240, 580 90" />
+    </svg>
+
+    <div class="stack">
+      <div class="logo-top">Ema.</div>
+      <p class="label">DOUKOU</p>
+      <h1>僕が透明になるほど、<br>あなたが見えてくる。</h1>
+      <p class="statement">
+        人の内側にあるもの。言葉になる前の感情。<br>
+        ふとしたまなざしや、呼吸。<br>
+        Ema.は、その人がその人である時間を写真として残します。
       </p>
 
-
-      <div class="get">
-
-        <p class="get-title">WHAT YOU GET</p>
-
-        <ul class="get-list">
-
-          <li>今のあなたを写した写真</li>
-
-          <li>SNS・プロフィールなどに使える写真</li>
-
-          <li>今この瞬間の自分を残した記録</li>
-
-        </ul>
-
+      <div class="modal-triggers">
+        <button type="button" class="modal-trigger-btn" data-modal="targetModal" aria-haspopup="dialog">
+          こんな瞬間を残したい人へ ✦
+        </button>
+        <button type="button" class="modal-trigger-btn" data-modal="offeringsModal" aria-haspopup="dialog">
+          3つの時間 (OFFERINGS) ✦
+        </button>
+        <button type="button" class="modal-trigger-btn" data-modal="philosophyModal" aria-haspopup="dialog">
+          体験と哲学 ✦
+        </button>
       </div>
 
-
-      <div class="price">
-
-        <p class="price-number">
-          ¥20,000<span>〜</span>
-        </p>
-
-        <p class="price-note">
-          内容に応じて変動します
-        </p>
-
-      </div>
-
-
-      <a
-        class="cta"
-        href="https://www.instagram.com/tayu__t/"
-        target="_blank"
-        rel="noopener">
-        まず、話してみる
-      </a>
-
-    </div>
-
-
-
-    <!-- DOUKOU -->
-
-    <div class="panel" id="panel-doukou" role="tabpanel">
-
-      <p class="panel-label">DOUKOU</p>
-
-      <h3>
-        あなたが、<br>
-        あなたである時間を。
-      </h3>
-
-      <p class="panel-description">
-        対話を重ねながら、一日をともに過ごす。
-        話す。掘る。撮る。
-        その人が自然に存在している時間をトレースします。
-      </p>
-
-
-      <div class="process">
-
+      <div class="process-line">
         <span>話す</span>
-
-        <span class="line"></span>
-
+        <span class="sep"></span>
         <span>掘る</span>
-
-        <span class="line"></span>
-
+        <span class="sep"></span>
         <span>撮る</span>
-
       </div>
 
+      <div class="price">
+        <div class="price-figure">¥35,000<span>〜</span></div>
+      </div>
 
-      <div class="get">
+      <a class="cta" href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener">撮影を依頼する<span class="cta-sub">[DMへ]</span></a>
+      <a class="mail-link" href="mailto:tanachu09@gmail.com">tanachu09@gmail.com</a>
+    </div>
 
+    <p class="mark">Ema.</p>
+  </div>
+
+  <!-- Modal 1: Target Audience -->
+  <div class="modal-overlay" id="targetModal" role="dialog" aria-modal="true" aria-labelledby="targetTitle">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn" aria-label="閉じる">&times;</button>
+      <p class="modal-eyebrow">FOR YOU</p>
+      <h2 class="modal-title" id="targetTitle">こんな瞬間を残したい人へ。</h2>
+      <ul class="target-list">
+        <li>自分の仕事をしている姿を残したい</li>
+        <li>何かを始めた今を残したい</li>
+        <li>自分では気づいていない姿を知りたい</li>
+        <li>SNS用の写真だけではなく、自分自身の記録が欲しい</li>
+      </ul>
+      <button type="button" class="modal-action-btn close-action-btn">閉じる</button>
+    </div>
+  </div>
+
+  <!-- Modal 2: Offerings -->
+  <div class="modal-overlay" id="offeringsModal" role="dialog" aria-modal="true" aria-labelledby="offeringsTitle">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn" aria-label="閉じる">&times;</button>
+      <p class="modal-eyebrow">OFFERINGS</p>
+      <h2 class="modal-title" id="offeringsTitle">3つの時間</h2>
+
+      <div class="modal-tabs" role="tablist">
+        <button type="button" class="tab-btn is-active" data-tab="trace" role="tab">TRACE</button>
+        <button type="button" class="tab-btn" data-tab="doukou" role="tab">DOUKOU</button>
+        <button type="button" class="tab-btn" data-tab="flag" role="tab">PERSONAL FLAG</button>
+      </div>
+
+      <!-- TRACE Panel -->
+      <div class="panel is-active" id="panel-trace" role="tabpanel">
+        <h3>今のあなたを、そっと残す。</h3>
+        <p class="panel-description">短い時間の中で、その人がその人らしくいる瞬間をトレースするセッション。</p>
         <p class="get-title">WHAT YOU GET</p>
-
         <ul class="get-list">
+          <li>今のあなたを写した写真</li>
+          <li>SNS・プロフィールなどに使える写真</li>
+          <li>今この瞬間の自分を残した記録</li>
+        </ul>
+        <div class="panel-price">¥20,000<span>〜</span></div>
+        <p class="price-note">内容に応じて変動します</p>
+      </div>
 
+      <!-- DOUKOU Panel -->
+      <div class="panel" id="panel-doukou" role="tabpanel">
+        <h3>あなたが、あなたである時間を。</h3>
+        <p class="panel-description">対話を重ねながら、一日をともに過ごす。話す。掘る。撮る。その人が自然に存在している時間をトレースします。</p>
+        <p class="get-title">WHAT YOU GET</p>
+        <ul class="get-list">
           <li>あなたらしく過ごしている写真・動画</li>
-
           <li>発信や事業に使える素材</li>
-
           <li>普段は自分では気づかない表情や仕草</li>
-
           <li>「自分って、こんなふうに見えるんだ」という自己認識</li>
-
           <li>写真を撮られるだけではない、自分自身と向き合う時間</li>
-
         </ul>
-
+        <div class="panel-price">¥35,000<span>〜</span></div>
+        <p class="price-note">目的に応じて、対話の中で決まります</p>
       </div>
 
-
-      <div class="price">
-
-        <p class="price-number">
-          ¥35,000<span>〜</span>
-        </p>
-
-        <p class="price-note">
-          目的に応じて、対話の中で決まります
-        </p>
-
-      </div>
-
-
-      <a
-        class="cta"
-        href="https://www.instagram.com/tayu__t/"
-        target="_blank"
-        rel="noopener">
-        まず、話してみる
-      </a>
-
-    </div>
-
-
-
-    <!-- PERSONAL FLAG -->
-
-    <div class="panel" id="panel-flag" role="tabpanel">
-
-      <p class="panel-label">PERSONAL FLAG</p>
-
-      <h3>
-        時間を重ねて、<br>
-        あなたの軌跡を残す。
-      </h3>
-
-      <p class="panel-description">
-        一度きりではなく、年に数回ともに過ごし、
-        変化や営み、その時々のあなたを記録します。
-      </p>
-
-
-      <div class="get">
-
+      <!-- PERSONAL FLAG Panel -->
+      <div class="panel" id="panel-flag" role="tabpanel">
+        <h3>時間を重ねて、あなたの軌跡を残す。</h3>
+        <p class="panel-description">一度きりではなく、年に数回ともに過ごし、変化や営み、その時々のあなたを記録します。</p>
         <p class="get-title">WHAT YOU GET</p>
-
         <ul class="get-list">
-
           <li>一年を通した写真アーカイブ</li>
-
           <li>その時々の自分の姿や営み</li>
-
           <li>変化していく自分を振り返れる記録</li>
-
           <li>未来の自分が、過去の自分を見返せる軌跡</li>
-
           <li>個人の指針となる「旗」としての記録</li>
-
         </ul>
-
+        <div class="panel-price">¥200,000<span>〜300,000 / 年</span></div>
+        <p class="price-note">回数・内容により変動します</p>
       </div>
 
-
-      <div class="price">
-
-        <p class="price-number">
-          ¥200,000<span>〜300,000 / 年</span>
-        </p>
-
-        <p class="price-note">
-          回数・内容により変動します
-        </p>
-
-      </div>
-
-
-      <a
-        class="cta"
-        href="https://www.instagram.com/tayu__t/"
-        target="_blank"
-        rel="noopener">
-        まず、話してみる
-      </a>
-
+      <a class="modal-action-btn" href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener">まず、話してみる [DMへ]</a>
     </div>
-
   </div>
 
-</section>
+  <!-- Modal 3: Philosophy & Experience -->
+  <div class="modal-overlay" id="philosophyModal" role="dialog" aria-modal="true" aria-labelledby="philoTitle">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn" aria-label="閉じる">&times;</button>
+      <p class="modal-eyebrow">WHAT REMAINS & PHILOSOPHY</p>
+      <h2 class="modal-title" id="philoTitle">この体験で、残るもの。</h2>
 
+      <div class="exp-grid">
+        <div class="exp-card">
+          <span class="exp-num">01</span>
+          <h4>残る</h4>
+          <p>今のあなたを写した写真。SNSやプロフィール、個人の記録にも使えます。</p>
+        </div>
+        <div class="exp-card">
+          <span class="exp-num">02</span>
+          <h4>気づく</h4>
+          <p>自分では気づかなかった表情や仕草、佇まい。「自分って、こんなふうに見えるんだ」という発見。</p>
+        </div>
+        <div class="exp-card">
+          <span class="exp-num">03</span>
+          <h4>積み重なる</h4>
+          <p>一度きりではなく、時間とともに変化していくあなた自身の軌跡。</p>
+        </div>
+      </div>
 
+      <div class="philosophy-box">
+        <p>
+          写真をつくるのではなく、あらわれる条件を整える。<br>
+          Ema.は、人が自分自身の実在と接続するための場。<br>
+          写真家が作品をつくるのではなく、その人の中にすでにあるものが、写真になる。
+        </p>
+        <p class="philosophy-tag">在り方を写す、写実家。</p>
+      </div>
 
-<!-- =========================
-     PHILOSOPHY
-========================= -->
-
-<section class="philosophy">
-
-  <div class="container">
-
-    <p class="eyebrow">Ema.</p>
-
-    <h2>
-      写真をつくるのではなく、<br>
-      あらわれる条件を整える。
-    </h2>
-
-    <p>
-      Ema.は、人が自分自身の実在と接続するための場。<br>
-      写真家が作品をつくるのではなく、<br>
-      その人の中にすでにあるものが、写真になる。<br><br>
-
-      僕が透明になるほど、<br>
-      あなたが見えてくる。
-    </p>
-
-    <p class="philosophy-highlight">
-      在り方を写す、写実家。
-    </p>
-
+      <button type="button" class="modal-action-btn close-action-btn" style="margin-top:20px;">閉じる</button>
+    </div>
   </div>
-
-</section>
-
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-  <div class="footer-logo">
-    Ema.
-  </div>
-
-  <p>
-    Photographing the time you are yourself.
-  </p>
-
-</footer>
-
-
 
 <script>
+  // SVG Trace Drawing Animation
+  var heroPath = document.getElementById('heroPath');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const buttons = document.querySelectorAll('.tab-btn');
-const panels = document.querySelectorAll('.panel');
+  if (heroPath){
+    if (reduceMotion){
+      heroPath.style.strokeDasharray = 'none';
+    } else {
+      var length = heroPath.getTotalLength();
+      heroPath.style.strokeDasharray = length;
+      heroPath.style.strokeDashoffset = length;
+      heroPath.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(0.65, 0, 0.35, 1)';
+      requestAnimationFrame(function(){
+        setTimeout(function(){
+          heroPath.style.strokeDashoffset = '0';
+        }, 150);
+      });
+    }
+  }
 
-function activate(tabName){
+  // Modal Open/Close Controls
+  var triggerBtns = document.querySelectorAll('.modal-trigger-btn');
+  var activeModal = null;
 
-  buttons.forEach(btn => {
+  function openModal(modalId) {
+    var modal = document.getElementById(modalId);
+    if (!modal) return;
+    modal.classList.add('is-visible');
+    activeModal = modal;
+    var closeBtn = modal.querySelector('.modal-close-btn');
+    if (closeBtn) closeBtn.focus();
+  }
 
-    const active = btn.dataset.tab === tabName;
+  function closeModal(modal) {
+    if (!modal) return;
+    modal.classList.remove('is-visible');
+    activeModal = null;
+  }
 
-    btn.classList.toggle('is-active', active);
-
-    btn.setAttribute(
-      'aria-selected',
-      active ? 'true' : 'false'
-    );
-
+  triggerBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var targetId = btn.getAttribute('data-modal');
+      openModal(targetId);
+    });
   });
 
+  document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+    var closeBtn = overlay.querySelector('.modal-close-btn');
+    var closeAction = overlay.querySelector('.close-action-btn');
 
-  panels.forEach(panel => {
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() { closeModal(overlay); });
+    }
+    if (closeAction) {
+      closeAction.addEventListener('click', function() { closeModal(overlay); });
+    }
 
-    panel.classList.toggle(
-      'is-active',
-      panel.id === 'panel-' + tabName
-    );
-
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) {
+        closeModal(overlay);
+      }
+    });
   });
 
-}
-
-
-buttons.forEach(btn => {
-
-  btn.addEventListener('click', () => {
-
-    activate(btn.dataset.tab);
-
-    history.replaceState(
-      null,
-      '',
-      '#' + btn.dataset.tab
-    );
-
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && activeModal) {
+      closeModal(activeModal);
+    }
   });
 
-});
+  // Tab switching inside Offerings modal
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var panels = document.querySelectorAll('.panel');
 
+  tabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var targetTab = btn.getAttribute('data-tab');
 
-let initial =
-  window.location.hash.replace('#','') || 'doukou';
+      tabBtns.forEach(function(b) { b.classList.remove('is-active'); });
+      panels.forEach(function(p) { p.classList.remove('is-active'); });
 
-
-if(
-  !document.getElementById(
-    'panel-' + initial
-  )
-){
-  initial = 'doukou';
-}
-
-
-activate(initial);
-
+      btn.classList.add('is-active');
+      var targetPanel = document.getElementById('panel-' + targetTab);
+      if (targetPanel) {
+        targetPanel.classList.add('is-active');
+      }
+    });
+  });
 </script>
 
 </body>
