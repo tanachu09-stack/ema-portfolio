@@ -104,19 +104,20 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 14px 28px;
+    gap: 6px;
+    padding: 12px 16px;
     min-height: 48px;
     background-color: transparent;
     border: 1px solid var(--ink);
     border-radius: 999px;
     color: var(--ink);
     font-family: var(--font-serif);
-    font-size: 14px;
-    letter-spacing: 0.06em;
+    font-size: clamp(12px, 3.2vw, 13.5px);
+    letter-spacing: 0.04em;
     transition: all 0.3s ease;
     width: 100%;
     text-align: center;
+    white-space: nowrap;
   }
 
   .btn-primary:hover, .btn-primary:focus-visible {
@@ -473,8 +474,8 @@
               </div>
               <p class="plan-catch">今の自分に、そっと触れる時間。</p>
               <ul class="plan-details">
-                <li>撮影：1時間程度</li>
-                <li>納品：写真データ 最大20枚</li>
+                <li>撮影：2時間</li>
+                <li>納品：写真データのみ 最大20枚</li>
                 <li>納品方法：オンライン納品</li>
                 <li>場所：要相談</li>
               </ul>
