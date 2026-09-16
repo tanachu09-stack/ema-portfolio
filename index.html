@@ -75,7 +75,7 @@
   .section-title {
     font-family: var(--font-serif);
     font-weight: 500;
-    font-size: clamp(22px, 5vw, 32px);
+    font-size: clamp(15px, 4.3vw, 32px);
     line-height: 1.5;
     letter-spacing: 0.04em;
     color: var(--ink);
@@ -83,6 +83,12 @@
     text-align: center;
     word-break: auto-phrase;
     line-break: strict;
+  }
+
+  @media (max-width: 480px) {
+    .section-title {
+      white-space: nowrap;
+    }
   }
 
   .container {
