@@ -37,6 +37,7 @@ body{
   font-family:'Noto Sans JP',sans-serif;
   font-weight:300;
   line-height:1.9;
+  text-align:center;
   -webkit-font-smoothing:antialiased;
 }
 
@@ -301,6 +302,7 @@ a{
 .get-list li{
   font-size:13px;
   line-height:1.8;
+  text-align:center;
 }
 
 .get-list li::before{
@@ -450,13 +452,17 @@ footer p{
 
 @media(max-width:700px){
 
+  .container{
+    width:90vw;
+  }
+
   .experience-grid{
     grid-template-columns:1fr;
-    gap:10px;
+    gap:20px;
   }
 
   .experience-card{
-    padding:25px 20px;
+    padding:25px 15px;
   }
 
   .tabs{
@@ -466,20 +472,26 @@ footer p{
 
   .tab-btn{
     flex:1;
-    padding:10px 8px;
+    padding:10px 6px;
     font-size:11px;
+    letter-spacing:.02em;
   }
 
   .hero{
-    padding:70px 24px;
+    padding:60px 20px;
   }
 
   .intro,
   .experience,
   .offerings,
   .philosophy{
-    padding-top:100px;
-    padding-bottom:100px;
+    padding-top:80px;
+    padding-bottom:80px;
+  }
+
+  .get-list li{
+    word-break:auto-phrase;
+    line-break:strict;
   }
 
 }
