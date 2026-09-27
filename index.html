@@ -357,6 +357,42 @@
     margin-bottom: 0;
   }
 
+  /* PORTFOLIO SECTION */
+  .portfolio-section {
+    padding: 60px 0 40px;
+    background-color: var(--paper);
+    border-top: 1px solid var(--ember-light);
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .portfolio-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--card-sub-bg);
+    border: 1px solid var(--ember-light);
+    aspect-ratio: 4 / 5;
+    box-shadow: 0 4px 15px rgba(148, 163, 184, 0.08);
+  }
+
+  .portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .portfolio-item:hover img {
+    transform: scale(1.03);
+  }
+
   /* FLOW / PROCESS */
   .flow-section {
     padding: 60px 0;
@@ -475,9 +511,6 @@
           ただ目の前のあなたを撮る。<br>
           <span class="latin" style="font-size: 1.1em; letter-spacing: 0.08em; display: inline-block; margin-top: 20px;">YUTA</span>
         </p>
-        <div class="hero-image-wrapper">
-          <img src="57218384-40B8-42AD-9D90-999F9DDB49D5_4_5005_c.jpeg" alt="Ema. Portrait" width="360" height="450" loading="eager">
-        </div>
       </div>
     </section>
 
@@ -580,6 +613,45 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- PORTFOLIO GALLERY -->
+    <section class="portfolio-section">
+      <div class="container">
+        <span class="section-tag">Portfolio</span>
+        <h2 class="section-title">作品一覧</h2>
+
+        <div class="portfolio-grid">
+          <div class="portfolio-item">
+            <img src="portfolio/dscf9782.jpg" alt="Portfolio Image DSCF9782" loading="lazy">
+          </div>
+          <div class="portfolio-item">
+            <img src="portfolio/dscf7810.jpg" alt="Portfolio Image DSCF7810" loading="lazy">
+          </div>
+          <div class="portfolio-item">
+            <img src="portfolio/dscf8790.jpg" alt="Portfolio Image DSCF8790" loading="lazy">
+          </div>
+          <div class="portfolio-item">
+            <img src="portfolio/dscf6786.jpg" alt="Portfolio Image DSCF6786" loading="lazy">
+          </div>
+          <div class="portfolio-item">
+            <img src="portfolio/dscf6406.jpg" alt="Portfolio Image DSCF6406" loading="lazy">
+          </div>
+          <div class="portfolio-item">
+            <img src="portfolio/dscf2900.jpg" alt="Portfolio Image DSCF2900" loading="lazy">
+          </div>
+          <!-- DSCF0861, DSCF1077, DSCF4744 entries -->
+          <div class="portfolio-item">
+            <img src="portfolio/dscf0861.jpg" alt="Portfolio Image DSCF0861" loading="lazy" onerror="this.parentElement.style.display='none'">
+          </div>
+          <div class="portfolio-item">
+            <img src="portfolio/dscf1077.jpg" alt="Portfolio Image DSCF1077" loading="lazy" onerror="this.parentElement.style.display='none'">
+          </div>
+          <div class="portfolio-item">
+            <img src="portfolio/dscf4744.jpg" alt="Portfolio Image DSCF4744" loading="lazy" onerror="this.parentElement.style.display='none'">
+          </div>
+        </div>
       </div>
     </section>
 
