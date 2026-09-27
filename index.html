@@ -11,6 +11,7 @@
 <style>
   :root {
     --paper: #F8FAFC;
+    --paper2: #F1F5F9;
     --card-bg: #FFFFFF;
     --card-sub-bg: #F1F5F9;
     --ember-light: #E2E8F0;
@@ -132,17 +133,6 @@
     outline: none;
   }
 
-  .btn-primary.btn-featured {
-    background-color: var(--ink);
-    color: var(--paper);
-  }
-
-  .btn-primary.btn-featured:hover, .btn-primary.btn-featured:focus-visible {
-    background-color: var(--ember);
-    border-color: var(--ember);
-    color: #FFFFFF;
-  }
-
   .btn-primary .sub {
     font-size: 11px;
     opacity: 0.8;
@@ -188,10 +178,33 @@
     color: var(--paper);
   }
 
-  /* Intro Catch */
+  /* Intro Catch & Hero */
   .hero-simple {
-    padding: 60px 0 40px;
+    padding: 50px 0 40px;
     text-align: center;
+  }
+
+  .hero-subtag {
+    font-family: var(--font-serif);
+    font-size: clamp(14px, 3.5vw, 16px);
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .hero-illustration {
+    margin: 0 auto 32px;
+    max-width: 280px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-img {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    object-fit: contain;
   }
 
   .hero-catch {
@@ -202,6 +215,7 @@
     color: var(--ink);
     word-break: auto-phrase;
     line-break: strict;
+    text-align: center;
   }
 
   /* PLANS & PRICING */
@@ -234,25 +248,6 @@
     justify-content: space-between;
     position: relative;
     box-shadow: 0 4px 20px rgba(148, 163, 184, 0.08);
-  }
-
-  .plan-card.featured {
-    border-color: var(--ember);
-    box-shadow: 0 8px 30px rgba(148, 163, 184, 0.2);
-  }
-
-  .plan-badge {
-    position: absolute;
-    top: -11px;
-    right: 20px;
-    background: var(--ink);
-    color: var(--paper);
-    font-family: var(--font-serif);
-    font-size: 10px;
-    padding: 2px 10px;
-    border-radius: 999px;
-    letter-spacing: 0.1em;
-    font-weight: 500;
   }
 
   .plan-header {
@@ -449,9 +444,13 @@
   </header>
 
   <main>
-    <!-- INTRO CATCH -->
+    <!-- INTRO CATCH & HERO -->
     <section class="hero-simple">
       <div class="container-narrow">
+        <span class="hero-subtag">人の在り方を写す</span>
+        <div class="hero-illustration">
+          <img src="intro_image.png" alt="Ema. Illustration" class="hero-img">
+        </div>
         <p class="hero-catch">
           人が、自分自身の在り方と接続するための場。<br>
           意味づけせず、決めつけずに、<br class="sp-br">
@@ -463,7 +462,7 @@
       </div>
     </section>
 
-    <!-- 1. PLANS & PRICING (3つの時間) -->
+    <!-- 1. PLANS & PRICING -->
     <section class="plans-section">
       <div class="container">
         <span class="section-tag">Plans & Pricing</span>
@@ -549,7 +548,7 @@
           <div class="plan-notes">
             <p><strong>共通事項</strong></p>
             <p>※ 全プラン、別途交通費を頂戴いたします。</p>
-            <p>※ 撮影場所ついては、ご相談のうえ決定します。</p>
+            <p>※ 撮影場所については、ご相談のうえ決定します。</p>
           </div>
         </div>
 
