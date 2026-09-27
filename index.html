@@ -1,632 +1,931 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ema. | PLANS & PRICING</title>
-<meta name="description" content="Ema. 写真体験のプランと撮影の流れ。TRACE / DOUKOU / PERSONAL FLAG">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Shippori+Mincho+B1:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --paper: #F8FAFC;
-    --card-bg: #FFFFFF;
-    --card-sub-bg: #F1F5F9;
-    --ember-light: #E2E8F0;
-    --ember: #64748B;
-    --ink: #0F172A;
-    --muted: #64748B;
-    --font-serif: 'Shippori Mincho B1', serif;
-    --font-sans: 'Noto Sans JP', sans-serif;
-    --font-latin: 'EB Garamond', serif;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ema. | あなたに寄り添うプロセスフォト。撮影実績と価格のご案内。">
+  <title>Ema. | Works & Price</title>
 
-  *, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  html {
-    scroll-behavior: smooth;
-    background-color: var(--paper);
-    color: var(--ink);
-  }
-
-  body {
-    font-family: var(--font-sans);
-    font-weight: 300;
-    line-height: 1.8;
-    background-color: var(--paper);
-    color: var(--ink);
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  /* Utility Break Classes */
-  .pc-br { display: none; }
-  .sp-br { display: inline; }
-  @media (min-width: 768px) {
-    .pc-br { display: inline; }
-    .sp-br { display: none; }
-  }
-
-  /* Typography Utilities */
-  .serif { font-family: var(--font-serif); }
-  .latin { font-family: var(--font-latin); }
-
-  .section-tag {
-    font-family: var(--font-latin);
-    font-size: 13px;
-    letter-spacing: 0.25em;
-    color: var(--ember);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    display: block;
-    text-align: center;
-  }
-
-  .section-title {
-    font-family: var(--font-serif);
-    font-weight: 500;
-    font-size: clamp(15px, 4.3vw, 32px);
-    line-height: 1.5;
-    letter-spacing: 0.04em;
-    color: var(--ink);
-    margin-bottom: 24px;
-    text-align: center;
-    word-break: auto-phrase;
-    line-break: strict;
-  }
-
-  @media (max-width: 480px) {
-    .section-title {
-      white-space: nowrap;
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    :root {
+      /* 画像の世界観に合わせたカラーパレット */
+      --ink: #3a322d;           /* 柔らかなダークブラウン */
+      --paper: #f7f3ee;         /* 暖かみのあるライトベージュ */
+      --paper2: #efe9e0;        /* やや濃いめのベージュ */
+      --ember: #cf816c;         /* 胸元のハートをイメージしたテラコッタ・ウォームピンク */
+      --ember-light: #e6a898;
+      --muted: #7d736a;         /* 落ち着いたニュアンスグレー */
+      --border: rgba(58, 50, 45, 0.12);
+      --bg-gradient: linear-gradient(135deg, #f4eeea 0%, #ece2d8 50%, #e2d2c3 100%);
+      --serif: 'Shippori Mincho B1', serif;
+      --garamond: 'EB Garamond', serif;
+      --sans: 'Noto Sans JP', sans-serif;
     }
-  }
 
-  .container {
-    width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .container-narrow {
-    width: 100%;
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
+    html { scroll-behavior: smooth; font-size: 16px; }
 
-  /* Buttons */
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    padding: 12px 16px;
-    min-height: 48px;
-    background-color: transparent;
-    border: 1px solid var(--ink);
-    border-radius: 999px;
-    color: var(--ink);
-    font-family: var(--font-serif);
-    font-size: clamp(12px, 3.2vw, 13.5px);
-    letter-spacing: 0.04em;
-    transition: all 0.3s ease;
-    width: 100%;
-    text-align: center;
-    white-space: nowrap;
-  }
+    html.lenis, html.lenis body {
+      height: auto;
+    }
 
-  .btn-primary:hover, .btn-primary:focus-visible {
-    background-color: var(--ink);
-    color: var(--paper);
-    outline: none;
-  }
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
 
-  .btn-primary.btn-featured {
-    background-color: var(--ink);
-    color: var(--paper);
-  }
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
 
-  .btn-primary.btn-featured:hover, .btn-primary.btn-featured:focus-visible {
-    background-color: var(--ember);
-    border-color: var(--ember);
-    color: #FFFFFF;
-  }
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
 
-  .btn-primary .sub {
-    font-size: 11px;
-    opacity: 0.8;
-  }
+    .lenis.lenis-scrolling iframe {
+      pointer-events: none;
+    }
 
-  /* Header */
-  header {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    padding: 16px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(248, 250, 252, 0.92);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--ember-light);
-  }
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      overflow-x: hidden;
+      cursor: none;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  .brand-logo {
-    font-family: var(--font-serif);
-    font-size: 20px;
-    letter-spacing: 0.1em;
-    color: var(--ink);
-    font-weight: 600;
-  }
+    /* --- Splash Screen --- */
+    #splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(135deg, #f8f4f0 0%, #ece1d6 50%, #dec9b8 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      overflow: hidden;
+    }
+    .splash-logo-wrap {
+      position: absolute;
+      z-index: 10001;
+      text-align: center;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .splash-icon {
+      width: 60px;
+      height: auto;
+      margin-bottom: 24px;
+      opacity: 0;
+    }
+    .splash-logo-wrap h1 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 8vw, 64px);
+      color: var(--ink);
+      letter-spacing: 0.2em;
+      opacity: 0;
+      font-weight: 500;
+    }
+    .splash-sub {
+      font-family: var(--serif);
+      font-size: 14px;
+      letter-spacing: 0.3em;
+      color: var(--muted);
+      margin-top: 12px;
+      opacity: 0;
+    }
 
-  .nav-cta {
-    font-family: var(--font-serif);
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    padding: 8px 16px;
-    border: 1px solid var(--ink);
-    border-radius: 999px;
-    transition: all 0.3s ease;
-  }
+    /* --- Custom cursor --- */
+    .cursor {
+      width: 10px; height: 10px;
+      background: var(--ember);
+      border-radius: 50%;
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+    }
+    .cursor.hover { width: 36px; height: 36px; background: var(--ember); opacity: 0.25; }
 
-  .nav-cta:hover, .nav-cta:focus-visible {
-    background-color: var(--ink);
-    color: var(--paper);
-  }
+    @media (hover: none), (pointer: coarse) {
+      body, a, button, .nav-logo, .nav-links a, .works-link, .work-card {
+        cursor: auto !important;
+      }
+      .cursor { display: none !important; }
+    }
 
-  /* Intro Catch */
-  .hero-simple {
-    padding: 60px 0 40px;
-    text-align: center;
-  }
+    /* --- Nav --- */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 28px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.5s, padding 0.5s, border-color 0.5s;
+    }
+    nav.scrolled {
+      background: rgba(247, 243, 238, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 18px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 22px;
+      letter-spacing: 0.2em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--ember); }
 
-  .hero-catch {
-    font-family: var(--font-serif);
-    font-size: clamp(14px, 3.8vw, 18px);
-    line-height: 2.25;
-    letter-spacing: 0.05em;
-    color: var(--ink);
-    word-break: auto-phrase;
-    line-break: strict;
-  }
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+    }
 
-  /* PLANS & PRICING */
-  .plans-section {
-    padding: 20px 0 60px;
-  }
+    /* --- Section base --- */
+    section { padding: 140px 48px; }
+    @media (max-width: 768px) { section { padding: 90px 24px; } }
 
-  .plans-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin-top: 32px;
-  }
+    .section-label {
+      display: block;
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--ember);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
 
-  @media (min-width: 800px) {
-    .plans-grid {
+    /* --- Hero Section --- */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #f8f4f0 0%, #ece1d6 50%, #dec9b8 100%);
+      padding-top: 120px;
+    }
+    .hero-icon {
+      width: 72px;
+      height: auto;
+      margin-bottom: 32px;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 6vw, 64px);
+      letter-spacing: 0.15em;
+      color: var(--ink);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .hero-tagline {
+      font-family: var(--serif);
+      font-size: clamp(16px, 2.5vw, 22px);
+      letter-spacing: 0.35em;
+      color: var(--muted);
+      margin-bottom: 48px;
+    }
+    .hero-lead {
+      font-family: var(--serif);
+      font-size: clamp(15px, 2vw, 18px);
+      line-height: 2.2;
+      color: var(--ink);
+      max-width: 680px;
+    }
+
+    /* --- Works --- */
+    .works-section { background: var(--paper); padding-bottom: 120px; }
+    .works-header {
+      max-width: 1000px; margin: 0 auto 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .works-h2 {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.4vw, 32px);
+      letter-spacing: 0.14em;
+      color: var(--ink);
+    }
+
+    /* Works Masonry */
+    .works-masonry {
+      max-width: 1000px;
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+      row-gap: 0;
+      align-items: start;
+    }
+    .wk { min-width: 0; }
+    .wk-4  { grid-column: span 4; }
+    .wk-5  { grid-column: span 5; }
+    .wk-6  { grid-column: span 6; }
+    .wk-7  { grid-column: span 7; }
+    .wk-8  { grid-column: span 8; }
+    .wk-mt-neg    { margin-top: -64px; }
+    .wk-mt-sm-neg { margin-top: -32px; }
+    .wk-mt-sm     { margin-top: 64px; }
+    .wk-mt-md     { margin-top: 96px; }
+    .wk-mt-lg     { margin-top: 128px; }
+    .wk-mt-xl     { margin-top: 112px; }
+
+    .wk-label { margin-top: 16px; margin-bottom: 64px; }
+    .work-card { position: relative; overflow: hidden; background: #ded6cc; border-radius: 4px; }
+    .work-card img {
+      width: 100%; height: 120%;
+      object-fit: cover;
+      display: block;
+      transition: filter 0.5s;
+      filter: saturate(90%);
+      will-change: transform;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .work-card:hover img { filter: saturate(110%); }
+    .work-name-below { font-family: var(--serif); font-size: 15px; letter-spacing: 0.12em; color: var(--ink); margin-bottom: 4px; }
+    .work-sub-below { font-family: var(--sans); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+
+    @media (max-width: 768px) {
+      .works-masonry { grid-template-columns: 1fr 1fr; column-gap: 12px; }
+      .wk-4, .wk-5, .wk-6, .wk-7, .wk-8 { grid-column: span 1; }
+      .wk-mt-lg, .wk-mt-md, .wk-mt-xl, .wk-mt-neg, .wk-mt-sm, .wk-mt-sm-neg { margin-top: 0; }
+      .wk-label { margin-bottom: 24px; }
+      .works-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+    @media (max-width: 480px) { .works-masonry { grid-template-columns: 1fr; } }
+
+    /* --- Concept Section --- */
+    .concept-section {
+      background: var(--paper2);
+    }
+    .concept-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
       gap: 24px;
     }
-  }
+    .concept-lead {
+      grid-column: 1 / span 12;
+      font-family: var(--serif);
+      font-size: clamp(20px, 3vw, 30px);
+      line-height: 2;
+      color: var(--ink);
+      margin-bottom: 48px;
+    }
+    .concept-accent {
+      color: var(--ember);
+      font-weight: 500;
+    }
 
-  .plan-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--ember-light);
-    border-radius: 16px;
-    padding: 32px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    box-shadow: 0 4px 20px rgba(148, 163, 184, 0.08);
-  }
+    /* --- Process Section --- */
+    .process-section {
+      background: var(--paper);
+    }
+    .process-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .process-header {
+      margin-bottom: 80px;
+    }
+    .process-h2 {
+      font-family: var(--serif);
+      font-size: clamp(24px, 3.5vw, 36px);
+      letter-spacing: 0.1em;
+      color: var(--ink);
+      margin-bottom: 32px;
+    }
+    .process-intro {
+      font-family: var(--serif);
+      font-size: 15px;
+      line-height: 2.2;
+      color: var(--muted);
+      max-width: 800px;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px 60px;
+      margin-bottom: 100px;
+    }
+    .process-item-num {
+      font-family: var(--garamond);
+      font-size: 64px;
+      color: #dfd5ca;
+      line-height: 1;
+      margin-bottom: -20px;
+    }
+    .process-item-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ember);
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .process-item-h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .process-item-text {
+      font-family: var(--serif);
+      font-size: 14px;
+      line-height: 2.2;
+      color: var(--muted);
+    }
+    .process-footer-line {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 48px;
+    }
+    .process-footer-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ember);
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+    .process-footer-text {
+      font-family: var(--serif);
+      font-size: 14px;
+      line-height: 2.4;
+      color: var(--muted);
+      max-width: 800px;
+    }
 
-  .plan-card.featured {
-    border-color: var(--ember);
-    box-shadow: 0 8px 30px rgba(148, 163, 184, 0.2);
-  }
+    @media (max-width: 768px) {
+      .process-grid { grid-template-columns: 1fr; gap: 64px; }
+    }
 
-  .plan-badge {
-    position: absolute;
-    top: -11px;
-    right: 20px;
-    background: var(--ink);
-    color: var(--paper);
-    font-family: var(--font-serif);
-    font-size: 10px;
-    padding: 2px 10px;
-    border-radius: 999px;
-    letter-spacing: 0.1em;
-    font-weight: 500;
-  }
+    /* --- Philosophy Summaries --- */
+    .phi-summary-section {
+      background: var(--paper2);
+    }
+    .phi-summary-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .phi-summary-text {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2.5vw, 24px);
+      line-height: 2;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .phi-details summary {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--ember);
+      cursor: pointer;
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.3s;
+    }
+    .phi-details summary:hover { opacity: 0.7; }
+    .phi-details summary::-webkit-details-marker { display: none; }
+    .phi-details summary::after { content: ' →'; font-family: var(--sans); }
+    .phi-details[open] summary::after { content: ' ↓'; }
+    .phi-full-text {
+      margin-top: 24px;
+      font-family: var(--serif);
+      font-size: 15px;
+      line-height: 2.2;
+      color: var(--muted);
+      border-left: 1px solid var(--border);
+      padding-left: 24px;
+    }
 
-  .plan-header {
-    border-bottom: 1px solid var(--ember-light);
-    padding-bottom: 18px;
-    margin-bottom: 18px;
-  }
+    /* --- Price --- */
+    .price-section { background: var(--paper); }
+    .price-inner { max-width: 860px; margin: 0 auto; }
+    .price-table { border-top: 1px solid var(--ink); margin-top: 48px; }
+    .price-row {
+      display: grid;
+      grid-template-columns: 2fr 3fr 1fr;
+      gap: 32px;
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .price-row.featured {
+      background: var(--paper2);
+      padding: 48px 28px;
+      margin: 0 -28px;
+      border-top: 2px solid var(--ember);
+      border-radius: 4px;
+    }
+    .price-badge {
+      display: inline-block;
+      background: var(--ember);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .price-name { font-family: var(--serif); font-size: 20px; letter-spacing: 0.12em; color: var(--ink); margin-bottom: 8px; }
+    .price-deliverables { font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; color: var(--muted); line-height: 1.8; }
+    .price-concept-text { font-family: var(--serif); font-size: 14px; line-height: 2.1; color: var(--muted); }
+    .price-amount { font-family: var(--garamond); font-size: 24px; color: var(--ink); text-align: right; white-space: nowrap; }
+    .price-tax { font-size: 11px; font-family: var(--sans); color: var(--muted); display: block; margin-top: 4px; }
+    @media (max-width: 640px) {
+      .price-row { grid-template-columns: 1fr; gap: 24px; }
+      .price-amount { text-align: left; }
+      .price-row.featured { margin: 0 -8px; padding: 32px 20px; }
+    }
 
-  .plan-name {
-    font-family: var(--font-latin);
-    font-size: 20px;
-    letter-spacing: 0.08em;
-    color: var(--ink);
-    margin-bottom: 2px;
-  }
+    /* --- Outro --- */
+    .outro-section {
+      background: linear-gradient(135deg, #f8f4f0 0%, #ece1d6 50%, #dec9b8 100%);
+      padding: 160px 48px;
+      text-align: center;
+    }
+    .contact-link {
+      font-family: var(--garamond);
+      color: var(--ink);
+      font-size: clamp(18px, 2.5vw, 28px);
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 32px;
+      border-bottom: 1px solid rgba(58, 50, 45, 0.3);
+      padding-bottom: 4px;
+      transition: all 0.3s;
+    }
+    .contact-link:hover {
+      color: var(--ember);
+      border-color: var(--ember);
+    }
 
-  .plan-subname {
-    font-family: var(--font-serif);
-    font-size: 14px;
-    color: var(--ember);
-    margin-bottom: 12px;
-  }
+    /* --- Reveal --- */
+    .reveal {
+      opacity: 0;
+      will-change: opacity, transform;
+    }
 
-  .plan-price {
-    font-family: var(--font-latin);
-    font-size: 28px;
-    font-weight: 500;
-    color: var(--ink);
-  }
-
-  .plan-price span {
-    font-size: 16px;
-    font-style: italic;
-    color: var(--ember);
-    margin-left: 2px;
-  }
-
-  .plan-catch {
-    font-family: var(--font-serif);
-    font-size: 13.5px;
-    line-height: 1.7;
-    color: var(--ink);
-    margin-bottom: 20px;
-  }
-
-  .plan-details {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 28px;
-  }
-
-  .plan-details li {
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--ink);
-    padding-left: 16px;
-    position: relative;
-  }
-
-  .plan-details li::before {
-    content: "・";
-    position: absolute;
-    left: 0;
-    color: var(--ember);
-  }
-
-  .plan-notes {
-    margin-top: 32px;
-    background: var(--card-sub-bg);
-    border: 1px solid var(--ember-light);
-    border-radius: 12px;
-    padding: 20px 18px;
-    font-size: 12.5px;
-    line-height: 1.8;
-    color: var(--muted);
-  }
-
-  .plan-notes p {
-    margin-bottom: 4px;
-  }
-
-  .plan-notes p:last-child {
-    margin-bottom: 0;
-  }
-
-  /* FLOW / PROCESS */
-  .flow-section {
-    padding: 60px 0;
-    background-color: var(--card-sub-bg);
-    border-top: 1px solid var(--ember-light);
-    border-bottom: 1px solid var(--ember-light);
-  }
-
-  .flow-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 32px;
-  }
-
-  .flow-step {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    background: var(--card-bg);
-    border: 1px solid var(--ember-light);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(148, 163, 184, 0.05);
-  }
-
-  .step-num {
-    font-family: var(--font-latin);
-    font-size: 20px;
-    color: var(--ember);
-    min-width: 28px;
-    padding-top: 2px;
-  }
-
-  .step-content {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .step-title {
-    font-family: var(--font-serif);
-    font-size: 16px;
-    color: var(--ink);
-  }
-
-  .step-desc {
-    font-size: 13px;
-    line-height: 1.7;
-    color: var(--muted);
-    word-break: auto-phrase;
-    line-break: strict;
-  }
-
-  /* CONTACT SECTION */
-  .contact-section {
-    padding: 70px 0;
-    text-align: center;
-  }
-
-  .contact-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-  }
-
-  .contact-heading {
-    font-family: var(--font-serif);
-    font-size: clamp(18px, 4vw, 24px);
-    line-height: 1.7;
-    color: var(--ink);
-    word-break: auto-phrase;
-    line-break: strict;
-  }
-
-  .contact-mail {
-    font-family: var(--font-latin);
-    font-size: 14px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-
-  .contact-mail:hover, .contact-mail:focus-visible {
-    color: var(--ink);
-  }
-
-  /* FOOTER */
-  footer {
-    padding: 32px 20px;
-    text-align: center;
-    background-color: var(--paper);
-    border-top: 1px solid var(--ember-light);
-    font-family: var(--font-serif);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-  }
-</style>
+    footer {
+      background: var(--paper);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+    }
+    .footer-logo { font-family: var(--serif); font-size: 20px; letter-spacing: 0.2em; color: var(--ink); }
+    .footer-copy { font-family: var(--sans); font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.18em;}
+    @media (max-width: 480px) {
+      footer { padding: 32px 24px; flex-direction: column; gap: 16px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- HEADER NAV -->
-  <header>
-    <a href="#" class="brand-logo">Ema.</a>
-    <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="nav-cta">撮影を相談する</a>
-  </header>
+<div id="splash-screen">
+  <div class="splash-logo-wrap">
+    <!-- SVG Icon (ハートを持つ人と胸のハート) -->
+    <svg class="splash-icon" id="splash-icon" viewBox="0 0 100 120" fill="none" stroke="#3a322d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="50" cy="22" r="14" />
+      <path d="M32,48 C32,44 40,42 50,42 C60,42 68,44 68,48 L68,85 C68,92 60,96 50,96 C40,96 32,92 32,85 Z" />
+      <path d="M26,52 L20,78" />
+      <path d="M74,52 L80,78" />
+      <!-- 胸元のハート -->
+      <path d="M44,62 A 5,5 0 0,1 50,57 A 5,5 0 0,1 56,62 Q 56,68 50,73 Q 44,68 44,62 Z" fill="#cf816c" stroke="#cf816c" />
+    </svg>
+    <h1 id="splash-logo-text">Ema.</h1>
+    <div class="splash-sub" id="splash-sub">人の在り方を写す</div>
+  </div>
+</div>
 
-  <main>
-    <!-- INTRO CATCH -->
-    <section class="hero-simple">
-      <div class="container-narrow">
-        <p class="hero-catch">
-          人が、自分自身の在り方と接続するための場。<br>
-          意味づけせず、決めつけずに、<br class="sp-br">
-          ただ目の前のあなたを撮る。<br>
-          僕は、あなたの中にすでにあるものを<br class="sp-br">
-          写真に撮ります。<br>
-          <span class="latin" style="font-size: 1.1em; letter-spacing: 0.08em; display: inline-block; margin-top: 20px;">YUTA</span>
+<div class="cursor" id="cursor"></div>
+
+<nav id="nav">
+  <a href="#" class="nav-logo">Ema.</a>
+  <div class="nav-links">
+    <a href="#philosophy">Philosophy</a>
+    <a href="#process">Process</a>
+    <a href="#proof">Works</a>
+    <a href="#price">Price</a>
+    <a href="https://instagram.com" target="_blank">Instagram</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="hero-section">
+  <!-- SVG Icon -->
+  <svg class="hero-icon reveal" viewBox="0 0 100 120" fill="none" stroke="#3a322d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="50" cy="22" r="14" />
+    <path d="M32,48 C32,44 40,42 50,42 C60,42 68,44 68,48 L68,85 C68,92 60,96 50,96 C40,96 32,92 32,85 Z" />
+    <path d="M26,52 L20,78" />
+    <path d="M74,52 L80,78" />
+    <path d="M44,62 A 5,5 0 0,1 50,57 A 5,5 0 0,1 56,62 Q 56,68 50,73 Q 44,68 44,62 Z" fill="#cf816c" stroke="#cf816c" />
+  </svg>
+  <h1 class="hero-title reveal">Ema.</h1>
+  <p class="hero-tagline reveal">人の在り方を写す</p>
+  <div class="hero-lead reveal">
+    <span class="concept-accent">Energy, Evolution, Encounter.</span><br>
+    その「プロセス（線）」にこそ、<br>
+    あなただけの真実が宿る。
+  </div>
+</section>
+
+<!-- PROOF -->
+<section id="proof" class="works-section">
+  <div class="works-header reveal">
+    <div>
+      <span class="section-label">Proof</span>
+      <h2 class="works-h2">実績と空気感</h2>
+    </div>
+  </div>
+
+  <div class="works-masonry">
+
+    <!-- 同行型: col 1-8 / 縦 -->
+    <div class="wk wk-8 reveal">
+      <div class="work-card" style="aspect-ratio:2/3;">
+        <img src="DSCF7657.jpg" alt="同行型ポートレート" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below">同行型ポートレート</div>
+        <div class="work-sub-below">Mountain Climbing</div>
+      </div>
+    </div>
+
+    <!-- K&H: col 9-12 / 縦 / mt-128 -->
+    <div class="wk wk-4 wk-mt-lg reveal">
+      <div class="work-card" style="aspect-ratio:2/3;">
+        <img src="DSCF2900.jpg" alt="ライフイベント ポートレート" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below">ライフイベント ポートレート</div>
+        <div class="work-sub-below">K＆H</div>
+      </div>
+    </div>
+
+    <!-- Atsushi: col 1-5 / 縦 -->
+    <div class="wk wk-5 reveal">
+      <div class="work-card" style="aspect-ratio:2/3;">
+        <img src="DSCF6786.jpg" alt="LIVE ポートレート" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below">LIVE ポートレート</div>
+        <div class="work-sub-below">Atsushi -trio de guess-</div>
+      </div>
+    </div>
+
+    <!-- SO: col 6-12 / 縦 / mt-96 -->
+    <div class="wk wk-7 wk-mt-md reveal">
+      <div class="work-card" style="aspect-ratio:2/3;">
+        <img src="DSCF5055_Original 3.JPG" onerror="this.src='DSCF5055_Original_3.jpg'" alt="ブランディング キービジュアル" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below">ブランディング キービジュアル</div>
+        <div class="work-sub-below">SO</div>
+      </div>
+    </div>
+
+    <!-- BirthDay: col 1-4 / 縦 / -mt-32 -->
+    <div class="wk wk-4 wk-mt-sm-neg reveal">
+      <div class="work-card" style="aspect-ratio:2/3;">
+        <img src="DSCF6406.jpg" alt="ライフイベント ポートレート" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below">ライフイベント ポートレート</div>
+        <div class="work-sub-below">BirthDay</div>
+      </div>
+    </div>
+
+    <!-- JIRO: col 5-12 / 縦 / mt-64 -->
+    <div class="wk wk-8 wk-mt-sm reveal">
+      <div class="work-card" style="aspect-ratio:2/3;">
+        <img src="DSCF9782.JPG" alt="アーティスト ポートレート" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below">アーティスト ポートレート</div>
+        <div class="work-sub-below">JIRO</div>
+      </div>
+    </div>
+
+    <!-- WORLZ: col 1-6 / 横 -->
+    <div class="wk wk-6 reveal">
+      <div class="work-card" style="aspect-ratio:4/3;">
+        <img src="DSCF8790.jpg" alt="Band MV Behind the Scenes" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below">Band MV Behind the Scenes</div>
+        <div class="work-sub-below">WORLZ -Dancing in the Dark-</div>
+      </div>
+    </div>
+
+    <!-- 術: col 7-12 / 横 / mt-112 -->
+    <div class="wk wk-6 wk-mt-xl reveal">
+      <div class="work-card" style="aspect-ratio:4/3;">
+        <img src="DSCF7810.jpg" alt="イベント Behind the Scenes" loading="lazy">
+      </div>
+      <div class="wk-label">
+        <div class="work-name-below">イベント Behind the Scenes</div>
+        <div class="work-sub-below">術 -jutsu-</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY SUMMARIES -->
+<section id="philosophy" class="phi-summary-section">
+  <div class="phi-summary-inner">
+    <div class="phi-summary-item reveal">
+      <span class="section-label">Concept</span>
+      <div class="phi-summary-text">
+        「間（ma）」という余白や対話を通じて、<br>
+        あなたの内側にある熱量を丁寧に抽出し、<br>
+        唯一無二の物語を形にする。
+      </div>
+      <details class="phi-details">
+        <summary>思想を読む</summary>
+        <div class="phi-full-text">
+          祖父が事務所を構えていた「エナヂー」という名。<br>
+          そこには、絶え間ない情熱と進化、<br>
+          そして新しい出会いへの渇望がありました。<br><br>
+          Ema.は、写真という一瞬の「点」ではなく、<br>
+          そこに至るまでの「プロセス（線）」を大切にします。<br><br>
+          「間（ma）」という余白や対話を通じて、<br>
+          あなたの内側にある熱量を丁寧に抽出し、<br>
+          新しい価値や高揚感を共に創造していく。<br><br>
+          そんな濃密な時間を経て、<br>
+          あなたの唯一無二の物語を形にします。
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="process-section">
+  <div class="process-inner">
+    <div class="process-header reveal">
+      <span class="section-label">Our Process</span>
+      <h2 class="process-h2">記録の設計 —— 何を撮るか</h2>
+      <p class="process-intro">
+        Ema.の撮影は、被写体の状態を一点で切り取るものではありません。深傾聴によって内側の熱量や原風景が立ち上がるように、撮影もまた「間」を経て変化していく時間そのものを設計しています。以下の4つの局面は、その時間軸を可視化するための共通言語です。
+      </p>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-item reveal">
+        <div class="process-item-num">01</div>
+        <div class="process-item-label">ENCOUNTER — 境界の表情</div>
+        <h3 class="process-item-h3">出会い</h3>
+        <p class="process-item-text">日常のモードがまだ体に残っている状態。緊張、警戒、あるいは解放感の予兆。<strong>まだ「間」を経ていない</strong>この瞬間が、後に訪れる変化を映す基準点になります。</p>
+      </div>
+
+      <div class="process-item reveal">
+        <div class="process-item-num">02</div>
+        <div class="process-item-label">IMMERSION — 没入の瞬間</div>
+        <h3 class="process-item-h3">没入している瞬間</h3>
+        <p class="process-item-text">観察する、耳を澄ます、手を動かす。所作の説明ではなく、<strong>その人固有の「間」の使い方</strong>そのものを撮る局面。深傾聴が言葉で原風景を引き出すように、ここでは身体を通じてそれが滲み出てきます。</p>
+      </div>
+
+      <div class="process-item reveal">
+        <div class="process-item-num">03</div>
+        <div class="process-item-label">MA — 対話の瞬間</div>
+        <h3 class="process-item-h3">間</h3>
+        <p class="process-item-text">一泊を挟むなら夜〜翌朝。日帰りなら活動の合間や帰り支度の前後。<strong>区切りを経たからこそ</strong>出てくる言葉がある局面。撮るというより、聴きながら撮る時間です。</p>
+      </div>
+
+      <div class="process-item reveal">
+        <div class="process-item-num">04</div>
+        <div class="process-item-label">RETURN — 結晶化</div>
+        <h3 class="process-item-h3">帰路</h3>
+        <p class="process-item-text">体験が言葉より先に、体に入っている状態。出会いの瞬間の表情と並べたとき、初めて<strong>変化そのものが可視化</strong>されます。記録ではなく、光の軌跡としての結晶化です。</p>
+      </div>
+    </div>
+
+    <div class="process-footer reveal">
+      <div class="process-footer-line"></div>
+      <div class="process-footer-content">
+        <div class="process-footer-label">WHY THIS STRUCTURE — なぜこの4点セットなのか</div>
+        <p class="process-footer-text">
+          Ema.という名前は、Energy・Evolution・Encounterという3つのEが「間（ま）」を経て、初めてわくわくという価値になる、という考えに基づいています。この4局面は、その構造を<strong>撮影の時間軸に展開したもの</strong>にほかなりません。一泊のプランでも日帰りのプランでも、街中の短いセッションでも骨格は変わらず、変わるのは各局面にかける時間配分と密度だけです。
         </p>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- 1. PLANS & PRICING (3つの時間) -->
-    <section class="plans-section">
-      <div class="container">
-        <span class="section-tag">Plans & Pricing</span>
-        <h1 class="section-title">ご希望のプランを選んでください。</h1>
+<!-- PRICE -->
+<section class="price-section" id="price">
+  <div class="price-inner reveal">
+    <span class="section-label">Shooting Plans</span>
+    <h2 class="works-h2" style="font-size:32px; color:var(--ink);">PRICE.</h2>
+    <p style="font-family:var(--serif); font-size:12px; color:var(--muted); letter-spacing:0.1em; margin-top: 16px; border-left: 1px solid var(--ember); padding-left: 16px; line-height: 2.2;">
+      すべてのプランに、<br>事前の深傾聴セッションが含まれます。<br>現在は２つのプランを展開中です。
+    </p>
 
-        <div class="plans-grid">
-
-          <!-- Plan 1: TRACE -->
-          <div class="plan-card">
-            <div>
-              <div class="plan-header">
-                <h2 class="plan-name">TRACE</h2>
-                <p class="plan-subname">ひととき</p>
-                <div class="plan-price">¥25,000</div>
-              </div>
-              <p class="plan-catch">今の自分に、そっと触れる時間。</p>
-              <ul class="plan-details">
-                <li>撮影：2時間</li>
-                <li>納品：写真データのみ 最大20枚</li>
-                <li>納品方法：オンライン納品</li>
-                <li>場所：要相談</li>
-              </ul>
-            </div>
-            <div>
-              <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary">
-                TRACE について相談する
-              </a>
-            </div>
-          </div>
-
-          <!-- Plan 2: DOUKOU -->
-          <div class="plan-card">
-            <div>
-              <div class="plan-header">
-                <h2 class="plan-name">DOUKOU</h2>
-                <p class="plan-subname">ともに過ごす時間</p>
-                <div class="plan-price">¥35,000<span>〜</span></div>
-              </div>
-              <p class="plan-catch">対話を重ねながら、その人が望むプロセスに寄り添う時間。</p>
-              <ul class="plan-details">
-                <li>撮影：上限1日</li>
-                <li>納品：写真データ 最大50枚</li>
-                <li style="color: var(--ember);">元データのお渡しも可能</li>
-                <li>納品方法：オンライン納品</li>
-                <li>場所：要相談</li>
-              </ul>
-            </div>
-            <div>
-              <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary">
-                DOUKOU について相談する
-              </a>
-            </div>
-          </div>
-
-          <!-- Plan 3: PERSONAL FLAG -->
-          <div class="plan-card">
-            <div>
-              <div class="plan-header">
-                <h2 class="plan-name">PERSONAL FLAG</h2>
-                <p class="plan-subname">積み重ねる時間</p>
-                <div class="plan-price">¥200,000<span style="font-size: 14px;">／年</span></div>
-              </div>
-              <p class="plan-catch">一年を通して、変化や営みをともに記録していく時間。</p>
-              <ul class="plan-details">
-                <li>撮影：年4回</li>
-                <li>納品：写真データ 最大50枚</li>
-                <li style="color: var(--ember);">元データのお渡しも可能</li>
-                <li>納品方法：オンライン納品</li>
-                <li>場所：要相談</li>
-              </ul>
-            </div>
-            <div>
-              <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary">
-                PERSONAL FLAG について相談する
-              </a>
-            </div>
-          </div>
-
+    <div class="price-table">
+      <!-- Plan 1 -->
+      <div class="price-row">
+        <div>
+          <span style="font-family:var(--garamond); font-size:32px; color:rgba(207,129,108,0.4); line-height:1; display:block; margin-bottom:8px;">01</span>
+          <div class="price-name">Process Portrait</div>
+          <p style="font-family:var(--sans); font-size:9px; letter-spacing:0.15em; color:var(--ember); text-transform:uppercase; margin-bottom:16px;">同行型ポートレート</p>
+          <div class="price-deliverables">深傾聴(30min) ＋ 撮影(2h) ＋ データ</div>
         </div>
-
-        <!-- 共通事項 -->
-        <div class="container-narrow">
-          <div class="plan-notes">
-            <p><strong>共通事項</strong></p>
-            <p>※ 全プラン、別途交通費を頂戴いたします。</p>
-            <p>※ 撮影場所ついては、ご相談のうえ決定します。</p>
-          </div>
-        </div>
-
+        <div class="price-concept-text">あなたの内側にある熱量を抽出し、可視化する撮影体験。<br>表面的な「映え」ではなく、プロセスそのものを記録します。<br>同行型ポートレートはこちらのプランになります。</div>
+        <div class="price-amount">¥25,000<span class="price-tax">税込</span></div>
       </div>
-    </section>
 
-    <!-- 2. 撮影の流れ (FLOW) -->
-    <section class="flow-section">
-      <div class="container-narrow">
-        <span class="section-tag">Process</span>
-        <h2 class="section-title">撮影までの流れ</h2>
-
-        <div class="flow-steps">
-          <div class="flow-step">
-            <span class="step-num">01</span>
-            <div class="step-content">
-              <h3 class="step-title">問い合わせ</h3>
-              <p class="step-desc">Instagram DM またはメールよりお気軽にご連絡ください。どのような時間を過ごしたいか、ざっくりとしたイメージで構いません。</p>
-            </div>
+      <!-- Plan 2 -->
+      <div class="price-row featured">
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+            <span style="font-family:var(--garamond); font-size:32px; color:rgba(207,129,108,0.7); line-height:1; display:block;">02</span>
+            <span class="price-badge">推奨</span>
           </div>
-
-          <div class="flow-step">
-            <span class="step-num">02</span>
-            <div class="step-content">
-              <h3 class="step-title">打合せ</h3>
-              <p class="step-desc">オンラインまたは対面にて、事前のヒアリングを行います。<br>「はじめましてからお元気ですか。」対話ベースで撮影の場所やコンセプトを決めていきます。</p>
-            </div>
-          </div>
-
-          <div class="flow-step">
-            <span class="step-num">03</span>
-            <div class="step-content">
-              <h3 class="step-title">撮影</h3>
-              <p class="step-desc">ご依頼のプランに沿って撮影。※天気によっては撮影日変更あり。</p>
-            </div>
-          </div>
-
-          <div class="flow-step">
-            <span class="step-num">04</span>
-            <div class="step-content">
-              <h3 class="step-title">整える</h3>
-              <p class="step-desc">大げさな編集は入れません。あくまで写された写真を整えます。</p>
-            </div>
-          </div>
-
-          <div class="flow-step">
-            <span class="step-num">05</span>
-            <div class="step-content">
-              <h3 class="step-title">納品</h3>
-              <p class="step-desc">オンラインにて写真データを納品いたします。プランによって納期が異なります。</p>
-            </div>
-          </div>
+          <div class="price-name">Personal Flag</div>
+          <p style="font-family:var(--sans); font-size:9px; letter-spacing:0.15em; color:var(--ember); text-transform:uppercase; margin-bottom:16px;">ブレない軸となる旗</p>
+          <div class="price-deliverables">深傾聴(1h) ＋ 撮影(カスタム) ＋ データ</div>
         </div>
-
+        <div class="price-concept-text">深傾聴を通じて、あなたの「原風景」を抽出し、<br>光の軌跡（写真・映像）として結晶化させます。<br>迷ったときにいつでも立ち返れる、<br>あなたの「自分だけの旗」を共に創り上げます。</div>
+        <div class="price-amount">¥35,000<span class="price-tax">税込</span></div>
       </div>
-    </section>
+    </div>
 
-    <!-- 3. CONTACT -->
-    <section class="contact-section">
-      <div class="container-narrow">
-        <div class="contact-box">
-          <span class="section-tag">Contact</span>
-          <h2 class="contact-heading">
-            話して、掘って、撮る。
-          </h2>
-          <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary" style="max-width: 320px;">
-            撮影について相談する <span class="sub">[DMへ]</span>
-          </a>
-          <a href="mailto:tanachu09@gmail.com" class="contact-mail">tanachu09@gmail.com</a>
-        </div>
-      </div>
-    </section>
-  </main>
+    <div class="reveal" style="margin-top: 64px; border-top: 1px solid var(--border); padding-top: 32px; max-width: 500px;">
+      <h3 style="font-family:var(--serif); font-size:14px; color:var(--ink); letter-spacing:0.1em; margin-bottom:12px;">お支払いについて</h3>
+      <p style="font-family:var(--serif); font-size:12px; color:var(--muted); line-height:2; letter-spacing:0.05em;">
+        口座振込または当日現金でのお支払いにてご対応しております。<br>
+        恐れ入りますが、口座振込は原則、撮影前日までのお支払いをお願いしております。
+      </p>
+    </div>
+  </div>
+</section>
 
-  <footer>
-    <p>&copy; Ema. All rights reserved.</p>
-  </footer>
+<!-- OUTRO MESSAGE -->
+<section class="outro-section">
+  <p class="reveal" style="font-family:var(--serif); color:var(--ink); font-size:clamp(15px, 2vw, 24px); letter-spacing:0.25em; line-height: 2.5;">
+    ここまで見に来ていただいて<br>ありがとうございます<br>撮影のご連絡お待ちしてます。
+  </p>
+  <a href="mailto:tanachu09@gmail.com" class="contact-link reveal" style="transition-delay: 0.3s;">tanachu09@gmail.com</a>
+</section>
 
+<footer>
+  <span class="footer-logo">Ema.</span>
+  <span class="footer-copy">© <span id="yr"></span> Ema. All rights reserved.</span>
+</footer>
+
+<script>
+// Cursor
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a, button, .work-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+
+// Nav
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// GSAP Register
+gsap.registerPlugin(ScrollTrigger);
+
+// Splash Animation
+const tl = gsap.timeline({
+  onComplete: () => {
+    document.getElementById('splash-screen').style.display = 'none';
+    lenis.start();
+  }
+});
+
+tl.fromTo("#splash-icon",
+  { opacity: 0, scale: 0.8 },
+  { opacity: 1, scale: 1, duration: 1.2, ease: "power3.out" }
+)
+.fromTo("#splash-logo-text",
+  { opacity: 0, y: 20 },
+  { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" },
+  "-=0.6"
+)
+.fromTo("#splash-sub",
+  { opacity: 0, y: 15 },
+  { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+  "-=0.6"
+)
+.to("#splash-screen", {
+  opacity: 0,
+  duration: 1.2,
+  ease: "expo.inOut",
+  delay: 1.0
+});
+
+// Lenis Initialize
+const lenis = new Lenis({
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  orientation: 'vertical',
+  gestureOrientation: 'vertical',
+  smoothWheel: true,
+  wheelMultiplier: 1,
+  smoothTouch: false,
+  touchMultiplier: 2,
+  infinite: false,
+});
+
+// Integrate Lenis with GSAP ScrollTrigger
+lenis.stop(); // Stop scrolling during splash
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000);
+});
+gsap.ticker.lagSmoothing(0);
+
+// Reveal Animation
+document.querySelectorAll('.reveal').forEach((el) => {
+  gsap.fromTo(el,
+    { opacity: 0, y: 50 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1.4,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+        toggleActions: "play none none none"
+      }
+    }
+  );
+});
+
+// Parallax Effect for Works
+document.querySelectorAll('.work-card img').forEach((img) => {
+  gsap.to(img, {
+    y: "-15%",
+    ease: "none",
+    scrollTrigger: {
+      trigger: img.parentElement,
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true
+    }
+  });
+});
+
+// Accordion ScrollTrigger Refresh
+document.querySelectorAll('.phi-details').forEach(details => {
+  details.addEventListener('toggle', () => {
+    ScrollTrigger.refresh();
+  });
+});
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
