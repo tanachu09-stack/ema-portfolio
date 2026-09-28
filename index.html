@@ -3,21 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ema. | PLANS & PRICING</title>
-<meta name="description" content="Ema. 写真体験のプランと撮影の流れ。TRACE / DOUKOU / PERSONAL FLAG">
+<title>Ema. | EDITORIAL ARCHIVE & PRICING</title>
+<meta name="description" content="Ema. 写真体験のプランと撮影の流れ。雑誌のエディトリアル構造と視覚図録による在り方の記録。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Shippori+Mincho+B1:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+JP:wght@300;400;500&family=Shippori+Mincho+B1:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #FAF9F5;
-    --paper-card: #F7F5EF;
+    --paper-card: #F3F0E6;
+    --paper-dark: #22201D;
     --card-bg: #FFFFFF;
-    --card-sub-bg: #FAF8F2;
-    --ember-light: #E6E2D8;
-    --ember: #787368;
     --ink: #1C1B1A;
-    --muted: #66625B;
+    --ink-light: #4A4640;
+    --muted: #787368;
+    --rule: #DDD8CB;
+    --rule-dark: #3A3732;
+    --accent: #9A3B26;
     --font-serif: 'Shippori Mincho B1', serif;
     --font-sans: 'Noto Sans JP', sans-serif;
     --font-latin: 'EB Garamond', serif;
@@ -43,12 +45,21 @@
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
-    text-align: center;
   }
 
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  /* Editorial Grid Background overlay */
+  .editorial-page-bg {
+    position: relative;
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(to right, rgba(221, 216, 203, 0.2) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(221, 216, 203, 0.2) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 
   /* Utility Break Classes */
@@ -63,485 +74,621 @@
   .serif { font-family: var(--font-serif); }
   .latin { font-family: var(--font-latin); }
 
-  .section-tag {
-    font-family: var(--font-latin);
-    font-size: 13px;
-    letter-spacing: 0.25em;
-    color: var(--ember);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    display: block;
-    text-align: center;
+  /* Vertical Japanese Text Utility */
+  .vertical-text {
+    writing-mode: vertical-rl;
+    -webkit-writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-family: var(--font-serif);
+    letter-spacing: 0.18em;
+    line-height: 2.2;
+    display: inline-block;
   }
 
-  .section-title {
+  .editorial-tag {
+    font-family: var(--font-latin);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    display: inline-block;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    margin-bottom: 12px;
+  }
+
+  .editorial-title {
     font-family: var(--font-serif);
     font-weight: 500;
-    font-size: clamp(15px, 4.3vw, 32px);
-    line-height: 1.5;
-    letter-spacing: 0.04em;
+    font-size: clamp(20px, 4.5vw, 36px);
+    line-height: 1.4;
+    letter-spacing: 0.05em;
     color: var(--ink);
-    margin-bottom: 24px;
-    text-align: center;
+    margin-bottom: 16px;
     word-break: auto-phrase;
     line-break: strict;
   }
 
-  @media (max-width: 480px) {
-    .section-title {
-      white-space: nowrap;
-    }
+  .editorial-subhead {
+    font-family: var(--font-serif);
+    font-size: clamp(13px, 2.5vw, 15px);
+    color: var(--muted);
+    line-height: 1.8;
   }
 
   .container {
     width: 100%;
-    max-width: 960px;
+    max-width: 1080px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
   }
 
   .container-narrow {
     width: 100%;
-    max-width: 640px;
+    max-width: 720px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
   }
 
   /* Buttons */
-  .btn-primary {
+  .btn-editorial {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    padding: 12px 16px;
-    min-height: 48px;
-    background-color: transparent;
+    gap: 8px;
+    padding: 14px 24px;
+    background-color: var(--ink);
     border: 1px solid var(--ink);
-    border-radius: 999px;
-    color: var(--ink);
+    color: var(--paper);
     font-family: var(--font-serif);
-    font-size: clamp(12px, 3.2vw, 13.5px);
-    letter-spacing: 0.04em;
+    font-size: 13px;
+    letter-spacing: 0.1em;
     transition: all 0.3s ease;
     width: 100%;
     text-align: center;
-    white-space: nowrap;
+    box-shadow: 3px 3px 0px rgba(120, 115, 104, 0.3);
   }
 
-  .btn-primary:hover, .btn-primary:focus-visible {
-    background-color: var(--ink);
-    color: var(--paper);
+  .btn-editorial:hover, .btn-editorial:focus-visible {
+    background-color: var(--paper);
+    color: var(--ink);
     outline: none;
+    box-shadow: 5px 5px 0px var(--ink);
   }
 
-  /* Header */
-  header {
+  /* MASTHEAD & HEADER */
+  .editorial-masthead {
+    border-bottom: 2px solid var(--ink);
+    background-color: var(--paper);
     position: sticky;
     top: 0;
-    left: 0;
-    width: 100%;
     z-index: 100;
-    padding: 16px 20px;
+  }
+
+  .masthead-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(250, 249, 245, 0.92);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--ember-light);
+    padding: 8px 24px;
+    font-family: var(--font-latin);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--rule);
+    text-transform: uppercase;
   }
 
-  .brand-logo {
+  .masthead-main {
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand-logo-editorial {
     font-family: var(--font-serif);
-    font-size: 20px;
+    font-size: clamp(24px, 5vw, 36px);
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .masthead-meta {
+    text-align: right;
+    font-family: var(--font-serif);
+    font-size: 12px;
+    color: var(--ink-light);
+    line-height: 1.4;
+  }
+
+  /* HERO EDITORIAL SPREAD */
+  .hero-spread {
+    padding: 60px 0 80px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .spread-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  @media (min-width: 840px) {
+    .spread-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 60px;
+    }
+  }
+
+  .spread-content-block {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  .vertical-heading-box {
+    padding: 20px 16px;
+    border-left: 1px solid var(--ink);
+    border-right: 1px solid var(--ink);
+    background-color: var(--paper-card);
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vertical-heading-box .vertical-text {
+    font-size: clamp(16px, 3.5vw, 22px);
+    font-weight: 500;
+    height: 260px;
+  }
+
+  .spread-lead-text {
+    flex: 1;
+    font-family: var(--font-serif);
+    font-size: clamp(14px, 2.2vw, 16px);
+    line-height: 2.2;
+    color: var(--ink);
+    text-align: justify;
+  }
+
+  .editorial-dropcap::first-letter {
+    font-family: var(--font-serif);
+    font-size: 3.2em;
+    float: left;
+    line-height: 0.8;
+    padding-right: 8px;
+    padding-top: 4px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .spread-image-frame {
+    position: relative;
+    border: 1px solid var(--ink);
+    padding: 12px;
+    background-color: var(--paper-card);
+    box-shadow: 8px 8px 0px var(--rule);
+  }
+
+  .spread-image-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--rule);
+  }
+
+  .spread-image-caption {
+    margin-top: 10px;
+    font-family: var(--font-latin);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* SECTION EDITORIAL HEADERS */
+  .section-editorial-header {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+  }
+
+  .section-editorial-header::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background-color: var(--ink);
+    margin: 20px auto 0;
+  }
+
+  /* PLANS & PRICING (EDITORIAL MAGAZINE TABLE) */
+  .plans-editorial-section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--rule);
+    background-color: var(--paper);
+  }
+
+  .plans-magazine-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  @media (min-width: 860px) {
+    .plans-magazine-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--ink);
+    }
+  }
+
+  .plan-magazine-column {
+    background-color: var(--card-bg);
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    border: 1px solid var(--rule);
+  }
+
+  @media (min-width: 860px) {
+    .plan-magazine-column {
+      border: none;
+      border-right: 1px solid var(--ink);
+    }
+    .plan-magazine-column:last-child {
+      border-right: none;
+    }
+  }
+
+  .plan-vol-badge {
+    font-family: var(--font-latin);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .plan-magazine-title {
+    font-family: var(--font-latin);
+    font-size: 24px;
     letter-spacing: 0.1em;
     color: var(--ink);
     font-weight: 600;
   }
 
-  .nav-cta {
+  .plan-magazine-kanji {
     font-family: var(--font-serif);
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    padding: 8px 16px;
-    border: 1px solid var(--ink);
-    border-radius: 999px;
-    transition: all 0.3s ease;
-  }
-
-  .nav-cta:hover, .nav-cta:focus-visible {
-    background-color: var(--ink);
-    color: var(--paper);
-  }
-
-  /* Intro Catch */
-  .hero-simple {
-    padding: 60px 0 40px;
-    text-align: center;
-  }
-
-  .hero-catch {
-    font-family: var(--font-serif);
-    font-size: clamp(14px, 3.8vw, 18px);
-    line-height: 2.25;
-    letter-spacing: 0.05em;
-    color: var(--ink);
-    word-break: auto-phrase;
-    line-break: strict;
-  }
-
-  .hero-image-wrapper {
-    margin: 28px auto 0;
-    max-width: 320px;
-    width: 85%;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 24px rgba(28, 27, 26, 0.06);
-    border: 1px solid var(--ember-light);
-  }
-
-  .hero-image-wrapper img {
-    width: 100%;
-    height: auto;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 16px;
     display: block;
-    object-fit: cover;
   }
 
-  /* PLANS & PRICING */
-  .plans-section {
-    padding: 40px 0 60px;
-  }
-
-  .plans-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin-top: 32px;
-  }
-
-  @media (min-width: 800px) {
-    .plans-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-  }
-
-  .plan-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--ember-light);
-    border-radius: 16px;
-    padding: 32px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    box-shadow: 0 4px 20px rgba(28, 27, 26, 0.04);
-    text-align: center;
-  }
-
-  .plan-header {
-    border-bottom: 1px solid var(--ember-light);
-    padding-bottom: 18px;
-    margin-bottom: 18px;
-  }
-
-  .plan-name {
+  .plan-magazine-price {
     font-family: var(--font-latin);
-    font-size: 20px;
-    letter-spacing: 0.08em;
-    color: var(--ink);
-    margin-bottom: 2px;
-  }
-
-  .plan-subname {
-    font-family: var(--font-serif);
-    font-size: 14px;
-    color: var(--ember);
-    margin-bottom: 12px;
-  }
-
-  .plan-price {
-    font-family: var(--font-latin);
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 500;
     color: var(--ink);
-  }
-
-  .plan-price span {
-    font-size: 16px;
-    font-style: italic;
-    color: var(--ember);
-    margin-left: 2px;
-  }
-
-  .plan-catch {
-    font-family: var(--font-serif);
-    font-size: 13.5px;
-    line-height: 1.7;
-    color: var(--ink);
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
     margin-bottom: 20px;
   }
 
-  .plan-details {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 28px;
-    padding: 0;
-    align-items: center;
-  }
-
-  .plan-details li {
+  .plan-magazine-price span {
     font-size: 13px;
-    line-height: 1.6;
-    color: var(--ink);
-    position: relative;
-    text-align: center;
-  }
-
-  .plan-notes {
-    margin-top: 32px;
-    background: var(--card-sub-bg);
-    border: 1px solid var(--ember-light);
-    border-radius: 12px;
-    padding: 20px 18px;
-    font-size: 12.5px;
-    line-height: 1.8;
-    color: var(--muted);
-    text-align: center;
-  }
-
-  .plan-notes p {
-    margin-bottom: 4px;
-  }
-
-  .plan-notes p:last-child {
-    margin-bottom: 0;
-  }
-
-  /* PORTFOLIO CATALOG SECTION (Top Photo / Bottom Graphic) */
-  .portfolio-section {
-    padding: 60px 0 80px;
-    background-color: var(--paper);
-    border-top: 1px solid var(--ember-light);
-  }
-
-  .portfolio-intro {
     font-family: var(--font-serif);
+    color: var(--muted);
+  }
+
+  .plan-magazine-body {
+    font-family: var(--font-serif);
+    font-size: 13.5px;
+    line-height: 1.8;
+    color: var(--ink-light);
+    margin-bottom: 24px;
+  }
+
+  .plan-magazine-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 32px;
     font-size: 13px;
     line-height: 1.9;
-    color: var(--muted);
-    margin-bottom: 40px;
-    word-break: auto-phrase;
-    line-break: strict;
+    color: var(--ink);
   }
 
-  .catalog-grid {
+  .plan-magazine-list li {
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+
+  .plan-magazine-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .editorial-notes-box {
+    margin-top: 48px;
+    border: 1px solid var(--ink);
+    background-color: var(--paper-card);
+    padding: 32px;
+    position: relative;
+  }
+
+  .editorial-notes-box::before {
+    content: 'EDITORIAL NOTES';
+    position: absolute;
+    top: -10px;
+    left: 24px;
+    background-color: var(--paper-card);
+    padding: 0 10px;
+    font-family: var(--font-latin);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+
+  /* PORTFOLIO CATALOG SPREAD */
+  .portfolio-editorial-section {
+    padding: 80px 0;
+    background-color: var(--paper-card);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .catalog-editorial-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 32px;
-    margin-top: 32px;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 40px;
   }
 
-  @media (min-width: 900px) {
-    .catalog-grid {
+  @media (min-width: 768px) {
+    .catalog-editorial-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .catalog-editorial-grid {
       grid-template-columns: repeat(3, 1fr);
     }
   }
 
-  /* Dual Card Structure */
-  .catalog-card {
+  .catalog-magazine-card {
     background-color: var(--card-bg);
-    border: 1px solid var(--ember-light);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 18px rgba(28, 27, 26, 0.05);
+    border: 1px solid var(--ink);
+    box-shadow: 6px 6px 0px rgba(28, 27, 26, 0.08);
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .catalog-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 28px rgba(28, 27, 26, 0.09);
+  .catalog-card-header {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-latin);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    background-color: var(--paper);
   }
 
-  /* Top Half: Photograph */
-  .catalog-photo {
-    width: 100%;
+  .catalog-photo-wrap {
     aspect-ratio: 4 / 3;
     overflow: hidden;
     position: relative;
-    background-color: #EFECE6;
+    border-bottom: 1px solid var(--ink);
+    background-color: #EAE6DC;
   }
 
-  .catalog-photo img {
+  .catalog-photo-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
 
-  /* Bottom Half: Graphic & Geometry */
-  .catalog-graphic {
-    background-color: var(--paper-card);
+  .catalog-graphic-wrap {
     padding: 24px 20px;
+    background-color: var(--paper);
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-top: 1px dashed var(--ember-light);
     position: relative;
   }
 
-  .catalog-svg-container {
+  .catalog-svg-box {
     width: 100%;
-    height: 220px;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 16px;
   }
 
-  .catalog-svg-container svg {
+  .catalog-svg-box svg {
     width: 100%;
     height: 100%;
-    max-height: 220px;
+    max-height: 200px;
   }
 
-  /* Catalog Annotations & Metadata */
-  .catalog-meta {
+  .catalog-card-footer {
+    padding: 16px 20px 20px;
+    border-top: 1px solid var(--rule);
     width: 100%;
-    text-align: center;
-    padding-top: 12px;
-    border-top: 1px solid var(--ember-light);
+    text-align: left;
   }
 
-  .catalog-title-ja {
+  .catalog-card-title {
     font-family: var(--font-serif);
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 600;
     color: var(--ink);
-    letter-spacing: 0.06em;
-    margin-bottom: 2px;
-  }
-
-  .catalog-title-en {
-    font-family: var(--font-latin);
-    font-style: italic;
-    font-size: 12px;
-    color: var(--ember);
-    letter-spacing: 0.08em;
-    margin-bottom: 8px;
-  }
-
-  .catalog-annotation {
-    font-size: 11px;
-    line-height: 1.6;
-    color: var(--muted);
-    font-family: var(--font-sans);
-    letter-spacing: 0.02em;
-  }
-
-  /* FLOW / PROCESS */
-  .flow-section {
-    padding: 70px 0;
-    background-color: var(--card-sub-bg);
-    border-top: 1px solid var(--ember-light);
-    border-bottom: 1px solid var(--ember-light);
-  }
-
-  .flow-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 32px;
-  }
-
-  .flow-step {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 8px;
-    background: var(--card-bg);
-    border: 1px solid var(--ember-light);
-    border-radius: 12px;
-    padding: 24px 20px;
-    box-shadow: 0 2px 10px rgba(28, 27, 26, 0.03);
-    text-align: center;
-  }
-
-  .step-num {
-    font-family: var(--font-latin);
-    font-size: 20px;
-    color: var(--ember);
-    letter-spacing: 0.1em;
-  }
-
-  .step-title {
-    font-family: var(--font-serif);
-    font-size: 16px;
-    color: var(--ink);
-  }
-
-  .step-desc {
-    font-size: 13px;
-    line-height: 1.7;
-    color: var(--muted);
-    word-break: auto-phrase;
-    line-break: strict;
-    text-align: center;
-  }
-
-  /* CONTACT SECTION */
-  .contact-section {
-    padding: 80px 0;
-    text-align: center;
-  }
-
-  .contact-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-  }
-
-  .contact-heading {
-    font-family: var(--font-serif);
-    font-size: clamp(18px, 4vw, 24px);
-    line-height: 1.7;
-    color: var(--ink);
-    word-break: auto-phrase;
-    line-break: strict;
-  }
-
-  .contact-mail {
-    font-family: var(--font-latin);
-    font-size: 14px;
-    color: var(--muted);
     letter-spacing: 0.05em;
   }
 
-  .contact-mail:hover, .contact-mail:focus-visible {
+  .catalog-card-en {
+    font-family: var(--font-latin);
+    font-size: 12px;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .catalog-card-spec {
+    font-size: 11.5px;
+    line-height: 1.6;
+    color: var(--ink-light);
+    font-family: var(--font-serif);
+    border-top: 1px dashed var(--rule);
+    padding-top: 8px;
+  }
+
+  /* FLOW / EDITORIAL SEQUENCE */
+  .flow-editorial-section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--rule);
+    background-color: var(--paper);
+  }
+
+  .editorial-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 40px;
+    position: relative;
+  }
+
+  .editorial-timeline-item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 20px;
+    padding: 24px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--ink);
+    box-shadow: 4px 4px 0px var(--rule);
+  }
+
+  @media (min-width: 768px) {
+    .editorial-timeline-item {
+      grid-template-columns: 80px 200px 1fr;
+      align-items: center;
+    }
+  }
+
+  .timeline-num {
+    font-family: var(--font-latin);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--accent);
+    border-right: 1px solid var(--rule);
+    padding-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .timeline-heading {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 600;
     color: var(--ink);
   }
 
-  /* FOOTER */
-  footer {
-    padding: 36px 20px;
+  .timeline-text {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--ink-light);
+  }
+
+  /* CONTACT EDITORIAL BACK COVER */
+  .contact-editorial-section {
+    padding: 90px 0;
+    background-color: var(--paper-dark);
+    color: var(--paper);
     text-align: center;
-    background-color: var(--paper);
-    border-top: 1px solid var(--ember-light);
+  }
+
+  .contact-editorial-box {
+    border: 1px solid var(--rule-dark);
+    padding: 60px 24px;
+    background-color: #181715;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .contact-editorial-title {
     font-family: var(--font-serif);
-    font-size: 11px;
+    font-size: clamp(20px, 4vw, 28px);
+    line-height: 1.8;
+    margin-bottom: 24px;
+    color: var(--paper);
+    letter-spacing: 0.08em;
+  }
+
+  .btn-editorial-light {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background-color: var(--paper);
+    border: 1px solid var(--paper);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+  }
+
+  .btn-editorial-light:hover, .btn-editorial-light:focus-visible {
+    background-color: transparent;
+    color: var(--paper);
+  }
+
+  .contact-editorial-mail {
+    font-family: var(--font-latin);
+    font-size: 14px;
     color: var(--muted);
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
+    display: block;
+  }
+
+  /* FOOTER COLOPHON */
+  footer.editorial-colophon {
+    padding: 30px 24px;
+    background-color: var(--paper-dark);
+    color: var(--muted);
+    border-top: 1px solid var(--rule-dark);
+    font-family: var(--font-latin);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 </style>
 </head>
-<body>
+<body class="editorial-page-bg">
 
   <!-- Shared SVG Filters for Woodblock / Letterpress Grain -->
   <svg style="display: none;" aria-hidden="true">
@@ -555,100 +702,131 @@
     </defs>
   </svg>
 
-  <!-- HEADER NAV -->
-  <header>
-    <a href="#" class="brand-logo">Ema.</a>
-    <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="nav-cta">撮影を相談する</a>
+  <!-- EDITORIAL MASTHEAD -->
+  <header class="editorial-masthead">
+    <div class="masthead-bar">
+      <span>EMA. PUBLICATION ARCHIVE</span>
+      <span>ISSUE NO. 01 / EDITORIAL EDITION</span>
+      <span>JAPAN</span>
+    </div>
+    <div class="masthead-main container">
+      <a href="#" class="brand-logo-editorial">Ema.</a>
+      <div class="masthead-meta">
+        <p>写実家 ｜ 田中 悠太</p>
+        <p class="latin" style="font-size: 11px; letter-spacing: 0.1em; color: var(--muted);">PHOTOGRAPHY &amp; DIALOGUE</p>
+      </div>
+    </div>
   </header>
 
   <main>
-    <!-- INTRO CATCH -->
-    <section class="hero-simple">
-      <div class="container-narrow">
-        <p class="hero-catch">
-          人が、自分自身の在り方と接続するための場。<br>
-          意味づけせず、決めつけずに、<br class="sp-br">
-          ただ目の前のあなたを撮る。<br>
-          <span class="latin" style="font-size: 1.1em; letter-spacing: 0.08em; display: inline-block; margin-top: 20px;">YUTA</span>
-        </p>
+    <!-- HERO EDITORIAL SPREAD -->
+    <section class="hero-spread">
+      <div class="container">
+        <div class="spread-grid">
+          <div class="spread-content-block">
+            <!-- Vertical Japanese Heading Box -->
+            <div class="vertical-heading-box">
+              <span class="vertical-text">人の在り方を映す。</span>
+            </div>
+            <!-- Editorial Lead Paragraph -->
+            <div class="spread-lead-text">
+              <p class="editorial-dropcap">
+                人が、自分自身の在り方と接続するための場。
+                意味づけせず、決めつけずに、ただ目の前のあなたを撮る。
+                点ではなく線のプロセスを通して、あなたの中にすでに潜む内なる熱量と原風景を結像させていく。
+              </p>
+              <p style="margin-top: 24px; font-family: var(--font-latin); font-size: 15px; letter-spacing: 0.1em; color: var(--muted); text-align: right;">
+                — YUTA TANAKA
+              </p>
+            </div>
+          </div>
+          <!-- Hero Photo Frame -->
+          <div class="spread-image-frame">
+            <img src="portfolio/dscf0861.jpg" alt="Ema. 写真体験の原象" loading="eager">
+            <div class="spread-image-caption">
+              <span>FIG. 01 — ARCHIVAL PORTRAIT</span>
+              <span>PORTFOLIO NO. 0861</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- 1. PLANS & PRICING -->
-    <section class="plans-section">
+    <!-- 1. PLANS & PRICING (EDITORIAL MAGAZINE TABLE) -->
+    <section class="plans-editorial-section">
       <div class="container">
-        <span class="section-tag">Plans & Pricing</span>
-        <h1 class="section-title">ご希望のプランを選んでください。</h1>
+        <div class="section-editorial-header">
+          <span class="editorial-tag">Section 01 ｜ Plans &amp; Pricing</span>
+          <h1 class="editorial-title">ご希望のプランを選んでください。</h1>
+          <p class="editorial-subhead">対話と撮影を通して、あなたの在り方を形にする3つのコース</p>
+        </div>
 
-        <div class="plans-grid">
+        <div class="plans-magazine-grid">
 
           <!-- Plan 1: TRACE -->
-          <div class="plan-card">
+          <div class="plan-magazine-column">
             <div>
-              <div class="plan-header">
-                <h2 class="plan-name">TRACE</h2>
-                <p class="plan-subname">ひととき</p>
-                <div class="plan-price">¥35,000<span style="font-size: 13px; font-style: normal; margin-left: 2px;">（税込）</span></div>
-              </div>
-              <p class="plan-catch">今の自分にそっと触れる時間。</p>
-              <ul class="plan-details">
+              <span class="plan-vol-badge">VOL. 01 ｜ TRACE</span>
+              <h2 class="plan-magazine-title">TRACE</h2>
+              <span class="plan-magazine-kanji">ひととき</span>
+              <div class="plan-magazine-price">¥35,000 <span>（税込）</span></div>
+              <p class="plan-magazine-body">今の自分にそっと触れる時間。軽やかに写真を残したい方へ。</p>
+              <ul class="plan-magazine-list">
                 <li>撮影：2時間</li>
                 <li>納品：写真データのみ最大20枚</li>
                 <li>納品方法：オンライン</li>
                 <li>場所：事前打ち合わせ</li>
-                <li style="color: var(--ember);">＊元データのお渡しなし。</li>
+                <li style="color: var(--muted); font-size: 12px;">※ 元データのお渡しなし</li>
               </ul>
             </div>
             <div>
-              <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary">
+              <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-editorial">
                 TRACE について相談する
               </a>
             </div>
           </div>
 
           <!-- Plan 2: DOUKOU -->
-          <div class="plan-card">
+          <div class="plan-magazine-column">
             <div>
-              <div class="plan-header">
-                <h2 class="plan-name">DOUKOU</h2>
-                <p class="plan-subname">結像</p>
-                <div class="plan-price">¥120,000<span style="font-size: 13px; font-style: normal; margin-left: 2px;">（税込）</span></div>
-              </div>
-              <p class="plan-catch">対話を重ねながら、あなたが望むプロセスに寄り添う時間。</p>
-              <ul class="plan-details">
+              <span class="plan-vol-badge">VOL. 02 ｜ DOUKOU</span>
+              <h2 class="plan-magazine-title">DOUKOU</h2>
+              <span class="plan-magazine-kanji">結像</span>
+              <div class="plan-magazine-price">¥120,000 <span>（税込）</span></div>
+              <p class="plan-magazine-body">対話を重ねながら、あなたが望むプロセスに寄り添う深い体験。</p>
+              <ul class="plan-magazine-list">
                 <li>撮影：上限1日</li>
                 <li>納品：写真データ(最大50枚)、結像動画</li>
-                <li style="color: var(--ember);">元データのお渡しも可能</li>
+                <li>元データのお渡しも可能</li>
                 <li>納品方法：オンライン</li>
                 <li>場所：事前打ち合わせ</li>
               </ul>
             </div>
             <div>
-              <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary">
+              <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-editorial">
                 DOUKOU について相談する
               </a>
             </div>
           </div>
 
           <!-- Plan 3: PERSONAL FLAG -->
-          <div class="plan-card">
+          <div class="plan-magazine-column">
             <div>
-              <div class="plan-header">
-                <h2 class="plan-name">PERSONAL FLAG</h2>
-                <p class="plan-subname">積み重ねる時間</p>
-                <div class="plan-price">¥360,000<span style="font-size: 13px; font-style: normal; margin-left: 2px;">（税込）</span></div>
-              </div>
-              <p class="plan-catch">一年を通して、変化やあなたの営みを記録、結像していく時間。</p>
-              <ul class="plan-details">
+              <span class="plan-vol-badge">VOL. 03 ｜ PERSONAL FLAG</span>
+              <h2 class="plan-magazine-title">PERSONAL FLAG</h2>
+              <span class="plan-magazine-kanji">積み重ねる時間</span>
+              <div class="plan-magazine-price">¥360,000 <span>（税込）</span></div>
+              <p class="plan-magazine-body">一年を通して、変化やあなたの営みを記録し、自分だけの旗を立てる時間。</p>
+              <ul class="plan-magazine-list">
                 <li>撮影：年4日</li>
                 <li>納品：写真データ(最大50枚)、結像動画</li>
-                <li style="color: var(--ember);">元データのお渡しも可能</li>
+                <li>元データのお渡しも可能</li>
                 <li>納品方法：オンライン</li>
                 <li>場所：事前打ち合わせ</li>
               </ul>
             </div>
             <div>
-              <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary">
+              <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-editorial">
                 PERSONAL FLAG について相談する
               </a>
             </div>
@@ -656,163 +834,157 @@
 
         </div>
 
-        <!-- 共通事項 -->
+        <!-- 共通事項 Notes -->
         <div class="container-narrow">
-          <div class="plan-notes" style="margin-top: 36px;">
-            <p style="font-family: var(--font-serif); font-size: 13px; line-height: 2.0; color: var(--ink); word-break: auto-phrase; line-break: strict;">
-              ご提供できるプラン内の<br>
-              ・DOUKOU<br>
-              ・PERSONAL FLAG<br>
-              には、<br>
-              結像-ketsuzou-<br>
-              という傾聴プロセスが常に入ります。<br>
-              在り方を撮影するという<br>
-              体験を一緒につくります。
+          <div class="editorial-notes-box" style="margin-top: 40px; text-align: center;">
+            <p style="font-family: var(--font-serif); font-size: 14px; line-height: 2.1; color: var(--ink);">
+              ご提供できるプラン内の「DOUKOU」「PERSONAL FLAG」には、<br>
+              <strong>結像-ketsuzou-</strong> という深傾聴プロセスが常に入ります。<br>
+              在り方を撮影するという体験を一緒につくります。
             </p>
-          </div>
-
-          <div class="plan-notes" style="margin-top: 16px;">
-            <p><strong>共通事項</strong></p>
-            <p>※ 全プラン、別途交通費を頂戴いたします。</p>
-            <p>※ 撮影場所については、ご相談のうえ決定します。</p>
-            <p>※ お支払いは口座振込、またはカード決済に対応しております。</p>
+            <div style="margin-top: 20px; border-top: 1px dashed var(--rule); padding-top: 16px; font-size: 12.5px; color: var(--muted); line-height: 1.8;">
+              <p>※ 全プラン、別途交通費を頂戴いたします。</p>
+              <p>※ 撮影場所については、ご相談のうえ決定します。</p>
+              <p>※ お支払いは口座振込、またはカード決済に対応しております。</p>
+            </div>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- PORTFOLIO / GRAPHIC CONVERSION GALLERY -->
-    <section class="portfolio-section">
+    <!-- 2. PORTFOLIO CATALOG SPREAD (GRAPHIC CONVERSION) -->
+    <section class="portfolio-editorial-section">
       <div class="container">
-        <span class="section-tag">Portfolio & Meaning</span>
-        <h2 class="section-title">在り方一覧 ｜ 意味の図録</h2>
-        <p class="portfolio-intro">
-          写真の深層から主体・輪郭・骨格・情緒を抽出し、<br class="sp-br">
-          ひとつの視覚的母題（グラフィック）へ変換した図録。
-        </p>
+        <div class="section-editorial-header">
+          <span class="editorial-tag">Section 02 ｜ Portfolio &amp; Specimen</span>
+          <h2 class="editorial-title">在り方一覧 ｜ 意味の図録</h2>
+          <p class="editorial-subhead">写真から抽出し再構成した幾何学的母題と写真対置図録</p>
+        </div>
 
-        <div class="catalog-grid">
+        <div class="catalog-editorial-grid">
 
-          <!-- CATALOG ITEM 01 -->
-          <div class="catalog-card">
-            <div class="catalog-photo">
+          <!-- ITEM 01 -->
+          <article class="catalog-magazine-card">
+            <div class="catalog-card-header">
+              <span>SPECIMEN NO. 01</span>
+              <span>DSCF0861</span>
+            </div>
+            <div class="catalog-photo-wrap">
               <img src="portfolio/dscf0861.jpg" alt="樹影の共鳴 DSCF0861" loading="lazy">
             </div>
-            <div class="catalog-graphic">
-              <div class="catalog-svg-container">
+            <div class="catalog-graphic-wrap">
+              <div class="catalog-svg-box">
                 <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" aria-label="樹影の幾何学的骨格">
-                  <!-- Auxiliary Geometry Lines -->
                   <line x1="120" y1="10" x2="120" y2="210" stroke="#D1CDC4" stroke-width="0.8" stroke-dasharray="3 3"/>
                   <line x1="20" y1="110" x2="220" y2="110" stroke="#D1CDC4" stroke-width="0.8" stroke-dasharray="3 3"/>
                   <circle cx="120" cy="110" r="85" fill="none" stroke="#E2DEC3" stroke-width="0.8"/>
                   <circle cx="120" cy="110" r="55" fill="none" stroke="#E2DEC3" stroke-width="0.8" stroke-dasharray="2 2"/>
-                  <!-- Core Motif with Woodblock Texture -->
                   <g filter="url(#woodblock-grain)">
-                    <!-- Central Arbor Axis & Ray Canopy -->
                     <polygon points="120,25 155,160 85,160" fill="#1B2A4A" opacity="0.88"/>
                     <circle cx="120" cy="90" r="38" fill="#C24D38" opacity="0.9"/>
-                    <!-- Negative Space Arbor Trunk Cutout -->
                     <polygon points="120,90 102,175 138,175" fill="#FAF9F5"/>
                     <circle cx="120" cy="90" r="14" fill="#FAF9F5"/>
                   </g>
-                  <!-- Tangent Axis Marker -->
                   <line x1="85" y1="160" x2="155" y2="60" stroke="#C24D38" stroke-width="1.2"/>
                   <circle cx="155" cy="60" r="3" fill="#C24D38"/>
                 </svg>
               </div>
-              <div class="catalog-meta">
-                <h3 class="catalog-title-ja">01 ｜ 樹脈の共鳴</h3>
-                <p class="catalog-title-en">Arboris Resonance — No. 0861</p>
-                <p class="catalog-annotation">
-                  中心軸：鉛直　幾何骨格：二重円と三角錐<br>
-                  抽出色：紺青 (#1B2A4A) ｜ 朱赤 (#C24D38)
-                </p>
-              </div>
             </div>
-          </div>
+            <div class="catalog-card-footer">
+              <h3 class="catalog-card-title">01 ｜ 樹脈の共鳴</h3>
+              <p class="catalog-card-en">Arboris Resonance</p>
+              <p class="catalog-card-spec">
+                中心軸：鉛直　幾何骨格：二重円と三角錐<br>
+                抽出色：紺青 (#1B2A4A) ｜ 朱赤 (#C24D38)
+              </p>
+            </div>
+          </article>
 
-          <!-- CATALOG ITEM 02 -->
-          <div class="catalog-card">
-            <div class="catalog-photo">
+          <!-- ITEM 02 -->
+          <article class="catalog-magazine-card">
+            <div class="catalog-card-header">
+              <span>SPECIMEN NO. 02</span>
+              <span>DSCF2900</span>
+            </div>
+            <div class="catalog-photo-wrap">
               <img src="portfolio/dscf2900.jpg" alt="水鏡の残照 DSCF2900" loading="lazy">
             </div>
-            <div class="catalog-graphic">
-              <div class="catalog-svg-container">
+            <div class="catalog-graphic-wrap">
+              <div class="catalog-svg-box">
                 <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" aria-label="水鏡の幾何学的骨格">
-                  <!-- Auxiliary Symmetry Grid -->
                   <line x1="20" y1="110" x2="220" y2="110" stroke="#C8963E" stroke-width="1.2"/>
                   <line x1="120" y1="20" x2="120" y2="200" stroke="#D1CDC4" stroke-width="0.8" stroke-dasharray="3 3"/>
-                  <!-- Concentric Water Ripples Arc -->
                   <ellipse cx="120" cy="110" rx="90" ry="45" fill="none" stroke="#D1CDC4" stroke-width="0.8"/>
                   <ellipse cx="120" cy="110" rx="65" ry="32" fill="none" stroke="#C8963E" stroke-width="0.8" stroke-dasharray="3 3"/>
-                  <!-- Core Motif -->
                   <g filter="url(#woodblock-grain)">
                     <path d="M 30,110 Q 120,30 210,110 Q 120,190 30,110 Z" fill="#1E3A52" opacity="0.85"/>
                     <circle cx="120" cy="110" r="28" fill="#C8963E" opacity="0.95"/>
                     <rect x="70" y="108" width="100" height="4" fill="#FAF9F5"/>
                   </g>
-                  <!-- Tangent Line -->
                   <line x1="30" y1="110" x2="180" y2="35" stroke="#1E3A52" stroke-width="0.8" stroke-dasharray="2 2"/>
                 </svg>
               </div>
-              <div class="catalog-meta">
-                <h3 class="catalog-title-ja">02 ｜ 水鏡の残照</h3>
-                <p class="catalog-title-en">Specimen Aqua — No. 2900</p>
-                <p class="catalog-annotation">
-                  中心軸：水平切線　幾何骨格：同心楕円群<br>
-                  抽出色：深縹 (#1E3A52) ｜ 琥珀 (#C8963E)
-                </p>
-              </div>
             </div>
-          </div>
+            <div class="catalog-card-footer">
+              <h3 class="catalog-card-title">02 ｜ 水鏡の残照</h3>
+              <p class="catalog-card-en">Specimen Aqua</p>
+              <p class="catalog-card-spec">
+                中心軸：水平切線　幾何骨格：同心楕円群<br>
+                抽出色：深縹 (#1E3A52) ｜ 琥珀 (#C8963E)
+              </p>
+            </div>
+          </article>
 
-          <!-- CATALOG ITEM 03 -->
-          <div class="catalog-card">
-            <div class="catalog-photo">
+          <!-- ITEM 03 -->
+          <article class="catalog-magazine-card">
+            <div class="catalog-card-header">
+              <span>SPECIMEN NO. 03</span>
+              <span>DSCF6786</span>
+            </div>
+            <div class="catalog-photo-wrap">
               <img src="portfolio/dscf6786.jpg" alt="佇まいの余白 DSCF6786" loading="lazy">
             </div>
-            <div class="catalog-graphic">
-              <div class="catalog-svg-container">
+            <div class="catalog-graphic-wrap">
+              <div class="catalog-svg-box">
                 <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" aria-label="佇まいの幾何学的骨格">
-                  <!-- Symmetry & Eccentric Axes -->
                   <line x1="90" y1="15" x2="90" y2="205" stroke="#D1CDC4" stroke-width="0.8" stroke-dasharray="3 3"/>
                   <rect x="40" y="30" width="160" height="160" fill="none" stroke="#E2DEC3" stroke-width="0.8"/>
-                  <!-- Core Silhouette and Negative Space -->
                   <g filter="url(#woodblock-grain)">
                     <path d="M 90,40 L 145,175 L 50,175 Z" fill="#22252A" opacity="0.9"/>
                     <circle cx="90" cy="65" r="22" fill="#B83B26"/>
                     <circle cx="130" cy="120" r="12" fill="#FAF9F5"/>
                   </g>
-                  <!-- Radial Golden Ratio Lines -->
                   <line x1="90" y1="65" x2="200" y2="175" stroke="#B83B26" stroke-width="1"/>
                   <circle cx="200" cy="175" r="3" fill="#B83B26"/>
                 </svg>
               </div>
-              <div class="catalog-meta">
-                <h3 class="catalog-title-ja">03 ｜ 佇まいの輪郭</h3>
-                <p class="catalog-title-en">Persona Contour — No. 6786</p>
-                <p class="catalog-annotation">
-                  中心軸：偏心鉛直　幾何骨格：非対称三角形<br>
-                  抽出色：消炭 (#22252A) ｜ 辰砂 (#B83B26)
-                </p>
-              </div>
             </div>
-          </div>
+            <div class="catalog-card-footer">
+              <h3 class="catalog-card-title">03 ｜ 佇まいの輪郭</h3>
+              <p class="catalog-card-en">Persona Contour</p>
+              <p class="catalog-card-spec">
+                中心軸：偏心鉛直　幾何骨格：非対称三角形<br>
+                抽出色：消炭 (#22252A) ｜ 辰砂 (#B83B26)
+              </p>
+            </div>
+          </article>
 
-          <!-- CATALOG ITEM 04 -->
-          <div class="catalog-card">
-            <div class="catalog-photo">
+          <!-- ITEM 04 -->
+          <article class="catalog-magazine-card">
+            <div class="catalog-card-header">
+              <span>SPECIMEN NO. 04</span>
+              <span>DSCF7810</span>
+            </div>
+            <div class="catalog-photo-wrap">
               <img src="portfolio/dscf7810.jpg" alt="結びの静寂 DSCF7810" loading="lazy">
             </div>
-            <div class="catalog-graphic">
-              <div class="catalog-svg-container">
+            <div class="catalog-graphic-wrap">
+              <div class="catalog-svg-box">
                 <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" aria-label="結びの幾何学的骨格">
-                  <!-- Intersecting Arc Grid -->
                   <circle cx="85" cy="110" r="60" fill="none" stroke="#9E4B31" stroke-width="1"/>
                   <circle cx="155" cy="110" r="60" fill="none" stroke="#4A6054" stroke-width="1"/>
                   <line x1="120" y1="30" x2="120" y2="190" stroke="#D1CDC4" stroke-width="0.8" stroke-dasharray="3 3"/>
-                  <!-- Core Motif Vesica Piscis Cutout -->
                   <g filter="url(#woodblock-grain)">
                     <path d="M 120,60 A 60 60 0 0 1 120,160 A 60 60 0 0 1 120,60 Z" fill="#9E4B31" opacity="0.85"/>
                     <polygon points="120,75 140,110 120,145 100,110" fill="#4A6054"/>
@@ -820,29 +992,31 @@
                   </g>
                 </svg>
               </div>
-              <div class="catalog-meta">
-                <h3 class="catalog-title-ja">04 ｜ 結びと静寂</h3>
-                <p class="catalog-title-en">Nexus Stasis — No. 7810</p>
-                <p class="catalog-annotation">
-                  中心軸：交点境界　幾何骨格：Vesica Piscis (魚嚢形)<br>
-                  抽出色：代赭 (#9E4B31) ｜ 利休鼠 (#4A6054)
-                </p>
-              </div>
             </div>
-          </div>
+            <div class="catalog-card-footer">
+              <h3 class="catalog-card-title">04 ｜ 結びと静寂</h3>
+              <p class="catalog-card-en">Nexus Stasis</p>
+              <p class="catalog-card-spec">
+                中心軸：交点境界　幾何骨格：Vesica Piscis<br>
+                抽出色：代赭 (#9E4B31) ｜ 利休鼠 (#4A6054)
+              </p>
+            </div>
+          </article>
 
-          <!-- CATALOG ITEM 05 -->
-          <div class="catalog-card">
-            <div class="catalog-photo">
+          <!-- ITEM 05 -->
+          <article class="catalog-magazine-card">
+            <div class="catalog-card-header">
+              <span>SPECIMEN NO. 05</span>
+              <span>DSCF9782</span>
+            </div>
+            <div class="catalog-photo-wrap">
               <img src="portfolio/dscf9782.jpg" alt="水平の対話 DSCF9782" loading="lazy">
             </div>
-            <div class="catalog-graphic">
-              <div class="catalog-svg-container">
+            <div class="catalog-graphic-wrap">
+              <div class="catalog-svg-box">
                 <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" aria-label="水平線の幾何学的骨格">
-                  <!-- Horizon Divisions -->
                   <line x1="15" y1="130" x2="225" y2="130" stroke="#1C3144" stroke-width="1.5"/>
                   <line x1="120" y1="20" x2="120" y2="200" stroke="#D1CDC4" stroke-width="0.8" stroke-dasharray="3 3"/>
-                  <!-- Rays & Square Boundaries -->
                   <rect x="35" y="35" width="170" height="150" fill="none" stroke="#E2DEC3" stroke-width="0.8"/>
                   <g filter="url(#woodblock-grain)">
                     <polygon points="120,130 35,35 205,35" fill="#1C3144" opacity="0.2"/>
@@ -852,29 +1026,31 @@
                   </g>
                 </svg>
               </div>
-              <div class="catalog-meta">
-                <h3 class="catalog-title-ja">05 ｜ 水平と境界</h3>
-                <p class="catalog-title-en">Horizontium — No. 9782</p>
-                <p class="catalog-annotation">
-                  中心軸：黄金分割線　幾何骨格：放射線と半円裁ち落とし<br>
-                  抽出色：紺碧 (#1C3144) ｜ 銅朱 (#C46D3B)
-                </p>
-              </div>
             </div>
-          </div>
+            <div class="catalog-card-footer">
+              <h3 class="catalog-card-title">05 ｜ 水平と境界</h3>
+              <p class="catalog-card-en">Horizontium</p>
+              <p class="catalog-card-spec">
+                中心軸：黄金分割線　幾何骨格：放射線と半円<br>
+                抽出色：紺碧 (#1C3144) ｜ 銅朱 (#C46D3B)
+              </p>
+            </div>
+          </article>
 
-          <!-- CATALOG ITEM 06 -->
-          <div class="catalog-card">
-            <div class="catalog-photo">
+          <!-- ITEM 06 -->
+          <article class="catalog-magazine-card">
+            <div class="catalog-card-header">
+              <span>SPECIMEN NO. 06</span>
+              <span>DSCF1077</span>
+            </div>
+            <div class="catalog-photo-wrap">
               <img src="portfolio/dscf1077.jpg" alt="構造の記憶 DSCF1077" loading="lazy">
             </div>
-            <div class="catalog-graphic">
-              <div class="catalog-svg-container">
+            <div class="catalog-graphic-wrap">
+              <div class="catalog-svg-box">
                 <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" aria-label="構造の幾何学的骨格">
-                  <!-- Grid Axis -->
                   <rect x="40" y="30" width="160" height="160" fill="none" stroke="#D1CDC4" stroke-width="0.8" stroke-dasharray="4 4"/>
                   <line x1="40" y1="190" x2="200" y2="30" stroke="#B8860B" stroke-width="1"/>
-                  <!-- Core Geometric Forms -->
                   <g filter="url(#woodblock-grain)">
                     <polygon points="40,190 120,50 200,190" fill="#2C3036" opacity="0.88"/>
                     <rect x="85" y="105" width="70" height="85" fill="#B8860B" opacity="0.85"/>
@@ -882,81 +1058,86 @@
                   </g>
                 </svg>
               </div>
-              <div class="catalog-meta">
-                <h3 class="catalog-title-ja">06 ｜ 構造の記憶</h3>
-                <p class="catalog-title-en">Architectura Stasis — No. 1077</p>
-                <p class="catalog-annotation">
-                  中心軸：対角対角線　幾何骨格：正方形入れ子構造<br>
-                  抽出色：鉄黒 (#2C3036) ｜ 芥子色 (#B8860B)
-                </p>
-              </div>
             </div>
-          </div>
+            <div class="catalog-card-footer">
+              <h3 class="catalog-card-title">06 ｜ 構造の記憶</h3>
+              <p class="catalog-card-en">Architectura Stasis</p>
+              <p class="catalog-card-spec">
+                中心軸：対角対角線　幾何骨格：正方形入れ子構造<br>
+                抽出色：鉄黒 (#2C3036) ｜ 芥子色 (#B8860B)
+              </p>
+            </div>
+          </article>
 
         </div>
       </div>
     </section>
 
-    <!-- 2. 撮影の流れ (FLOW) -->
-    <section class="flow-section">
-      <div class="container-narrow">
-        <span class="section-tag">Process</span>
-        <h2 class="section-title">撮影までの流れ</h2>
+    <!-- 3. FLOW / EDITORIAL SEQUENCE -->
+    <section class="flow-editorial-section">
+      <div class="container">
+        <div class="section-editorial-header">
+          <span class="editorial-tag">Section 03 ｜ Process Sequence</span>
+          <h2 class="editorial-title">撮影までの流れ</h2>
+          <p class="editorial-subhead">対話から納品へと紡ぐ5つのステップ</p>
+        </div>
 
-        <div class="flow-steps">
-          <div class="flow-step">
-            <span class="step-num">01</span>
-            <h3 class="step-title">問い合わせ</h3>
-            <p class="step-desc">Instagram DM またはメールよりお気軽にご連絡ください。どのような時間を過ごしたいか、ざっくりとしたイメージで構いません。</p>
+        <div class="editorial-timeline">
+          <div class="editorial-timeline-item">
+            <span class="timeline-num">01</span>
+            <h3 class="timeline-heading">問い合わせ</h3>
+            <p class="timeline-text">Instagram DM またはメールよりお気軽にご連絡ください。どのような時間を過ごしたいか、ざっくりとしたイメージで構いません。</p>
           </div>
 
-          <div class="flow-step">
-            <span class="step-num">02</span>
-            <h3 class="step-title">打合せ</h3>
-            <p class="step-desc">オンラインまたは対面にて、事前のヒアリングを行います。<br>「はじめましてからお元気ですか。」対話ベースで撮影の場所やコンセプトを決めていきます。</p>
+          <div class="editorial-timeline-item">
+            <span class="timeline-num">02</span>
+            <h3 class="timeline-heading">打合せ</h3>
+            <p class="timeline-text">オンラインまたは対面にて事前のヒアリングを行います。「はじめましてからお元気ですか。」対話ベースで撮影場所やコンセプトを深掘りします。</p>
           </div>
 
-          <div class="flow-step">
-            <span class="step-num">03</span>
-            <h3 class="step-title">撮影</h3>
-            <p class="step-desc">ご依頼のプランに沿って撮影。※天気によっては撮影日変更あり。</p>
+          <div class="editorial-timeline-item">
+            <span class="timeline-num">03</span>
+            <h3 class="timeline-heading">撮影</h3>
+            <p class="timeline-text">ご依頼のプランに沿って撮影を実施。天候や状態に応じて柔軟に日程を調整いたします。</p>
           </div>
 
-          <div class="flow-step">
-            <span class="step-num">04</span>
-            <h3 class="step-title">整える</h3>
-            <p class="step-desc">大げさな編集は入れません。あくまで写された写真を整えます。</p>
+          <div class="editorial-timeline-item">
+            <span class="timeline-num">04</span>
+            <h3 class="timeline-heading">整える</h3>
+            <p class="timeline-text">大げさな装飾や編集は施さず、ありのままの表情や空気感を丁寧に整えます。</p>
           </div>
 
-          <div class="flow-step">
-            <span class="step-num">05</span>
-            <h3 class="step-title">納品</h3>
-            <p class="step-desc">オンラインにて写真データを納品いたします。プランによって納期が異なります。</p>
+          <div class="editorial-timeline-item">
+            <span class="timeline-num">05</span>
+            <h3 class="timeline-heading">納品</h3>
+            <p class="timeline-text">オンラインにて写真データを納品いたします。プランに応じて結像動画や元データも併せてお届けします。</p>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- 3. CONTACT -->
-    <section class="contact-section">
-      <div class="container-narrow">
-        <div class="contact-box">
-          <span class="section-tag">Contact</span>
-          <h2 class="contact-heading">
+    <!-- 4. CONTACT / BACK COVER -->
+    <section class="contact-editorial-section">
+      <div class="container">
+        <div class="contact-editorial-box">
+          <span class="editorial-tag" style="color: var(--rule); border-color: var(--rule);">Section 04 ｜ Inquiries</span>
+          <h2 class="contact-editorial-title">
             話して、掘って、撮る。
           </h2>
-          <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary" style="max-width: 320px;">
-            撮影について相談する <span class="sub">[DMへ]</span>
+          <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-editorial-light">
+            撮影について相談する [DMへ]
           </a>
-          <a href="mailto:tanachu09@gmail.com" class="contact-mail">tanachu09@gmail.com</a>
+          <a href="mailto:tanachu09@gmail.com" class="contact-editorial-mail">tanachu09@gmail.com</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; Ema. All rights reserved.</p>
+  <footer class="editorial-colophon">
+    <span>Ema. EDITORIAL ARCHIVE — VOL. 01</span>
+    <span>&copy; Ema. ALL RIGHTS RESERVED.</span>
+    <span>DESIGNED FOR PERSISTENT EXISTENCE</span>
   </footer>
 
 </body>
