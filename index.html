@@ -10,13 +10,14 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Shippori+Mincho+B1:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #F8FAFC;
+    --paper: #FAF9F5;
+    --paper-card: #F7F5EF;
     --card-bg: #FFFFFF;
-    --card-sub-bg: #F1F5F9;
-    --ember-light: #E2E8F0;
-    --ember: #64748B;
-    --ink: #0F172A;
-    --muted: #64748B;
+    --card-sub-bg: #FAF8F2;
+    --ember-light: #E6E2D8;
+    --ember: #787368;
+    --ink: #1C1B1A;
+    --muted: #66625B;
     --font-serif: 'Shippori Mincho B1', serif;
     --font-sans: 'Noto Sans JP', sans-serif;
     --font-latin: 'EB Garamond', serif;
@@ -42,6 +43,7 @@
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    text-align: center;
   }
 
   a {
@@ -132,22 +134,6 @@
     outline: none;
   }
 
-  .btn-primary.btn-featured {
-    background-color: var(--ink);
-    color: var(--paper);
-  }
-
-  .btn-primary.btn-featured:hover, .btn-primary.btn-featured:focus-visible {
-    background-color: var(--ember);
-    border-color: var(--ember);
-    color: #FFFFFF;
-  }
-
-  .btn-primary .sub {
-    font-size: 11px;
-    opacity: 0.8;
-  }
-
   /* Header */
   header {
     position: sticky;
@@ -159,7 +145,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(248, 250, 252, 0.92);
+    background: rgba(250, 249, 245, 0.92);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--ember-light);
@@ -190,7 +176,7 @@
 
   /* Intro Catch */
   .hero-simple {
-    padding: 50px 0 30px;
+    padding: 60px 0 40px;
     text-align: center;
   }
 
@@ -210,7 +196,7 @@
     width: 85%;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 8px 24px rgba(148, 163, 184, 0.18);
+    box-shadow: 0 8px 24px rgba(28, 27, 26, 0.06);
     border: 1px solid var(--ember-light);
   }
 
@@ -223,7 +209,7 @@
 
   /* PLANS & PRICING */
   .plans-section {
-    padding: 20px 0 60px;
+    padding: 40px 0 60px;
   }
 
   .plans-grid {
@@ -250,26 +236,8 @@
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    box-shadow: 0 4px 20px rgba(148, 163, 184, 0.08);
-  }
-
-  .plan-card.featured {
-    border-color: var(--ember);
-    box-shadow: 0 8px 30px rgba(148, 163, 184, 0.2);
-  }
-
-  .plan-badge {
-    position: absolute;
-    top: -11px;
-    right: 20px;
-    background: var(--ink);
-    color: var(--paper);
-    font-family: var(--font-serif);
-    font-size: 10px;
-    padding: 2px 10px;
-    border-radius: 999px;
-    letter-spacing: 0.1em;
-    font-weight: 500;
+    box-shadow: 0 4px 20px rgba(28, 27, 26, 0.04);
+    text-align: center;
   }
 
   .plan-header {
@@ -321,21 +289,16 @@
     flex-direction: column;
     gap: 10px;
     margin-bottom: 28px;
+    padding: 0;
+    align-items: center;
   }
 
   .plan-details li {
     font-size: 13px;
     line-height: 1.6;
     color: var(--ink);
-    padding-left: 16px;
     position: relative;
-  }
-
-  .plan-details li::before {
-    content: "・";
-    position: absolute;
-    left: 0;
-    color: var(--ember);
+    text-align: center;
   }
 
   .plan-notes {
@@ -347,6 +310,7 @@
     font-size: 12.5px;
     line-height: 1.8;
     color: var(--muted);
+    text-align: center;
   }
 
   .plan-notes p {
@@ -357,45 +321,132 @@
     margin-bottom: 0;
   }
 
-  /* PORTFOLIO SECTION */
+  /* PORTFOLIO CATALOG SECTION (Top Photo / Bottom Graphic) */
   .portfolio-section {
-    padding: 60px 0 40px;
+    padding: 60px 0 80px;
     background-color: var(--paper);
     border-top: 1px solid var(--ember-light);
   }
 
-  .portfolio-grid {
+  .portfolio-intro {
+    font-family: var(--font-serif);
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--muted);
+    margin-bottom: 40px;
+    word-break: auto-phrase;
+    line-break: strict;
+  }
+
+  .catalog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
     margin-top: 32px;
   }
 
-  .portfolio-item {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    background-color: var(--card-sub-bg);
-    border: 1px solid var(--ember-light);
-    aspect-ratio: 4 / 5;
-    box-shadow: 0 4px 15px rgba(148, 163, 184, 0.08);
+  @media (min-width: 900px) {
+    .catalog-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
-  .portfolio-item img {
+  /* Dual Card Structure */
+  .catalog-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--ember-light);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(28, 27, 26, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .catalog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(28, 27, 26, 0.09);
+  }
+
+  /* Top Half: Photograph */
+  .catalog-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    position: relative;
+    background-color: #EFECE6;
+  }
+
+  .catalog-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.4s ease;
   }
 
-  .portfolio-item:hover img {
-    transform: scale(1.03);
+  /* Bottom Half: Graphic & Geometry */
+  .catalog-graphic {
+    background-color: var(--paper-card);
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px dashed var(--ember-light);
+    position: relative;
+  }
+
+  .catalog-svg-container {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .catalog-svg-container svg {
+    width: 100%;
+    height: 100%;
+    max-height: 220px;
+  }
+
+  /* Catalog Annotations & Metadata */
+  .catalog-meta {
+    width: 100%;
+    text-align: center;
+    padding-top: 12px;
+    border-top: 1px solid var(--ember-light);
+  }
+
+  .catalog-title-ja {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.06em;
+    margin-bottom: 2px;
+  }
+
+  .catalog-title-en {
+    font-family: var(--font-latin);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ember);
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  .catalog-annotation {
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--muted);
+    font-family: var(--font-sans);
+    letter-spacing: 0.02em;
   }
 
   /* FLOW / PROCESS */
   .flow-section {
-    padding: 60px 0;
+    padding: 70px 0;
     background-color: var(--card-sub-bg);
     border-top: 1px solid var(--ember-light);
     border-bottom: 1px solid var(--ember-light);
@@ -410,27 +461,23 @@
 
   .flow-step {
     display: flex;
-    align-items: flex-start;
-    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
     background: var(--card-bg);
     border: 1px solid var(--ember-light);
     border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(148, 163, 184, 0.05);
+    padding: 24px 20px;
+    box-shadow: 0 2px 10px rgba(28, 27, 26, 0.03);
+    text-align: center;
   }
 
   .step-num {
     font-family: var(--font-latin);
     font-size: 20px;
     color: var(--ember);
-    min-width: 28px;
-    padding-top: 2px;
-  }
-
-  .step-content {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    letter-spacing: 0.1em;
   }
 
   .step-title {
@@ -445,11 +492,12 @@
     color: var(--muted);
     word-break: auto-phrase;
     line-break: strict;
+    text-align: center;
   }
 
   /* CONTACT SECTION */
   .contact-section {
-    padding: 70px 0;
+    padding: 80px 0;
     text-align: center;
   }
 
@@ -482,7 +530,7 @@
 
   /* FOOTER */
   footer {
-    padding: 32px 20px;
+    padding: 36px 20px;
     text-align: center;
     background-color: var(--paper);
     border-top: 1px solid var(--ember-light);
@@ -494,6 +542,18 @@
 </style>
 </head>
 <body>
+
+  <!-- Shared SVG Filters for Woodblock / Letterpress Grain -->
+  <svg style="display: none;" aria-hidden="true">
+    <defs>
+      <filter id="woodblock-grain" x="-10%" y="-10%" width="120%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.035 0.07" numOctaves="3" result="noise" />
+        <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.18 0" result="alphaNoise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.8" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+        <feComposite in="displaced" in2="SourceGraphic" operator="in" />
+      </filter>
+    </defs>
+  </svg>
 
   <!-- HEADER NAV -->
   <header>
@@ -514,7 +574,7 @@
       </div>
     </section>
 
-    <!-- 1. PLANS & PRICING (3つの時間) -->
+    <!-- 1. PLANS & PRICING -->
     <section class="plans-section">
       <div class="container">
         <span class="section-tag">Plans & Pricing</span>
@@ -598,7 +658,7 @@
 
         <!-- 共通事項 -->
         <div class="container-narrow">
-          <div class="plan-notes" style="margin-top: 36px; text-align: center;">
+          <div class="plan-notes" style="margin-top: 36px;">
             <p style="font-family: var(--font-serif); font-size: 13px; line-height: 2.0; color: var(--ink); word-break: auto-phrase; line-break: strict;">
               ご提供できるプラン内の<br>
               ・DOUKOU<br>
@@ -614,47 +674,225 @@
           <div class="plan-notes" style="margin-top: 16px;">
             <p><strong>共通事項</strong></p>
             <p>※ 全プラン、別途交通費を頂戴いたします。</p>
-            <p>※ 撮影場所ついては、ご相談のうえ決定します。</p>
+            <p>※ 撮影場所については、ご相談のうえ決定します。</p>
+            <p>※ お支払いは口座振込、またはカード決済に対応しております。</p>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- PORTFOLIO GALLERY -->
+    <!-- PORTFOLIO / GRAPHIC CONVERSION GALLERY -->
     <section class="portfolio-section">
       <div class="container">
-        <span class="section-tag">Portfolio</span>
-        <h2 class="section-title">在り方一覧</h2>
+        <span class="section-tag">Portfolio & Meaning</span>
+        <h2 class="section-title">在り方一覧 ｜ 意味の図録</h2>
+        <p class="portfolio-intro">
+          写真の深層から主体・輪郭・骨格・情緒を抽出し、<br class="sp-br">
+          ひとつの視覚的母題（グラフィック）へ変換した図録。
+        </p>
 
-        <div class="portfolio-grid">
-          <div class="portfolio-item">
-            <img src="portfolio/dscf9782.jpg" alt="Portfolio Image DSCF9782" loading="lazy">
+        <div class="catalog-grid">
+
+          <!-- CATALOG ITEM 01 -->
+          <div class="catalog-card">
+            <div class="catalog-photo">
+              <img src="portfolio/dscf0861.jpg" alt="樹影の共鳴 DSCF0861" loading="lazy">
+            </div>
+            <div class="catalog-graphic">
+              <div class="catalog-svg-container">
+                <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" aria-label="樹影の幾何学的骨格">
+                  <!-- Auxiliary Geometry Lines -->
+                  <line x1="120" y1="10" x2="120" y2="210" stroke="#D1CDC4" stroke-width="0.8" stroke-dasharray="3 3"/>
+                  <line x1="20" y1="110" x2="220" y2="110" stroke="#D1CDC4" stroke-width="0.8" stroke-dasharray="3 3"/>
+                  <circle cx="120" cy="110" r="85" fill="none" stroke="#E2DEC3" stroke-width="0.8"/>
+                  <circle cx="120" cy="110" r="55" fill="none" stroke="#E2DEC3" stroke-width="0.8" stroke-dasharray="2 2"/>
+                  <!-- Core Motif with Woodblock Texture -->
+                  <g filter="url(#woodblock-grain)">
+                    <!-- Central Arbor Axis & Ray Canopy -->
+                    <polygon points="120,25 155,160 85,160" fill="#1B2A4A" opacity="0.88"/>
+                    <circle cx="120" cy="90" r="38" fill="#C24D38" opacity="0.9"/>
+                    <!-- Negative Space Arbor Trunk Cutout -->
+                    <polygon points="120,90 102,175 138,175" fill="#FAF9F5"/>
+                    <circle cx="120" cy="90" r="14" fill="#FAF9F5"/>
+                  </g>
+                  <!-- Tangent Axis Marker -->
+                  <line x1="85" y1="160" x2="155" y2="60" stroke="#C24D38" stroke-width="1.2"/>
+                  <circle cx="155" cy="60" r="3" fill="#C24D38"/>
+                </svg>
+              </div>
+              <div class="catalog-meta">
+                <h3 class="catalog-title-ja">01 ｜ 樹脈の共鳴</h3>
+                <p class="catalog-title-en">Arboris Resonance — No. 0861</p>
+                <p class="catalog-annotation">
+                  中心軸：鉛直　幾何骨格：二重円と三角錐<br>
+                  抽出色：紺青 (#1B2A4A) ｜ 朱赤 (#C24D38)
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="portfolio-item">
-            <img src="portfolio/dscf7810.jpg" alt="Portfolio Image DSCF7810" loading="lazy">
+
+          <!-- CATALOG ITEM 02 -->
+          <div class="catalog-card">
+            <div class="catalog-photo">
+              <img src="portfolio/dscf2900.jpg" alt="水鏡の残照 DSCF2900" loading="lazy">
+            </div>
+            <div class="catalog-graphic">
+              <div class="catalog-svg-container">
+                <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" aria-label="水鏡の幾何学的骨格">
+                  <!-- Auxiliary Symmetry Grid -->
+                  <line x1="20" y1="110" x2="220" y2="110" stroke="#C8963E" stroke-width="1.2"/>
+                  <line x1="120" y1="20" x2="120" y2="200" stroke="#D1CDC4" stroke-width="0.8" stroke-dasharray="3 3"/>
+                  <!-- Concentric Water Ripples Arc -->
+                  <ellipse cx="120" cy="110" rx="90" ry="45" fill="none" stroke="#D1CDC4" stroke-width="0.8"/>
+                  <ellipse cx="120" cy="110" rx="65" ry="32" fill="none" stroke="#C8963E" stroke-width="0.8" stroke-dasharray="3 3"/>
+                  <!-- Core Motif -->
+                  <g filter="url(#woodblock-grain)">
+                    <path d="M 30,110 Q 120,30 210,110 Q 120,190 30,110 Z" fill="#1E3A52" opacity="0.85"/>
+                    <circle cx="120" cy="110" r="28" fill="#C8963E" opacity="0.95"/>
+                    <rect x="70" y="108" width="100" height="4" fill="#FAF9F5"/>
+                  </g>
+                  <!-- Tangent Line -->
+                  <line x1="30" y1="110" x2="180" y2="35" stroke="#1E3A52" stroke-width="0.8" stroke-dasharray="2 2"/>
+                </svg>
+              </div>
+              <div class="catalog-meta">
+                <h3 class="catalog-title-ja">02 ｜ 水鏡の残照</h3>
+                <p class="catalog-title-en">Specimen Aqua — No. 2900</p>
+                <p class="catalog-annotation">
+                  中心軸：水平切線　幾何骨格：同心楕円群<br>
+                  抽出色：深縹 (#1E3A52) ｜ 琥珀 (#C8963E)
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="portfolio-item">
-            <img src="portfolio/dscf8790.jpg" alt="Portfolio Image DSCF8790" loading="lazy">
+
+          <!-- CATALOG ITEM 03 -->
+          <div class="catalog-card">
+            <div class="catalog-photo">
+              <img src="portfolio/dscf6786.jpg" alt="佇まいの余白 DSCF6786" loading="lazy">
+            </div>
+            <div class="catalog-graphic">
+              <div class="catalog-svg-container">
+                <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" aria-label="佇まいの幾何学的骨格">
+                  <!-- Symmetry & Eccentric Axes -->
+                  <line x1="90" y1="15" x2="90" y2="205" stroke="#D1CDC4" stroke-width="0.8" stroke-dasharray="3 3"/>
+                  <rect x="40" y="30" width="160" height="160" fill="none" stroke="#E2DEC3" stroke-width="0.8"/>
+                  <!-- Core Silhouette and Negative Space -->
+                  <g filter="url(#woodblock-grain)">
+                    <path d="M 90,40 L 145,175 L 50,175 Z" fill="#22252A" opacity="0.9"/>
+                    <circle cx="90" cy="65" r="22" fill="#B83B26"/>
+                    <circle cx="130" cy="120" r="12" fill="#FAF9F5"/>
+                  </g>
+                  <!-- Radial Golden Ratio Lines -->
+                  <line x1="90" y1="65" x2="200" y2="175" stroke="#B83B26" stroke-width="1"/>
+                  <circle cx="200" cy="175" r="3" fill="#B83B26"/>
+                </svg>
+              </div>
+              <div class="catalog-meta">
+                <h3 class="catalog-title-ja">03 ｜ 佇まいの輪郭</h3>
+                <p class="catalog-title-en">Persona Contour — No. 6786</p>
+                <p class="catalog-annotation">
+                  中心軸：偏心鉛直　幾何骨格：非対称三角形<br>
+                  抽出色：消炭 (#22252A) ｜ 辰砂 (#B83B26)
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="portfolio-item">
-            <img src="portfolio/dscf6786.jpg" alt="Portfolio Image DSCF6786" loading="lazy">
+
+          <!-- CATALOG ITEM 04 -->
+          <div class="catalog-card">
+            <div class="catalog-photo">
+              <img src="portfolio/dscf7810.jpg" alt="結びの静寂 DSCF7810" loading="lazy">
+            </div>
+            <div class="catalog-graphic">
+              <div class="catalog-svg-container">
+                <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" aria-label="結びの幾何学的骨格">
+                  <!-- Intersecting Arc Grid -->
+                  <circle cx="85" cy="110" r="60" fill="none" stroke="#9E4B31" stroke-width="1"/>
+                  <circle cx="155" cy="110" r="60" fill="none" stroke="#4A6054" stroke-width="1"/>
+                  <line x1="120" y1="30" x2="120" y2="190" stroke="#D1CDC4" stroke-width="0.8" stroke-dasharray="3 3"/>
+                  <!-- Core Motif Vesica Piscis Cutout -->
+                  <g filter="url(#woodblock-grain)">
+                    <path d="M 120,60 A 60 60 0 0 1 120,160 A 60 60 0 0 1 120,60 Z" fill="#9E4B31" opacity="0.85"/>
+                    <polygon points="120,75 140,110 120,145 100,110" fill="#4A6054"/>
+                    <circle cx="120" cy="110" r="8" fill="#FAF9F5"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="catalog-meta">
+                <h3 class="catalog-title-ja">04 ｜ 結びと静寂</h3>
+                <p class="catalog-title-en">Nexus Stasis — No. 7810</p>
+                <p class="catalog-annotation">
+                  中心軸：交点境界　幾何骨格：Vesica Piscis (魚嚢形)<br>
+                  抽出色：代赭 (#9E4B31) ｜ 利休鼠 (#4A6054)
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="portfolio-item">
-            <img src="portfolio/dscf6406.jpg" alt="Portfolio Image DSCF6406" loading="lazy">
+
+          <!-- CATALOG ITEM 05 -->
+          <div class="catalog-card">
+            <div class="catalog-photo">
+              <img src="portfolio/dscf9782.jpg" alt="水平の対話 DSCF9782" loading="lazy">
+            </div>
+            <div class="catalog-graphic">
+              <div class="catalog-svg-container">
+                <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" aria-label="水平線の幾何学的骨格">
+                  <!-- Horizon Divisions -->
+                  <line x1="15" y1="130" x2="225" y2="130" stroke="#1C3144" stroke-width="1.5"/>
+                  <line x1="120" y1="20" x2="120" y2="200" stroke="#D1CDC4" stroke-width="0.8" stroke-dasharray="3 3"/>
+                  <!-- Rays & Square Boundaries -->
+                  <rect x="35" y="35" width="170" height="150" fill="none" stroke="#E2DEC3" stroke-width="0.8"/>
+                  <g filter="url(#woodblock-grain)">
+                    <polygon points="120,130 35,35 205,35" fill="#1C3144" opacity="0.2"/>
+                    <circle cx="120" cy="130" r="32" fill="#C46D3B" opacity="0.9"/>
+                    <rect x="35" y="130" width="170" height="55" fill="#1C3144" opacity="0.85"/>
+                    <line x1="35" y1="130" x2="205" y2="130" stroke="#FAF9F5" stroke-width="2"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="catalog-meta">
+                <h3 class="catalog-title-ja">05 ｜ 水平と境界</h3>
+                <p class="catalog-title-en">Horizontium — No. 9782</p>
+                <p class="catalog-annotation">
+                  中心軸：黄金分割線　幾何骨格：放射線と半円裁ち落とし<br>
+                  抽出色：紺碧 (#1C3144) ｜ 銅朱 (#C46D3B)
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="portfolio-item">
-            <img src="portfolio/dscf2900.jpg" alt="Portfolio Image DSCF2900" loading="lazy">
+
+          <!-- CATALOG ITEM 06 -->
+          <div class="catalog-card">
+            <div class="catalog-photo">
+              <img src="portfolio/dscf1077.jpg" alt="構造の記憶 DSCF1077" loading="lazy">
+            </div>
+            <div class="catalog-graphic">
+              <div class="catalog-svg-container">
+                <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" aria-label="構造の幾何学的骨格">
+                  <!-- Grid Axis -->
+                  <rect x="40" y="30" width="160" height="160" fill="none" stroke="#D1CDC4" stroke-width="0.8" stroke-dasharray="4 4"/>
+                  <line x1="40" y1="190" x2="200" y2="30" stroke="#B8860B" stroke-width="1"/>
+                  <!-- Core Geometric Forms -->
+                  <g filter="url(#woodblock-grain)">
+                    <polygon points="40,190 120,50 200,190" fill="#2C3036" opacity="0.88"/>
+                    <rect x="85" y="105" width="70" height="85" fill="#B8860B" opacity="0.85"/>
+                    <circle cx="120" cy="105" r="22" fill="#FAF9F5"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="catalog-meta">
+                <h3 class="catalog-title-ja">06 ｜ 構造の記憶</h3>
+                <p class="catalog-title-en">Architectura Stasis — No. 1077</p>
+                <p class="catalog-annotation">
+                  中心軸：対角対角線　幾何骨格：正方形入れ子構造<br>
+                  抽出色：鉄黒 (#2C3036) ｜ 芥子色 (#B8860B)
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="portfolio-item">
-            <img src="portfolio/dscf0861.jpg" alt="Portfolio Image DSCF0861" loading="lazy">
-          </div>
-          <div class="portfolio-item">
-            <img src="portfolio/dscf1077.jpg" alt="Portfolio Image DSCF1077" loading="lazy">
-          </div>
-          <div class="portfolio-item">
-            <img src="portfolio/dscf4744.jpg" alt="Portfolio Image DSCF4744" loading="lazy">
-          </div>
+
         </div>
       </div>
     </section>
@@ -668,42 +906,32 @@
         <div class="flow-steps">
           <div class="flow-step">
             <span class="step-num">01</span>
-            <div class="step-content">
-              <h3 class="step-title">問い合わせ</h3>
-              <p class="step-desc">Instagram DM またはメールよりお気軽にご連絡ください。どのような時間を過ごしたいか、ざっくりとしたイメージで構いません。</p>
-            </div>
+            <h3 class="step-title">問い合わせ</h3>
+            <p class="step-desc">Instagram DM またはメールよりお気軽にご連絡ください。どのような時間を過ごしたいか、ざっくりとしたイメージで構いません。</p>
           </div>
 
           <div class="flow-step">
             <span class="step-num">02</span>
-            <div class="step-content">
-              <h3 class="step-title">打合せ</h3>
-              <p class="step-desc">オンラインまたは対面にて、事前のヒアリングを行います。<br>「はじめましてからお元気ですか。」対話ベースで撮影の場所やコンセプトを決めていきます。</p>
-            </div>
+            <h3 class="step-title">打合せ</h3>
+            <p class="step-desc">オンラインまたは対面にて、事前のヒアリングを行います。<br>「はじめましてからお元気ですか。」対話ベースで撮影の場所やコンセプトを決めていきます。</p>
           </div>
 
           <div class="flow-step">
             <span class="step-num">03</span>
-            <div class="step-content">
-              <h3 class="step-title">撮影</h3>
-              <p class="step-desc">ご依頼のプランに沿って撮影。※天気によっては撮影日変更あり。</p>
-            </div>
+            <h3 class="step-title">撮影</h3>
+            <p class="step-desc">ご依頼のプランに沿って撮影。※天気によっては撮影日変更あり。</p>
           </div>
 
           <div class="flow-step">
             <span class="step-num">04</span>
-            <div class="step-content">
-              <h3 class="step-title">整える</h3>
-              <p class="step-desc">大げさな編集は入れません。あくまで写された写真を整えます。</p>
-            </div>
+            <h3 class="step-title">整える</h3>
+            <p class="step-desc">大げさな編集は入れません。あくまで写された写真を整えます。</p>
           </div>
 
           <div class="flow-step">
             <span class="step-num">05</span>
-            <div class="step-content">
-              <h3 class="step-title">納品</h3>
-              <p class="step-desc">オンラインにて写真データを納品いたします。プランによって納期が異なります。</p>
-            </div>
+            <h3 class="step-title">納品</h3>
+            <p class="step-desc">オンラインにて写真データを納品いたします。プランによって納期が異なります。</p>
           </div>
         </div>
 
