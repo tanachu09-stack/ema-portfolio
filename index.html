@@ -132,17 +132,6 @@
     outline: none;
   }
 
-  .btn-primary.btn-featured {
-    background-color: var(--ink);
-    color: var(--paper);
-  }
-
-  .btn-primary.btn-featured:hover, .btn-primary.btn-featured:focus-visible {
-    background-color: var(--ember);
-    border-color: var(--ember);
-    color: #FFFFFF;
-  }
-
   .btn-primary .sub {
     font-size: 11px;
     opacity: 0.8;
@@ -188,7 +177,7 @@
     color: var(--paper);
   }
 
-  /* Intro Catch */
+  /* Hero Catch */
   .hero-simple {
     padding: 50px 0 30px;
     text-align: center;
@@ -204,26 +193,54 @@
     line-break: strict;
   }
 
-  .hero-image-wrapper {
-    margin: 28px auto 0;
-    max-width: 320px;
-    width: 85%;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 24px rgba(148, 163, 184, 0.18);
-    border: 1px solid var(--ember-light);
+  /* Empathy & Feature Card Sections */
+  .content-card-section {
+    padding: 40px 0;
+    text-align: center;
   }
 
-  .hero-image-wrapper img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
+  .card-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--ember-light);
+    border-radius: 16px;
+    padding: 32px 24px;
+    box-shadow: 0 4px 20px rgba(148, 163, 184, 0.08);
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .empathy-list, .feature-list, .benefit-list, .recommended-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .empathy-item, .feature-item, .benefit-item, .recommended-item {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--ink);
+    word-break: auto-phrase;
+    line-break: strict;
+  }
+
+  .item-title {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+
+  .item-desc {
+    font-size: 13px;
+    color: var(--muted);
   }
 
   /* PLANS & PRICING */
   .plans-section {
-    padding: 20px 0 60px;
+    padding: 40px 0 60px;
   }
 
   .plans-grid {
@@ -253,29 +270,11 @@
     box-shadow: 0 4px 20px rgba(148, 163, 184, 0.08);
   }
 
-  .plan-card.featured {
-    border-color: var(--ember);
-    box-shadow: 0 8px 30px rgba(148, 163, 184, 0.2);
-  }
-
-  .plan-badge {
-    position: absolute;
-    top: -11px;
-    right: 20px;
-    background: var(--ink);
-    color: var(--paper);
-    font-family: var(--font-serif);
-    font-size: 10px;
-    padding: 2px 10px;
-    border-radius: 999px;
-    letter-spacing: 0.1em;
-    font-weight: 500;
-  }
-
   .plan-header {
     border-bottom: 1px solid var(--ember-light);
     padding-bottom: 18px;
     margin-bottom: 18px;
+    text-align: center;
   }
 
   .plan-name {
@@ -313,6 +312,7 @@
     line-height: 1.7;
     color: var(--ink);
     margin-bottom: 20px;
+    text-align: center;
   }
 
   .plan-details {
@@ -329,6 +329,7 @@
     color: var(--ink);
     padding-left: 16px;
     position: relative;
+    text-align: left;
   }
 
   .plan-details li::before {
@@ -347,6 +348,7 @@
     font-size: 12.5px;
     line-height: 1.8;
     color: var(--muted);
+    text-align: center;
   }
 
   .plan-notes p {
@@ -357,11 +359,12 @@
     margin-bottom: 0;
   }
 
-  /* PORTFOLIO SECTION */
+  /* PORTFOLIO SECTION & VOICE */
   .portfolio-section {
     padding: 60px 0 40px;
     background-color: var(--paper);
     border-top: 1px solid var(--ember-light);
+    text-align: center;
   }
 
   .portfolio-grid {
@@ -393,12 +396,45 @@
     transform: scale(1.03);
   }
 
+  .voice-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 32px;
+    text-align: center;
+  }
+
+  .voice-card {
+    background: var(--card-bg);
+    border: 1px solid var(--ember-light);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 10px rgba(148, 163, 184, 0.05);
+  }
+
+  .voice-quote {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--ink);
+    margin-bottom: 12px;
+    word-break: auto-phrase;
+    line-break: strict;
+  }
+
+  .voice-author {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: var(--font-serif);
+  }
+
   /* FLOW / PROCESS */
   .flow-section {
     padding: 60px 0;
     background-color: var(--card-sub-bg);
     border-top: 1px solid var(--ember-light);
     border-bottom: 1px solid var(--ember-light);
+    text-align: center;
   }
 
   .flow-steps {
@@ -417,6 +453,7 @@
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 2px 10px rgba(148, 163, 184, 0.05);
+    text-align: left;
   }
 
   .step-num {
@@ -443,6 +480,94 @@
     font-size: 13px;
     line-height: 1.7;
     color: var(--muted);
+    word-break: auto-phrase;
+    line-break: strict;
+  }
+
+  /* FAQ SECTION */
+  .faq-section {
+    padding: 60px 0;
+    text-align: center;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+    text-align: left;
+  }
+
+  .faq-item {
+    background: var(--card-bg);
+    border: 1px solid var(--ember-light);
+    border-radius: 12px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 10px rgba(148, 163, 184, 0.05);
+  }
+
+  .faq-question {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .faq-question::before {
+    content: "Q.";
+    font-family: var(--font-latin);
+    color: var(--ember);
+  }
+
+  .faq-answer {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--muted);
+    padding-left: 24px;
+    word-break: auto-phrase;
+    line-break: strict;
+  }
+
+  /* PROFILE SECTION */
+  .profile-section {
+    padding: 60px 0;
+    background-color: var(--card-sub-bg);
+    border-top: 1px solid var(--ember-light);
+    border-bottom: 1px solid var(--ember-light);
+    text-align: center;
+  }
+
+  .profile-box {
+    background: var(--card-bg);
+    border: 1px solid var(--ember-light);
+    border-radius: 16px;
+    padding: 32px 24px;
+    box-shadow: 0 4px 20px rgba(148, 163, 184, 0.08);
+    margin-top: 24px;
+  }
+
+  .profile-name {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .profile-title {
+    font-size: 12px;
+    color: var(--ember);
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+
+  .profile-bio {
+    font-size: 13.5px;
+    line-height: 2.0;
+    color: var(--ink);
     word-break: auto-phrase;
     line-break: strict;
   }
@@ -502,7 +627,7 @@
   </header>
 
   <main>
-    <!-- INTRO CATCH -->
+    <!-- 1. キャッチコピー (Hero) -->
     <section class="hero-simple">
       <div class="container-narrow">
         <p class="hero-catch">
@@ -514,11 +639,80 @@
       </div>
     </section>
 
-    <!-- 1. PLANS & PRICING (3つの時間) -->
+    <!-- 3. 共感・問題提起 (Empathy / Pain Points) -->
+    <section class="content-card-section">
+      <div class="container-narrow">
+        <span class="section-tag">Perspective</span>
+        <h2 class="section-title">こんな感覚を抱えていませんか？</h2>
+        <div class="card-box">
+          <ul class="empathy-list">
+            <li class="empathy-item">
+              <div class="item-title">「自分の言葉や表現が、どこか借り物のように感じる」</div>
+              <div class="item-desc">世の中の正解やトレンドに合わせるうちに、本当の想いが霞んでしまう。</div>
+            </li>
+            <li class="empathy-item">
+              <div class="item-title">「自分自身の『なぜ（Why）』という根源的な熱量が見えづらい」</div>
+              <div class="item-desc">日々の忙しさや効率の中で、大切な原風景や軸を忘れてしまいそうになる。</div>
+            </li>
+            <li class="empathy-item">
+              <div class="item-title">「表面的ではない、本当の自分を表現したい」</div>
+              <div class="item-desc">単に綺麗に撮られるのではなく、内側にある熱量やプロセスそのものを形に残したい。</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 & 5 & 7. 特徴・選ばれる理由 / 解決方法提示 / ベネフィットの羅列 -->
+    <section class="content-card-section" style="background-color: var(--card-sub-bg); border-top: 1px solid var(--ember-light); border-bottom: 1px solid var(--ember-light);">
+      <div class="container-narrow">
+        <span class="section-tag">Why Ema.</span>
+        <h2 class="section-title">プロセスを重ね、結像する。</h2>
+        <div class="card-box">
+          <ul class="feature-list">
+            <li class="feature-item">
+              <div class="item-title">点ではなく「線（プロセス）」としての写真</div>
+              <div class="item-desc">結果としての1枚だけでなく、そこに至るまでの対話や葛藤そのものを大切にします。</div>
+            </li>
+            <li class="feature-item">
+              <div class="item-title">丁寧な対話による「深傾聴」</div>
+              <div class="item-desc">言葉の奥にある熱量や原風景を引き出し、あなた自身の根源的な軸をともに見出します。</div>
+            </li>
+            <li class="feature-item">
+              <div class="item-title">「自分だけの旗」を立てる体験</div>
+              <div class="item-desc">撮影を通じて、迷ったときにいつでも立ち返ることができる「ブレない軸」が手に入ります。</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. こんな人にオススメ (Recommended For) -->
+    <section class="content-card-section">
+      <div class="container-narrow">
+        <span class="section-tag">For You</span>
+        <h2 class="section-title">こんな方におすすめです</h2>
+        <div class="card-box">
+          <ul class="recommended-list">
+            <li class="recommended-item">
+              ・自分の活動に深い熱量を持ち、軸を再定義したい表現者・事業者
+            </li>
+            <li class="recommended-item">
+              ・表面的な「映え」ではなく、自分の内側にある自然な姿を残したい方
+            </li>
+            <li class="recommended-item">
+              ・人生や事業の節目において、自身の在り方を確かめたい方
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 & 6 & 8 & 12 & 14. 商品説明 ＆ 特典 ＆ 金額 ＆ 限定性 ＆ 支払い方法・特商法 -->
     <section class="plans-section">
       <div class="container">
         <span class="section-tag">Plans & Pricing</span>
-        <h1 class="section-title">ご希望のプランを選んでください。</h1>
+        <h2 class="section-title">ご希望のプランを選んでください。</h2>
 
         <div class="plans-grid">
 
@@ -526,7 +720,7 @@
           <div class="plan-card">
             <div>
               <div class="plan-header">
-                <h2 class="plan-name">TRACE</h2>
+                <h3 class="plan-name">TRACE</h3>
                 <p class="plan-subname">ひととき</p>
                 <div class="plan-price">¥35,000<span style="font-size: 13px; font-style: normal; margin-left: 2px;">（税込）</span></div>
               </div>
@@ -550,13 +744,14 @@
           <div class="plan-card">
             <div>
               <div class="plan-header">
-                <h2 class="plan-name">DOUKOU</h2>
+                <h3 class="plan-name">DOUKOU</h3>
                 <p class="plan-subname">結像</p>
                 <div class="plan-price">¥120,000<span style="font-size: 13px; font-style: normal; margin-left: 2px;">（税込）</span></div>
               </div>
               <p class="plan-catch">対話を重ねながら、あなたが望むプロセスに寄り添う時間。</p>
               <ul class="plan-details">
                 <li>撮影：上限1日</li>
+                <li>特典：結像動画付き</li>
                 <li>納品：写真データ(最大50枚)、結像動画</li>
                 <li style="color: var(--ember);">元データのお渡しも可能</li>
                 <li>納品方法：オンライン</li>
@@ -574,13 +769,14 @@
           <div class="plan-card">
             <div>
               <div class="plan-header">
-                <h2 class="plan-name">PERSONAL FLAG</h2>
+                <h3 class="plan-name">PERSONAL FLAG</h3>
                 <p class="plan-subname">積み重ねる時間</p>
                 <div class="plan-price">¥360,000<span style="font-size: 13px; font-style: normal; margin-left: 2px;">（税込）</span></div>
               </div>
               <p class="plan-catch">一年を通して、変化やあなたの営みを記録、結像していく時間。</p>
               <ul class="plan-details">
                 <li>撮影：年4日</li>
+                <li>特典：結像動画付き</li>
                 <li>納品：写真データ(最大50枚)、結像動画</li>
                 <li style="color: var(--ember);">元データのお渡しも可能</li>
                 <li>納品方法：オンライン</li>
@@ -596,7 +792,7 @@
 
         </div>
 
-        <!-- 共通事項 -->
+        <!-- 傾聴プロセス説明 ＆ 共通事項・限定性・支払いポリシー -->
         <div class="container-narrow">
           <div class="plan-notes" style="margin-top: 36px; text-align: center;">
             <p style="font-family: var(--font-serif); font-size: 13px; line-height: 2.0; color: var(--ink); word-break: auto-phrase; line-break: strict;">
@@ -612,16 +808,19 @@
           </div>
 
           <div class="plan-notes" style="margin-top: 16px;">
-            <p><strong>共通事項</strong></p>
+            <p><strong>共通事項 ＆ 特記事項</strong></p>
             <p>※ 全プラン、別途交通費を頂戴いたします。</p>
-            <p>※ 撮影場所ついては、ご相談のうえ決定します。</p>
+            <p>※ 撮影場所については、ご相談のうえ決定します。</p>
+            <p>※ 一人ひとりの対話プロセスを大切にするため、月のご予約枠には限りがございます。</p>
+            <p>※ 支払い方法：口座振込（口座振込は原則、事前のお支払いをお願いしております）。</p>
+            <p>※ キャンセルポリシー：事前打ち合わせ完了後のキャンセルは所定の手数料が発生する場合がございます。</p>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- PORTFOLIO GALLERY -->
+    <!-- 15. お客さまの声・実例 (Portfolio & Customer Voices) -->
     <section class="portfolio-section">
       <div class="container">
         <span class="section-tag">Portfolio</span>
@@ -656,10 +855,27 @@
             <img src="portfolio/dscf4744.jpg" alt="Portfolio Image DSCF4744" loading="lazy">
           </div>
         </div>
+
+        <!-- お客さまの声 -->
+        <div class="container-narrow" style="margin-top: 48px;">
+          <span class="section-tag">Voices</span>
+          <h2 class="section-title">体験された方の声</h2>
+          <div class="voice-grid">
+            <div class="voice-card">
+              <p class="voice-quote">「ただ写真を撮られるのではなく、自分の根底にある想いを静かに言葉にし、見つめ直す時間になりました。出来上がった写真を見るたび、原点に戻れます。」</p>
+              <p class="voice-author">── クリエイター（DOUKOUプラン体験）</p>
+            </div>
+            <div class="voice-card">
+              <p class="voice-quote">「対話を通して、言葉にできなかった自分の軸が明確になりました。飾らない自然な自分が写っていて、発信への迷いがなくなりました。」</p>
+              <p class="voice-author">── 事業主（PERSONAL FLAGプラン体験）</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- 2. 撮影の流れ (FLOW) -->
+    <!-- 撮影の流れ (FLOW) -->
     <section class="flow-section">
       <div class="container-narrow">
         <span class="section-tag">Process</span>
@@ -710,10 +926,64 @@
       </div>
     </section>
 
-    <!-- 3. CONTACT -->
+    <!-- 10. よくある質問 (FAQ) -->
+    <section class="faq-section">
+      <div class="container-narrow">
+        <span class="section-tag">FAQ</span>
+        <h2 class="section-title">よくある質問</h2>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-question">写真を撮られ慣れていなくても大丈夫ですか？</div>
+            <div class="faq-answer">はい、全く問題ありません。ポーズを決める撮影ではなく、対話をしながら自然な時間を過ごしていただきますので、リラックスしてお越しください。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">撮影場所はどのように決めますか？</div>
+            <div class="faq-answer">事前の打合せ（対話）を通して、あなたゆかりの場所や、落ち着いて自分に向き合えるロケーションをご相談のうえ決定します。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">雨天の場合はどうなりますか？</div>
+            <div class="faq-answer">屋外撮影で悪天候が予想される場合は、ご相談のうえ日程の変更や屋内のロケーションへの調整を行います。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">納期はどのくらいですか？</div>
+            <div class="faq-answer">撮影完了後、一枚一枚丁寧に整えてからお渡しします。目安として2〜3週間ほどお時間をいただいております。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. 自己紹介・プロフィール (Profile) -->
+    <section class="profile-section">
+      <div class="container-narrow">
+        <span class="section-tag">Profile</span>
+        <h2 class="section-title">プロフィール</h2>
+
+        <div class="profile-box">
+          <h3 class="profile-name">田中 悠太 ｜ Ema.</h3>
+          <p class="profile-title">写真家 / 対話プロセスデザイナー</p>
+          <p class="profile-bio">
+            「人が自分自身の在り方と接続する場」を写真と対話を通して届ける。<br>
+            表面的な美しさではなく、対話から導き出される本質的な熱量や原風景を紡ぎ出し、一人ひとりが自分の軸となる「自分だけの旗」を立てる体験を提供している。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 & 16 & CONTACT. メッセージ ＆ 最後に（想い） ＆ Contact -->
     <section class="contact-section">
       <div class="container-narrow">
         <div class="contact-box">
+          <span class="section-tag">Message</span>
+          <p style="font-family: var(--font-serif); font-size: 14px; line-height: 2.2; color: var(--ink); margin-bottom: 32px; word-break: auto-phrase; line-break: strict;">
+            言葉にならない想いや、<br>
+            日常の中に埋もれがちな「在り方」。<br>
+            それを一緒に見つけ出し、<br class="sp-br">
+            静かに形へとしていく時間を。<br>
+            あなたとお会いできることを、<br class="sp-br">
+            楽しみにしています。
+          </p>
+
           <span class="section-tag">Contact</span>
           <h2 class="contact-heading">
             話して、掘って、撮る。
