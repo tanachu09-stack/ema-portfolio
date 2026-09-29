@@ -188,37 +188,150 @@
     color: var(--paper);
   }
 
-  /* Intro Catch */
-  .hero-simple {
-    padding: 50px 0 30px;
+  /* HERO & FOG SCROLL EFFECT STYLES */
+  .hero-pinned-container {
+    position: relative;
+    width: 100%;
+    height: 180vh; /* Scroll scroll distance for pinned animation */
+  }
+
+  .hero-sticky-frame {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--paper);
+  }
+
+  /* Background Zoom Layer */
+  .hero-bg-zoom-layer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    will-change: transform, opacity;
+  }
+
+  .hero-image-wrapper {
+    width: clamp(260px, 45vw, 400px);
+    aspect-ratio: 3 / 4;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    background-color: #FFFFFF;
+    transform-origin: center center;
+    will-change: transform;
+  }
+
+  .hero-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Fog / Mist Layers */
+  .fog-container {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .fog-layer {
+    position: absolute;
+    inset: -20%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    will-change: transform, opacity;
+  }
+
+  /* Multi-depth fog gradient styling creating pure white mist effect */
+  .fog-back {
+    background: radial-gradient(circle at 50% 50%, rgba(248, 250, 252, 0.98) 0%, rgba(248, 250, 252, 0.8) 50%, rgba(248, 250, 252, 0) 80%),
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.9) 0%, transparent 60%);
+    opacity: 0.95;
+    filter: blur(20px);
+  }
+
+  .fog-mid {
+    background: radial-gradient(circle at 70% 40%, rgba(248, 250, 252, 0.95) 0%, rgba(248, 250, 252, 0.6) 45%, rgba(248, 250, 252, 0) 75%),
+                radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.85) 0%, transparent 50%);
+    opacity: 0.85;
+    filter: blur(15px);
+  }
+
+  .fog-front {
+    background: radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.7) 40%, rgba(248, 250, 252, 0) 70%),
+                radial-gradient(circle at 80% 20%, rgba(248, 250, 252, 0.8) 0%, transparent 55%);
+    opacity: 0.75;
+    filter: blur(10px);
+  }
+
+  /* Hero Content Overlay */
+  .hero-content-wrapper {
+    position: relative;
+    z-index: 3;
     text-align: center;
+    padding: 0 20px;
+    width: 100%;
+    will-change: transform, opacity;
   }
 
   .hero-catch {
     font-family: var(--font-serif);
-    font-size: clamp(14px, 3.8vw, 18px);
-    line-height: 2.25;
-    letter-spacing: 0.05em;
+    font-size: clamp(15px, 3.8vw, 19px);
+    line-height: 2.3;
+    letter-spacing: 0.06em;
     color: var(--ink);
     word-break: auto-phrase;
     line-break: strict;
+    text-shadow: 0 2px 10px rgba(248, 250, 252, 0.9);
   }
 
-  .hero-image-wrapper {
-    margin: 28px auto 0;
-    max-width: 320px;
-    width: 85%;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 24px rgba(148, 163, 184, 0.18);
-    border: 1px solid var(--ember-light);
+  .hero-signature {
+    font-size: 1.1em;
+    letter-spacing: 0.08em;
+    display: inline-block;
+    margin-top: 20px;
   }
 
-  .hero-image-wrapper img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
+  /* Scroll Indicator Hint */
+  .scroll-hint {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+  }
+
+  .scroll-text {
+    font-family: var(--font-latin);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--ember);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 24px;
+    background: linear-gradient(to bottom, var(--ember), transparent);
+    animation: scrollPulse 2s infinite ease-in-out;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { transform: scaleY(0.6); opacity: 0.4; }
+    50% { transform: scaleY(1); opacity: 1; }
   }
 
   /* PLANS & PRICING */
@@ -502,15 +615,38 @@
   </header>
 
   <main>
-    <!-- INTRO CATCH -->
-    <section class="hero-simple">
-      <div class="container-narrow">
-        <p class="hero-catch">
-          人が、自分自身の在り方と接続するための場。<br>
-          意味づけせず、決めつけずに、<br class="sp-br">
-          ただ目の前のあなたを撮る。<br>
-          <span class="latin" style="font-size: 1.1em; letter-spacing: 0.08em; display: inline-block; margin-top: 20px;">YUTA</span>
-        </p>
+    <!-- HERO / FIRST VIEW WITH FOG & SCROLL EFFECT -->
+    <section class="hero-pinned-container" id="hero">
+      <div class="hero-sticky-frame">
+        <!-- Background Scaling Visual Layer -->
+        <div class="hero-bg-zoom-layer">
+          <div class="hero-image-wrapper">
+            <img src="intro_image.png" alt="Ema. Concept Visual" class="hero-main-img">
+          </div>
+        </div>
+
+        <!-- Multi-Layered Mist / Fog Layers -->
+        <div class="fog-container" aria-hidden="true">
+          <div class="fog-layer fog-back"></div>
+          <div class="fog-layer fog-mid"></div>
+          <div class="fog-layer fog-front"></div>
+        </div>
+
+        <!-- Hero Content Overlay -->
+        <div class="hero-content-wrapper">
+          <div class="container-narrow">
+            <p class="hero-catch">
+              人が、自分自身の在り方と接続するための場。<br>
+              意味づけせず、決めつけずに、<br class="sp-br">
+              ただ目の前のあなたを撮る。<br>
+              <span class="latin hero-signature">YUTA</span>
+            </p>
+            <div class="scroll-hint" aria-hidden="true">
+              <span class="scroll-text">SCROLL</span>
+              <span class="scroll-line"></span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -731,5 +867,79 @@
     <p>&copy; Ema. All rights reserved.</p>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const heroContainer = document.querySelector(".hero-pinned-container");
+        const bgZoomLayer = document.querySelector(".hero-bg-zoom-layer");
+        const fogFront = document.querySelector(".fog-front");
+        const fogMid = document.querySelector(".fog-mid");
+        const fogBack = document.querySelector(".fog-back");
+        const heroContent = document.querySelector(".hero-content-wrapper");
+        const scrollHint = document.querySelector(".scroll-hint");
+
+        const heroTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: heroContainer,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1,
+            invalidateOnRefresh: true
+          }
+        });
+
+        // 1. Background Image scales up smoothly as user scrolls
+        heroTl.to(bgZoomLayer, {
+          scale: 1.25,
+          ease: "none",
+          duration: 1
+        }, 0);
+
+        // 2. Multi-layer fog clears away at differential speeds (Parallax depth & Fog clearing)
+        heroTl.to(fogFront, {
+          yPercent: -40,
+          scale: 1.4,
+          opacity: 0,
+          ease: "power1.inOut",
+          duration: 0.6
+        }, 0);
+
+        heroTl.to(fogMid, {
+          yPercent: -25,
+          scale: 1.2,
+          opacity: 0,
+          ease: "power1.inOut",
+          duration: 0.8
+        }, 0.1);
+
+        heroTl.to(fogBack, {
+          yPercent: -15,
+          scale: 1.1,
+          opacity: 0,
+          ease: "power1.inOut",
+          duration: 1.0
+        }, 0.2);
+
+        // 3. Hero content and scroll hint subtle perspective fade
+        heroTl.to(scrollHint, {
+          opacity: 0,
+          y: -10,
+          ease: "power1.out",
+          duration: 0.3
+        }, 0);
+
+        heroTl.to(heroContent, {
+          y: -30,
+          opacity: 0.85,
+          ease: "none",
+          duration: 1.0
+        }, 0);
+      }
+    });
+  </script>
 </body>
 </html>
