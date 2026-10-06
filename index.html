@@ -491,6 +491,9 @@
     color: var(--muted);
     letter-spacing: 0.15em;
   }
+  .faq details { background: var(--card-bg); border: 1px solid var(--ember-light); border-radius: 12px; padding: 16px 18px; margin-bottom: 10px; }
+  .faq summary { font-family: var(--font-serif); font-size: 14px; line-height: 1.8; color: var(--ink); cursor: pointer; }
+  .faq details p { font-family: var(--font-serif); font-size: 13px; line-height: 2.0; color: var(--ink); margin-top: 10px; word-break: auto-phrase; line-break: strict; }
 </style>
 </head>
 <body>
@@ -506,11 +509,68 @@
     <section class="hero-simple">
       <div class="container-narrow">
         <p class="hero-catch">
-          人が、自分自身の在り方と接続するための場。<br>
-          意味づけせず、決めつけずに、<br class="sp-br">
-          ただ目の前のあなたを撮る。<br>
+          自分をしっかり観てあげる。<br>
+          そんな時間が、とても大切だと思っています。<br>
+          <span style="display:block; height:1em;"></span>
+          話して、掘って、撮る。<br>
+          ポーズも、演出もいりません。<br>
+          整えるだけ。ありのままを撮影します。<br>
+          <span style="display:block; height:1em;"></span>
+          撮影を終えた時、<br class="sp-br">
+          あなたの在り方が目に見えるカタチになります。<br>
           <span class="latin" style="font-size: 1.1em; letter-spacing: 0.08em; display: inline-block; margin-top: 20px;">YUTA</span>
         </p>
+      </div>
+    </section>
+
+    <!-- 2. 撮影の流れ (FLOW) -->
+    <section class="flow-section">
+      <div class="container-narrow">
+        <span class="section-tag">Process</span>
+        <h2 class="section-title">撮影の流れ</h2>
+
+        <div class="flow-steps">
+          <div class="flow-step">
+            <span class="step-num">01</span>
+            <div class="step-content">
+              <h3 class="step-title">問い合わせ</h3>
+              <p class="step-desc">Instagram DM またはメールよりお気軽にご連絡ください。どのような時間を過ごしたいか、ざっくりとしたイメージで構いません。</p>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <span class="step-num">02</span>
+            <div class="step-content">
+              <h3 class="step-title">打合せ</h3>
+              <p class="step-desc">オンラインまたは対面にて、事前のヒアリングを行います。<br>「はじめましてからお元気ですか。」対話ベースで撮影の場所やコンセプトを決めていきます。</p>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <span class="step-num">03</span>
+            <div class="step-content">
+              <h3 class="step-title">撮影</h3>
+              <p class="step-desc">話しながら、歩いたり、いつもの仕事をしたり。途中からは、ほとんど声をかけません。※天気によっては撮影日変更あり。</p>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <span class="step-num">04</span>
+            <div class="step-content">
+              <h3 class="step-title">整える</h3>
+              <p class="step-desc">足さずに、写ったものを整えます。</p>
+            </div>
+          </div>
+
+          <div class="flow-step">
+            <span class="step-num">05</span>
+            <div class="step-content">
+              <h3 class="step-title">納品</h3>
+              <p class="step-desc">オンラインでお届けします。撮影後、約2週間が目安です。</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -522,13 +582,16 @@
         <div style="background: var(--card-bg); border: 1px solid var(--ember-light); border-radius: 16px; padding: 28px 20px; box-shadow: 0 4px 20px rgba(148, 163, 184, 0.08);">
           <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px; text-align: center;">
             <li style="font-family: var(--font-serif); font-size: clamp(13px, 3.5vw, 15px); line-height: 1.8; color: var(--ink); word-break: auto-phrase; line-break: strict;">
-              ・自分の仕事や活動の軸を、もう一度しっかりと確かめたい方
+              ・プロフィール写真やSNSのアイコンを、そろそろ撮り直したい方
             </li>
             <li style="font-family: var(--font-serif); font-size: clamp(13px, 3.5vw, 15px); line-height: 1.8; color: var(--ink); word-break: auto-phrase; line-break: strict;">
-              ・作った笑顔ではなく、自然体の自分を残したい方
+              ・独立、転職、結婚、引っ越し。節目の「今の自分」を残しておきたい方
             </li>
             <li style="font-family: var(--font-serif); font-size: clamp(13px, 3.5vw, 15px); line-height: 1.8; color: var(--ink); word-break: auto-phrase; line-break: strict;">
-              ・人生や仕事の節目に、自分と向き合う時間をつくりたい方
+              ・活動や仕事を伝える写真が、しっくりきていない方
+            </li>
+            <li style="font-family: var(--font-serif); font-size: clamp(13px, 3.5vw, 15px); line-height: 1.8; color: var(--ink); word-break: auto-phrase; line-break: strict;">
+              ・きれいに写るより、自分らしさが残ってほしい方
             </li>
           </ul>
         </div>
@@ -539,7 +602,11 @@
     <section class="plans-section">
       <div class="container">
         <span class="section-tag">Plans & Pricing</span>
-        <h1 class="section-title">ご希望のプランを選んでください。</h1>
+        <h1 class="section-title">プラン</h1>
+        <p style="font-family: var(--font-serif); font-size: 13px; line-height: 2.0; color: var(--ink); text-align: center; margin: -8px 0 28px; word-break: auto-phrase; line-break: strict;">
+          まず一度なら TRACE、節目なら DOUKOU、一年なら PERSONAL FLAG。<br>
+          迷ったら、DMで「迷ってます」と送ってください。
+        </p>
 
         <div class="plans-grid">
 
@@ -550,7 +617,7 @@
                 <h2 class="plan-name">TRACE</h2>
                 <div class="plan-price">¥35,000<span style="font-size: 13px; font-style: normal; margin-left: 2px;">（税込）</span></div>
               </div>
-              <p class="plan-catch">今の自分にそっと触れる時間。</p>
+              <p class="plan-catch">2時間で、今の自分をひとつ残す。</p>
               <ul class="plan-details">
                 <li>撮影：2時間</li>
                 <li>納品：写真データのみ最大20枚</li>
@@ -573,7 +640,7 @@
                 <h2 class="plan-name">DOUKOU</h2>
                 <div class="plan-price">¥120,000<span style="font-size: 13px; font-style: normal; margin-left: 2px;">（税込）</span></div>
               </div>
-              <p class="plan-catch">対話を重ねながら、あなたが望むプロセスに寄り添う時間。</p>
+              <p class="plan-catch">対話を重ねながら、一日いっしょに過ごして撮る。</p>
               <ul class="plan-details">
                 <li>撮影：上限1日</li>
                 <li>納品：写真データ(最大50枚)、結像動画(あなたの在り方を動画にします。)</li>
@@ -596,7 +663,7 @@
                 <h2 class="plan-name">PERSONAL FLAG</h2>
                 <div class="plan-price">¥360,000<span style="font-size: 13px; font-style: normal; margin-left: 2px;">（税込）</span></div>
               </div>
-              <p class="plan-catch">一年を通して、変化やあなたの営みを記録、結像していく時間。</p>
+              <p class="plan-catch">一年を通して、変わっていく自分を残す。</p>
               <ul class="plan-details">
                 <li>撮影：年4日</li>
                 <li>納品：写真データ(最大50枚)、結像動画(あなたの在り方を動画にします。)</li>
@@ -643,6 +710,7 @@
         <span class="section-tag">Portfolio</span>
         <h2 class="section-title">在り方一覧</h2>
 
+        <!-- 【お客様の声】SO / JIRO / しんちゃん の一言と掲載許可が揃ったら、ここに追加 -->
         <div class="portfolio-grid">
           <div class="portfolio-item">
             <img src="portfolio/dscf9782.jpg" alt="Portfolio Image DSCF9782" loading="lazy">
@@ -675,54 +743,19 @@
       </div>
     </section>
 
-    <!-- 2. 撮影の流れ (FLOW) -->
-    <section class="flow-section">
+    <!-- FAQ -->
+    <section class="faq-section" style="padding: 20px 0 60px;">
       <div class="container-narrow">
-        <span class="section-tag">Process</span>
-        <h2 class="section-title">撮影までの流れ</h2>
-
-        <div class="flow-steps">
-          <div class="flow-step">
-            <span class="step-num">01</span>
-            <div class="step-content">
-              <h3 class="step-title">問い合わせ</h3>
-              <p class="step-desc">Instagram DM またはメールよりお気軽にご連絡ください。どのような時間を過ごしたいか、ざっくりとしたイメージで構いません。</p>
-            </div>
-          </div>
-
-          <div class="flow-step">
-            <span class="step-num">02</span>
-            <div class="step-content">
-              <h3 class="step-title">打合せ</h3>
-              <p class="step-desc">オンラインまたは対面にて、事前のヒアリングを行います。<br>「はじめましてからお元気ですか。」対話ベースで撮影の場所やコンセプトを決めていきます。</p>
-            </div>
-          </div>
-
-          <div class="flow-step">
-            <span class="step-num">03</span>
-            <div class="step-content">
-              <h3 class="step-title">撮影</h3>
-              <p class="step-desc">ご依頼のプランに沿って撮影。※天気によっては撮影日変更あり。</p>
-            </div>
-          </div>
-
-          <div class="flow-step">
-            <span class="step-num">04</span>
-            <div class="step-content">
-              <h3 class="step-title">整える</h3>
-              <p class="step-desc">足さずに、写ったものを整えます。</p>
-            </div>
-          </div>
-
-          <div class="flow-step">
-            <span class="step-num">05</span>
-            <div class="step-content">
-              <h3 class="step-title">納品</h3>
-              <p class="step-desc">オンラインでお届けします。撮影後、約2週間が目安です。</p>
-            </div>
-          </div>
+        <span class="section-tag">FAQ</span>
+        <h2 class="section-title">よくあるご質問</h2>
+        <div class="faq">
+          <details><summary>写真が苦手でも大丈夫ですか？</summary><p>大丈夫です。ポーズや表情の指示はしません。最初にお話しする時間があるので、撮られ慣れていなくても、少しずつ自然になっていきます。</p></details>
+          <details><summary>何を話しますか？ 話したくないことは？</summary><p>最近のこと、好きなこと、どんな写真を残したいか、などです。遠慮なく話しましょう。</p></details>
+          <details><summary>どのプランを選べばいいですか？</summary><p>まず一度なら TRACE、節目や一日しっかり残したいなら DOUKOU、一年を通して残したいなら PERSONAL FLAG です。迷ったら、DMで「迷ってます」と送ってください。</p></details>
+          <details><summary>元データはもらえますか？</summary><p>TRACE は写真データ（最大20枚）のお渡しで、元データはありません。DOUKOU と PERSONAL FLAG は、写真（最大50枚）と結像動画に加えて、元データもお渡しできます。</p></details>
+          <details><summary>修正はしてもらえますか？</summary><p>足さずに、写ったものを整えます。</p></details>
+          <details><summary>支払いと、天気が悪い場合は？</summary><p>支払いは口座振込で、原則、事前にお願いしています。天気によっては、撮影日を変更することがあります。</p></details>
         </div>
-
       </div>
     </section>
 
@@ -734,6 +767,7 @@
           <h2 class="contact-heading">
             話して、掘って、撮る。
           </h2>
+          <p style="font-family: var(--font-serif); font-size: 13px; line-height: 2.0; color: var(--ink); margin-bottom: 20px;">まずは一言だけでも。「気になってます」で大丈夫です。</p>
           <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary" style="max-width: 320px;">
             撮影について相談する <span class="sub">[DMへ]</span>
           </a>
