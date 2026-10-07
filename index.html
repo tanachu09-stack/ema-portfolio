@@ -37,7 +37,7 @@
   body {
     font-family: var(--font-sans);
     font-weight: 300;
-    line-height: 1.8;
+    line-height: 1.85;
     background-color: var(--paper);
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
@@ -197,7 +197,7 @@
   .hero-catch {
     font-family: var(--font-serif);
     font-size: clamp(14px, 3.8vw, 18px);
-    line-height: 2.25;
+    line-height: 2.2;
     letter-spacing: 0.05em;
     color: var(--ink);
     word-break: auto-phrase;
@@ -310,9 +310,11 @@
   .plan-catch {
     font-family: var(--font-serif);
     font-size: 13.5px;
-    line-height: 1.7;
+    line-height: 1.8;
     color: var(--ink);
     margin-bottom: 20px;
+    word-break: auto-phrase;
+    line-break: strict;
   }
 
   .plan-details {
@@ -325,10 +327,12 @@
 
   .plan-details li {
     font-size: 13px;
-    line-height: 1.6;
+    line-height: 1.7;
     color: var(--ink);
     padding-left: 16px;
     position: relative;
+    word-break: auto-phrase;
+    line-break: strict;
   }
 
   .plan-details li::before {
@@ -345,12 +349,12 @@
     border-radius: 12px;
     padding: 20px 18px;
     font-size: 12.5px;
-    line-height: 1.8;
+    line-height: 1.95;
     color: var(--muted);
   }
 
   .plan-notes p {
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
 
   .plan-notes p:last-child {
@@ -441,7 +445,7 @@
 
   .step-desc {
     font-size: 13px;
-    line-height: 1.7;
+    line-height: 1.8;
     color: var(--muted);
     word-break: auto-phrase;
     line-break: strict;
@@ -491,9 +495,55 @@
     color: var(--muted);
     letter-spacing: 0.15em;
   }
-  .faq details { background: var(--card-bg); border: 1px solid var(--ember-light); border-radius: 12px; padding: 16px 18px; margin-bottom: 10px; }
-  .faq summary { font-family: var(--font-serif); font-size: 14px; line-height: 1.8; color: var(--ink); cursor: pointer; }
-  .faq details p { font-family: var(--font-serif); font-size: 13px; line-height: 2.0; color: var(--ink); margin-top: 10px; word-break: auto-phrase; line-break: strict; }
+
+  .faq details {
+    background: var(--card-bg);
+    border: 1px solid var(--ember-light);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+  }
+
+  .faq summary {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .faq details p {
+    font-family: var(--font-serif);
+    font-size: 13px;
+    line-height: 2.0;
+    color: var(--ink);
+    margin-top: 10px;
+    word-break: auto-phrase;
+    line-break: strict;
+  }
+
+  @media (max-width: 767px) {
+    body {
+      line-height: 1.9;
+    }
+    .flow-step {
+      padding: 18px 16px;
+    }
+    .plan-card {
+      padding: 28px 20px;
+    }
+    .faq details {
+      padding: 14px 16px;
+    }
+    .faq summary {
+      font-size: 13.5px;
+      line-height: 1.7;
+    }
+    .faq details p {
+      font-size: 13px;
+      line-height: 1.9;
+    }
+  }
 </style>
 </head>
 <body>
@@ -510,14 +560,14 @@
       <div class="container-narrow">
         <p class="hero-catch">
           自分をしっかり観てあげる。<br>
-          そんな時間が、とても大切だと思っています。<br>
+          そんな時間が、<br class="sp-br">とても大切だと思っています。<br>
           <span style="display:block; height:1em;"></span>
           話して、掘って、撮る。<br>
           ポーズも、演出もいりません。<br>
-          整えるだけ。ありのままを撮影します。<br>
+          整えるだけ。<br class="sp-br">ありのままを撮影します。<br>
           <span style="display:block; height:1em;"></span>
-          撮影を終えた時、<br class="sp-br">
-          あなたの在り方が目に見えるカタチになります。<br>
+          撮影を終えた時、<br>
+          あなたの在り方が<br class="sp-br">目に見えるカタチになります。<br>
           <span class="latin" style="font-size: 1.1em; letter-spacing: 0.08em; display: inline-block; margin-top: 20px;">YUTA</span>
         </p>
       </div>
@@ -534,7 +584,7 @@
             <span class="step-num">01</span>
             <div class="step-content">
               <h3 class="step-title">問い合わせ</h3>
-              <p class="step-desc">Instagram DM またはメールよりお気軽にご連絡ください。どのような時間を過ごしたいか、ざっくりとしたイメージで構いません。</p>
+              <p class="step-desc">Instagram DM またはメールより<br class="sp-br">お気軽にご連絡ください。<br>どのような時間を過ごしたいか、<br class="sp-br">ざっくりとしたイメージで構いません。</p>
             </div>
           </div>
 
@@ -542,7 +592,7 @@
             <span class="step-num">02</span>
             <div class="step-content">
               <h3 class="step-title">打合せ</h3>
-              <p class="step-desc">オンラインまたは対面にて、事前のヒアリングを行います。<br>「はじめましてからお元気ですか。」対話ベースで撮影の場所やコンセプトを決めていきます。</p>
+              <p class="step-desc">オンラインまたは対面にて、<br class="sp-br">事前のヒアリングを行います。<br>「はじめましてからお元気ですか。」<br>対話ベースで撮影の場所や<br class="sp-br">コンセプトを決めていきます。</p>
             </div>
           </div>
 
@@ -550,7 +600,7 @@
             <span class="step-num">03</span>
             <div class="step-content">
               <h3 class="step-title">撮影</h3>
-              <p class="step-desc">話しながら、歩いたり、いつもの仕事をしたり。途中からは、ほとんど声をかけません。※天気によっては撮影日変更あり。</p>
+              <p class="step-desc">話しながら、歩いたり、<br class="sp-br">いつもの仕事をしたり。<br>途中からは、ほとんど声をかけません。<br><span style="font-size: 11.5px; opacity: 0.85; display: inline-block; margin-top: 4px;">※天気によっては撮影日変更あり。</span></p>
             </div>
           </div>
 
@@ -566,7 +616,7 @@
             <span class="step-num">05</span>
             <div class="step-content">
               <h3 class="step-title">納品</h3>
-              <p class="step-desc">オンラインでお届けします。撮影後、約2週間が目安です。</p>
+              <p class="step-desc">オンラインでお届けします。<br>撮影後、約2週間が目安です。</p>
             </div>
           </div>
         </div>
@@ -580,18 +630,18 @@
         <span class="section-tag">For You</span>
         <h2 class="section-title">こんな方におすすめです</h2>
         <div style="background: var(--card-bg); border: 1px solid var(--ember-light); border-radius: 16px; padding: 28px 20px; box-shadow: 0 4px 20px rgba(148, 163, 184, 0.08);">
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px; text-align: center;">
-            <li style="font-family: var(--font-serif); font-size: clamp(13px, 3.5vw, 15px); line-height: 1.8; color: var(--ink); word-break: auto-phrase; line-break: strict;">
-              ・プロフィール写真やSNSのアイコンを、そろそろ撮り直したい方
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px; text-align: center;">
+            <li style="font-family: var(--font-serif); font-size: clamp(13px, 3.5vw, 15px); line-height: 1.9; color: var(--ink); word-break: auto-phrase; line-break: strict;">
+              ・プロフィール写真やSNSのアイコンを、<br class="sp-br">そろそろ撮り直したい方
             </li>
-            <li style="font-family: var(--font-serif); font-size: clamp(13px, 3.5vw, 15px); line-height: 1.8; color: var(--ink); word-break: auto-phrase; line-break: strict;">
-              ・独立、転職、結婚、引っ越し。節目の「今の自分」を残しておきたい方
+            <li style="font-family: var(--font-serif); font-size: clamp(13px, 3.5vw, 15px); line-height: 1.9; color: var(--ink); word-break: auto-phrase; line-break: strict;">
+              ・独立、転職、結婚、引っ越し。<br class="sp-br">節目の「今の自分」を残しておきたい方
             </li>
-            <li style="font-family: var(--font-serif); font-size: clamp(13px, 3.5vw, 15px); line-height: 1.8; color: var(--ink); word-break: auto-phrase; line-break: strict;">
-              ・活動や仕事を伝える写真が、しっくりきていない方
+            <li style="font-family: var(--font-serif); font-size: clamp(13px, 3.5vw, 15px); line-height: 1.9; color: var(--ink); word-break: auto-phrase; line-break: strict;">
+              ・活動や仕事を伝える写真が、<br class="sp-br">しっくりきていない方
             </li>
-            <li style="font-family: var(--font-serif); font-size: clamp(13px, 3.5vw, 15px); line-height: 1.8; color: var(--ink); word-break: auto-phrase; line-break: strict;">
-              ・きれいに写るより、自分らしさが残ってほしい方
+            <li style="font-family: var(--font-serif); font-size: clamp(13px, 3.5vw, 15px); line-height: 1.9; color: var(--ink); word-break: auto-phrase; line-break: strict;">
+              ・きれいに写るより、<br class="sp-br">自分らしさが残ってほしい方
             </li>
           </ul>
         </div>
@@ -604,8 +654,8 @@
         <span class="section-tag">Plans & Pricing</span>
         <h1 class="section-title">プラン</h1>
         <p style="font-family: var(--font-serif); font-size: 13px; line-height: 2.0; color: var(--ink); text-align: center; margin: -8px 0 28px; word-break: auto-phrase; line-break: strict;">
-          まず一度なら TRACE、節目なら DOUKOU、一年なら PERSONAL FLAG。<br>
-          迷ったら、DMで「迷ってます」と送ってください。
+          まず一度なら TRACE、<br class="sp-br">節目なら DOUKOU、<br class="sp-br">一年なら PERSONAL FLAG。<br>
+          迷ったら、DMで<br class="sp-br">「迷ってます」と送ってください。
         </p>
 
         <div class="plans-grid">
@@ -617,7 +667,7 @@
                 <h2 class="plan-name">TRACE</h2>
                 <div class="plan-price">¥35,000<span style="font-size: 13px; font-style: normal; margin-left: 2px;">（税込）</span></div>
               </div>
-              <p class="plan-catch">2時間で、今の自分をひとつ残す。</p>
+              <p class="plan-catch">2時間で、<br class="sp-br">今の自分をひとつ残す。</p>
               <ul class="plan-details">
                 <li>撮影：2時間</li>
                 <li>納品：写真データのみ最大20枚</li>
@@ -640,10 +690,10 @@
                 <h2 class="plan-name">DOUKOU</h2>
                 <div class="plan-price">¥120,000<span style="font-size: 13px; font-style: normal; margin-left: 2px;">（税込）</span></div>
               </div>
-              <p class="plan-catch">対話を重ねながら、一日いっしょに過ごして撮る。</p>
+              <p class="plan-catch">対話を重ねながら、<br class="sp-br">一日いっしょに過ごして撮る。</p>
               <ul class="plan-details">
                 <li>撮影：上限1日</li>
-                <li>納品：写真データ(最大50枚)、結像動画(あなたの在り方を動画にします。)</li>
+                <li>納品：写真データ(最大50枚)、<br class="sp-br">結像動画(あなたの在り方を動画にします。)</li>
                 <li style="color: var(--ember);">元データのお渡しも可能</li>
                 <li>納品方法：オンライン</li>
                 <li>場所：事前打ち合わせ</li>
@@ -663,10 +713,10 @@
                 <h2 class="plan-name">PERSONAL FLAG</h2>
                 <div class="plan-price">¥360,000<span style="font-size: 13px; font-style: normal; margin-left: 2px;">（税込）</span></div>
               </div>
-              <p class="plan-catch">一年を通して、変わっていく自分を残す。</p>
+              <p class="plan-catch">一年を通して、<br class="sp-br">変わっていく自分を残す。</p>
               <ul class="plan-details">
                 <li>撮影：年4日</li>
-                <li>納品：写真データ(最大50枚)、結像動画(あなたの在り方を動画にします。)</li>
+                <li>納品：写真データ(最大50枚)、<br class="sp-br">結像動画(あなたの在り方を動画にします。)</li>
                 <li style="color: var(--ember);">元データのお渡しも可能</li>
                 <li>納品方法：オンライン</li>
                 <li>場所：事前打ち合わせ</li>
@@ -686,18 +736,18 @@
           <div class="plan-notes" style="margin-top: 36px; text-align: center;">
             <p style="font-family: var(--font-serif); font-size: 13px; line-height: 2.0; color: var(--ink); word-break: auto-phrase; line-break: strict;">
               結像-ketsuzou-<br>
-              DOUKOUとPERSONAL FLAGには、結像というプロセスが入ります。<br>
-              対話を重ねながら、あなたの在り方があらわれる瞬間を待つ。<br>
+              DOUKOUとPERSONAL FLAGには、<br class="sp-br">結像というプロセスが入ります。<br>
+              対話を重ねながら、<br class="sp-br">あなたの在り方があらわれる瞬間を待つ。<br>
               その時間を、写真と動画に残します。
             </p>
           </div>
 
           <div class="plan-notes" style="margin-top: 16px;">
-            <p><strong>共通事項</strong></p>
+            <p style="font-weight: 500; margin-bottom: 8px;">共通事項</p>
             <p>※ 全プラン、別途交通費を頂戴いたします。</p>
-            <p>※ 撮影場所は、事前のやりとりの中でご相談して決めます。</p>
-            <p>※ お一人おひとりと丁寧に向き合うため、毎月のご予約数には限りがあります。</p>
-            <p>※ 支払い方法：口座振込（口座振込は原則、事前のお支払いをお願いしております）。</p>
+            <p>※ 撮影場所は、事前のやりとりの中で<br class="sp-br">ご相談して決めます。</p>
+            <p>※ お一人おひとりと丁寧に向き合うため、<br class="sp-br">毎月のご予約数には限りがあります。</p>
+            <p>※ 支払い方法：口座振込<br class="sp-br">（口座振込は原則、事前のお支払いをお願いしております）。</p>
           </div>
         </div>
 
@@ -749,12 +799,12 @@
         <span class="section-tag">FAQ</span>
         <h2 class="section-title">よくあるご質問</h2>
         <div class="faq">
-          <details><summary>写真が苦手でも大丈夫ですか？</summary><p>大丈夫です。ポーズや表情の指示はしません。最初にお話しする時間があるので、撮られ慣れていなくても、少しずつ自然になっていきます。</p></details>
-          <details><summary>何を話しますか？</summary><p>最近のこと、好きなこと、どんな写真を残したいか、などです。遠慮なく話しましょう。</p></details>
-          <details><summary>どのプランを選べばいいですか？</summary><p>まず一度なら TRACE、節目や一日しっかり残したいなら DOUKOU、一年を通して残したいなら PERSONAL FLAG です。迷ったら、DMで「迷ってます」と送ってください。</p></details>
-          <details><summary>元データはもらえますか？</summary><p>TRACE は写真データ（最大20枚）のお渡しで、元データはありません。DOUKOU と PERSONAL FLAG は、写真（最大50枚）と結像動画に加えて、元データもお渡しできます。</p></details>
+          <details><summary>写真が苦手でも大丈夫ですか？</summary><p>大丈夫です。ポーズや表情の指示はしません。<br>最初にお話しする時間があるので、<br class="sp-br">撮られ慣れていなくても、少しずつ自然になっていきます。</p></details>
+          <details><summary>何を話しますか？</summary><p>最近のこと、好きなこと、<br class="sp-br">どんな写真を残したいか、などです。<br>遠慮なく話しましょう。</p></details>
+          <details><summary>どのプランを選べばいいですか？</summary><p>まず一度なら TRACE、<br class="sp-br">節目や一日しっかり残したいなら DOUKOU、<br class="sp-br">一年を通して残したいなら PERSONAL FLAG です。<br>迷ったら、DMで「迷ってます」と送ってください。</p></details>
+          <details><summary>元データはもらえますか？</summary><p>TRACE は写真データ（最大20枚）のお渡しで、元データはありません。<br>DOUKOU と PERSONAL FLAG は、<br class="sp-br">写真（最大50枚）と結像動画に加えて、<br class="sp-br">元データもお渡しできます。</p></details>
           <details><summary>修正はしてもらえますか？</summary><p>足さずに、写ったものを整えます。</p></details>
-          <details><summary>支払いと、天気が悪い場合は？</summary><p>支払いは口座振込で、原則、事前にお願いしています。天気によっては、撮影日を変更することがあります。</p></details>
+          <details><summary>支払いと、天気が悪い場合は？</summary><p>支払いは口座振込で、原則、事前にお願いしています。<br>天気によっては、撮影日を変更することがあります。</p></details>
         </div>
       </div>
     </section>
@@ -767,7 +817,7 @@
           <h2 class="contact-heading">
             話して、掘って、撮る。
           </h2>
-          <p style="font-family: var(--font-serif); font-size: 13px; line-height: 2.0; color: var(--ink); margin-bottom: 20px;">まずは一言だけでも。「気になってます」で大丈夫です。</p>
+          <p style="font-family: var(--font-serif); font-size: 13px; line-height: 2.0; color: var(--ink); margin-bottom: 20px;">まずは一言だけでも。<br class="sp-br">「気になってます」で大丈夫です。</p>
           <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary" style="max-width: 320px;">
             撮影について相談する <span class="sub">[DMへ]</span>
           </a>
