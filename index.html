@@ -1,848 +1,221 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ema. | PLANS & PRICING</title>
-<meta name="description" content="Ema. 写真体験のプランと撮影の流れ。TRACE / DOUKOU / PERSONAL FLAG">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F3EFE8">
+<title>Ema. | 話して 掘って 撮る。プロセスポートレート</title>
+<meta name="description" content="自分をしっかり観てあげる、そんな時間があってもいいよね。話して 掘って 撮る。ポーズも演出もなし。ありのままを撮影します。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Shippori+Mincho+B1:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Shippori+Mincho+B1:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    color-scheme: light dark;
-    --paper: #F3EFE8;
-    --card-bg: #FAF7F2;
-    --card-sub-bg: #EAE4DA;
-    --ember-light: #D6CFC4;
-    --ember: #6F685F;
-    --ink: #2A2724;
-    --muted: #6F685F;
-    --accent: #B08968;
-    --header-bg: rgba(243, 239, 232, 0.92);
-    --font-serif: 'Shippori Mincho B1', serif;
-    --font-sans: 'Noto Sans JP', sans-serif;
-    --font-latin: 'EB Garamond', serif;
-  }
+:root{--paper:#F3EFE8;--card:#FAF7F2;--sub:#EAE4DA;--line:#D6CFC4;--ink:#2A2724;--muted:#6F685F;--accent:#B08968;--green:#34483C;--serif:'Shippori Mincho B1',serif;--sans:'Noto Sans JP',sans-serif;--latin:'EB Garamond',serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--paper)}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.95;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.wrap{width:min(1080px,calc(100% - 44px));margin:auto}.narrow{width:min(700px,calc(100% - 44px));margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(243,239,232,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{height:68px;width:min(1200px,calc(100% - 44px));margin:auto;display:flex;align-items:center;justify-content:space-between}
+.logo{font:600 23px var(--serif);letter-spacing:.1em}.navlinks{display:flex;gap:25px;align-items:center;font-size:11px;letter-spacing:.06em}.navlinks a:hover{color:var(--accent)}.navcta{border:1px solid var(--ink);border-radius:99px;padding:8px 15px}
+.tag{font:13px var(--latin);letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+h1,h2,h3,p{margin-top:0}h2{font:500 clamp(27px,4vw,40px)/1.65 var(--serif);letter-spacing:.05em;color:var(--green)}
+.hero{min-height:650px;display:grid;grid-template-columns:1fr .9fr;gap:7%;align-items:center;padding:72px 0 85px}
+.hero h1{font:500 clamp(38px,5.5vw,66px)/1.65 var(--serif);letter-spacing:.08em;color:var(--green);margin:20px 0 8px}
+.hero-en{font:italic 24px var(--latin);color:var(--accent)}
+.hero-copy{font:14px/2.35 var(--serif);max-width:470px;margin:27px 0 0}
+.hero-img{height:480px;position:relative}.hero-img img{width:85%;height:100%;object-fit:cover;margin-left:auto}.hero-caption{position:absolute;left:0;bottom:24px;background:var(--sub);padding:20px 22px;width:55%;font:13px/2 var(--serif);color:var(--green)}
+section{padding:100px 0}.center{text-align:center}.center .tag{display:block;margin-bottom:12px}.intro{background:var(--green);color:var(--paper);text-align:center;padding:105px 0}.intro .tag{color:#D9B98E}.intro h2{color:var(--paper);margin:16px 0 28px}.intro p{font:14px/2.5 var(--serif);color:rgba(250,247,242,.88);max-width:690px;margin:0 auto 14px}
+.thought{display:grid;grid-template-columns:.95fr 1.05fr;gap:8%;align-items:center}.thought img{width:100%;height:500px;object-fit:cover}.thought h2{margin:16px 0 20px}.thought p{font:14px/2.35 var(--serif);margin-bottom:15px}.pull{font:italic 19px var(--latin);color:var(--accent);margin:20px 0}
+.two{background:var(--sub)}.two-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:42px}.two-card{background:var(--card);padding:34px;border:1px solid var(--line)}.two-card .en{font:italic 22px var(--latin);color:var(--accent)}.two-card h3{font:500 20px var(--serif);color:var(--green);margin:10px 0}.two-card p{font:13px/2.2 var(--serif);color:var(--muted);margin:0}
+.future{background:#F8F5EF}.future-note{max-width:650px;margin:0 auto 36px;text-align:center;font:14px/2.3 var(--serif)}.future-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.future-card{border:1px solid var(--line);padding:27px 24px;background:var(--paper)}.future-card .en{font:italic 20px var(--latin);color:var(--accent)}.future-card h3{font:500 17px var(--serif);color:var(--green);margin:8px 0}.future-card p{font:12px/2.1 var(--serif);color:var(--muted);margin:0}.future-foot{text-align:center;font:12px/2.2 var(--serif);color:var(--muted);margin:28px auto 0;max-width:650px}
+.works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}.works-grid figure{margin:0;aspect-ratio:4/5;overflow:hidden;background:var(--sub)}.works-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.works-grid figure:hover img{transform:scale(1.03)}
+.photo{background:var(--green);color:var(--paper)}.photo h2{color:var(--paper)}.photo .tag{color:#D9B98E}.photo-lead{max-width:660px;text-align:center;margin:0 auto 40px;font:14px/2.3 var(--serif);color:rgba(250,247,242,.85)}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.plan{border:1px solid rgba(250,247,242,.35);padding:27px 22px;display:flex;flex-direction:column;min-height:430px}.plan h3{font:italic 22px var(--latin);color:#D9B98E;margin:0}.plan .subname{font:13px var(--serif);color:rgba(250,247,242,.75)}.price{font:27px var(--latin);margin:20px 0;color:var(--paper)}.price small{font:11px var(--sans);color:rgba(250,247,242,.7)}.plan .catch{font:14px/2 var(--serif);min-height:55px}.plan ul{padding-left:1.2em;font-size:11px;line-height:2.2;color:rgba(250,247,242,.8);margin:10px 0 25px}.pill{display:block;text-align:center;border:1px solid rgba(250,247,242,.65);border-radius:99px;padding:10px 12px;font-size:11px;margin-top:auto}.pill:hover{background:var(--paper);color:var(--green)}.plan-note{text-align:center;font-size:11px;line-height:2;color:rgba(250,247,242,.7);margin:25px auto 0}
+.process{background:var(--sub)}.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:40px}.step{border-top:1px solid var(--accent);padding:18px 10px}.step b{font:italic 21px var(--latin);color:var(--accent)}.step h3{font:500 15px var(--serif);margin:6px 0;color:var(--green)}.step p{font-size:11px;line-height:2;color:var(--muted);margin:0}
+.contact{text-align:center;background:#EAE4DA}.contact h2{margin:16px 0}.contact p{font:14px/2.3 var(--serif);max-width:600px;margin:0 auto 28px}.buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.button{min-width:210px;border:1px solid var(--green);border-radius:99px;padding:13px 20px;font:13px var(--serif);color:var(--green)}.button.primary{background:var(--green);color:var(--paper)}.button:hover{background:var(--accent);border-color:var(--accent);color:white}
+footer{text-align:center;padding:32px 20px;font:11px var(--latin);letter-spacing:.16em;color:var(--muted)}footer strong{display:block;font:600 22px var(--serif);color:var(--green);letter-spacing:.1em;margin-bottom:6px}
+@media(max-width:760px){.navlinks a:not(.navcta){display:none}.hero{grid-template-columns:1fr;padding:55px 0 70px;gap:35px}.hero-img{height:390px}.hero-img img{width:87%}.hero-caption{width:60%}.thought{grid-template-columns:1fr;gap:28px}.thought img{height:380px;order:2}.two-grid{grid-template-columns:1fr}.future-grid{grid-template-columns:1fr}.plans{grid-template-columns:1fr}.plan{min-height:0}.steps{grid-template-columns:repeat(5,minmax(110px,1fr));overflow-x:auto;padding-bottom:10px}.works-grid{grid-template-columns:repeat(2,1fr)}section{padding:78px 0}.intro{padding:82px 0}}
+@media(max-width:430px){.wrap,.narrow{width:calc(100% - 36px)}nav{width:calc(100% - 36px)}.hero-img{height:330px}.hero-caption{font-size:11px;padding:14px}.button{width:100%;max-width:320px}}
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --paper: #14120F;
-      --card-bg: #221E1A;
-      --card-sub-bg: #1A1714;
-      --ember-light: #3A3631;
-      --ember: #A39B90;
-      --ink: #EDE8E0;
-      --muted: #A39B90;
-      --accent: #C9A27E;
-      --header-bg: rgba(20, 18, 15, 0.92);
-    }
-  }
-
-  *, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  html {
-    scroll-behavior: smooth;
-    background-color: var(--paper);
-    color: var(--ink);
-  }
-
-  body {
-    font-family: var(--font-sans);
-    font-weight: 300;
-    line-height: 1.85;
-    background-color: var(--paper);
-    color: var(--ink);
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  a:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-  }
-
-  /* Utility Break Classes */
-  .pc-br { display: none; }
-  .sp-br { display: inline; }
-  @media (min-width: 768px) {
-    .pc-br { display: inline; }
-    .sp-br { display: none; }
-  }
-
-  /* Typography Utilities */
-  .serif { font-family: var(--font-serif); }
-  .latin { font-family: var(--font-latin); }
-
-  .section-tag {
-    font-family: var(--font-latin);
+/* Readability refinement: mobile line length, spacing and responsive type */
+p { text-wrap: pretty; }
+.hero-copy, .intro p, .thought p, .two-card p, .future-note,
+.future-card p, .photo-lead, .plan .catch, .plan-note,
+.step p, .contact p {
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 760px) {
+  body { line-height: 2.05; }
+  .hero { padding-top: 48px; padding-bottom: 58px; }
+  .hero-copy { font-size: 14px; line-height: 2.25; max-width: 32em; }
+  .hero h1 { line-height: 1.55; }
+  section { padding-top: 72px; padding-bottom: 72px; }
+  .intro { padding-top: 76px; padding-bottom: 76px; }
+  .intro p, .thought p, .two-card p, .future-note,
+  .future-card p, .photo-lead, .contact p {
     font-size: 13px;
-    letter-spacing: 0.25em;
-    color: var(--ember);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    display: block;
-    text-align: center;
+    line-height: 2.25;
   }
+  .intro p { margin-bottom: 18px; }
+  .thought h2 { line-height: 1.55; }
+  .two-card { padding: 27px 23px; }
+  .future-card { padding: 24px 21px; }
+  .works-grid { gap: 9px; }
+  .plan { padding: 25px 21px; }
+  .plan .catch { min-height: 0; margin-bottom: 8px; }
+  .plan ul { font-size: 12px; line-height: 2.25; }
+  .steps { gap: 14px; }
+  .step { padding: 16px 9px; }
+  .step p { font-size: 11px; line-height: 2.1; }
+  .contact p { max-width: 31em; }
+}
+@media (max-width: 430px) {
+  .wrap, .narrow { width: calc(100% - 40px); }
+  nav { width: calc(100% - 40px); }
+  .hero h1 { font-size: clamp(35px, 10vw, 43px); }
+  .hero-copy { font-size: 13px; line-height: 2.25; }
+  h2 { font-size: 26px; line-height: 1.7; }
+  .intro h2 { font-size: 27px; }
+  .intro p { text-align: left; }
+  .thought p { font-size: 13px; }
+  .two-card h3 { font-size: 18px; line-height: 1.8; }
+  .future-note { text-align: left; }
+  .future-card p { font-size: 12px; }
+  .photo-lead { text-align: left; }
+  .plan-note { text-align: left; line-height: 2.2; }
+  .contact p { text-align: left; }
+  .hero-caption { line-height: 2.15; }
+}
 
-  .section-title {
-    font-family: var(--font-serif);
-    font-weight: 500;
-    font-size: clamp(15px, 4.3vw, 32px);
-    line-height: 1.5;
-    letter-spacing: 0.04em;
-    color: var(--ink);
-    margin-bottom: 24px;
-    text-align: center;
-    word-break: auto-phrase;
-    line-break: strict;
-  }
 
-  @media (max-width: 480px) {
-    .section-title {
-      white-space: nowrap;
-    }
-  }
-
-  .container {
-    width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  .container-narrow {
-    width: 100%;
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  /* Buttons */
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    padding: 12px 16px;
-    min-height: 48px;
-    background-color: transparent;
-    border: 1px solid var(--ink);
-    border-radius: 999px;
-    color: var(--ink);
-    font-family: var(--font-serif);
-    font-size: clamp(12px, 3.2vw, 13.5px);
-    letter-spacing: 0.04em;
-    transition: all 0.3s ease;
-    width: 100%;
-    text-align: center;
-    white-space: nowrap;
-  }
-
-  .btn-primary:hover, .btn-primary:focus-visible {
-    background-color: var(--ink);
-    color: var(--paper);
-    outline: none;
-  }
-
-  .btn-primary.btn-featured {
-    background-color: var(--ink);
-    color: var(--paper);
-  }
-
-  .btn-primary.btn-featured:hover, .btn-primary.btn-featured:focus-visible {
-    background-color: var(--ember);
-    border-color: var(--ember);
-    color: var(--paper);
-  }
-
-  .btn-primary .sub {
-    font-size: 11px;
-    opacity: 0.8;
-  }
-
-  /* Header */
-  header {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    padding: 16px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--header-bg);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--ember-light);
-  }
-
-  .brand-logo {
-    font-family: var(--font-serif);
-    font-size: 20px;
-    letter-spacing: 0.1em;
-    color: var(--ink);
-    font-weight: 600;
-  }
-
-  .nav-cta {
-    font-family: var(--font-serif);
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    padding: 8px 16px;
-    border: 1px solid var(--ink);
-    border-radius: 999px;
-    transition: all 0.3s ease;
-  }
-
-  .nav-cta:hover, .nav-cta:focus-visible {
-    background-color: var(--ink);
-    color: var(--paper);
-  }
-
-  /* Intro Catch */
-  .hero-simple {
-    padding: 50px 0 30px;
-    text-align: center;
-  }
-
-  .hero-catch {
-    font-family: var(--font-serif);
-    font-size: clamp(14px, 3.8vw, 18px);
-    line-height: 2.2;
-    letter-spacing: 0.05em;
-    color: var(--ink);
-    word-break: auto-phrase;
-    line-break: strict;
-  }
-
-  .hero-image-wrapper {
-    margin: 28px auto 0;
-    max-width: 320px;
-    width: 85%;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 24px rgba(111, 104, 95, 0.18);
-    border: 1px solid var(--ember-light);
-  }
-
-  .hero-image-wrapper img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-  }
-
-  /* PLANS & PRICING */
-  .plans-section {
-    padding: 20px 0 60px;
-  }
-
-  .plans-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin-top: 32px;
-  }
-
-  @media (min-width: 800px) {
-    .plans-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-  }
-
-  .plan-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--ember-light);
-    border-radius: 16px;
-    padding: 32px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    box-shadow: 0 4px 20px rgba(111, 104, 95, 0.08);
-  }
-
-  .plan-card.featured {
-    border-color: var(--ember);
-    box-shadow: 0 8px 30px rgba(111, 104, 95, 0.2);
-  }
-
-  .plan-badge {
-    position: absolute;
-    top: -11px;
-    right: 20px;
-    background: var(--ink);
-    color: var(--paper);
-    font-family: var(--font-serif);
-    font-size: 10px;
-    padding: 2px 10px;
-    border-radius: 999px;
-    letter-spacing: 0.1em;
-    font-weight: 500;
-  }
-
-  .plan-header {
-    border-bottom: 1px solid var(--ember-light);
-    padding-bottom: 18px;
-    margin-bottom: 18px;
-  }
-
-  .plan-name {
-    font-family: var(--font-latin);
-    font-size: 20px;
-    letter-spacing: 0.08em;
-    color: var(--ink);
-    margin-bottom: 2px;
-  }
-
-  .plan-subname {
-    font-family: var(--font-serif);
-    font-size: 14px;
-    color: var(--ember);
-    margin-bottom: 12px;
-  }
-
-  .plan-price {
-    font-family: var(--font-latin);
-    font-size: 28px;
-    font-weight: 500;
-    color: var(--ink);
-  }
-
-  .plan-price span {
-    font-size: 16px;
-    font-style: italic;
-    color: var(--ember);
-    margin-left: 2px;
-  }
-
-  .plan-catch {
-    font-family: var(--font-serif);
-    font-size: 13.5px;
-    line-height: 1.8;
-    color: var(--ink);
-    margin-bottom: 20px;
-    word-break: auto-phrase;
-    line-break: strict;
-  }
-
-  .plan-details {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 28px;
-  }
-
-  .plan-details li {
-    font-size: 13px;
-    line-height: 1.7;
-    color: var(--ink);
-    padding-left: 16px;
-    position: relative;
-    word-break: auto-phrase;
-    line-break: strict;
-  }
-
-  .plan-details li::before {
-    content: "・";
-    position: absolute;
-    left: 0;
-    color: var(--ember);
-  }
-
-  .plan-notes {
-    margin-top: 32px;
-    background: var(--card-sub-bg);
-    border: 1px solid var(--ember-light);
-    border-radius: 12px;
-    padding: 20px 18px;
-    font-size: 12.5px;
-    line-height: 1.95;
-    color: var(--muted);
-  }
-
-  .plan-notes p {
-    margin-bottom: 6px;
-  }
-
-  .plan-notes p:last-child {
-    margin-bottom: 0;
-  }
-
-  /* PORTFOLIO SECTION */
-  .portfolio-section {
-    padding: 60px 0 40px;
-    background-color: var(--paper);
-    border-top: 1px solid var(--ember-light);
-  }
-
-  .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-    margin-top: 32px;
-  }
-
-  .portfolio-item {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    background-color: var(--card-sub-bg);
-    border: 1px solid var(--ember-light);
-    aspect-ratio: 4 / 5;
-    box-shadow: 0 4px 15px rgba(111, 104, 95, 0.08);
-  }
-
-  .portfolio-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-
-  .portfolio-item:hover img {
-    transform: scale(1.03);
-  }
-
-  /* FLOW / PROCESS */
-  .flow-section {
-    padding: 60px 0;
-    background-color: var(--card-sub-bg);
-    border-top: 1px solid var(--ember-light);
-    border-bottom: 1px solid var(--ember-light);
-  }
-
-  .flow-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 32px;
-  }
-
-  .flow-step {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    background: var(--card-bg);
-    border: 1px solid var(--ember-light);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(111, 104, 95, 0.05);
-  }
-
-  .step-num {
-    font-family: var(--font-latin);
-    font-size: 20px;
-    color: var(--ember);
-    min-width: 28px;
-    padding-top: 2px;
-  }
-
-  .step-content {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .step-title {
-    font-family: var(--font-serif);
-    font-size: 16px;
-    color: var(--ink);
-  }
-
-  .step-desc {
-    font-size: 13px;
-    line-height: 1.8;
-    color: var(--muted);
-    word-break: auto-phrase;
-    line-break: strict;
-  }
-
-  /* CONTACT SECTION */
-  .contact-section {
-    padding: 70px 0;
-    text-align: center;
-  }
-
-  .contact-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-  }
-
-  .contact-heading {
-    font-family: var(--font-serif);
-    font-size: clamp(18px, 4vw, 24px);
-    line-height: 1.7;
-    color: var(--ink);
-    word-break: auto-phrase;
-    line-break: strict;
-  }
-
-  .contact-mail {
-    font-family: var(--font-latin);
-    font-size: 14px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-
-  .contact-mail:hover, .contact-mail:focus-visible {
-    color: var(--ink);
-  }
-
-  /* FOOTER */
-  footer {
-    padding: 32px 20px;
-    text-align: center;
-    background-color: var(--paper);
-    border-top: 1px solid var(--ember-light);
-    font-family: var(--font-serif);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-  }
-
-  .faq details {
-    background: var(--card-bg);
-    border: 1px solid var(--ember-light);
-    border-radius: 12px;
-    padding: 16px 18px;
-    margin-bottom: 10px;
-  }
-
-  .faq summary {
-    font-family: var(--font-serif);
-    font-size: 14px;
-    line-height: 1.8;
-    color: var(--ink);
-    cursor: pointer;
-  }
-
-  .faq details p {
-    font-family: var(--font-serif);
-    font-size: 13px;
-    line-height: 2.0;
-    color: var(--ink);
-    margin-top: 10px;
-    word-break: auto-phrase;
-    line-break: strict;
-  }
-
-  @media (max-width: 767px) {
-    body {
-      line-height: 1.9;
-    }
-    .flow-step {
-      padding: 18px 16px;
-    }
-    .plan-card {
-      padding: 28px 20px;
-    }
-    .faq details {
-      padding: 14px 16px;
-    }
-    .faq summary {
-      font-size: 13.5px;
-      line-height: 1.7;
-    }
-    .faq details p {
-      font-size: 13px;
-      line-height: 1.9;
-    }
-  }
+/* New LP additions (existing design untouched) */
+.hero h1.ask{font-size:clamp(27px,3.8vw,46px);line-height:1.7}
+.hero-perm{font:500 clamp(17px,2vw,20px)/2.1 var(--serif);color:var(--green);margin:22px 0 0}
+.hero .buttons{justify-content:flex-start;margin-top:30px}
+.hero .button{min-width:0;padding:12px 26px}
+.intro .bridge{font:14px/2.4 var(--serif);color:rgba(250,247,242,.75);margin:0 0 40px;text-align:center;max-width:none}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-of-type{border-top:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;position:relative;padding:18px 36px 18px 0;font:500 15px/1.9 var(--serif);color:var(--green)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:16px;color:var(--accent);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{font:13px/2.2 var(--serif);color:var(--muted);margin:0 0 20px}
+.two-card h3:only-child{margin:0;font-size:18px;line-height:1.9}
 </style>
 </head>
 <body>
+<header><nav><a class="logo" href="#">Ema.</a><div class="navlinks"><a href="#what">撮影</a><a href="#how">流れ</a><a href="#plans">プラン</a><a href="#future">これから</a><a class="navcta" href="#contact">撮影を相談する</a></div></nav></header>
+<main>
+<section class="wrap hero">
+ <div><span class="tag">Process Portrait</span><h1 class="ask">あなたの在り方って、<br>イメージできる？</h1><div class="hero-en">Express what already exists.</div>
+ <p class="hero-perm">自分をしっかり観てあげる、<br>そんな時間があってもいいよね。</p>
+ <p class="hero-copy">話して 掘って 撮る。<br>ポーズも演出もなし。整えるだけ。ありのままを撮影します。</p>
+ <div class="buttons"><a class="button primary" href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener">撮影を相談する</a><a class="button" href="#plans">プランを見る</a></div></div>
+ <div class="hero-img"><img src="portfolio/dscf8958.jpg" alt="Ema. portrait"><div class="hero-caption">何かにならなくてもいい。<br>その人の中にあるものが、<br>自然に顕れる時間を。</div></div>
+</section>
 
-  <!-- HEADER NAV -->
-  <header>
-    <a href="#" class="brand-logo">Ema.</a>
-    <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="nav-cta">撮影を相談する</a>
-  </header>
+<section class="wrap thought" id="what" style="padding-bottom:30px">
+ <img src="portfolio/dscf7810.jpg" alt="Ema. portrait photography" loading="lazy">
+ <div><span class="tag">The Shoot</span><h2>日常の生きる美しい瞬間や<br>表情をおさめる。</h2><div class="pull">Talk. Dig. Take.</div>
+ <p>プロセスポートレートは、ポーズも演出もない撮影です。話しながら、歩きながら、その人の自然な時間を写していきます。</p>
+ <p>撮影を終えたとき、あなたの在り方が目に見えるカタチになります。</p></div>
+</section>
+<section class="wrap" style="padding-top:20px;padding-bottom:20px"><div class="future-grid">
+ <article class="future-card"><div class="en">Talk</div><h3>話して</h3><p>最近のこと、好きなこと、どんな写真を残したいか。遠慮なく話しましょう。</p></article>
+ <article class="future-card"><div class="en">Dig</div><h3>掘って</h3><p>話しているうちに出てきた言葉を、いっしょに掘っていきます。</p></article>
+ <article class="future-card"><div class="en">Take</div><h3>撮る</h3><p>途中からは、ほとんど声をかけません。ポーズも、表情の指示もしません。</p></article>
+</div></section>
 
-  <main>
-    <!-- INTRO CATCH -->
-    <section class="hero-simple">
-      <div class="container-narrow">
-        <p class="hero-catch">
-          「大人のポートレート撮影を文化に」<br>
-          <span class="latin" style="font-size: 1.1em; letter-spacing: 0.08em; display: inline-block; margin-top: 20px;">YUTA</span>
-        </p>
-      </div>
-    </section>
+<section id="works" class="wrap">
+ <div class="center"><span class="tag">Photography</span><h2>写真に残る、その人の時間。</h2><p style="font:13px/2.2 var(--serif);color:var(--muted);margin:16px auto 0;max-width:600px">人、場所、表現。そこに流れていた時間の断片。</p></div>
+ <div class="works-grid">
+  <figure><img src="portfolio/dscf9782.jpg" alt="Ema. work" loading="lazy"></figure><figure><img src="portfolio/dscf7810.jpg" alt="Ema. work" loading="lazy"></figure><figure><img src="portfolio/dscf8790.jpg" alt="Ema. work" loading="lazy"></figure><figure><img src="portfolio/dscf6786.jpg" alt="Ema. work" loading="lazy"></figure><figure><img src="portfolio/dscf6406.jpg" alt="Ema. work" loading="lazy"></figure><figure><img src="portfolio/dscf2900.jpg" alt="Ema. work" loading="lazy"></figure><figure><img src="portfolio/dscf0861.jpg" alt="Ema. work" loading="lazy"></figure><figure><img src="portfolio/dscf1077.jpg" alt="Ema. work" loading="lazy"></figure><figure><img src="portfolio/dscf4744.jpg" alt="Ema. work" loading="lazy"></figure>
+ </div>
+</section>
+<section class="process" id="how">
+ <div class="wrap"><div class="center"><span class="tag">Process</span><h2>話して、掘って、撮る。</h2></div>
+ <div class="steps">
+  <div class="step"><b>01</b><h3>問い合わせ</h3><p>まずは気軽にご連絡ください。イメージが曖昧でも大丈夫です。</p></div>
+  <div class="step"><b>02</b><h3>対話</h3><p>事前に話す時間を設け、残したい時間やイメージを一緒に考えます。</p></div>
+  <div class="step"><b>03</b><h3>撮影</h3><p>話しながら、歩きながら。途中からは、ほとんど声をかけません。</p></div>
+  <div class="step"><b>04</b><h3>整える</h3><p>足さずに、写ったものを整えます。</p></div>
+  <div class="step"><b>05</b><h3>納品</h3><p>撮影後、約2週間を目安にオンラインでお届けします。</p></div>
+ </div></div>
+</section>
+<section class="wrap" id="who"><div class="center"><span class="tag">For You</span><h2>こんな方へ。</h2></div>
+ <div class="two-grid">
+  <article class="two-card"><h3>プロフィール写真やSNSのアイコンを、そろそろ撮り直したい方</h3></article>
+  <article class="two-card"><h3>アーティスト・事業主・節目を迎える人</h3></article>
+  <article class="two-card"><h3>活動や仕事を伝える写真が、しっくりきていない方</h3></article>
+  <article class="two-card"><h3>きれいに写るより、自分らしさが残ってほしい方</h3></article>
+ </div>
+</section>
 
-    <!-- 2. 撮影の流れ (FLOW) -->
-    <section class="flow-section">
-      <div class="container-narrow">
-        <span class="section-tag">Process</span>
-        <h2 class="section-title">撮影の流れ</h2>
+<section class="two" id="voice">
+ <div class="wrap"><div class="center"><span class="tag">Voices</span><h2>撮影後に届いた声。</h2></div>
+ <div class="two-grid">
+  <article class="two-card"><h3>「普段自分だけでは気づけなかった本音」</h3><p>撮影前の対話について</p></article>
+  <article class="two-card"><h3>「自分の核をゆうたさんのフィルターを通して多角的に見られて新たな発見があった」</h3><p>撮影を終えて</p></article>
+ </div></div>
+</section>
 
-        <div class="flow-steps">
-          <div class="flow-step">
-            <span class="step-num">01</span>
-            <div class="step-content">
-              <h3 class="step-title">問い合わせ</h3>
-              <p class="step-desc">Instagram DM またはメールより<br class="sp-br">お気軽にご連絡ください。<br>どのような時間を過ごしたいか、<br class="sp-br">ざっくりとしたイメージで構いません。</p>
-            </div>
-          </div>
+<section class="photo" id="plans">
+ <div class="wrap"><div class="center"><span class="tag">Portrait Experience</span><h2>あなたの中に、すでにあるものを<br>写真に撮ります。</h2></div>
+ <p class="photo-lead">撮影は、対話から始まります。話しながら、歩きながら、その人らしい時間をともに過ごす。<br>ポーズをつくり込むのではなく、その人の自然な姿や没入している時間を写真に残します。</p>
+ <div class="plans">
+  <article class="plan"><h3>TRACE</h3><div class="price">¥35,000 <small>（税込）</small></div><p class="catch">2時間で、今の自分をひとつ残す。</p><ul><li>撮影：2時間</li><li>写真データ：最大20枚</li><li>オンライン納品</li><li>場所：事前打ち合わせ</li><li>元データのお渡しなし</li></ul><a class="pill" href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener">TRACEについて相談する</a></article>
+  <article class="plan"><h3>DOUKOU</h3><div class="price">¥120,000 <small>（税込）</small></div><p class="catch">対話を重ねながら、一日いっしょに過ごして撮る。</p><ul><li>撮影：上限1日</li><li>写真データ：最大50枚</li><li>プロフィール動画「結像」付き</li><li>元データのお渡しも可能</li><li>オンライン納品</li></ul><a class="pill" href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener">DOUKOUについて相談する</a></article>
+  <article class="plan"><h3>PERSONAL FLAG</h3><div class="price">¥360,000 <small>（税込）</small></div><p class="catch">一年を通して、変わっていく自分を残す。</p><ul><li>撮影：年4日</li><li>写真データ：最大50枚</li><li>プロフィール動画「結像」付き</li><li>元データのお渡しも可能</li><li>オンライン納品</li></ul><a class="pill" href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener">PERSONAL FLAGについて相談する</a></article>
+ </div>
+ <p class="plan-note">全プラン別途交通費。撮影場所は事前のやりとりの中で相談して決めます。<br>プロフィール動画「結像」は、対話を重ねたその記録を残す映像です。<br>お支払いは口座振込、原則事前のお支払いをお願いしています。<br>お一人おひとりと向き合うため、毎月のご予約数には限りがあります。天気によっては撮影日を変更します。<br>迷ったら、DMで「迷ってます」と送ってください。</p>
+ </div>
+</section>
+<section class="narrow faq" id="faq"><div class="center"><span class="tag">FAQ</span><h2>よくあるご質問</h2></div><div style="margin-top:36px">
+ <details><summary>写真が苦手でも大丈夫ですか？</summary><p>大丈夫です。ポーズや表情の指示はしません。最初にお話しする時間があるので、撮られ慣れていなくても、少しずつ自然になっていきます。</p></details>
+ <details><summary>何を話しますか？</summary><p>最近のこと、好きなこと、どんな写真を残したいか、などです。遠慮なく話しましょう。</p></details>
+ <details><summary>元データはもらえますか？</summary><p>TRACEは写真データ（最大20枚）のお渡しで、元データはありません。DOUKOUとPERSONAL FLAGは、写真（最大50枚）とプロフィール動画「結像」に加えて、元データもお渡しできます。</p></details>
+ <details><summary>修正はしてもらえますか？</summary><p>足さずに、写ったものを整えます。</p></details>
+</div></section>
 
-          <div class="flow-step">
-            <span class="step-num">02</span>
-            <div class="step-content">
-              <h3 class="step-title">打合せ</h3>
-              <p class="step-desc">オンラインまたは対面にて、<br class="sp-br">事前のヒアリングを行います。<br>「はじめましてからお元気ですか。」<br>対話ベースで撮影の場所や<br class="sp-br">コンセプトを決めていきます。</p>
-            </div>
-          </div>
-
-          <div class="flow-step">
-            <span class="step-num">03</span>
-            <div class="step-content">
-              <h3 class="step-title">撮影</h3>
-              <p class="step-desc">話しながら、歩いたり、<br class="sp-br">いつもの仕事をしたり。<br>途中からは、ほとんど声をかけません。<br><span style="font-size: 11.5px; opacity: 0.85; display: inline-block; margin-top: 4px;">※天気によっては撮影日変更あり。</span></p>
-            </div>
-          </div>
-
-          <div class="flow-step">
-            <span class="step-num">04</span>
-            <div class="step-content">
-              <h3 class="step-title">整える</h3>
-              <p class="step-desc">足さずに、写ったものを整えます。</p>
-            </div>
-          </div>
-
-          <div class="flow-step">
-            <span class="step-num">05</span>
-            <div class="step-content">
-              <h3 class="step-title">納品</h3>
-              <p class="step-desc">オンラインでお届けします。<br>撮影後、約2週間が目安です。</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- FOR YOU SECTION -->
-    <section class="for-you-section" style="padding: 20px 0 40px; text-align: center;">
-      <div class="container-narrow">
-        <span class="section-tag">For You</span>
-        <h2 class="section-title">こんな方におすすめです</h2>
-        <div style="background: var(--card-bg); border: 1px solid var(--ember-light); border-radius: 16px; padding: 28px 20px; box-shadow: 0 4px 20px rgba(111, 104, 95, 0.08);">
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px; text-align: center;">
-            <li style="font-family: var(--font-serif); font-size: clamp(13px, 3.5vw, 15px); line-height: 1.9; color: var(--ink); word-break: auto-phrase; line-break: strict;">
-              ・プロフィール写真やSNSのアイコンを、<br class="sp-br">そろそろ撮り直したい方
-            </li>
-            <li style="font-family: var(--font-serif); font-size: clamp(13px, 3.5vw, 15px); line-height: 1.9; color: var(--ink); word-break: auto-phrase; line-break: strict;">
-              ・アーティスト・事業主・<br class="sp-br">節目を迎える人へ
-            </li>
-            <li style="font-family: var(--font-serif); font-size: clamp(13px, 3.5vw, 15px); line-height: 1.9; color: var(--ink); word-break: auto-phrase; line-break: strict;">
-              ・活動や仕事を伝える写真が、<br class="sp-br">しっくりきていない方
-            </li>
-            <li style="font-family: var(--font-serif); font-size: clamp(13px, 3.5vw, 15px); line-height: 1.9; color: var(--ink); word-break: auto-phrase; line-break: strict;">
-              ・きれいに写るより、<br class="sp-br">自分らしさが残ってほしい方
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- 1. PLANS & PRICING (3つの時間) -->
-    <section class="plans-section">
-      <div class="container">
-        <span class="section-tag">Plans & Pricing</span>
-        <h1 class="section-title">プラン</h1>
-        <p style="font-family: var(--font-serif); font-size: 13px; line-height: 2.0; color: var(--ink); text-align: center; margin: -8px 0 28px; word-break: auto-phrase; line-break: strict;">
-          まず一度なら TRACE、<br class="sp-br">節目なら DOUKOU、<br class="sp-br">一年なら PERSONAL FLAG。<br>
-          迷ったら、DMで<br class="sp-br">「迷ってます」と送ってください。
-        </p>
-
-        <div class="plans-grid">
-
-          <!-- Plan 1: TRACE -->
-          <div class="plan-card">
-            <div>
-              <div class="plan-header">
-                <h2 class="plan-name">TRACE</h2>
-                <div class="plan-price">¥35,000<span style="font-size: 13px; font-style: normal; margin-left: 2px;">（税込）</span></div>
-              </div>
-              <p class="plan-catch">2時間で、<br class="sp-br">今の自分をひとつ残す。</p>
-              <ul class="plan-details">
-                <li>撮影：2時間</li>
-                <li>納品：写真データのみ最大20枚</li>
-                <li>納品方法：オンライン</li>
-                <li>場所：事前打ち合わせ</li>
-                <li style="color: var(--ember);">＊元データのお渡しなし。</li>
-              </ul>
-            </div>
-            <div>
-              <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary">
-                TRACE について相談する
-              </a>
-            </div>
-          </div>
-
-          <!-- Plan 2: DOUKOU -->
-          <div class="plan-card">
-            <div>
-              <div class="plan-header">
-                <h2 class="plan-name">DOUKOU</h2>
-                <div class="plan-price">¥120,000<span style="font-size: 13px; font-style: normal; margin-left: 2px;">（税込）</span></div>
-              </div>
-              <p class="plan-catch">対話を重ねながら、<br class="sp-br">一日いっしょに過ごして撮る。</p>
-              <ul class="plan-details">
-                <li>撮影：上限1日</li>
-                <li>納品：写真データ(最大50枚)、<br class="sp-br">プロフィール動画</li>
-                <li style="color: var(--ember);">元データのお渡しも可能</li>
-                <li>納品方法：オンライン</li>
-                <li>場所：事前打ち合わせ</li>
-              </ul>
-            </div>
-            <div>
-              <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary">
-                DOUKOU について相談する
-              </a>
-            </div>
-          </div>
-
-          <!-- Plan 3: PERSONAL FLAG -->
-          <div class="plan-card">
-            <div>
-              <div class="plan-header">
-                <h2 class="plan-name">PERSONAL FLAG</h2>
-                <div class="plan-price">¥360,000<span style="font-size: 13px; font-style: normal; margin-left: 2px;">（税込）</span></div>
-              </div>
-              <p class="plan-catch">一年を通して、<br class="sp-br">変わっていく自分を残す。</p>
-              <ul class="plan-details">
-                <li>撮影：年4日</li>
-                <li>納品：写真データ(最大50枚)、<br class="sp-br">プロフィール動画</li>
-                <li style="color: var(--ember);">元データのお渡しも可能</li>
-                <li>納品方法：オンライン</li>
-                <li>場所：事前打ち合わせ</li>
-              </ul>
-            </div>
-            <div>
-              <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary">
-                PERSONAL FLAG について相談する
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- 共通事項 -->
-        <div class="container-narrow">
-          <div class="plan-notes" style="margin-top: 36px; text-align: center;">
-            <p style="font-family: var(--font-serif); font-size: 13px; line-height: 2.0; color: var(--ink); word-break: auto-phrase; line-break: strict;">
-              結像-ketsuzou-：プロフィール動画<br>
-              対話を重ねた、その記録を残します。<br>
-              DOUKOUとPERSONAL FLAGプランに<br class="sp-br">含まれます。
-            </p>
-          </div>
-
-          <div class="plan-notes" style="margin-top: 16px;">
-            <p style="font-weight: 500; margin-bottom: 8px;">共通事項</p>
-            <p>※ 全プラン、別途交通費を頂戴いたします。</p>
-            <p>※ 撮影場所は、事前のやりとりの中で<br class="sp-br">ご相談して決めます。</p>
-            <p>※ お一人おひとりと丁寧に向き合うため、<br class="sp-br">毎月のご予約数には限りがあります。</p>
-            <p>※ 支払い方法：口座振込<br class="sp-br">（口座振込は原則、事前のお支払いをお願いしております）。</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- PORTFOLIO GALLERY -->
-    <section class="portfolio-section">
-      <div class="container">
-        <span class="section-tag">Portfolio</span>
-        <h2 class="section-title">WORKS</h2>
-
-        <!-- 【お客様の声】SO / JIRO / しんちゃん の一言と掲載許可が揃ったら、ここに追加 -->
-        <div class="portfolio-grid">
-          <div class="portfolio-item">
-            <img src="portfolio/dscf9782.jpg" alt="Portfolio Image DSCF9782" loading="lazy">
-          </div>
-          <div class="portfolio-item">
-            <img src="portfolio/dscf7810.jpg" alt="Portfolio Image DSCF7810" loading="lazy">
-          </div>
-          <div class="portfolio-item">
-            <img src="portfolio/dscf8790.jpg" alt="Portfolio Image DSCF8790" loading="lazy">
-          </div>
-          <div class="portfolio-item">
-            <img src="portfolio/dscf6786.jpg" alt="Portfolio Image DSCF6786" loading="lazy">
-          </div>
-          <div class="portfolio-item">
-            <img src="portfolio/dscf6406.jpg" alt="Portfolio Image DSCF6406" loading="lazy">
-          </div>
-          <div class="portfolio-item">
-            <img src="portfolio/dscf2900.jpg" alt="Portfolio Image DSCF2900" loading="lazy">
-          </div>
-          <div class="portfolio-item">
-            <img src="portfolio/dscf0861.jpg" alt="Portfolio Image DSCF0861" loading="lazy">
-          </div>
-          <div class="portfolio-item">
-            <img src="portfolio/dscf1077.jpg" alt="Portfolio Image DSCF1077" loading="lazy">
-          </div>
-          <div class="portfolio-item">
-            <img src="portfolio/dscf4744.jpg" alt="Portfolio Image DSCF4744" loading="lazy">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq-section" style="padding: 20px 0 60px;">
-      <div class="container-narrow">
-        <span class="section-tag">FAQ</span>
-        <h2 class="section-title">よくあるご質問</h2>
-        <div class="faq">
-          <details><summary>写真が苦手でも大丈夫ですか？</summary><p>大丈夫です。ポーズや表情の指示はしません。<br>最初にお話しする時間があるので、<br class="sp-br">撮られ慣れていなくても、少しずつ自然になっていきます。</p></details>
-          <details><summary>何を話しますか？</summary><p>最近のこと、好きなこと、<br class="sp-br">どんな写真を残したいか、などです。<br>遠慮なく話しましょう。</p></details>
-          <details><summary>どのプランを選べばいいですか？</summary><p>まず一度なら TRACE、<br class="sp-br">節目や一日しっかり残したいなら DOUKOU、<br class="sp-br">一年を通して残したいなら PERSONAL FLAG です。<br>迷ったら、DMで「迷ってます」と送ってください。</p></details>
-          <details><summary>元データはもらえますか？</summary><p>TRACE は写真データ（最大20枚）のお渡しで、元データはありません。<br>DOUKOU と PERSONAL FLAG は、<br class="sp-br">写真（最大50枚）とプロフィール動画に加えて、<br class="sp-br">元データもお渡しできます。</p></details>
-          <details><summary>修正はしてもらえますか？</summary><p>足さずに、写ったものを整えます。</p></details>
-          <details><summary>支払いと、天気が悪い場合は？</summary><p>支払いは口座振込で、原則、事前にお願いしています。<br>天気によっては、撮影日を変更することがあります。</p></details>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. CONTACT -->
-    <section class="contact-section">
-      <div class="container-narrow">
-        <div class="contact-box">
-          <span class="section-tag">Contact</span>
-          <h2 class="contact-heading">
-            話して、掘って、撮る。
-          </h2>
-          <p style="font-family: var(--font-serif); font-size: 13px; line-height: 2.0; color: var(--ink); margin-bottom: 20px;">まずは一言だけでも。<br class="sp-br">「気になってます」で大丈夫です。</p>
-          <a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener" class="btn-primary" style="max-width: 320px;">
-            撮影について相談する <span class="sub">[DMへ]</span>
-          </a>
-          <a href="mailto:tanachu09@gmail.com" class="contact-mail">tanachu09@gmail.com</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; Ema. All rights reserved.</p>
-  </footer>
-
-</body>
-</html>
+<section class="intro">
+ <div class="narrow"><p class="bridge">ここから先は、Ema.のこれから。<br>大人のポートレート撮影を文化に。</p><span class="tag">What I Believe</span><h2>誰もが、自分らしく<br>表現し、創造できること。</h2>
+ <p>人は誰もが、それぞれの感性や視点、表現の可能性を持っている。</p>
+ <p>けれど、正解や評価、他者との比較のなかで、自分の感覚を抑えたり、表現することをためらったりすることもある。</p>
+ <p>誰かに認められるためではなく、自分の内側から自然に生まれる表現を大切にしたい。</p>
+ <p>それが特別なことではなく、誰にとっても自然な日常になる。そんな文化を育てていきたいと思っています。</p></div>
+</section>
+<section class="wrap thought" id="thought">
+ <img src="portfolio/dscf7657.jpg" alt="Ema. portrait photography" loading="lazy">
+ <div><span class="tag">The Role of Photography</span><h2>写真は、顕現したものを<br>定着させる。</h2><div class="pull">Photography is a way to preserve a moment.</div>
+ <p>写真は、人の価値を新しくつくり出すものではないと思っています。</p>
+ <p>すでにそこにある存在や感性、その瞬間に現れた表情や空気を、目に見えるかたちとして定着させるもの。</p>
+ <p>だからこそ、シャッターを押す前の時間を大切にしています。話すこと、相手の言葉に耳を傾けること、安心して自分でいられる余白をつくること。</p>
+ <p>意味づけせず、決めつけず、ただ目の前のあなたと向き合う。写真は、その時間に顕れたものを残すための手段です。</p></div>
+</section>
+<section class="two">
+ <div class="wrap"><div class="center"><span class="tag">A Space to Emerge</span><h2>自分自身と出会い、<br>誰かの感性と出会う。</h2></div>
+ <div class="two-grid">
+  <article class="two-card"><div class="en">Personal</div><h3>自分の内側にあるものが顕れる。</h3><p>自分自身を観る。感じる。まだ言葉になっていない感情や、自分の感性に気づく。自分らしくいられる余白を大切にする。</p></article>
+  <article class="two-card"><div class="en">Interpersonal</div><h3>人と人とのあいだに、新しい何かが生まれる。</h3><p>他者の表現に触れる。対話する。共鳴する。一人では生まれなかった発想や創造が、関係性のなかから立ち上がる。</p></article>
+ </div></div>
+</section>
+<section class="future" id="future">
+ <div class="wrap"><div class="center"><span class="tag">A Future I Imagine</span><h2>これから、育てていきたいこと。</h2></div>
+ <p class="future-note">今はまだ構想の段階です。<br>写真の活動を続けながら、いつか人が集まり、互いの感性や表現に触れられる場を育てていきたいと考えています。</p>
+ <div class="future-grid">
+  <article class="future-card"><div class="en">Gathering</div><h3>人が集い、対話する。</h3><p>それぞれの感じ方や考え方を持ち寄り、互いの視点に触れられる小さな集まり。</p></article>
+  <article class="future-card"><div class="en">Atelier</div><h3>自由に表現し、つくる。</h3><p>写真、絵、言葉、音、ものづくり。上手さや完成度にとらわれず、創造するプロセスを楽しめる時間。</p></article>
+  <article class="future-card"><div class="en">Commons</div><h3>感性が交わる拠点。</h3><p>いつか、対話や創作、展示などが自然に交わり、新しい何かが生まれる場所をつくりたい。</p></article>
+ </div>
+ <p class="future-foot">まだ形のない構想ですが、まずは目の前の人との対話や写真の時間から、少しずつ育てていきたいと思っています。</p>
+ </div>
+</section>
+<section class="contact" id="contact">
+ <div class="narrow"><span class="tag">Connect</span><h2>まずは、話してみませんか。</h2>
+ <p>まずは一言だけでも。「気になってます」で大丈夫です。<br>写真の相談はもちろん、ここに書いた考えに興味を持ってくださった方も。</p>
+ <div class="buttons"><a class="button primary" href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener">Instagramからつながる</a><a class="button" href="mailto:tanachu09@gmail.com">メールで問い合わせる</a></div></div>
+</section>
+</main>
+<footer><strong>Ema.</strong>Existence · Expression · Creation · Resonance<br><br>© Ema. All rights reserved.</footer>
+</body></html>
