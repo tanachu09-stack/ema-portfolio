@@ -22,7 +22,7 @@ h1,h2,h3,p{margin-top:0}h2{font:500 clamp(27px,4vw,40px)/1.65 var(--serif);lette
 .hero h1{font:500 clamp(38px,5.5vw,66px)/1.65 var(--serif);letter-spacing:.08em;color:var(--green);margin:20px 0 8px}
 .hero-en{font:italic 24px var(--latin);color:var(--accent)}
 .hero-copy{font:14px/2.35 var(--serif);max-width:470px;margin:27px 0 0}
-.hero-img{height:480px;position:relative}.hero-img img{width:85%;height:100%;object-fit:cover;margin-left:auto}.hero-caption{position:absolute;left:0;bottom:24px;background:var(--sub);padding:20px 22px;width:55%;font:13px/2 var(--serif);color:var(--green)}
+.hero-img{height:480px;position:relative}.hero-img img{width:85%;height:100%;object-fit:cover;margin-left:auto}
 section{padding:100px 0}.center{text-align:center}.center .tag{display:block;margin-bottom:12px}.intro{background:var(--green);color:var(--paper);text-align:center;padding:105px 0}.intro .tag{color:#D9B98E}.intro h2{color:var(--paper);margin:16px 0 28px}.intro p{font:14px/2.5 var(--serif);color:rgba(250,247,242,.88);max-width:690px;margin:0 auto 14px}
 .thought{display:grid;grid-template-columns:.95fr 1.05fr;gap:8%;align-items:center}.thought img{width:100%;height:500px;object-fit:cover}.thought h2{font-size:clamp(22px,2.7vw,38px);margin:16px 0 20px}.thought p{font:14px/2.35 var(--serif);margin-bottom:15px}.pull{font:italic 19px var(--latin);color:var(--accent);margin:20px 0}
 .two{background:var(--sub)}.two-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:42px}.two-card{background:var(--card);padding:34px;border:1px solid var(--line)}.two-card .en{font:italic 22px var(--latin);color:var(--accent)}.two-card h3{font:500 20px var(--serif);color:var(--green);margin:10px 0}.two-card p{font:13px/2.2 var(--serif);color:var(--muted);margin:0}
@@ -33,12 +33,12 @@ section{padding:100px 0}.center{text-align:center}.center .tag{display:block;mar
 .process{background:var(--sub)}.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:40px}.step{border-top:1px solid var(--accent);padding:18px 10px}.step b{font:italic 21px var(--latin);color:var(--accent)}.step h3{font:500 15px var(--serif);margin:6px 0;color:var(--green)}.step p{font-size:11px;line-height:2;color:var(--muted);margin:0}
 .contact{text-align:center;background:#EAE4DA}.contact h2{margin:16px 0}.contact p{font:14px/2.3 var(--serif);max-width:600px;margin:0 auto 28px}.buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.button{min-width:210px;border:1px solid var(--green);border-radius:99px;padding:13px 20px;font:13px var(--serif);color:var(--green)}.button.primary{background:var(--green);color:var(--paper)}.button:hover{background:var(--accent);border-color:var(--accent);color:white}
 footer{text-align:center;padding:32px 20px;font:11px var(--latin);letter-spacing:.16em;color:var(--muted)}footer strong{display:block;font:600 22px var(--serif);color:var(--green);letter-spacing:.1em;margin-bottom:6px}
-@media(max-width:760px){.navlinks a:not(.navcta){display:none}.hero{grid-template-columns:1fr;padding:55px 0 70px;gap:35px}.hero-img{height:390px}.hero-img img{width:87%}.hero-caption{width:60%}.thought{grid-template-columns:1fr;gap:28px}.thought img{height:380px;order:2}.two-grid{grid-template-columns:1fr}.future-grid{grid-template-columns:1fr}.plans{grid-template-columns:1fr}.plan{min-height:0}.steps{grid-template-columns:repeat(5,minmax(110px,1fr));overflow-x:auto;padding-bottom:10px}.works-grid{grid-template-columns:repeat(2,1fr)}section{padding:78px 0}.intro{padding:82px 0}}
-@media(max-width:430px){.wrap,.narrow{width:calc(100% - 36px)}nav{width:calc(100% - 36px)}.hero-img{height:330px}.hero-caption{font-size:11px;padding:14px}.button{width:100%;max-width:320px}}
+@media(max-width:760px){.navlinks a:not(.navcta){display:none}.hero{grid-template-columns:1fr;padding:55px 0 70px;gap:35px}.hero-img{height:390px}.hero-img img{width:87%}.thought{grid-template-columns:1fr;gap:28px}.thought img{height:380px;order:2}.two-grid{grid-template-columns:1fr}.future-grid{grid-template-columns:1fr}.plans{grid-template-columns:1fr}.plan{min-height:0}.steps{grid-template-columns:repeat(5,minmax(110px,1fr));overflow-x:auto;padding-bottom:10px}.works-grid{grid-template-columns:repeat(2,1fr)}section{padding:78px 0}.intro{padding:82px 0}}
+@media(max-width:430px){.wrap,.narrow{width:calc(100% - 36px)}nav{width:calc(100% - 36px)}.hero-img{height:330px}.button{width:100%;max-width:320px}}
 
 /* Readability refinement: mobile line length, spacing and responsive type */
 p { text-wrap: pretty; }
-body, h1, h2, h3, p, summary, .hero-caption, .step p {
+body, h1, h2, h3, p, summary, .step p {
   word-break: auto-phrase;
 }
 .hero-copy, .intro p, .thought p, .two-card p, .future-note,
@@ -87,7 +87,6 @@ body, h1, h2, h3, p, summary, .hero-caption, .step p {
   .photo-lead { text-align: left; }
   .plan-note { text-align: left; line-height: 2.2; }
   .contact p { text-align: left; }
-  .hero-caption { width: auto; max-width: 82%; line-height: 2.15; }
 }
 
 
@@ -115,7 +114,7 @@ body, h1, h2, h3, p, summary, .hero-caption, .step p {
  <p class="hero-perm">自分をしっかり観てあげる、<br>そんな時間があってもいいよね。</p>
  <p class="hero-copy">話して 掘って 撮る。<br>ポーズも演出もなし。整えるだけ。ありのままを撮影します。</p>
  <div class="buttons"><a class="button primary" href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener">撮影を相談する</a><a class="button" href="#plans">プランを見る</a></div></div>
- <div class="hero-img"><img src="portfolio/dscf8958.jpg" alt="Ema. portrait"><div class="hero-caption">何かにならなくてもいい。<br>その人の中にあるものが、<br>自然に顕れる時間を。</div></div>
+ <div class="hero-img"><img src="portfolio/dscf8958.jpg" alt="Ema. portrait"></div>
 </section>
 
 <section class="wrap thought" id="what" style="padding-bottom:30px">
@@ -183,8 +182,8 @@ body, h1, h2, h3, p, summary, .hero-caption, .step p {
 
 <section class="intro">
  <div class="narrow"><p class="bridge">ここから先は、Ema.のこれから。<br>大人のポートレート撮影を文化に。</p><span class="tag">What I Believe</span><h2>誰もが、自分らしく<br>表現し、創造できること。</h2>
- <p>人は誰もが、それぞれの感性や視点、表現の可能性を持っている。</p>
- <p>けれど、正解や評価、他者との比較のなかで、自分の感覚を抑えたり、表現することをためらったりすることもある。</p>
+ <p>人は誰もが、<br>それぞれの感性や視点、表現の可能性を持っている。</p>
+ <p>けれど、正解や評価、他者との比較のなかで、<br>自分の感覚を抑えたり、<br>表現することをためらったりすることもある。</p>
  <p>誰かに認められるためではなく、自分の内側から自然に生まれる表現を大切にしたい。</p>
  <p>それが特別なことではなく、誰にとっても自然な日常になる。そんな文化を育てていきたいと思っています。</p></div>
 </section>
