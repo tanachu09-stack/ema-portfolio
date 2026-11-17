@@ -6,6 +6,13 @@
 <meta name="theme-color" content="#FBFBF9">
 <title>Ema. | 話して 掘って 撮る。プロセスポートレート</title>
 <meta name="description" content="自分をしっかり観てあげる、そんな時間があってもいいよね。話して 掘って 撮る。ポーズも演出もなし。ありのままを撮影します。">
+<!-- SNSシェア時の表示設定（OGP） -->
+<meta property="og:title" content="Ema. | 話して 掘って 撮る。プロセスポートレート">
+<meta property="og:description" content="自分をしっかり観てあげる、そんな時間があってもいいよね。ポーズも演出もなし。整えるだけ。ありのままを撮影します。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="portfolio/dscf7657.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,12 +34,14 @@ h2{font-size:clamp(23px,3.2vw,38px);line-height:1.8;letter-spacing:.04em;margin-
 .mute{color:var(--mute)}
 .lead{max-width:34em}
 .ctr{text-align:center}.ctr .lead{margin-inline:auto}
+
 /* header */
 header{position:fixed;inset:0 0 auto;z-index:20;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,48px);background:rgba(251,251,249,.86);backdrop-filter:blur(10px)}
 .logo{font:500 26px var(--gar);letter-spacing:.06em}
 header nav{display:flex;gap:28px;align-items:center;font-size:13px;letter-spacing:.08em}
 header nav a:hover{color:var(--beige)}
 .cta{border-bottom:1px solid var(--beige);padding-bottom:1px}
+
 /* opening */
 .hero{min-height:100svh;padding:110px 0 70px;display:flex;align-items:center}
 .hero .w{display:grid;grid-template-columns:1fr auto;gap:clamp(32px,7vw,110px);align-items:center}
@@ -41,24 +50,30 @@ header nav a:hover{color:var(--beige)}
 .perm{font-size:clamp(16px,1.7vw,19px);line-height:2.1;margin-bottom:22px}
 .hero img{max-height:78svh;width:auto}
 .btns{display:flex;gap:28px;flex-wrap:wrap;margin-top:34px;font-size:14px;letter-spacing:.06em}
-.btn{border-bottom:1px solid var(--ink);padding-bottom:3px}.btn.p{border-color:var(--beige)}.btn:hover{color:var(--beige)}
+.btn{border-bottom:1px solid var(--ink);padding-bottom:3px;transition:color .25s,border-color .25s}
+.btn.p{border-color:var(--beige)}
+.btn:hover{color:var(--beige);border-color:var(--beige)}
+
 /* feature (photo + text) */
 .ft{display:grid;grid-template-columns:5fr 6fr;gap:clamp(32px,7vw,100px)}
 .st{position:sticky;top:96px}
 .ft h2:not(:first-child){margin-top:2.2em}
 blockquote{font:500 clamp(20px,2.6vw,30px)/1.9 var(--mj);margin:2em 0 0;padding-left:1.2em;border-left:1px solid var(--beige)}
+
 /* rows */
 .rows{margin-top:40px}
-.row{display:grid;grid-template-columns:220px 1fr;gap:12px 32px;padding:30px 0;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:220px 1fr;gap:12px 32px;padding:30px 0;border-top:1px solid var(--line);align-items:baseline}
 .rows .row:last-child{border-bottom:1px solid var(--line)}
 .row .en{font-size:clamp(28px,3.4vw,40px)}
+.row .step{font:italic 400 22px/1 var(--gar);color:var(--beige)}
 .row h3{font-size:18px;line-height:1.8;margin-bottom:4px}
 .row p{margin:0;color:var(--mute);font-size:14px}
-.row.big h3{font-size:clamp(17px,2vw,21px)}
+.row.big h3{font-size:clamp(17px,2vw,20px);margin:0}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,80px);margin-top:40px}
 .two h3{font-size:18px;line-height:1.8;margin:4px 0 8px}
 .two p{color:var(--mute);font-size:14px}
 figure.wide{margin:0 auto 70px;width:min(100%,860px)}
+
 /* works strip */
 .strip{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;padding:0 max(24px,calc((100% - 1120px)/2));scrollbar-width:none;margin-top:44px}
 .strip::-webkit-scrollbar{display:none}
@@ -66,15 +81,19 @@ figure.wide{margin:0 auto 70px;width:min(100%,860px)}
 .arrows{display:flex;gap:10px;justify-content:flex-end;margin-top:14px}
 .arrows button{font:400 30px/1 var(--gar);background:none;border:0;color:var(--ink);cursor:pointer;padding:6px 12px}
 .arrows button:hover{color:var(--beige)}
-/* plans */
-.plan{display:grid;grid-template-columns:220px 1fr auto;gap:10px 32px;padding:34px 0;border-top:1px solid var(--line);align-items:start}
+
+/* plans (価格非表示・対話導線版) */
+.plan{display:grid;grid-template-columns:220px 1fr auto;gap:12px 32px;padding:36px 0;border-top:1px solid var(--line);align-items:start}
 .plans .plan:last-of-type{border-bottom:1px solid var(--line)}
 .plan h3{font:500 32px/1.3 var(--gar);letter-spacing:.04em}
-.plan .catch{font-size:16px;margin-bottom:8px}
+.plan .sub{display:block;font:400 12px var(--mj);color:var(--beige);margin-top:6px;letter-spacing:.06em}
+.plan .catch{font-size:16px;margin-bottom:10px}
 .plan ul{list-style:none;padding:0;font-size:13px;line-height:2;color:var(--mute)}
-.price{font:400 30px/1.3 var(--gar);text-align:right;white-space:nowrap}.price small{font:12px var(--mj);color:var(--mute)}
-.price a{display:block;font:13px var(--mj);margin-top:10px;letter-spacing:.06em;border-bottom:1px solid var(--beige);width:max-content;margin-left:auto}
-.note{font-size:13px;color:var(--mute);line-height:2.2;margin-top:30px;max-width:42em}
+.plan-cta{text-align:right;white-space:nowrap;padding-top:4px}
+.plan-cta a{display:inline-block;font:13px var(--mj);letter-spacing:.06em;border-bottom:1px solid var(--beige);padding-bottom:2px;transition:color .25s}
+.plan-cta a:hover{color:var(--beige)}
+.note{font-size:13px;color:var(--mute);line-height:2.2;margin-top:30px;max-width:44em}
+
 /* faq */
 details{border-bottom:1px solid var(--line)}details:first-of-type{border-top:1px solid var(--line)}
 summary{cursor:pointer;list-style:none;position:relative;padding:18px 36px 18px 0;font-size:16px}
@@ -82,24 +101,26 @@ summary::-webkit-details-marker{display:none}
 summary::after{content:"+";position:absolute;right:4px;top:16px;color:var(--beige);font-size:20px;transition:transform .25s}
 details[open] summary::after{transform:rotate(45deg)}
 details p{font-size:14px;color:var(--mute);margin:0 0 20px}
+
 /* loop / contact / footer */
 .loop{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 30px;margin:48px 0 14px;font:italic 400 clamp(19px,2.4vw,26px) var(--gar);color:var(--ink)}
 .loop span{position:relative}.loop span+span::before{content:"";position:absolute;left:-17px;top:55%;width:6px;border-top:1px solid var(--beige)}
 .contact .btns{justify-content:center;margin-top:40px}
 footer{text-align:center;padding:48px 20px 56px;font:13px/2 var(--gar);letter-spacing:.16em;color:var(--mute)}
 footer b{display:block;font:500 24px var(--gar);color:var(--ink);letter-spacing:.08em;margin-bottom:4px}
+
 /* motion */
 .rv{opacity:0;transform:translateY(14px);transition:opacity 1s ease,transform 1s ease}.rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}}
 @media (max-width:820px){
- header nav a:not(.cta){display:none}
- body{font-size:15px;line-height:2.1}
- .hero{min-height:0;padding:96px 0 64px}.hero .w{grid-template-columns:1fr;gap:44px}.hero img{max-height:72svh;margin:auto}
- .ft,.two{grid-template-columns:1fr}.st{position:static}
- .row,.plan{grid-template-columns:1fr;gap:6px}
- .price,.price a{text-align:left;margin-left:0}
- .strip img{height:min(62svh,460px)}
- .loop{gap:6px 24px}
+  header nav a:not(.cta){display:none}
+  body{font-size:15px;line-height:2.1}
+  .hero{min-height:0;padding:96px 0 64px}.hero .w{grid-template-columns:1fr;gap:44px}.hero img{max-height:72svh;margin:auto}
+  .ft,.two{grid-template-columns:1fr}.st{position:static}
+  .row,.plan{grid-template-columns:1fr;gap:6px}
+  .plan-cta{text-align:left;margin-top:10px}
+  .strip img{height:min(62svh,440px)}
+  .loop{gap:6px 24px}
 }
 </style>
 <noscript><style>.rv{opacity:1;transform:none}</style></noscript>
@@ -115,7 +136,7 @@ footer b{display:block;font:500 24px var(--gar);color:var(--ink);letter-spacing:
 <div class="en">Express what already exists.</div>
 <p class="perm">自分をしっかり観てあげる、<br>そんな時間があってもいいよね。</p>
 <p class="mute">話して 掘って 撮る。<br>ポーズも演出もなし。整えるだけ。ありのままを撮影します。</p>
-<div class="btns"><a class="btn p" href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener">撮影を相談する</a><a class="btn" href="#belief">Ema.の考えを読む</a></div>
+<div class="btns"><a class="btn p" href="#contact">撮影を相談する</a><a class="btn" href="#belief">Ema.の考えを読む</a></div>
 </div>
 <figure><img src="portfolio/dscf7657.jpg" width="1067" height="1600" alt="岩場に立ち、遠くの山並みを見つめる後ろ姿"></figure>
 </div></section>
@@ -184,18 +205,19 @@ footer b{display:block;font:500 24px var(--gar);color:var(--ink);letter-spacing:
 <section id="how"><div class="w">
 <h2>撮影までの流れ。</h2>
 <div class="rows">
-<div class="row"><h3>問い合わせ</h3><p>まずは気軽にご連絡ください。イメージが曖昧でも大丈夫です。</p></div>
-<div class="row"><h3>対話</h3><p>事前に話す時間を設け、残したい時間やイメージを一緒に考えます。</p></div>
-<div class="row"><h3>撮影</h3><p>話しながら、歩きながら。途中からは、ほとんど声をかけません。</p></div>
-<div class="row"><h3>整える</h3><p>足さずに、写ったものを整えます。</p></div>
-<div class="row"><h3>納品</h3><p>撮影後、約2週間を目安にオンラインでお届けします。</p></div>
+<div class="row"><div class="step">01. Contact</div><div><h3>問い合わせ</h3><p>まずは気軽にご連絡ください。イメージが曖昧でも大丈夫です。</p></div></div>
+<div class="row"><div class="step">02. Dialogue</div><div><h3>対話</h3><p>事前に話す時間を設け、残したい時間やイメージ、合うプランを一緒に考えます。</p></div></div>
+<div class="row"><div class="step">03. Shooting</div><div><h3>撮影</h3><p>話しながら、歩きながら。途中からは、ほとんど声をかけません。</p></div></div>
+<div class="row"><div class="step">04. Retouch</div><div><h3>整える</h3><p>足さずに、写ったものを整えます。</p></div></div>
+<div class="row"><div class="step">05. Delivery</div><div><h3>納品</h3><p>撮影後、約2週間を目安にオンラインでお届けします。</p></div></div>
 </div>
+
 <h2 style="margin-top:110px">こんな方へ。</h2>
 <div class="rows">
-<div class="row big"><h3>プロフィール写真やSNSのアイコンを、そろそろ撮り直したい方</h3></div>
-<div class="row big"><h3>アーティスト・事業主・節目を迎える人</h3></div>
-<div class="row big"><h3>活動や仕事を伝える写真が、しっくりきていない方</h3></div>
-<div class="row big"><h3>きれいに写るより、自分らしさが残ってほしい方</h3></div>
+<div class="row big"><div class="step">For you</div><h3>プロフィール写真やSNSのアイコンを、そろそろ撮り直したい方</h3></div>
+<div class="row big"><div class="step">For you</div><h3>アーティスト・事業主・節目を迎える人</h3></div>
+<div class="row big"><div class="step">For you</div><h3>活動や仕事を伝える写真が、しっくりきていない方</h3></div>
+<div class="row big"><div class="step">For you</div><h3>きれいに写るより、自分らしさが残ってほしい方</h3></div>
 </div></div></section>
 
 <section class="g" id="voice"><div class="w">
@@ -206,35 +228,4 @@ footer b{display:block;font:500 24px var(--gar);color:var(--ink);letter-spacing:
 
 <section id="plans"><div class="w plans">
 <h2>あなたの中に、すでにあるものを<br>写真に撮ります。</h2>
-<p class="lead mute">撮影は、対話から始まります。話しながら、歩きながら、その人らしい時間をともに過ごす。ポーズをつくり込むのではなく、その人の自然な姿や没入している時間を写真に残します。</p>
-<div style="height:30px"></div>
-<div class="plan"><h3>TRACE</h3><div><p class="catch">2時間で、今の自分をひとつ残す。</p><ul><li>撮影：2時間／写真データ：最大20枚</li><li>オンライン納品／場所：事前打ち合わせ／元データのお渡しなし</li></ul></div><div class="price">¥35,000 <small>（税込）</small><a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener">相談する</a></div></div>
-<div class="plan"><h3>DOUKOU</h3><div><p class="catch">対話を重ねながら、一日いっしょに過ごして撮る。</p><ul><li>撮影：上限1日／写真データ：最大50枚</li><li>プロフィール動画「結像」付き／元データのお渡しも可能／オンライン納品</li></ul></div><div class="price">¥120,000 <small>（税込）</small><a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener">相談する</a></div></div>
-<div class="plan"><h3>PERSONAL FLAG</h3><div><p class="catch">一年を通して、変わっていく自分を残す。</p><ul><li>撮影：年4日／写真データ：最大50枚</li><li>プロフィール動画「結像」付き／元データのお渡しも可能／オンライン納品</li></ul></div><div class="price">¥360,000 <small>（税込）</small><a href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener">相談する</a></div></div>
-<p class="note">全プラン別途交通費。撮影場所は事前のやりとりの中で相談して決めます。<br>プロフィール動画「結像」は、対話を重ねたその記録を残す映像です。<br>お支払いは口座振込、原則事前のお支払いをお願いしています。<br>お一人おひとりと向き合うため、毎月のご予約数には限りがあります。天気によっては撮影日を変更します。<br>迷ったら、DMで「迷ってます」と送ってください。</p>
-<div style="max-width:720px;margin-top:100px"><h2>よくあるご質問</h2>
-<details><summary>写真が苦手でも大丈夫ですか？</summary><p>大丈夫です。ポーズや表情の指示はしません。最初にお話しする時間があるので、撮られ慣れていなくても、少しずつ自然になっていきます。</p></details>
-<details><summary>何を話しますか？</summary><p>最近のこと、好きなこと、どんな写真を残したいか、などです。遠慮なく話しましょう。</p></details>
-<details><summary>元データはもらえますか？</summary><p>TRACEは写真データ（最大20枚）のお渡しで、元データはありません。DOUKOUとPERSONAL FLAGは、写真（最大50枚）とプロフィール動画「結像」に加えて、元データもお渡しできます。</p></details>
-<details><summary>修正はしてもらえますか？</summary><p>足さずに、写ったものを整えます。</p></details>
-</div></div></section>
-
-<section class="g contact" id="contact"><div class="w ctr">
-<p class="en">一枚の写真から始まり、対話へ、創造へ、共鳴へ。</p>
-<div class="loop"><span>Space</span><span>Awareness</span><span>Expression</span><span>Creation</span><span>Resonance</span></div>
-<p class="mute" style="max-width:34em;margin:0 auto 90px">Ema.がなくても、Ema.から始まった文化が広がっている。<br>それが、この活動の行き先です。</p>
-<h2>まずは、話してみませんか。</h2>
-<p class="lead">まずは一言だけでも。「気になってます」で大丈夫です。<br>写真の相談はもちろん、ここに書いた考えに興味を持ってくださった方も。</p>
-<div class="btns"><a class="btn p" href="https://www.instagram.com/tayu__t/" target="_blank" rel="noopener">Instagramからつながる</a><a class="btn" href="mailto:tanachu09@gmail.com">メールで問い合わせる</a></div>
-</div></section>
-</main>
-<footer><b>Ema.</b>Existence · Expression · Creation · Resonance<br>© Ema. All rights reserved.</footer>
-
-<script>
-const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12});
-document.querySelectorAll('main h2,main .en,main .row,main .plan,main figure:not(.st),main blockquote,main details,.tx p,.hero p').forEach(el => { el.classList.add('rv'); io.observe(el); });
-const strip = document.getElementById('strip');
-document.querySelectorAll('.arrows button').forEach(b => b.onclick = () => strip.scrollBy({left: b.dataset.d * innerWidth * .6, behavior:'smooth'}));
-</script>
-</body>
-</html>
+<p class="lead mute">撮影は、対話から始まります。話しながら、歩きながら、その人らしい
